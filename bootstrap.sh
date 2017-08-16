@@ -17,13 +17,13 @@ program_installed() {
 
 # i3
 if program_installed "i3"; then
-    ln -sf $DIR/i3 ~/.i3
+    ln -sf $DIR/i3 "$HOME/.i3"
 fi
 
 # vim
 if program_installed "vim"; then 
-    ln -sf $DIR/vim/.vimrc ~/.vimrc
-    vim_bundle_dir="~/.vim/bundle"
+    ln -sf $DIR/vim/.vimrc "$HOME/.vimrc"
+    vim_bundle_dir="$HOME/.vim/bundle"
     if [[ ! -d $vim_bundle_dir ]]; then
         echo "Creating vim bundle directory $vim_bundle_dir"
         mkdir -p $vim_bundle_dir
@@ -33,13 +33,12 @@ if program_installed "vim"; then
        git clone https://github.com/VundleVim/Vundle.vim.git $vim_vundle_dir
     fi
     vim +PluginInstall +qall
+    exit
 fi
 
 # zsh
 if program_installed "zsh"; then
-    ln -sf $DIR/ZSH/.zshrc ~/.zshrc
-    csh=`/proc/$$/exe`
-    echo $csh
+    ln -sf $DIR/ZSH/.zshrc "$HOME/.zshrc"
     if [[ "$0" != "-zsh" ]]; then
         echo "Changing the default log-in shell from $0 to zsh"
         chsh -s $(which zsh)
@@ -50,6 +49,6 @@ fi
 
 # tmux
 if program_installed "tmux"; then
-    ln -sf $DIR/tmux/.tmux.conf ~/.tmux.conf
+    ln -sf $DIR/tmux/.tmux.conf "$HOME/.tmux.conf"
 fi
 
