@@ -24,12 +24,13 @@ fi
 if program_installed "vim"; then 
     ln -sf $DIR/vim/.vimrc ~/.vimrc
     vim_bundle_dir="~/.vim/bundle"
-    if [! -d $vim_bundle_dir ]; then
+    if [[ ! -d $vim_bundle_dir ]]; then
+        echo "Creating vim bundle directory $vim_bundle_dir"
         mkdir -p $vim_bundle_dir
     fi
     vim_vundle_dir="$vim_bundle_dir/vundle"
-    if [! -d $vim_vundle_dir ]; then
-       git clone git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim $vim_vundle_dir
+    if [[ ! -d $vim_vundle_dir ]]; then
+       git clone https://github.com/VundleVim/Vundle.vim.git $vim_vundle_dir
     fi
     vim +PluginInstall +qall
 fi
@@ -37,9 +38,13 @@ fi
 # zsh
 if program_installed "zsh"; then
     ln -sf $DIR/ZSH/.zshrc ~/.zshrc
+    csh=`/proc/$$/exe`
+    echo $csh
     if [[ "$0" != "-zsh" ]]; then
-        echo "Changing the default log-in shell to zsh"
+        echo "Changing the default log-in shell from $0 to zsh"
         chsh -s $(which zsh)
+    else
+        echo "ZSH already is the default shell"
     fi
 fi
 
