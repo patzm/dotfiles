@@ -37,8 +37,10 @@ fi
 # zsh
 if program_installed "zsh"; then
     ln -sf $DIR/ZSH/.zshrc ~/.zshrc
-    echo "Changing the default log-in shell to zsh"
-    chsh -s $(which zsh)
+    if [[ "$0" != "-zsh" ]]; then
+        echo "Changing the default log-in shell to zsh"
+        chsh -s $(which zsh)
+    fi
 fi
 
 # tmux
