@@ -23,6 +23,15 @@ fi
 # vim
 if program_installed "vim"; then 
     ln -sf $DIR/vim/.vimrc ~/.vimrc
+    vim_bundle_dir="~/.vim/bundle"
+    if [! -d $vim_bundle_dir ]; then
+        mkdir -p $vim_bundle_dir
+    fi
+    vim_vundle_dir="$vim_bundle_dir/vundle"
+    if [! -d $vim_vundle_dir ]; then
+       git clone git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim $vim_vundle_dir
+    fi
+    vim +PluginInstall +qall
 fi
 
 # zsh
