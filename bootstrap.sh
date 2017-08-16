@@ -33,18 +33,18 @@ if program_installed "vim"; then
        git clone https://github.com/VundleVim/Vundle.vim.git $vim_vundle_dir
     fi
     vim +PluginInstall +qall
-    exit
 fi
 
 # zsh
 if program_installed "zsh"; then
     ln -sf $DIR/ZSH/.zshrc "$HOME/.zshrc"
-    if [[ "$0" != "-zsh" ]]; then
-        echo "Changing the default log-in shell from $0 to zsh"
-        chsh -s $(which zsh)
-    else
-        echo "ZSH already is the default shell"
-    fi
+    echo "Do you wish to set 'zsh' as the default shell?"
+    select yn in "Yes" "No"; do
+        case $yn in
+            Yes ) chsh -s $(which zsh); break;;
+            No ) break;;
+        esac
+    done
 fi
 
 # tmux
