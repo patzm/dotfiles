@@ -100,7 +100,7 @@ check_zsh_theme() {
     unset THEME_INSTALL_FOLDER
 }
 check_zsh_theme "powerline" "https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git"
-ZSH_THEME="powerline"
+ZSH_THEME="bureau"
 
 # Completion settings
 autoload -Uz compinit
