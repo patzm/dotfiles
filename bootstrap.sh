@@ -38,6 +38,18 @@ fi
 # zsh
 if program_installed "zsh"; then
     ln -sf $DIR/ZSH/.zshrc "$HOME/.zshrc"
+    echo "Link OS specific ZSH instructions?"
+    select os in "MacOSX" "Ubuntu" "None"; do
+        zshosdep="$HOME/.zshosdep"
+        case $os in
+            MacOSX ) ln -sf $DIR/ZSH/zshmacosx $zshosdep; break;;
+            Ubuntu ) ln -sf $DIR/ZSH/zshubuntu $zshosdep; break;;
+            None ) if [[ -e "$zshosdep" ]]; then
+                rm $zshosdep
+            fi
+            break;;
+        esac
+    done
     echo "Do you wish to set 'zsh' as the default shell?"
     select yn in "Yes" "No"; do
         case $yn in
