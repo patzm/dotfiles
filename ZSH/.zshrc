@@ -149,7 +149,7 @@ GIT_AUTHOR_NAME="Martin Patz"
 GIT_AUTHOR_EMAIL="mailto@martin-patz.de"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
 GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config credential.helper store
+git config --global credential.helper store
 git config --global user.name "$GIT_AUTHOR_NAME"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 git config --global push.default simple
