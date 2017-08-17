@@ -116,7 +116,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -143,6 +143,19 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+
+# Create Log out, Reboot, Poweroff bindings
+mode "Exit (L)ogout, (R)eboot, (P)oweroff" {
+        bindsym r exec systemctl reboot
+        bindsym l exit
+        bindsym p exec systemctl poweroff
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
+bindsym $mod+Shift+e mode "Exit (L)ogout, (R)eboot, (P)oweroff"
 
 # Window assignments
 # call xprop on the command line and click the window you want to identiy. On 
@@ -171,3 +184,6 @@ bindsym XF86AudioPrev exec playerctl previous
 bar {
         status_command i3status -c ~/.i3/i3status.conf
 }
+
+# Autostart some important applications
+exec autostart.sh
