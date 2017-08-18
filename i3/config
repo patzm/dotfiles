@@ -186,4 +186,4 @@ bar {
 }
 
 # Autostart some important applications
-exec_always autostart.sh
+exec_always ~/.i3/autostart.sh
