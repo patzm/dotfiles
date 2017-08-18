@@ -52,9 +52,17 @@ filetype plugin indent on " Filetype auto-detection
 syntax on " Syntax highlighting
 
 " Configuration of markdown support
+"
+" If you run Ubuntu / Debian: you need alternatives x-www-browser and gnome-www-browser.
+" So you need to run next steps:
+"
+" sudo update-alternatives --config x-www-browser
+" sudo update-alternatives --config gnome-www-browser
 let g:vim_markdown_folding_disabled=1
-let vim_markdown_preview_toggle=2
+let vim_markdown_preview_github=1
+let vim_markdown_preview_toggle=1
 let vim_markdown_preview_browser='Firefox'
+let vim_markdown_preview_temp_file=1
 
 set tabstop=4
 set shiftwidth=4
