@@ -183,5 +183,11 @@ alias bm="bookmark"
 alias bd="deletemark"
 alias bl="showmarks"
 
+# Function definitions
+mkcdir () {
+    mkdir -p -- "$1" &&
+        cd -P -- "$1"
+}
+
 unsetopt auto_name_dirs
 
