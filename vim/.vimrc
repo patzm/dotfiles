@@ -72,6 +72,7 @@ set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
 set shiftround " tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
+set pastetoggle=<F3> " simplifies toggling normal insert and paste insert modes
 
 " We have VCS -- we don't need this stuff.
 set nobackup " We have vcs, we don't need backups.
