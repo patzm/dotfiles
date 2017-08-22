@@ -189,5 +189,9 @@ mkcdir () {
         cd -P -- "$1"
 }
 
+o () {
+    gnome-open "$1" 2> /dev/null &
+}
+
 unsetopt auto_name_dirs
 
