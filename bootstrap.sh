@@ -15,6 +15,9 @@ program_installed() {
     fi
 }
 
+# create a bin directory for the current user
+mkdir -p "$HOME/bin"
+
 # i3
 if program_installed "i3"; then
     ln -sf $DIR/i3 "$HOME/.i3"
