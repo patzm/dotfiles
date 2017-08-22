@@ -18,6 +18,16 @@ program_installed() {
 # create a bin directory for the current user
 mkdir -p "$HOME/bin"
 
+# install required software packages
+echo "Installing required programs"
+sudo apt-get update
+sudo apt-get install -y \
+    xclip \
+    htop \
+    nethogs \
+    tmux \
+    imagemagick
+
 # i3
 if program_installed "i3"; then
     ln -sf $DIR/i3 "$HOME/.i3"
