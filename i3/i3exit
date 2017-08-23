@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 lock() {
     i3lock
@@ -12,16 +12,15 @@ case "$1" in
         i3-msg exit
         ;;
     suspend)
-        lock && pm-suspend
-        ;;
+        lock && /usr/bin/dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Suspend        ;;
     hibernate)
-        lock && pm-hibernate
+        lock && /usr/bin/dbus-send --system --print-reply --dest="org.freedesktop.UPower" /org/freedesktop/UPower org.freedesktop.UPower.Hibernate
         ;;
     reboot)
-       shutdown -r now 
+        /usr/bin/dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Restart
         ;;
     shutdown)
-       shutdown -P now 
+        /usr/bin/dbus-send --system --print-reply --dest="org.freedesktop.ConsoleKit" /org/freedesktop/ConsoleKit/Manager org.freedesktop.ConsoleKit.Manager.Stop
         ;;
     *)
         echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
