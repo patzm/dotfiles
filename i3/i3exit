@@ -4,6 +4,8 @@ lock() {
     i3lock
 }
 
+# attention: only works until Ubuntu 14.04, after that use systemctl <cmd>
+# see https://askubuntu.com/a/385316/284349
 case "$1" in
     lock)
         lock
