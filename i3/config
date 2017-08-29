@@ -166,6 +166,7 @@ bindsym $mod+Shift+e mode "$mode_system"
 #   WM_CLASS(STRING) = "<instance_name>", "<class_name>"
 # use this information to assign windows to workspaces
 assign [class="Thunderbird"] → 8
+assign [instance="sun-awt-X11-XWindowPeer"] → 11 
 
 ## Setting keyboard shortcuts
 # see http://i3wm.org/docs/userguide.html#keybindings for more bindable keyboard shortcuts
