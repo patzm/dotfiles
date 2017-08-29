@@ -1,7 +1,7 @@
 #!/bin/bash
 
 lock() {
-    i3lock
+    i3lock -i ~/.i3/wallpaper.png
 }
 
 # attention: only works until Ubuntu 14.04, after that use systemctl <cmd>
