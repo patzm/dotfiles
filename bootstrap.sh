@@ -19,18 +19,25 @@ program_installed() {
 mkdir -p "$HOME/bin"
 
 # install required software packages
-echo "Installing required programs"
-sudo apt-get update
-sudo apt-get install -y \
-    xclip \
-    htop \
-    nethogs \
-    tmux \
-    imagemagick
+echo "Install required programs?"
+select yn in "Yes: Ubuntu" "No"; do
+    case $yn in
+        "Yes: Ubuntu" )
+            sudo apt-get update
+            sudo apt-get install -y \
+                xclip \
+                htop \
+                nethogs \
+                tmux \
+                imagemagick
+            break;;
+        No ) break;;
+    esac
+done
 
 # i3
 if program_installed "i3"; then
-    ln -sf $DIR/i3 "$HOME/.i3"
+    ln -sf -T $DIR/i3 "$HOME/.i3"
 fi
 
 # vim
