@@ -23,13 +23,14 @@ echo "Install required programs?"
 select yn in "Yes: Ubuntu" "No"; do
     case $yn in
         "Yes: Ubuntu" )
-            sudo apt-get update
-            sudo apt-get install -y \
+            sudo apt-get -qq update
+            sudo apt-get -qq install -y \
                 xclip \
                 htop \
                 nethogs \
                 tmux \
-                imagemagick
+                imagemagick \
+                tree
             break;;
         No ) break;;
     esac
