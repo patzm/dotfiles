@@ -38,7 +38,12 @@ done
 
 # i3
 if program_installed "i3"; then
-    ln -sf -T $DIR/i3 "$HOME/.i3"
+    VIM_TARGET_DIR="$HOME/.i3"
+    if [[ -d "$VIM_TARGET_DIR" && ! -L "$VIM_TARGET_DIR" ]]; then
+        echo "removing existing vim folder $VIM_TARGET_DIR"
+        rm -rf $VIM_TARGET_DIR
+    fi
+    ln -sf -T "$DIR/i3" $VIM_TARGET_DIR
 fi
 
 # vim
