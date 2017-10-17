@@ -27,6 +27,7 @@ select yn in "Yes: Ubuntu" "No"; do
             sudo apt-get -qq install -y \
                 xclip \
                 htop \
+                lm-sensors \
                 nethogs \
                 tmux \
                 imagemagick \
