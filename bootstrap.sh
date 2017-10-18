@@ -28,7 +28,9 @@ select yn in "Yes: Ubuntu" "No"; do
                 xclip \
                 htop \
                 lm-sensors \
+                python-pip \
                 nethogs \
+                wmctrl \
                 tmux \
                 imagemagick \
                 tree
