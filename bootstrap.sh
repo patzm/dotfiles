@@ -29,6 +29,7 @@ select yn in "Yes: Ubuntu" "No"; do
                 htop \
                 lm-sensors \
                 python-pip \
+                cmake \
                 zsh \
                 vim \
                 git \
