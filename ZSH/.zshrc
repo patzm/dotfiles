@@ -99,8 +99,10 @@ check_zsh_theme() {
     fi
     unset THEME_INSTALL_FOLDER
 }
+
 check_zsh_theme "powerline" "https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git"
-ZSH_THEME="bureau"
+
+ZSH_THEME="agnoster"
 
 # Completion settings
 autoload -Uz compinit
