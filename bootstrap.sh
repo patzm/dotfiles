@@ -31,6 +31,7 @@ select yn in "Yes: Ubuntu" "No"; do
                 python-pip \
                 zsh \
                 vim \
+                git \
                 nethogs \
                 wmctrl \
                 tmux \
