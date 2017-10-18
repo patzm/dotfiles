@@ -29,6 +29,8 @@ select yn in "Yes: Ubuntu" "No"; do
                 htop \
                 lm-sensors \
                 python-pip \
+                zsh \
+                vim \
                 nethogs \
                 wmctrl \
                 tmux \
