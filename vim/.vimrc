@@ -62,7 +62,6 @@ let g:vim_markdown_folding_disabled=1
 " the following requires Grip to be installed:
 " https://github.com/joeyespo/grip
 let vim_markdown_preview_github=1
-let vim_markdown_preview_toggle=1
 let vim_markdown_preview_browser='Firefox'
 let vim_markdown_preview_temp_file=1
 
