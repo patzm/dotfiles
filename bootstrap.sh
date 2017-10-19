@@ -15,6 +15,16 @@ program_installed() {
     fi
 }
 
+install_xdotool() {
+    xdotool_dir=/tmp/xdotool
+    git clone https://github.com/jordansissel/xdotool $xdotool_dir
+    cd $xdotool_dir
+    make
+    sudo make install
+    cd - # go to the previous folder
+    rm -rf xdotool_dir # clean up
+}
+
 # create a bin directory for the current user
 mkdir -p "$HOME/bin"
 
@@ -32,6 +42,7 @@ select yn in "Yes: Ubuntu" "No"; do
                 python-pip \
                 cmake \
                 zsh \
+                libxkbcommon-dev \
                 vim \
                 git \
                 nethogs \
@@ -40,7 +51,7 @@ select yn in "Yes: Ubuntu" "No"; do
                 imagemagick \
                 tree
             break;;
-        No ) break;;
+        "No" ) break;;
     esac
 done
 
@@ -67,6 +78,22 @@ if program_installed "vim"; then
        git clone https://github.com/VundleVim/Vundle.vim.git $vim_vundle_dir
     fi
     vim +PluginInstall +qall
+
+    # install requirements for markdown rendering
+    echo "Install required programs for vim markdown rendering?"
+    select yn in "Yes: Ubuntu" "Yes: Mac" "No"; do
+        case $yn in
+            "Yes: Ubuntu" )
+                install_xdotool
+                sudo pip install grip
+                break;;
+            "Yes: Mac" )
+                install_xdotool
+                brew install grip
+                break;;
+            "No" ) break;;
+        esac
+    done
 fi
 
 # zsh
