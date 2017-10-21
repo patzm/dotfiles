@@ -22,7 +22,17 @@ install_xdotool() {
     make
     sudo make install
     cd - # go to the previous folder
-    rm -rf xdotool_dir # clean up
+    rm -rf $xdotool_dir # clean up
+}
+
+install_nethogs() {
+    nethogs_dir=/tmp/nethogs
+    git clone https://github.com/raboof/nethogs $nethogs_dir
+    cd $nethogs_dir
+    make
+    sudo make install
+    cd - # go to the previous folder
+    rm -rf $nethogs_dir # clean up
 }
 
 # create a bin directory for the current user
@@ -42,10 +52,10 @@ select yn in "Yes: Ubuntu" "No"; do
                 python-pip \
                 cmake \
                 zsh \
-                libxkbcommon-dev \
+                libxkbcommon-dev `# build-essential libncurses5-dev libpcap-dev` \
+                build-essential libncurses5-dev libpcap-dev `# nethogs` \
                 vim \
                 git \
-                nethogs \
                 wmctrl \
                 tmux \
                 imagemagick \
@@ -81,13 +91,13 @@ if program_installed "vim"; then
 
     # install requirements for markdown rendering
     echo "Install required programs for vim markdown rendering?"
-    select yn in "Yes: Ubuntu" "Yes: Mac" "No"; do
+    select yn in "Yes: Ubuntu" "Yes: MacOSX" "No"; do
         case $yn in
             "Yes: Ubuntu" )
                 install_xdotool
                 sudo pip install grip
                 break;;
-            "Yes: Mac" )
+            "Yes: MacOSX" )
                 install_xdotool
                 brew install grip
                 break;;
@@ -100,22 +110,23 @@ fi
 if program_installed "zsh"; then
     ln -sf $DIR/ZSH/.zshrc "$HOME/.zshrc"
     echo "Link OS specific ZSH instructions?"
-    select os in "MacOSX" "Ubuntu" "None"; do
+    select os in "Ubuntu" "MacOSX" "None"; do
         zshosdep="$HOME/.zshosdep"
         case $os in
-            MacOSX ) ln -sf $DIR/ZSH/zshmacosx $zshosdep; break;;
-            Ubuntu ) ln -sf $DIR/ZSH/zshubuntu $zshosdep; break;;
-            None ) if [[ -e "$zshosdep" ]]; then
-                rm $zshosdep
-            fi
-            break;;
+            "Ubuntu")   ln -sf $DIR/ZSH/zshubuntu $zshosdep; break;;
+            "MacOSX")   ln -sf $DIR/ZSH/zshmacosx $zshosdep; break;;
+            "None")
+                if [[ -e "$zshosdep" ]]; then
+                    rm $zshosdep
+                fi
+                break;;
         esac
     done
     echo "Do you wish to set 'zsh' as the default shell?"
     select yn in "Yes" "No"; do
         case $yn in
-            Yes ) chsh -s $(which zsh); break;;
-            No ) break;;
+            "Yes") chsh -s $(which zsh); break;;
+            "No")  break;;
         esac
     done
 fi
@@ -124,4 +135,13 @@ fi
 if program_installed "tmux"; then
     ln -sf $DIR/tmux/.tmux.conf "$HOME/.tmux.conf"
 fi
+
+# nethogs
+echo "Do you wish to install nethogs for network traffic monitoring?"
+select yn in "Yes" "No"; do
+    case $yn in
+        "Yes") install_nethogs; break;;
+        "No")   break;;
+    esac
+done
 
