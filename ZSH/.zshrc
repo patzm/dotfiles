@@ -2,7 +2,7 @@
 if [[ -f .profile ]]; then
 	source .profile
 fi
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     export PATH=$HOME/bin:$PATH

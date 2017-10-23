@@ -91,15 +91,11 @@ if program_installed "vim"; then
 
     # install requirements for markdown rendering
     echo "Install required programs for vim markdown rendering?"
-    select yn in "Yes: Ubuntu" "Yes: MacOSX" "No"; do
+    select yn in "Yes: Ubuntu" "No"; do
         case $yn in
             "Yes: Ubuntu" )
                 install_xdotool
                 sudo pip install grip
-                break;;
-            "Yes: MacOSX" )
-                install_xdotool
-                brew install grip
                 break;;
             "No" ) break;;
         esac
