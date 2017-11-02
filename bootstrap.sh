@@ -4,6 +4,13 @@ pushd `dirname $0` > /dev/null
 DIR=`pwd`
 popd > /dev/null
 
+# make sure the user config directory exists
+user_config_dir="${HOME}/.config"
+if [[ ! -d $user_config_dir ]]; then
+    echo "Creating user config directory $user_config_dir"
+    mkdir $user_config_dir
+fi
+
 echo "Location of the configs repository: $DIR"
 
 program_installed() {
@@ -91,15 +98,11 @@ if program_installed "vim"; then
 
     # install requirements for markdown rendering
     echo "Install required programs for vim markdown rendering?"
-    select yn in "Yes: Ubuntu" "Yes: MacOSX" "No"; do
+    select yn in "Yes: Ubuntu" "No"; do
         case $yn in
             "Yes: Ubuntu" )
                 install_xdotool
                 sudo pip install grip
-                break;;
-            "Yes: MacOSX" )
-                install_xdotool
-                brew install grip
                 break;;
             "No" ) break;;
         esac
@@ -131,12 +134,22 @@ if program_installed "zsh"; then
     done
 fi
 
+# powerline
+powerline_config_dir=$user_config_dir/powerline
+if [[ -d $powerline_config_dir ]]; then
+    echo "Backing up old configuration of powerline"
+    mv $powerline_config_dir "${powerline_config_dir}.bak"
+fi
+ln -sf $DIR/powerline $powerline_config_dir
+
 # tmux
 if program_installed "tmux"; then
     ln -sf $DIR/tmux/.tmux.conf "$HOME/.tmux.conf"
 fi
 
 # nethogs
+
+# TODO: check, if nethogs is already installed
 echo "Do you wish to install nethogs for network traffic monitoring?"
 select yn in "Yes" "No"; do
     case $yn in

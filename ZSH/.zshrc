@@ -2,13 +2,14 @@
 if [[ -f .profile ]]; then
 	source .profile
 fi
-export PATH=$PATH:/usr/local/bin
+export PATH=$PATH:/usr/local/sbin
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     export PATH=$HOME/bin:$PATH
 fi
-export XDG_DATA_HOME=$HOME/.local/share
-export ZSH=$HOME/.oh-my-zsh
+export XDG_CONFIG_HOME=${HOME}/.config
+export XDG_DATA_HOME=${HOME}/.local/share
+export ZSH=${HOME}/.oh-my-zsh
 
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
