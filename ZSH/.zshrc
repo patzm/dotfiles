@@ -139,6 +139,11 @@ if [[ -f .zshosdep ]]; then
 	source .zshosdep
 fi
 
+# Load all machine-specific aliases
+if [[ -f .bash_aliases ]]; then
+    source .bash_aliases
+fi
+
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
