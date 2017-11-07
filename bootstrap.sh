@@ -4,6 +4,10 @@ pushd `dirname $0` > /dev/null
 DIR=`pwd`
 popd > /dev/null
 
+s_y_ubuntu="Yes: Ubuntu"
+s_y_macosx="Yes: MasOSX"
+s_n="No"
+
 # make sure the user config directory exists
 user_config_dir="${HOME}/.config"
 if [[ ! -d $user_config_dir ]]; then
@@ -47,9 +51,9 @@ mkdir -p "$HOME/bin"
 
 # install required software packages
 echo "Install required programs?"
-select yn in "Yes: Ubuntu" "No"; do
+select yn in $s_y_ubuntu $s_n; do
     case $yn in
-        "Yes: Ubuntu" )
+        $s_y_ubuntu)
             sudo apt-get -qq update
             sudo apt-get -qq install -y \
                 xclip \
@@ -68,7 +72,29 @@ select yn in "Yes: Ubuntu" "No"; do
                 imagemagick \
                 tree
             break;;
-        "No" ) break;;
+        $s_n) break;;
+    esac
+done
+
+# install Latex
+echo "Install Latex?"
+select yn in $s_y_ubuntu $s_n; do
+    case $yn in
+        $s_y_ubuntu)
+            sudo apt-get -qq install -y \
+                texlive-base \
+                texlive-fonts-extra \
+                texlive-lang-german \
+                texlive-lang-english \
+                texlive-latex-base \
+                texlive-latex-extra \
+                texlive-math-extra \
+                texlive-science \
+                texlive-xetex \
+                biber \
+                latexmk
+            break;;
+        $s_n) break;;
     esac
 done
 
@@ -98,13 +124,13 @@ if program_installed "vim"; then
 
     # install requirements for markdown rendering
     echo "Install required programs for vim markdown rendering?"
-    select yn in "Yes: Ubuntu" "No"; do
+    select yn in $s_y_ubuntu $s_n; do
         case $yn in
-            "Yes: Ubuntu" )
+            $s_y_ubuntu)
                 install_xdotool
                 sudo pip install grip
                 break;;
-            "No" ) break;;
+            $s_n) break;;
         esac
     done
 fi
@@ -113,12 +139,14 @@ fi
 if program_installed "zsh"; then
     ln -sf $DIR/ZSH/.zshrc "$HOME/.zshrc"
     echo "Link OS specific ZSH instructions?"
-    select os in "Ubuntu" "MacOSX" "None"; do
+    select os in $s_y_ubuntu $s_y_macosx $s_n; do
         zshosdep="$HOME/.zshosdep"
         case $os in
-            "Ubuntu")   ln -sf $DIR/ZSH/zshubuntu $zshosdep; break;;
-            "MacOSX")   ln -sf $DIR/ZSH/zshmacosx $zshosdep; break;;
-            "None")
+            $s_y_ubuntu)
+                ln -sf $DIR/ZSH/zshubuntu $zshosdep; break;;
+            $s_y_macosx)
+                ln -sf $DIR/ZSH/zshmacosx $zshosdep; break;;
+            $s_n)
                 if [[ -e "$zshosdep" ]]; then
                     rm $zshosdep
                 fi
@@ -126,10 +154,10 @@ if program_installed "zsh"; then
         esac
     done
     echo "Do you wish to set 'zsh' as the default shell?"
-    select yn in "Yes" "No"; do
+    select yn in "Yes" $s_n; do
         case $yn in
             "Yes") chsh -s $(which zsh); break;;
-            "No")  break;;
+            $s_n)  break;;
         esac
     done
 fi
@@ -151,10 +179,10 @@ fi
 
 # TODO: check, if nethogs is already installed
 echo "Do you wish to install nethogs for network traffic monitoring?"
-select yn in "Yes" "No"; do
+select yn in "Yes" $s_n; do
     case $yn in
         "Yes") install_nethogs; break;;
-        "No")   break;;
+        $s_n)   break;;
     esac
 done
 
