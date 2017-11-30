@@ -4,8 +4,8 @@ pushd `dirname $0` > /dev/null
 DIR=`pwd`
 popd > /dev/null
 
-s_y_ubuntu="Yes: Ubuntu"
-s_y_macosx="Yes: MasOSX"
+s_y_ubuntu="Yes:Ubuntu"
+s_y_macosx="Yes:MasOSX"
 s_n="No"
 
 # make sure the user config directory exists
@@ -54,7 +54,9 @@ echo "Install required programs?"
 select yn in $s_y_ubuntu $s_n; do
     case $yn in
         $s_y_ubuntu)
+            echo "Updating dpgk repositories"
             sudo apt-get -qq update
+            echo "Installing required programs and libraries"
             sudo apt-get -qq install -y \
                 xclip \
                 htop \
@@ -63,14 +65,26 @@ select yn in $s_y_ubuntu $s_n; do
                 python-pip \
                 cmake \
                 zsh \
-                libxkbcommon-dev `# build-essential libncurses5-dev libpcap-dev` \
+                libxkbcommon-dev \
                 build-essential libncurses5-dev libpcap-dev `# nethogs` \
                 vim \
                 git \
+                checkinstall libssl-dev `# nvm for nodejs` \
                 wmctrl \
                 tmux \
                 imagemagick \
                 tree
+            echo "Installing NVM"
+            export NVM_DIR="$HOME/.nvm" && (
+              git clone https://github.com/creationix/nvm.git "$NVM_DIR"
+              cd "$NVM_DIR"
+              git checkout `git describe --abbrev=0 --tags --match "v[0-9]*" origin`
+            ) && . "$NVM_DIR/nvm.sh"
+            reset
+            nvm install node
+            nvm use node
+            echo "Installing TLDR"
+            npm install -g tldr
             break;;
         $s_n) break;;
     esac
@@ -138,6 +152,8 @@ fi
 # zsh
 if program_installed "zsh"; then
     ln -sf $DIR/ZSH/.zshrc "$HOME/.zshrc"
+    mkdir -p $DIR/plugins/tldr
+    ln -sf $DIR/ZSH/tldr/autocompletion.zsh $DIR/plugins/tldr/_tldr
     echo "Link OS specific ZSH instructions?"
     select os in $s_y_ubuntu $s_y_macosx $s_n; do
         zshosdep="$HOME/.zshosdep"
@@ -185,4 +201,3 @@ select yn in "Yes" $s_n; do
         $s_n)   break;;
     esac
 done
-

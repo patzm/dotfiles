@@ -7,6 +7,10 @@ export PATH=$PATH:/usr/local/sbin
 if [ -d "$HOME/bin" ] ; then
     export PATH=$HOME/bin:$PATH
 fi
+# If snap is installed
+if [ -d "/snap/bin" ]; then
+	export PATH=/snap/bin:$PATH
+fi
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_DATA_HOME=${HOME}/.local/share
 export ZSH=${HOME}/.oh-my-zsh
@@ -133,7 +137,7 @@ check_zsh_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syn
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git npm zshmarks zsh-completions zsh-autosuggestions)
+plugins=(git npm zshmarks zsh-completions zsh-autosuggestions tldr tmux)
 
 # Load all OS dependent settings
 if [[ -f .zshosdep ]]; then
@@ -164,14 +168,7 @@ git config --global push.default simple
 git config --global core.editor $(which vim) # Set a default editor to avoid "Could not execute editor" error
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#	export EDITOR='vim'
-# else
-#	export EDITOR='mvim'
-# fi
+export LANG=en_US.UTF-8
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -200,3 +197,5 @@ o () {
 
 unsetopt auto_name_dirs
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
