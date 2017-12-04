@@ -1,7 +1,44 @@
+# Function definitions
+program_installed() {
+    if hash "$1" 2>/dev/null; then
+        return 0 # true
+    else
+        echo "$1 does not seem to be installed"
+        return 1 # false
+    fi
+}
+
+check_zsh_theme() {
+    if [[ ! -d "$ZSH_CUSTOM_THEMES" ]]; then
+        mkdir -p $ZSH_CUSTOM_THEMES
+    fi
+    THEME_INSTALL_FOLDER="$ZSH_CUSTOM_THEMES/$1"
+    if [[ ! -d $THEME_INSTALL_FOLDER ]]; then
+        echo "\n${GREEN}ZSH-theme $1 not found. Downloading ...${NORMAL}"
+        git clone $2 $THEME_INSTALL_FOLDER
+        echo "Linking $THEME_INSTALL_FOLDER/*.zsh-theme to $ZSH_THEMES/"
+        ln -sf $THEME_INSTALL_FOLDER/*.zsh-theme $ZSH_THEMES/
+    fi
+    unset THEME_INSTALL_FOLDER
+}
+
+check_zsh_plugin () {
+	if [[ ! -d "$ZSH_PLUGINS/$1" ]]; then
+		echo "\n${GREEN}ZSH-plugin $1 not found. Downloading ...${NORMAL}"
+		git clone $2 "$ZSH_PLUGINS/$1"
+	fi
+}
+
+mkcdir () {
+    mkdir -p -- "$1" &&
+        cd -P -- "$1"
+}
+
+o () {
+    gnome-open "$1" 2> /dev/null &
+}
+
 # If you come from bash you might have to change your $PATH.
-if [[ -f .profile ]]; then
-	source .profile
-fi
 export PATH=$PATH:/usr/local/sbin
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -91,19 +128,6 @@ fi
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 export ZSH_CUSTOM_THEMES=$ZSH/custom/themes
 export ZSH_THEMES=$ZSH/themes
-check_zsh_theme() {
-    if [[ ! -d "$ZSH_CUSTOM_THEMES" ]]; then
-        mkdir -p $ZSH_CUSTOM_THEMES
-    fi
-    THEME_INSTALL_FOLDER="$ZSH_CUSTOM_THEMES/$1"
-    if [[ ! -d $THEME_INSTALL_FOLDER ]]; then
-        echo "\n${GREEN}ZSH-theme $1 not found. Downloading ...${NORMAL}"
-        git clone $2 $THEME_INSTALL_FOLDER
-        echo "Linking $THEME_INSTALL_FOLDER/*.zsh-theme to $ZSH_THEMES/"
-        ln -sf $THEME_INSTALL_FOLDER/*.zsh-theme $ZSH_THEMES/
-    fi
-    unset THEME_INSTALL_FOLDER
-}
 
 check_zsh_theme "powerline" "https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git"
 
@@ -123,12 +147,6 @@ autoload -U zmv
 
 # Check if ZSH plugins are missing
 export ZSH_PLUGINS=$ZSH/custom/plugins
-check_zsh_plugin () {
-	if [[ ! -d "$ZSH_PLUGINS/$1" ]]; then
-		echo "\n${GREEN}ZSH-plugin $1 not found. Downloading ...${NORMAL}"
-		git clone $2 "$ZSH_PLUGINS/$1"
-	fi
-}
 
 check_zsh_plugin "zshmarks" "https://github.com/jocelynmallon/zshmarks.git"
 export ZSH_PLUGIN_SYNTAX_HIGHLIGHTING="$ZSH_PLUGINS/"
@@ -177,7 +195,6 @@ export LANG=en_US.UTF-8
 alias zshconfig="vim ~/.zshrc"
 alias clc="clear"
 alias ll="ls -la"
-alias view="feh --scale-down --auto-zoom"
 
 # Alias related to zshmarks
 alias to="jump"
@@ -185,15 +202,14 @@ alias bm="bookmark"
 alias bd="deletemark"
 alias bl="showmarks"
 
-# Function definitions
-mkcdir () {
-    mkdir -p -- "$1" &&
-        cd -P -- "$1"
-}
+if program_installed "feh"; then
+	alias view="feh --scale-down --auto-zoom"
+fi
 
-o () {
-    gnome-open "$1" 2> /dev/null &
-}
+if program_installed "xclip"; then
+	alias pbcopy="xclip -selection c"
+	alias pbpaste="xclip -selection clipboard -o"
+fi
 
 unsetopt auto_name_dirs
 

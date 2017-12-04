@@ -178,6 +178,11 @@ if program_installed "zsh"; then
     done
 fi
 
+# gdb
+if program_installed "gdb"; then
+    ln -sf $DIR/gdb/.gdbinit "$HOME/.gdbinit"
+fi
+
 # powerline
 powerline_config_dir=$user_config_dir/powerline
 if [[ -d $powerline_config_dir ]]; then
