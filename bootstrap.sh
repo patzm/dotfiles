@@ -196,6 +196,19 @@ ln -sf $DIR/powerline $powerline_config_dir
 # tmux
 if program_installed "tmux"; then
     ln -sf $DIR/tmux/.tmux.conf "$HOME/.tmux.conf"
+    # create the plugin directory if needed
+    tmux_plugin_dir=${HOME}/.tmux/plugins
+    if [[ ! -d $tmux_plugin_dir ]]; then
+        mkdir -p $tmux_plugin_dir
+    fi
+    # clone or update tpm
+    tmux_tpm_dir=${tmux_plugin_dir}/tpm
+    if [[ ! -d $tmux_tpm_dir ]]; then
+        git clone https://github.com/tmux-plugins/tpm ${tmux_tpm_dir}
+    else
+        git --git-dir=${tmux_tpm_dir}/.git pull
+    fi
+
 fi
 
 # nethogs
