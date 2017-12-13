@@ -168,11 +168,7 @@ if program_installed "zsh"; then
                 ln -sf $DIR/ZSH/zshubuntu $zshosdep; break;;
             $s_y_macosx)
                 ln -sf $DIR/ZSH/zshmacosx $zshosdep; break;;
-            $s_n)
-                if [[ -e "$zshosdep" ]]; then
-                    rm $zshosdep
-                fi
-                break;;
+            $s_n) break;;
         esac
     done
     echo "Do you wish to set 'zsh' as the default shell?"
