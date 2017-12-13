@@ -71,9 +71,15 @@ select yn in $s_y_ubuntu $s_n; do
                 git \
                 checkinstall libssl-dev `# nvm for nodejs` \
                 wmctrl \
-                tmux \
+                python-software-properties software-properties-common \
                 imagemagick \
                 tree
+
+            # tmux 2.0
+            sudo add-apt-repository -y ppa:pi-rho/dev
+            sudo apt-get update
+            sudo apt-get install -y tmux=2.0-1~ppa1~t
+
             echo "Installing NVM"
             export NVM_DIR="$HOME/.nvm" && (
               git clone https://github.com/creationix/nvm.git "$NVM_DIR"
