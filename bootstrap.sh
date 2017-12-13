@@ -171,13 +171,17 @@ if program_installed "zsh"; then
             $s_n) break;;
         esac
     done
-    echo "Do you wish to set 'zsh' as the default shell?"
-    select yn in "Yes" $s_n; do
-        case $yn in
-            "Yes") chsh -s $(which zsh); break;;
-            $s_n)  break;;
-        esac
-    done
+
+    # Check if zsh is already the default shell
+    if [ `echo $SHELL` != `which zsh` ]; then
+        echo "Do you wish to set 'zsh' as the default shell?"
+        select yn in "Yes" $s_n; do
+            case $yn in
+                "Yes") chsh -s $(which zsh); break;;
+                $s_n)  break;;
+            esac
+        done
+    fi
 fi
 
 # gdb
