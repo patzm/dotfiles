@@ -61,6 +61,13 @@ install_nethogs() {
     rm -rf $nethogs_dir # clean up
 }
 
+install_osync() {
+    osync_dir=/tmp/osync
+    git clone -b "stable" https://github.com/deajan/osync $osync_dir
+    sudo bash $osync_dir/install.sh --silent --no-stats
+    rm -rf $osync_dir
+}
+
 # create a bin directory for the current user
 mkdir -p "$HOME/bin"
 
@@ -245,3 +252,13 @@ if ! program_installed "nethogs"; then
     done
 fi
 
+# osync
+if ! program_installed "osync"; then
+    echo "Do you wish to install osync for easy bi-directional syncing?"
+    select yn in $s_n $s_y; do
+        case $yn in
+            $s_n) break;;
+            $s_y) install_osync; break;;
+        esac
+    done
+fi
