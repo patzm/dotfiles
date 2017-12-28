@@ -218,11 +218,13 @@ fi
 
 # powerline
 powerline_config_dir=$user_config_dir/powerline
-if [[ -d $powerline_config_dir ]]; then
+if [[ -L $powerline_config_dir && -d $powerline_config_dir ]]; then
+    echo "powerline config folder is already linked"
+elif [[ -d $powerline_config_dir ]]; then
     echo "Backing up old configuration of powerline"
     mv $powerline_config_dir "${powerline_config_dir}.bak"
 fi
-ln -sf $DIR/powerline $powerline_config_dir
+ln -sf $DIR/powerline -T $powerline_config_dir
 
 # tmux
 if program_installed "tmux"; then
