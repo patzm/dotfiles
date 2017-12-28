@@ -255,7 +255,7 @@ if ! program_installed "nethogs"; then
 fi
 
 # osync
-if ! program_installed "osync"; then
+if ! program_installed "osync.sh"; then
     echo "Do you wish to install osync for easy bi-directional syncing?"
     select yn in $s_n $s_y; do
         case $yn in
