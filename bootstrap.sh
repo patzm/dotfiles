@@ -78,8 +78,9 @@ select yn in $s_y_ubuntu $s_n; do
                 feh \
                 python-pip \
                 cmake \
-                zsh \
+                zsh fonts-powerline \
                 libxkbcommon-dev \
+                openvpn network-manager-openvpn-gnome \
                 build-essential libncurses5-dev libpcap-dev `# nethogs` \
                 vim \
                 git \
