@@ -4,6 +4,20 @@ pushd `dirname $0` > /dev/null
 DIR=`pwd`
 popd > /dev/null
 
+# detect OS
+machineLinux="Linux"
+machineMac="Mac"
+machineCygwin="Cygwin"
+machineMinGw="MinGw"
+unameOut="$(uname -s)"
+case "${unameOut}" in
+    Linux*)     machine=${machineLinux};;
+    Darwin*)    machine=${machineMac};;
+    CYGWIN*)    machine=${machineCygwin};;
+    MINGW*)     machine=${machineMinGw};;
+    *)          machine="UNKNOWN:${unameOut}"
+esac
+
 s_y_ubuntu="Yes:Ubuntu"
 s_y_macosx="Yes:MasOSX"
 s_n="No"
