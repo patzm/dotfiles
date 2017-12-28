@@ -18,6 +18,7 @@ case "${unameOut}" in
     *)          machine="UNKNOWN:${unameOut}"
 esac
 
+s_y="Yes"
 s_y_ubuntu="Yes:Ubuntu"
 s_y_macosx="Yes:MasOSX"
 s_n="No"
@@ -65,8 +66,9 @@ mkdir -p "$HOME/bin"
 
 # install required software packages
 echo "Install required programs?"
-select yn in $s_y_ubuntu $s_n; do
+select yn in $s_n $s_y_ubuntu; do
     case $yn in
+        $s_n) break;;
         $s_y_ubuntu)
             echo "Updating dpgk repositories"
             sudo apt-get -qq update
@@ -107,14 +109,14 @@ select yn in $s_y_ubuntu $s_n; do
             echo "Installing TLDR"
             npm install -g tldr
             break;;
-        $s_n) break;;
     esac
 done
 
 # install Latex
 echo "Install Latex?"
-select yn in $s_y_ubuntu $s_n; do
+select yn in $s_n $s_y_ubuntu; do
     case $yn in
+        $s_n) break;;
         $s_y_ubuntu)
             sudo apt-get -qq install -y \
                 texlive-base \
@@ -129,7 +131,6 @@ select yn in $s_y_ubuntu $s_n; do
                 biber \
                 latexmk
             break;;
-        $s_n) break;;
     esac
 done
 
@@ -159,13 +160,13 @@ if program_installed "vim"; then
 
     # install requirements for markdown rendering
     echo "Install required programs for vim markdown rendering?"
-    select yn in $s_y_ubuntu $s_n; do
+    select yn in $s_n $s_y_ubuntu; do
         case $yn in
+            $s_n) break;;
             $s_y_ubuntu)
                 install_xdotool
                 sudo pip install grip
                 break;;
-            $s_n) break;;
         esac
     done
 fi
@@ -182,24 +183,22 @@ if program_installed "zsh"; then
 
     # Install OS specific instructions
     echo "Link OS specific ZSH instructions?"
-    select os in $s_y_ubuntu $s_y_macosx $s_n; do
+    select os in $s_n $s_y_ubuntu $s_y_macosx; do
         zshosdep="$HOME/.zshosdep"
         case $os in
-            $s_y_ubuntu)
-                ln -sf $DIR/ZSH/zshubuntu $zshosdep; break;;
-            $s_y_macosx)
-                ln -sf $DIR/ZSH/zshmacosx $zshosdep; break;;
             $s_n) break;;
+            $s_y_ubuntu) ln -sf $DIR/ZSH/zshubuntu $zshosdep; break;;
+            $s_y_macosx) ln -sf $DIR/ZSH/zshmacosx $zshosdep; break;;
         esac
     done
 
     # Check if zsh is already the default shell
-    if [ `echo $SHELL` != `which zsh` ]; then
+    if [[ `echo $SHELL` != `which zsh` ]]; then
         echo "Do you wish to set 'zsh' as the default shell?"
-        select yn in "Yes" $s_n; do
+        select yn in $s_n $s_y; do
             case $yn in
-                "Yes") chsh -s $(which zsh); break;;
-                $s_n)  break;;
+                $s_n) break;;
+                $s_y) chsh -s $(which zsh); break;;
             esac
         done
     fi
@@ -233,16 +232,16 @@ if program_installed "tmux"; then
     else
         git --git-dir=${tmux_tpm_dir}/.git pull
     fi
-
 fi
 
 # nethogs
+if ! program_installed "nethogs"; then
+    echo "Do you wish to install nethogs for network traffic monitoring?"
+    select yn in $s_n $s_y; do
+        case $yn in
+            $s_n) break;;
+            $s_y) install_nethogs; break;;
+        esac
+    done
+fi
 
-# TODO: check, if nethogs is already installed
-echo "Do you wish to install nethogs for network traffic monitoring?"
-select yn in "Yes" $s_n; do
-    case $yn in
-        "Yes") install_nethogs; break;;
-        $s_n)   break;;
-    esac
-done
