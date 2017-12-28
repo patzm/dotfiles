@@ -158,8 +158,14 @@ fi
 # zsh
 if program_installed "zsh"; then
     ln -sf $DIR/ZSH/.zshrc "$HOME/.zshrc"
-    mkdir -p $DIR/plugins/tldr
-    ln -sf $DIR/ZSH/tldr/autocompletion.zsh $DIR/plugins/tldr/_tldr
+
+    # Install TLDR plugin
+    ohmyzshdir=$HOME/".oh-my-zsh"
+    zshtldrdir=$ohmyzshdir/plugins/tldr
+    mkdir -p $zshtldrdir
+    ln -sf $DIR/ZSH/tldr/autocompletion.zsh $zshtldrdir/_tldr
+
+    # Install OS specific instructions
     echo "Link OS specific ZSH instructions?"
     select os in $s_y_ubuntu $s_y_macosx $s_n; do
         zshosdep="$HOME/.zshosdep"
