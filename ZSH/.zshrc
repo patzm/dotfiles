@@ -157,6 +157,14 @@ source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(git npm zshmarks zsh-completions zsh-autosuggestions tldr tmux)
 
+# Load all instance dependent settings
+if [[ -f .zshinstance ]]; then
+    source .zshinstance
+else
+    echo "# Place any commands you want to execute on start here" > ~/.zshinstance
+    chmod +x .zshinstance
+fi
+
 # Load all OS dependent settings
 if [[ -f .zshosdep ]]; then
 	source .zshosdep
