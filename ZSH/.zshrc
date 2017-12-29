@@ -158,11 +158,11 @@ source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(git npm zshmarks zsh-completions zsh-autosuggestions tldr tmux)
 
 # Load all instance dependent settings
-if [[ -f .zshinstance ]]; then
-    source .zshinstance
+if [[ -f $HOME/.zshinstance ]]; then
+    source $HOME/.zshinstance
 else
-    echo "# Place any commands you want to execute on start here" > ~/.zshinstance
-    chmod +x .zshinstance
+    echo "# Place any commands you want to execute on start here" > $HOME/.zshinstance
+    chmod +x $HOME/.zshinstance
 fi
 
 # Load all OS dependent settings
