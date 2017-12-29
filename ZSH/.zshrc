@@ -178,6 +178,7 @@ fi
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+tabs -4
 
 # GIT
 if [[ ! -d "$HOME/.git" ]]; then
