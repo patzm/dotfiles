@@ -14,6 +14,7 @@ Plugin 'godlygeek/tabular'
 " Markdown support
 Plugin 'plasticboy/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'vim-python/python-syntax'
 
 call vundle#end()
 filetype plugin indent on
@@ -50,6 +51,8 @@ Bundle 'indenthtml.vim'
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
 syntax on " Syntax highlighting
+" Python syntax highlighting
+let g:python_highlight_all = 1
 
 " Configuration of markdown support
 "
