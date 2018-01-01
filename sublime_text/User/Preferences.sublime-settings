@@ -1,0 +1,31 @@
+{
+	"added_words":
+	[
+		"Matlab",
+		"paperspace",
+		"prototxt",
+		"caffemodel",
+		"R2017b",
+		"R2017a",
+		"Patz",
+		"Convolutional",
+		"gdb",
+		"gdbserver",
+		"libnavvis",
+		"masterthesis",
+		"repo",
+		"libimageprocessing",
+		"visualindextools"
+	],
+	"color_scheme": "Packages/Materialize/schemes/Material Flatland.tmTheme",
+	"font_size": 10,
+	"ignored_packages":
+	[
+		"Markdown",
+		"Vintage"
+	],
+	"file_exclude_patterns": ["*.pyc", "*.pyo", "*.exe", "*.dll", "*.obj", "*.o", "*.a", "*.lib", "*.so", "*.dylib", "*.ncb", "*.sdf", "*.suo", "*.pdb", "*.idb", ".DS_Store", "*.class", "*.psd", "*.db",
+		"*.aux", "*.bbl", "*bcf", "*blg", "*fls", "*lof", "*out", "*fdb_latexmk", "*run.xml", "*toc", "*synctex.gz",
+		"*.sublime-workspace"],
+	"theme": "Material Flatland.sublime-theme"
+}

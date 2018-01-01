@@ -1,0 +1,21 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Caffe Prototxt Syntax",
+		"CMake",
+		"CUDA C++",
+		"Git",
+		"LaTeXTools",
+		"Markdown Preview",
+		"MarkdownEditing",
+		"Materialize",
+		"MatlabFilenameAutoComplete",
+		"Origami",
+		"Package Control",
+		"Protobuf Syntax Hightlighting"
+	]
+}
