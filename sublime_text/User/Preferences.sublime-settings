@@ -16,7 +16,10 @@
 		"repo",
 		"libimageprocessing",
 		"visualindextools",
-		"M3"
+		"M3",
+		"Bluetooth",
+		"Audimax",
+		"timestamp"
 	],
 	"color_scheme": "Packages/Materialize/schemes/Material Flatland.tmTheme",
 	"file_exclude_patterns":
