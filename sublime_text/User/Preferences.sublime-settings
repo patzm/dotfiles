@@ -59,6 +59,7 @@
 	"font_size": 10,
 	"ignored_packages":
 	[
+		"DoxyDoxygen",
 		"Markdown",
 		"Vintage"
 	],
