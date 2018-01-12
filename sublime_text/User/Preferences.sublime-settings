@@ -64,7 +64,7 @@
 		"*synctex.gz",
 		"*.sublime-workspace"
 	],
-	"font_size": 13,
+	"font_size": 11,
 	"ignored_packages":
 	[
 		"DoxyDoxygen",
