@@ -13,6 +13,7 @@ if program_exists "dropbox"; then
 fi
 
 if program_exists "setxkbmap"; then
+    gsettings set org.gnome.settings-daemon.plugins.keyboard active false
     setxkbmap -layout us,de
     setxkbmap -option 'grp:alt_shift_toggle'
 fi

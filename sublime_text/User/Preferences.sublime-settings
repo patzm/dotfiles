@@ -19,7 +19,15 @@
 		"M3",
 		"Bluetooth",
 		"Audimax",
-		"timestamp"
+		"timestamp",
+		"Stammgelände",
+		"Kroepcke",
+		"pre",
+		"Basti",
+		"café",
+		"maxima",
+		"convolutional",
+		"speeded"
 	],
 	"color_scheme": "Packages/Materialize/schemes/Material Flatland.tmTheme",
 	"file_exclude_patterns":
@@ -62,6 +70,14 @@
 		"DoxyDoxygen",
 		"Markdown",
 		"Vintage"
+	],
+	"ignored_words":
+	[
+		"acro",
+		"barsoum2016training",
+		"gpu01",
+		"manning2008introduction",
+		"nv"
 	],
 	"theme": "Material Flatland.sublime-theme"
 }
