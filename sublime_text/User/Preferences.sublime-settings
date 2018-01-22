@@ -27,7 +27,9 @@
 		"café",
 		"maxima",
 		"convolutional",
-		"speeded"
+		"speeded",
+		"learnable",
+		"incentivizes"
 	],
 	"color_scheme": "Packages/Materialize/schemes/Material Flatland.tmTheme",
 	"file_exclude_patterns":
@@ -61,10 +63,12 @@
 		"*fdb_latexmk",
 		"*run.xml",
 		"*toc",
+		"*.lot",
+		"*.xdv",
 		"*synctex.gz",
 		"*.sublime-workspace"
 	],
-	"font_size": 11,
+	"font_size": 10,
 	"ignored_packages":
 	[
 		"DoxyDoxygen",
