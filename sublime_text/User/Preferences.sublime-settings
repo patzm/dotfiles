@@ -29,7 +29,15 @@
 		"convolutional",
 		"speeded",
 		"learnable",
-		"incentivizes"
+		"incentivizes",
+		"anonymized",
+		"underperform",
+		"underperforms",
+		"ebay",
+		"online",
+		"Caffe",
+		"overproportional",
+		"smartphone"
 	],
 	"color_scheme": "Packages/Materialize/schemes/Material Flatland.tmTheme",
 	"file_exclude_patterns":
@@ -79,9 +87,23 @@
 	[
 		"acro",
 		"barsoum2016training",
+		"cbir",
+		"cnn",
+		"dml",
+		"dmll",
+		"dmllcl",
+		"e512",
+		"e64",
+		"gpu",
 		"gpu01",
+		"jia2014caffe",
+		"krause20133d",
 		"manning2008introduction",
-		"nv"
+		"nv",
+		"oh2016deep",
+		"pca",
+		"sgd",
+		"szegedy2015going"
 	],
 	"theme": "Material Flatland.sublime-theme"
 }
