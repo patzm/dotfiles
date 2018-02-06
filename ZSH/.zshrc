@@ -51,6 +51,7 @@ fi
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_DATA_HOME=${HOME}/.local/share
 export ZSH=${HOME}/.oh-my-zsh
+ZSH_GIT=$ZSH/.git
 
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
@@ -73,7 +74,8 @@ else
 	NORMAL=""
 fi
 
-if [ ! -d $ZSH ]; then
+# if [ ! -d $ZSH ]; then
+if [ ! -d $ZSH ] || [ ! -d $ZSH_GIT ]; then
 	# This script is an extract from https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 	echo "oh-my-zsh not found in $ZSH. Downloading ..."
 	# Only enable exit-on-error after the non-critical colorization stuff,
@@ -87,14 +89,9 @@ if [ ! -d $ZSH ]; then
 	fi
 	unset CHECK_ZSH_INSTALLED
 
-	if [ ! -n "$ZSH" ]; then
-		ZSH=~/.oh-my-zsh
-	fi
-
-	if [ -d "$ZSH" ]; then
-		printf "${YELLOW}You already have Oh My Zsh installed.${NORMAL}\n"
-		printf "You'll need to remove $ZSH if you want to re-install.\n"
-		exit
+	if [ ! -d $ZSH_GIT ]; then
+		printf "${RED}Warning: $ZSH already exists but is not a repository\nClearing ...\n${NORMAL}"
+		rm -rf $ZSH
 	fi
 
 	# Prevent the cloned repository from having insecure permissions. Failing to do
@@ -105,10 +102,11 @@ if [ ! -d $ZSH ]; then
 	umask g-w,o-w
 
 	printf "${GREEN}Cloning Oh My Zsh...${NORMAL}\n"
-	hash git >/dev/null 2>&1 || {
+	if ! program_installed "git"; then
 		echo "Error: git is not installed"
 		exit 1
-	}
+	fi
+	
 	# The Windows (MSYS) Git is not compatible with normal use on cygwin
 	if [ "$OSTYPE" = cygwin ]; then
 		if git --version | grep msysgit > /dev/null; then
@@ -119,9 +117,10 @@ if [ ! -d $ZSH ]; then
 	fi
 	env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH || {
 		printf "Error: git clone of oh-my-zsh repo failed\n"
-		exit 1
+		# exit 1
 	}
 fi
+unset ZSH_GIT
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
