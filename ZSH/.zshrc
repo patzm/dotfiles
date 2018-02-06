@@ -197,6 +197,10 @@ git config --global core.editor $(which vim) # Set a default editor to avoid "Co
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
 
+# Activate pattern reverse / forward search
+bindkey '^X^R' history-incremental-pattern-search-backward
+bindkey '^X^S' history-incremental-pattern-search-forward
+
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.

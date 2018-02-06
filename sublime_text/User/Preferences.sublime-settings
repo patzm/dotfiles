@@ -37,7 +37,9 @@
 		"online",
 		"Caffe",
 		"overproportional",
-		"smartphone"
+		"smartphone",
+		"pointclouds",
+		"incentivize"
 	],
 	"color_scheme": "Packages/Materialize/schemes/Material Flatland.tmTheme",
 	"file_exclude_patterns":
