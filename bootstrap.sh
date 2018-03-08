@@ -51,6 +51,10 @@ install_xdotool() {
     rm -rf $xdotool_dir # clean up
 }
 
+install_gnome_terminal_themes() {
+    wget -O gogh https://git.io/vQgMr && chmod +x gogh && ./gogh && rm gogh
+}
+
 install_nethogs() {
     nethogs_dir=/tmp/nethogs
     git clone https://github.com/raboof/nethogs $nethogs_dir
@@ -209,6 +213,11 @@ if program_installed "zsh"; then
             esac
         done
     fi
+fi
+
+# Gnome terminal themes
+if [[ $machine == $machineLinux ]]; then
+	install_gnome_terminal_themes
 fi
 
 # gdb
