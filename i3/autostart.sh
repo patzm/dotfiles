@@ -14,7 +14,9 @@ fi
 
 if program_exists "setxkbmap"; then
     gsettings set org.gnome.settings-daemon.plugins.keyboard active false
+    # See: https://unix.stackexchange.com/questions/333368/gnome-3-22-disable-altshift-keyboard-layout-switching
+    dconf write /org/gnome/desktop/input-sources/xkb-options "['grp_led:scroll']"
     setxkbmap -layout us,de
-    setxkbmap -option 'grp:alt_shift_toggle'
+    setxkbmap -option 'grp:win_space_toggle'
 fi
 
