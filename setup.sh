@@ -23,5 +23,5 @@ if ! program_installed "ansible"; then
 fi
 
 echo "Setting up local machine"
-ansible-playbook $DIR/playbooks/setup.yml
+ansible-playbook $DIR/ansible/playbooks/setup.yml
 

@@ -2,20 +2,21 @@
 
 - name: Setup this local machine
   hosts: localhost
-  connection: local
-  strategy: debug
+  # connection: local
+  # strategy: debug
 
-  tasks:
-          - debug:
-                  msg: "Running on {{ ansible_distribution }}-{{ ansible_distribution_version }}"
-  
   vars_files:
           - "vars/common.yml"
           - [ "vars/{{ ansible_distribution }}.yml", "vars/os_defaults.yml" ]
           - [ "vars/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml" ]
 
   tasks:
+          - debug:
+                  var: ansible_distribution
+          - debug:
+                  var: ansible_distribution_version
           - name: installing core packages
+            become: true
             package: name={{ item }} state=latest
             with_items:
                     - htop
