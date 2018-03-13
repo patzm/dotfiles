@@ -1,0 +1,49 @@
+---
+
+- name: Setup this local machine
+  hosts: localhost
+  connection: local
+  strategy: debug
+
+  tasks:
+          - debug:
+                  msg: "Running on {{ ansible_distribution }}-{{ ansible_distribution_version }}"
+  
+  vars_files:
+          - "vars/common.yml"
+          - [ "vars/{{ ansible_distribution }}.yml", "vars/os_defaults.yml" ]
+          - [ "vars/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml" ]
+
+  tasks:
+          - name: installing core packages
+            package: name={{ item }} state=latest
+            with_items:
+                    - htop
+                    - xclip
+                    - lm-sensors
+                    - git
+                    - vim
+                    - feh
+                    - python-pip
+                    - fonts-powerline
+                    - cmake
+                    - libxkbcommon-dev
+                    - openvpn
+                    - network-manager-openvpn-gnome
+                    - build-essential
+                    # nethogs 
+                    - libncurses5-dev
+                    - libpcap-dev
+                    # end nethogs
+                    # nvm for nodejs
+                    - checkinstall
+                    - libssl-dev
+                    # end nvm
+                    - wmctrl
+                    - python-software-properties
+                    - software-properties-common
+                    - imagemagick
+                    - tree
+  roles:
+          - role: ZSH
+
