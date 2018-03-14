@@ -45,5 +45,5 @@
 - name: install all vim plugins
   # We use '+PluginInstall' to install all Vundle packages
   # and '+PlugInstall' to install all Plug packages
-  shell: vim +PluginInstall +PlugInstall +qall
+  shell: vim +PluginInstall +qall
 

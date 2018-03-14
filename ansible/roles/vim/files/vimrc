@@ -6,15 +6,10 @@
 set nocompatible " Fuck VI... That's for grandpas.
 filetype off
 
-call plug#begin()
-
-Plug 'hzchirs/vim-material'
-
-call plug#end()
-
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
+Plugin 'hzchirs/vim-material'
 Plugin 'godlygeek/tabular'
 " Markdown support
 Plugin 'plasticboy/vim-markdown'
@@ -160,5 +155,7 @@ let g:ctrlp_max_height = 30
 
 " Finally the color scheme. Choose whichever you want from the list in the
 " link above (back up where we included the bundle of a ton of themes.)
-colorscheme vim-material
+if isdirectory("~/.vim/bundle/vim-material")
+    colorscheme vim-material
+endif
 
