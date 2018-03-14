@@ -1,11 +1,12 @@
 ---
 - name: copy the tmux configuration
-  copy:
-      src: "tmux.conf"
+  file:
+      src: "{{ role_path }}/files/tmux.conf"
       dest: "{{ ansible_env.HOME }}/.tmux.conf"
       owner: "{{ ansible_env.USER }}"
       group: "{{ ansible_env.USER }}"
-      force: no
+      state: link
+      force: yes
 
 - name: create the tmux plugin directory
   file:

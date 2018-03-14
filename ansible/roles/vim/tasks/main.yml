@@ -1,11 +1,12 @@
 ---
 - name: copy .vimrc
-  copy:
-        src: "vimrc"
+  file:
+        src: "{{ role_path }}/files/vimrc"
         dest: "{{ ansible_env.HOME }}/.vimrc"
         owner: "{{ ansible_env.USER }}"
         group: "{{ ansible_env.USER }}"
-        force: no
+        state: link
+        force: yes
 
 - name: create vim autoload dir
   file:

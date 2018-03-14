@@ -6,10 +6,15 @@
 set nocompatible " Fuck VI... That's for grandpas.
 filetype off
 
+call plug#begin()
+
+Plug 'hzchirs/vim-material'
+
+call plug#end()
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
-Plugin 'hzchirs/vim-material'
 Plugin 'godlygeek/tabular'
 " Markdown support
 Plugin 'plasticboy/vim-markdown'
@@ -77,6 +82,9 @@ set shiftround " tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
 set pastetoggle=<F3> " simplifies toggling normal insert and paste insert modes
+
+" Set custom syntax settings
+autocmd FileType yml setlocal shiftwidth=2 tabstop=2
 
 " We have VCS -- we don't need this stuff.
 set nobackup " We have vcs, we don't need backups.

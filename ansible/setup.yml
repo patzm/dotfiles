@@ -1,55 +1,60 @@
 ---
-
 - name: Setup this local machine
   hosts: localhost
   # connection: local
   # strategy: debug
 
   vars_files:
-          - "vars/common.yml"
-          - [ "vars/{{ ansible_distribution }}.yml", "vars/os_defaults.yml" ]
-          - [ "vars/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml" ]
+    - "vars/common.yml"
+    - [ "vars/{{ ansible_distribution }}.yml", "vars/os_defaults.yml" ]
+    - [ "vars/{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml" ]
 
   tasks:
-          - debug:
-                  var: ansible_distribution
-          - debug:
-                  var: ansible_distribution_version
-          - name: installing core packages
-            become: true
-            package: name={{ item }} state=latest
-            with_items:
-                    - htop
-                    - xclip
-                    - lm-sensors
-                    - git
-                    - tmux
-                    - vim
-                    - unrar
-                    - feh
-                    - python-pip
-                    - fonts-powerline
-                    - cmake
-                    - libxkbcommon-dev
-                    - openvpn
-                    - network-manager-openvpn-gnome
-                    - build-essential
-                    # nethogs 
-                    - libncurses5-dev
-                    - libpcap-dev
-                    # end nethogs
-                    # nvm for nodejs
-                    - checkinstall
-                    - libssl-dev
-                    # end nvm
-                    - wmctrl
-                    - python-software-properties
-                    - software-properties-common
-                    - imagemagick
-                    - tree
+        - debug:
+            var: ansible_distribution
+        - debug:
+            var: ansible_distribution_version
+        - name: installing core packages
+          become: true
+          package: name={{ item }} state=latest
+          with_items:
+            - htop
+            - xclip
+            - lm-sensors
+            - git
+            - tmux
+            - vim
+            - unrar
+            - feh
+            - python-pip
+            - fonts-powerline
+            - cmake
+            - libxkbcommon-dev
+            - openvpn
+            - network-manager-openvpn-gnome
+            - build-essential
+            # nethogs 
+            - libncurses5-dev
+            - libpcap-dev
+            # end nethogs
+            # nvm for nodejs
+            - checkinstall
+            - libssl-dev
+            # end nvm
+            - wmctrl
+            - python-software-properties
+            - software-properties-common
+            - imagemagick
+            - tree
+        - name: check if i3 window manager is installed
+          shell: command -v i3 >/dev/null 2>&1
+          register: is_i3_exist
+          ignore_errors: yes
 
   roles:
-          - role: ZSH
-          - role: vim
-          - role: tmux
+        - role: ZSH
+        - role: vim
+        - role: tmux
+        - role: i3
+          when: "{{ is_i3_exist }}"
 
