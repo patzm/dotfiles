@@ -23,7 +23,9 @@
                     - xclip
                     - lm-sensors
                     - git
+                    - tmux
                     - vim
+                    - unrar
                     - feh
                     - python-pip
                     - fonts-powerline
@@ -45,7 +47,9 @@
                     - software-properties-common
                     - imagemagick
                     - tree
+
   roles:
           - role: ZSH
           - role: vim
+          - role: tmux
 
