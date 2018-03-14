@@ -7,43 +7,22 @@
         group: "{{ ansible_env.USER }}"
         state: link
         force: yes
-
-- name: create vim autoload dir
-  file:
-          path: "{{ autoload_dir }}"
-          state: directory
-          owner: "{{ ansible_env.USER}}"
-          group: "{{ ansible_env.USER}}"
-          mode: 0700
-
-- name: create vim bundle dir
-  file:
-          path: "{{ bundle_dir }}"
-          state: directory
-          owner: "{{ ansible_env.USER}}"
-          group: "{{ ansible_env.USER}}"
-          mode: 0700
+        mode: 0700
 
 - name: create vim vundle dir
   file:
-          path: "{{ vundle_dir }}"
-          state: directory
-          owner: "{{ ansible_env.USER}}"
-          group: "{{ ansible_env.USER}}"
-          mode: 0700
-
-- name: download the vim plugin manager vim-plug
-  get_url:
-          url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-          dest: "{{ autoload_dir }}/plug.vim"
+        path: "{{ vundle_dir }}"
+        state: directory
+        owner: "{{ ansible_env.USER}}"
+        group: "{{ ansible_env.USER}}"
+        mode: 0700
 
 - name: clone vundle from github
   git:
-          repo: https://github.com/VundleVim/Vundle.vim.git
-          dest: "{{ vundle_dir }}"
+        repo: https://github.com/VundleVim/Vundle.vim.git
+        dest: "{{ vundle_dir }}"
 
 - name: install all vim plugins
   # We use '+PluginInstall' to install all Vundle packages
-  # and '+PlugInstall' to install all Plug packages
   shell: vim +PluginInstall +qall
 
