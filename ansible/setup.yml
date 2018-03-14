@@ -56,5 +56,5 @@
         - role: vim
         - role: tmux
         - role: i3
-          when: "{{ is_i3_exist }}"
+          # when: "{{ is_i3_exist }}"
 
