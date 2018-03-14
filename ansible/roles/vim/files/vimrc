@@ -30,9 +30,18 @@ Plugin 'leshill/vim-json'
 Plugin 'indenthtml.vim'
 " Ansible yaml
 Plugin 'chase/vim-ansible-yaml'
+" git wrapper
+Plugin 'tpope/vim-fugitive'
+" directory tree with git support
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+" airline statusline
+Plugin 'bling/vim-airline'
 
 call vundle#end()
 filetype plugin indent on
+
+autocmd vimenter * NERDTree
 
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
