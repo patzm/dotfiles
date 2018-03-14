@@ -15,36 +15,24 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
 Plugin 'vim-python/python-syntax'
+" Just a shitload of color schemes.
+" https://github.com/flazz/vim-colorschemes#current-colorschemes
+Plugin 'flazz/vim-colorschemes'
+" Fuzzy finder -- absolutely must have.
+Plugin 'kien/ctrlp.vim'
+" Let vundle manage itself:
+Plugin 'gmarik/vundle'
+" Support for easily toggling comments.
+Plugin 'tpope/vim-commentary'
+" Proper JSON filetype detection, and support.
+Plugin 'leshill/vim-json'
+" vim indents HTML very poorly on it's own. This fixes a lot of that.
+Plugin 'indenthtml.vim'
+" Ansible yaml
+Plugin 'chase/vim-ansible-yaml'
 
 call vundle#end()
 filetype plugin indent on
-
-" Vundle let's you specify a plugin in a number of formats, but my favorite
-" allows you to grab plugins straight off of github, just specify the bundle
-" in the following format:
-" Bundle 'githubUsername/repoName'
-
-" Let vundle manage itself:
-Bundle 'gmarik/vundle'
-
-" Just a shitload of color schemes.
-" https://github.com/flazz/vim-colorschemes#current-colorschemes
-Bundle 'flazz/vim-colorschemes'
-
-" Fuzzy finder -- absolutely must have.
-Bundle 'kien/ctrlp.vim'
-
-" Support for easily toggling comments.
-Bundle 'tpope/vim-commentary'
-
-" Proper JSON filetype detection, and support.
-Bundle 'leshill/vim-json'
-
-" vim indents HTML very poorly on it's own. This fixes a lot of that.
-Bundle 'indenthtml.vim'
-
-" Ansible yaml
-Bundle 'chase/vim-ansible-yaml'
 
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
@@ -141,9 +129,6 @@ noremap k gk
 " Plugin settings:
 " Below are some 'sane' (IMHO) defaults for a couple of the above plugins I
 " referenced.
-
-" Map the key for toggling comments with vim-commentary
-nnoremap <leader>c <Plug>CommentaryLine
 
 " Remap ctrlp to ctrl-t -- map it however you like, or stick with the
 " defaults. Additionally, in my OS, I remap caps lock to control. I never use
