@@ -42,16 +42,14 @@ Bundle 'kien/ctrlp.vim'
 " Support for easily toggling comments.
 Bundle 'tpope/vim-commentary'
 
-" In addtion to the above plugins, you'll likely need some for individual
-" non-standard syntaxes that aren't pre-bundled with vim. Here are some I use,
-" these are required for me, but depending on what code you write, obviously
-" this may differ for you.
-
 " Proper JSON filetype detection, and support.
 Bundle 'leshill/vim-json'
 
 " vim indents HTML very poorly on it's own. This fixes a lot of that.
 Bundle 'indenthtml.vim'
+
+" Ansible yaml
+Bundle 'chase/vim-ansible-yaml'
 
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
@@ -83,9 +81,6 @@ set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
 set pastetoggle=<F3> " simplifies toggling normal insert and paste insert modes
 
-" Set custom syntax settings
-autocmd FileType yml setlocal shiftwidth=2 tabstop=2
-
 " We have VCS -- we don't need this stuff.
 set nobackup " We have vcs, we don't need backups.
 set nowritebackup " We have vcs, we don't need backups.
@@ -109,7 +104,6 @@ set virtualedit+=block
 " leader is a key that allows you to have your own "namespace" of keybindings.
 " You'll see it a lot below as <leader>
 let mapleader = ","
-
 
 " So we don't have to press shift when we want to get into command mode.
 nnoremap ; :
@@ -143,7 +137,6 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 " Quick buffer switching - like cmd-tab'ing
 nnoremap <leader><leader> <c-^>
 
-
 " Visual line nav, not real line nav
 " If you wrap lines, vim by default won't let you move down one line to the
 " wrapped portion. This fixes that.
@@ -165,7 +158,7 @@ let g:ctrlp_map = '<c-t>'
 " Let ctrlp have up to 30 results.
 let g:ctrlp_max_height = 30
 
-
 " Finally the color scheme. Choose whichever you want from the list in the
 " link above (back up where we included the bundle of a ton of themes.)
 colorscheme vim-material
+
