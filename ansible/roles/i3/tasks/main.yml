@@ -1,4 +1,15 @@
 ---
+- name: checking if ~/.i3 is a symlink
+  stat:
+      path: "{{ i3_dir }}"
+  register: i3_dir_links
+
+- name: remove existing i3 directory
+  when: i3_dir_links.stat.islnk is defined and i3_dir_links.stat.islnk
+  file:
+      path: "{{ i3_dir }}"
+      state: absent
+
 - name: create the i3 directory
   file:
       path: "{{ i3_dir }}"
