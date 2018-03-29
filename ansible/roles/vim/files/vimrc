@@ -136,8 +136,6 @@ noremap j gj
 noremap k gk
 
 " Plugin settings:
-" Below are some 'sane' (IMHO) defaults for a couple of the above plugins I
-" referenced.
 
 " Remap ctrlp to ctrl-t -- map it however you like, or stick with the
 " defaults. Additionally, in my OS, I remap caps lock to control. I never use
