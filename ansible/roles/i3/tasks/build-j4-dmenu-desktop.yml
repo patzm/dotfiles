@@ -4,6 +4,7 @@
   package: name={{ item }} state=latest
   with_items:
     - cmake
+    - build-essential
 
 - name: create temporary build directory
   tempfile: state=directory suffix=j4-desktop
@@ -12,23 +13,23 @@
 - name: clone the j4 git repository
   git:
     repo: https://github.com/enkore/j4-dmenu-desktop.git
-    dest: "{{ j4_build_dir }}"
+    dest: "{{ j4_build_dir.path }}"
 
 - name: run cmake
   command: cmake .
   args:
-    chdir: "{{ j4_build_dir }}"
+    chdir: "{{ j4_build_dir.path }}"
 
 - name: build j4 desktop
-  command: make chdir="{{ j4_build_dir }}"
+  command: make chdir="{{ j4_build_dir.path }}"
 
 - name: install j4 desktop
   become: true
-  command: make install chdir="{{ j4_build_dir }}"
+  command: make install chdir="{{ j4_build_dir.path }}"
 
 - name: clean up build folder
   file:
-    path: "{{ j4_build_dir }}"
+    path: "{{ j4_build_dir.path }}"
     force: yes
     state: absent
 

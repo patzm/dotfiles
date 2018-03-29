@@ -22,12 +22,11 @@
         - unrar
         - feh
         - python-pip
-        - fonts-powerline
         - cmake
+        - build-essential
         - libxkbcommon-dev
         - openvpn
         - network-manager-openvpn-gnome
-        - build-essential
         # nethogs 
         - libncurses5-dev
         - libpcap-dev
