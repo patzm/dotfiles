@@ -1,0 +1,29 @@
+---
+- name: ensure that all pre-requisites for building j4 desktop launcher are present
+  package: name={{ item }} state=latest
+  with_items:
+    - cmake
+
+- name: create temporary build directory
+  tempfile: state=directory suffix=j4-desktop
+  register: j4_build_dir
+
+- name: clone the j4 git repository
+  git:
+    repo: https://github.com/enkore/j4-dmenu-desktop.git
+    dest: "{{ j4_build_dir }}"
+
+- name: run cmake
+  command: cmake .
+  args:
+    chdir: "{{ j4_build_dir }}"
+
+- name: build j4 desktop
+  command: make chdir="{{ j4_build_dir }}"
+
+- name: clean up build folder
+  file:
+    path: "{{ j4_build_dir }}"
+    force: yes
+    state: absent
+

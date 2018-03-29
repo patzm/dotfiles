@@ -1,4 +1,25 @@
 ---
+# Installation
+- name: install i3 window manager
+  become: true
+  package: name={{ item }} state=latest
+  with_items:
+    - i3
+    - i3lock
+    - i3status
+
+- name: install the j4 desktop launcher
+  when: ansible_distribution_version|version_compare('16.04','>=')
+  become: true
+  package:
+    name: j4-dmenu-desktop
+    state: latest
+
+- name: build the j4 desktop launcher from source
+  when: ansible_distribution_version|version_compare('14.10','<=')
+  include_tasks: build-j4-dmenu-desktop.yml
+
+# set up configuration
 - name: checking if ~/.i3 is a symlink
   stat:
       path: "{{ i3_dir }}"
