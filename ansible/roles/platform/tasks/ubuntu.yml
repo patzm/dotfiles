@@ -1,4 +1,12 @@
 ---
+- name: resolve dependencies for Ubuntu 14.xx and earlier
+  include_tasks: "ubuntu/prior-ubuntu-14.yml"
+  when: ansible_distribution_version is version_compare('14.10', '<=')
+
+- name: resolve dependencies for Ubuntu 16.xx or higher
+  include_tasks: "ubuntu/after-ubuntu-16.yml"
+  when: ansible_distribution_version is version_compare('16.04', '>=')
+
 - include_role:
     name: i3
 
