@@ -1,0 +1,49 @@
+---
+- name: checking if ~/.i3 is a symlink
+  stat:
+      path: "{{ i3_dir }}"
+  register: i3_dir_links
+
+- name: remove existing i3 directory
+  when: i3_dir_links.stat.islnk is defined and i3_dir_links.stat.islnk
+  file:
+      path: "{{ i3_dir }}"
+      state: absent
+
+- name: create the i3 directory
+  file:
+      path: "{{ i3_dir }}"
+      state: directory
+      owner: "{{ ansible_env.USER }}"
+      group: "{{ ansible_env.USER }}"
+      mode: 0700
+
+- name: link all config files
+  file:
+      src: "{{ role_path }}/files/{{ item }}"
+      dest: "{{ i3_dir }}/{{ item }}"
+      owner: "{{ ansible_env.USER }}"
+      group: "{{ ansible_env.USER }}"
+      state: link
+      force: yes
+  with_items:
+      - autostart.sh
+      - config
+      - i3status.conf
+      - screenshot.sh
+      - wallpaper.png
+
+- name: determine i3exit file name
+  set_fact:
+      i3_14_10_or_less: true
+  when: ansible_distribution_version|version_compare('14.10', '<=')
+
+- name: link the correct i3exit script
+  file:
+      src: "{{ role_path }}/files/i3exit/{{ 'Ubuntu-14-' if i3_14_10_or_less else 'Ubuntu-15+'}}.sh"
+      dest: "{{ i3_dir }}/i3exit"
+      owner: "{{ ansible_env.USER }}"
+      group: "{{ ansible_env.USER }}"
+      state: link
+      force: yes
+

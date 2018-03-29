@@ -1,0 +1,9 @@
+---
+- name: run the platform dependent tasks
+  include_tasks: "{{ platform_task }}"
+  loop_control:
+    loop_var: platform_task
+  with_items:
+    - "{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml" 
+    - "{{ ansible_distribution|lower }}.yml"
+

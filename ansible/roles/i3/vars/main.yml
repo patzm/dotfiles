@@ -1,0 +1,4 @@
+---
+i3_dir: "{{ ansible_env.HOME }}/.i3"
+i3_14_10_or_less: false
+

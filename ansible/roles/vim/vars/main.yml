@@ -1,0 +1,6 @@
+---
+vim_dir: "{{ ansible_env.HOME }}/.vim"
+autoload_dir: "{{ vim_dir }}/autoload"
+bundle_dir: "{{ vim_dir }}/bundle"
+vundle_dir: "{{ bundle_dir }}/vundle"
+
