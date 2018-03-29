@@ -36,7 +36,7 @@
 - name: determine i3exit file name
   set_fact:
       i3_14_10_or_less: true
-  when: "{{ ansible_distribution_version | version_compare('14.10', '<=') }}"
+  when: ansible_distribution_version|version_compare('14.10', '<=')
 
 - name: link the correct i3exit script
   file:
@@ -46,6 +46,4 @@
       group: "{{ ansible_env.USER }}"
       state: link
       force: yes
-
-
 
