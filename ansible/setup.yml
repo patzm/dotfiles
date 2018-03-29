@@ -43,6 +43,7 @@
         - tree
 
   roles:
+    - role: platform
     - role: ZSH
     - role: vim
     - role: tmux

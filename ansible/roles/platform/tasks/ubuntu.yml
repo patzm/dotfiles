@@ -1,0 +1,13 @@
+---
+- name: install i3 window manager
+  become: true
+  package: name={{ item }} state=latest
+  with_items:
+    - i3
+    - i3lock
+    - i3status
+    - j4-dmenu-desktop
+
+- include_role:
+    name: i3
+

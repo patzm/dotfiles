@@ -1,0 +1,7 @@
+---
+- name: install tmux
+  become: true
+  package:
+    name: tmux
+    state: latest
+
