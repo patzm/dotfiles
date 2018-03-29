@@ -1,5 +1,6 @@
 ---
 - name: ensure that all pre-requisites for building j4 desktop launcher are present
+  become: true
   package: name={{ item }} state=latest
   with_items:
     - cmake
@@ -20,6 +21,10 @@
 
 - name: build j4 desktop
   command: make chdir="{{ j4_build_dir }}"
+
+- name: install j4 desktop
+  become: true
+  command: make install chdir="{{ j4_build_dir }}"
 
 - name: clean up build folder
   file:
