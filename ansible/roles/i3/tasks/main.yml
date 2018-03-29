@@ -17,6 +17,7 @@
 
 - name: build the j4 desktop launcher from source
   when: ansible_distribution_version is version_compare('14.10','<=')
+  # TODO: maybe make this call conditional if j4 dmenu is already installed
   include_tasks: build-j4-dmenu-desktop.yml
 
 # set up configuration
