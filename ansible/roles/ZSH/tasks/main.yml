@@ -2,21 +2,30 @@
 - name: install ZSH
   become: true
   package:
-      name: zsh
-      state: latest
+    name: zsh
+    state: latest
 
 - name: "Make ZSH default shell for user {{ ansible_env.USER }}"
   become: true
   user:
-      name: "{{ ansible_env.USER }}"
-      shell: /bin/zsh
+    name: "{{ ansible_env.USER }}"
+    shell: /bin/zsh
 
-- name: "Copy default ZSH config for user {{ ansible_env.USER }}"
+- name: "Link default ZSH config for user {{ ansible_env.USER }}"
   file:
-      src: "{{ role_path }}/files/zshrc"
-      dest: "{{ ansible_env.HOME }}/.zshrc"
-      owner: "{{ ansible_env.USER }}"
-      group: "{{ ansible_env.USER }}"
-      state: link
-      force: yes
+    src: "{{ role_path }}/files/zshrc"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    state: link
+    force: yes
+
+- name: "Link the OS dependent configuration for user {{ ansible_env.USER }}: {{ ansible_os_family }}"
+  file:
+    src: "{{ role_path }}/files/zsh{{ ansible_os_family }}.sh"
+    dest: "{{ ansible_env.HOME }}/.zshosdep"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ ansible_env.USER }}"
+    state: link
+    force: yes
 
