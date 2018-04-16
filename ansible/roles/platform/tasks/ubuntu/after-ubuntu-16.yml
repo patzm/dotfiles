@@ -1,0 +1,7 @@
+---
+# Powerline fonts
+- name: install powerline fonts
+  package:
+    name: fonts-powerline
+    state: latest
+

@@ -1,0 +1,21 @@
+---
+# Powerline fonts
+- name: create temporary directory for powerline fonts
+  tempfile: state=directory suffix=powerline-fonts
+  register: powerline_dir
+
+- name: clone the powerline fonts repository
+  git:
+    repo: https://github.com/powerline/fonts.git
+    depth: 1
+    dest: "{{ powerline_dir.path }}"
+
+- name: install the fonts
+  command: ./install.sh chdir="{{ powerline_dir.path }}"
+
+- name: remove powerline fonts temporary directory
+  file:
+    path: "{{ powerline_dir.path }}"
+    force: yes
+    state: absent
+

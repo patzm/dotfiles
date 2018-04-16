@@ -1,4 +1,5 @@
 ---
+# Installation
 - name: install i3 window manager
   become: true
   package: name={{ item }} state=latest
@@ -6,8 +7,20 @@
     - i3
     - i3lock
     - i3status
-    - j4-dmenu-desktop
 
+- name: install the j4 desktop launcher
+  when: ansible_distribution_version is version_compare('16.04','>=')
+  become: true
+  package:
+    name: j4-dmenu-desktop
+    state: latest
+
+- name: build the j4 desktop launcher from source
+  when: ansible_distribution_version is version_compare('14.10','<=')
+  # TODO: maybe make this call conditional if j4 dmenu is already installed
+  include_tasks: build-j4-dmenu-desktop.yml
+
+# set up configuration
 - name: checking if ~/.i3 is a symlink
   stat:
       path: "{{ i3_dir }}"
@@ -45,7 +58,7 @@
 - name: determine i3exit file name
   set_fact:
       i3_14_10_or_less: true
-  when: ansible_distribution_version|version_compare('14.10', '<=')
+  when: ansible_distribution_version is version_compare('14.10', '<=')
 
 - name: link the correct i3exit script
   file:
