@@ -1,0 +1,15 @@
+---
+- name: update Homebrew
+  homebrew:
+    update_homebrew: yes
+    upgrade_all: yes
+
+- name: install required packages
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - tree
+    - htop
+    - wget
+    - tmux

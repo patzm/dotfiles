@@ -4,7 +4,7 @@
       src: "{{ role_path }}/files/tmux.conf"
       dest: "{{ ansible_env.HOME }}/.tmux.conf"
       owner: "{{ ansible_env.USER }}"
-      group: "{{ ansible_env.USER }}"
+      group: "{{ user_group }}"
       state: link
       force: yes
 
@@ -13,7 +13,7 @@
       path: "{{ tpm_dir }}"
       state: directory
       owner: "{{ ansible_env.USER }}"
-      group: "{{ ansible_env.USER }}"
+      group: "{{ user_group }}"
       mode: 0700
 
 - name: clone tpm (tmux plugin manager)

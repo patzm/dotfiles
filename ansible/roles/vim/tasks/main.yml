@@ -4,7 +4,7 @@
         src: "{{ role_path }}/files/vimrc"
         dest: "{{ ansible_env.HOME }}/.vimrc"
         owner: "{{ ansible_env.USER }}"
-        group: "{{ ansible_env.USER }}"
+        group: "{{ user_group }}"
         state: link
         force: yes
         mode: 0700
@@ -13,8 +13,8 @@
   file:
         path: "{{ vundle_dir }}"
         state: directory
-        owner: "{{ ansible_env.USER}}"
-        group: "{{ ansible_env.USER}}"
+        owner: "{{ ansible_env.USER }}"
+        group: "{{ user_group }}"
         mode: 0700
 
 - name: clone vundle from github

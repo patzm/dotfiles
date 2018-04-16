@@ -1,13 +1,36 @@
 ---
-- name: install i3 window manager
+- name: installing core packages
   become: true
   package: name={{ item }} state=latest
   with_items:
-    - i3
-    - i3lock
-    - i3status
-    - j4-dmenu-desktop
+    - htop
+    - xclip
+    - lm-sensors
+    - git
+    - vim
+    - zsh
+    - unrar
+    - feh
+    - python-pip
+    - fonts-powerline
+    - cmake
+    - libxkbcommon-dev
+    - openvpn
+    - network-manager-openvpn-gnome
+    - build-essential
+    # nethogs
+    - libncurses5-dev
+    - libpcap-dev
+    # end nethogs
+    # nvm for nodejs
+    - checkinstall
+    - libssl-dev
+    # end nvm
+    - wmctrl
+    - python-software-properties
+    - software-properties-common
+    - imagemagick
+    - tree
 
 - include_role:
     name: i3
-

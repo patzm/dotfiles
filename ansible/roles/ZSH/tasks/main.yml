@@ -1,10 +1,4 @@
 ---
-- name: install ZSH
-  become: true
-  package:
-      name: zsh
-      state: latest
-
 - name: "Make ZSH default shell for user {{ ansible_env.USER }}"
   become: true
   user:
@@ -16,7 +10,7 @@
       src: "{{ role_path }}/files/zshrc"
       dest: "{{ ansible_env.HOME }}/.zshrc"
       owner: "{{ ansible_env.USER }}"
-      group: "{{ ansible_env.USER }}"
+      group: "{{ user_group }}"
       state: link
       force: yes
 

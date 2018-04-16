@@ -1,4 +1,13 @@
 ---
+- name: install i3 window manager
+  become: true
+  package: name={{ item }} state=latest
+  with_items:
+    - i3
+    - i3lock
+    - i3status
+    - j4-dmenu-desktop
+
 - name: checking if ~/.i3 is a symlink
   stat:
       path: "{{ i3_dir }}"
@@ -15,7 +24,7 @@
       path: "{{ i3_dir }}"
       state: directory
       owner: "{{ ansible_env.USER }}"
-      group: "{{ ansible_env.USER }}"
+      group: "{{ user_group }}"
       mode: 0700
 
 - name: link all config files
@@ -23,7 +32,7 @@
       src: "{{ role_path }}/files/{{ item }}"
       dest: "{{ i3_dir }}/{{ item }}"
       owner: "{{ ansible_env.USER }}"
-      group: "{{ ansible_env.USER }}"
+      group: "{{ user_group }}"
       state: link
       force: yes
   with_items:
@@ -43,7 +52,7 @@
       src: "{{ role_path }}/files/i3exit/{{ 'Ubuntu-14-' if i3_14_10_or_less else 'Ubuntu-15+'}}.sh"
       dest: "{{ i3_dir }}/i3exit"
       owner: "{{ ansible_env.USER }}"
-      group: "{{ ansible_env.USER }}"
+      group: "{{ user_group }}"
       state: link
       force: yes
 
