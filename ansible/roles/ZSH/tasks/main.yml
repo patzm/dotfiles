@@ -19,6 +19,6 @@
     src: "{{ role_path }}/files/zsh{{ ansible_os_family }}.sh"
     dest: "{{ ansible_env.HOME }}/.zshosdep"
     owner: "{{ ansible_env.USER }}"
-    group: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
     state: link
     force: yes
