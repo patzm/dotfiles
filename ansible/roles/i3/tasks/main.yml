@@ -7,6 +7,16 @@
     - i3
     - i3lock
     - i3status
+    - py3status
+    - python3-pip
+
+- name: install py3status "clock" module depenencies
+  pip:
+    name: "{{ item }}"
+    executable: pip3
+  with_items:
+    - pytz
+    - tzlocal
 
 - name: install the j4 desktop launcher
   when: ansible_distribution_version is version_compare('16.04','>=')
