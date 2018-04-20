@@ -158,7 +158,6 @@ bindsym $mod+Shift+e mode "$mode_system"
 #   WM_CLASS(STRING) = "<instance_name>", "<class_name>"
 # use this information to assign windows to workspaces
 assign [class="Thunderbird"] → 8
-assign [instance="sun-awt-X11-XWindowPeer"] → 11 
 
 ## Setting keyboard shortcuts
 # see http://i3wm.org/docs/userguide.html#keybindings for more bindable keyboard shortcuts
@@ -181,7 +180,7 @@ bindsym --release Print exec "~/.i3/screenshot.sh -p ~/Desktop -s"
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-  status_command i3status -c ~/.i3/i3status.conf
+  status_command py3status -c ~/.i3/i3status.conf
   colors {
     separator #dc322f
     background #002b36
@@ -207,3 +206,4 @@ client.focused #859900 #859900 #fdf6e3 #6c71c4
 client.focused_inactive #073642 #073642 #eee8d5 #6c71c4
 client.unfocused #073642 #073642 #93a1a1 #586e75
 client.urgent #d33682 #d33682 #fdf6e3 #dc322f
+
