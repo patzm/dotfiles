@@ -154,7 +154,7 @@ check_zsh_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syn
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git npm zshmarks zsh-completions zsh-autosuggestions tldr tmux)
+plugins=(git npm pip zshmarks zsh-completions zsh-autosuggestions tldr tmux)
 
 # Load all instance dependent settings
 if [[ -f $HOME/.zshinstance ]]; then
