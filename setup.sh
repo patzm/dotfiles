@@ -8,7 +8,7 @@ setup_ubuntu () {
 		sudo apt-add-repository -y -u ppa:ansible/ansible
 		sudo apt-get -qq install -y ansible
 	fi
-	ansible-playbook $DIR/ansible/setup.yml -K
+	echo "now run 'ansible-playbook $DIR/ansible/setup.yml -K'"
 }
 
 setup_macosx () {
@@ -20,7 +20,7 @@ setup_macosx () {
 		echo "Ansible is not installed, installing ..."
 		brew install ansible
 	fi
-	ansible-playbook $DIR/ansible/setup.yml
+	echo "now run 'ansible-playbook $DIR/ansible/setup.yml'"
 }
 
 echo "This setup script sets up your system with Ansible"

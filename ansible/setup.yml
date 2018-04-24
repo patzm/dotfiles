@@ -3,6 +3,9 @@
   hosts: localhost
   # connection: local
   # strategy: debug
+  
+  vars:
+    headless: "{{ headless if headless exists else false }}"
 
   vars_files:
     - ["vars/{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml",
