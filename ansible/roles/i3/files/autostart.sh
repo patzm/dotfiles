@@ -20,3 +20,5 @@ if program_exists "setxkbmap"; then
     setxkbmap -option 'grp:win_space_toggle'
 fi
 
+# Fixes audio playback issue for Firefox 59 and lower, see https://support.mozilla.org/en-US/kb/no-sound-firefox-59-linux
+pulseaudio --start --exit-idle-time=-1
