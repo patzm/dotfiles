@@ -1,0 +1,22 @@
+---
+- name: create temporary build directory
+  tempfile: state=directory suffix=py3status
+  register: py3status_build_dir
+
+- name: clone the py3status git repository
+  git:
+    repo: https://github.com/ultrabug/py3status.git
+    dest: "{{ py3status_build_dir.path }}"
+
+- name: install
+  become: true
+  command: python setup.py develop
+  args:
+    chdir: "{{ py3status_build_dir.path }}"
+
+- name: clean up build folder
+  become: true
+  file:
+    path: "{{ py3status_build_dir.path }}"
+    force: yes
+    state: absent
