@@ -39,6 +39,6 @@
 # SmartOS = 'Solaris'
 # AIX = 'AIX'
 # Alpine = 'Alpine'
-# MacOSX = 'Darwin'
+# MacOSX = 'Darwin' or 'MacOSX'
 # FreeBSD = 'FreeBSD'
 # HPUX = 'HP-UX'

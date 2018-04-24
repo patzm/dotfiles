@@ -16,7 +16,7 @@
 
 - name: "Link the OS dependent configuration for user {{ ansible_env.USER }}: {{ ansible_os_family }}"
   file:
-    src: "{{ role_path }}/files/zsh{{ ansible_os_family }}.sh"
+    src: "{{ role_path }}/files/zsh_{{ ansible_os_family|lower }}.sh"
     dest: "{{ ansible_env.HOME }}/.zshosdep"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
