@@ -52,13 +52,12 @@
       group: "{{ user_group }}"
       mode: 0700
 
-- name: link all config files
-  file:
+- name: copy all config files
+  copy:
       src: "{{ role_path }}/files/{{ item }}"
       dest: "{{ i3_dir }}/{{ item }}"
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
-      state: link
       force: yes
   with_items:
       - autostart.sh
@@ -73,11 +72,10 @@
   when: ansible_distribution_version is version_compare('14.10', '<=')
 
 - name: link the correct i3exit script
-  file:
+  copy:
       src: "{{ role_path }}/files/i3exit/{{ 'Ubuntu-14-' if i3_14_10_or_less else 'Ubuntu-15+'}}.sh"
       dest: "{{ i3_dir }}/i3exit"
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
-      state: link
       force: yes
 
