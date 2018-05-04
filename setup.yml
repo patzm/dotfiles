@@ -1,6 +1,7 @@
 ---
 - name: Setup this local machine
   hosts: all
+  gather_facts: True
   
   vars:
     headless: "{{ headless if headless exists else false }}"
