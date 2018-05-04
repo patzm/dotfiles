@@ -5,7 +5,7 @@
     name: "{{ ansible_env.USER }}"
     shell: /bin/zsh
 
-- name: "Link default ZSH config for user {{ ansible_env.USER }}"
+- name: "Copy default ZSH config for user {{ ansible_env.USER }}"
   copy:
       src: "{{ role_path }}/files/zshrc"
       dest: "{{ ansible_env.HOME }}/.zshrc"
@@ -13,7 +13,7 @@
       group: "{{ user_group }}"
       force: yes
 
-- name: "Link the OS dependent configuration for user {{ ansible_env.USER }}: {{ ansible_os_family }}"
+- name: "Copy the OS dependent configuration for user {{ ansible_env.USER }}: {{ ansible_os_family }}"
   copy:
     src: "{{ role_path }}/files/zsh_{{ ansible_os_family|lower }}.sh"
     dest: "{{ ansible_env.HOME }}/.zshosdep"

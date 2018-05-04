@@ -30,7 +30,6 @@
     - software-properties-common
     - imagemagick
     - tree
-  when: False
 
 - name: run distribution specific tasks defined by an upper bound
   include_tasks: "execute_task.yml"
