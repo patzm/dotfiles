@@ -1,2 +1,5 @@
+# Ansible
+*.retry
+
 *.html
 

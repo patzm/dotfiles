@@ -27,7 +27,6 @@
     - libssl-dev
     # end nvm
     - wmctrl
-    - python-software-properties
     - software-properties-common
     - imagemagick
     - tree

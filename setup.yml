@@ -1,8 +1,6 @@
 ---
 - name: Setup this local machine
-  hosts: localhost
-  # connection: local
-  # strategy: debug
+  hosts: all
   
   vars:
     headless: "{{ headless if headless exists else false }}"
