@@ -1,12 +1,13 @@
 ---
 - name: run the platform dependent tasks
-  include_tasks: "{{ platform_task }}"
-  ignore_errors: yes
+  include_tasks: "execute_task.yml"
+  vars:
+    task_prefix: "{{ ansible_distribution|lower }}"
   loop_control:
-    loop_var: platform_task
+    loop_var: task
   with_items:
-    - "{{ ansible_distribution|lower }}/main.yml"
-    - "{{ ansible_distribution|lower }}/{{ ansible_distribution_major_version }}.yml" 
+    - "main"
+    - "{{ ansible_distribution_major_version }}" 
 
 ## Possible values
 # RedHat = 'RedHat'

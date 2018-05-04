@@ -30,15 +30,25 @@
     - software-properties-common
     - imagemagick
     - tree
-    - neofetch
+  when: False
 
-- name: resolve dependencies for Ubuntu 14.xx and earlier
-  include_tasks: "prior-ubuntu-14.yml"
-  when: ansible_distribution_version is version_compare('14.10', '<=')
+- name: run distribution specific tasks defined by an upper bound
+  include_tasks: "execute_task.yml"
+  vars:
+    task_prefix: "ubuntu/before"
+  when: ansible_distribution_version is version_compare(task, '<=')
+  with_items: "{{ supported_distribution_versions_ubuntu }}"
+  loop_control:
+    loop_var: task
 
-- name: resolve dependencies for Ubuntu 16.xx or higher
-  include_tasks: "after-ubuntu-16.yml"
-  when: ansible_distribution_version is version_compare('16.04', '>=')
+- name: run distribution specific tasks defined by a lower bound
+  include_tasks: "execute_task.yml"
+  vars:
+    task_prefix: "ubuntu/after"
+  when: ansible_distribution_version is version_compare(task, '>=')
+  with_items: "{{ supported_distribution_versions_ubuntu }}"
+  loop_control:
+    loop_var: task
 
 - include_role:
     name: i3

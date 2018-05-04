@@ -5,3 +5,9 @@
     name: fonts-powerline
     state: latest
 
+- name: install tmux
+  become: true
+  package:
+    name: tmux
+    state: latest
+
