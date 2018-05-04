@@ -102,11 +102,6 @@ if [ ! -d $ZSH ] || [ ! -d $ZSH_GIT ]; then
 	umask g-w,o-w
 
 	printf "${GREEN}Cloning Oh My Zsh...${NORMAL}\n"
-	if ! program_installed "git"; then
-		echo "Error: git is not installed"
-		exit 1
-	fi
-	
 	# The Windows (MSYS) Git is not compatible with normal use on cygwin
 	if [ "$OSTYPE" = cygwin ]; then
 		if git --version | grep msysgit > /dev/null; then
