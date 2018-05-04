@@ -163,9 +163,9 @@ assign [class="Thunderbird"] → 8
 # see http://i3wm.org/docs/userguide.html#keybindings for more bindable keyboard shortcuts
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume  exec "amixer -q sset Master 5%+ unmute; py3-cmd refresh volume_status"
-bindsym XF86AudioLowerVolume  exec "amixer -q sset Master 5%- unmute; py3-cmd refresh volume_status"
-bindsym XF86AudioMute         exec "amixer -q sset Master toggle; py3-cmd refresh volume_status"
+bindsym XF86AudioRaiseVolume  exec "amixer -q -D pulse sset Master 5%+ unmute; py3-cmd refresh volume_status"
+bindsym XF86AudioLowerVolume  exec "amixer -q -D pulse sset Master 5%- unmute; py3-cmd refresh volume_status"
+bindsym XF86AudioMute         exec "amixer -q -D pulse sset Master toggle; py3-cmd refresh volume_status"
 
 # Screenshot control
 bindsym --release Shift+Print exec "~/.i3/screenshot.sh -p ~/Desktop -r"
