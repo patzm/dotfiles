@@ -1,9 +1,13 @@
 ---
+- name: Find the location of the zsh executable
+  command: which zsh
+  register: zsh_bin
+
 - name: "Make ZSH default shell for user {{ ansible_env.USER }}"
-  become: true
+  become: True
   user:
     name: "{{ ansible_env.USER }}"
-    shell: /bin/zsh
+    shell: "{{ zsh_bin.stdout }}"
 
 - name: "Copy default ZSH config for user {{ ansible_env.USER }}"
   copy:
