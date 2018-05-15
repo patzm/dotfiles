@@ -10,15 +10,22 @@
     - python3-pip
 
 - name: install py3status "clock" module depenencies
+  become: True
   pip:
     name: "{{ item }}"
-    executable: pip3
+    executable: pip
   with_items:
     - pytz
     - tzlocal
 
+- name: check if py3status is already installed
+  command: which py3status
+  ignore_errors: True
+  register: py3status_bin
+
 - name: install py3status from source
   include_tasks: build-py3status.yml
+  when: py3status_bin.rc != 0
 
 - name: install the j4 desktop launcher
   when: ansible_distribution_version is version_compare('16.04','>=')
