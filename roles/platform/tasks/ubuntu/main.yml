@@ -14,7 +14,14 @@
     - python-pip
     - fonts-powerline
     - cmake
+    # GitKraken-Begin
+    - gconf2
+    - gconf-service
+    - libgnome-keyring-common
+    - libgnome-keyring-dev
+    # GitKraken-End
     - libxkbcommon-dev
+    - ntfs-3g
     - openvpn
     - network-manager-openvpn-gnome
     - build-essential
