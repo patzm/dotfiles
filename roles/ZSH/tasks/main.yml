@@ -1,6 +1,6 @@
 ---
 - name: Find the location of the zsh executable
-  command: which zsh
+  shell: which zsh
   register: zsh_bin
 
 - name: "Make ZSH default shell for user {{ ansible_env.USER }}"
