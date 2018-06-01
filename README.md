@@ -12,8 +12,12 @@ Then, execute the following:
 ```
 mkdir -p ~/repos/configs
 git clone https://github.com/patzm/configs.git ~/repos/configs
-ansible-playbook ~/repos/configs/ansible/setup.yml -K
+ansible-playbook ~/repos/configs/ansible/setup.yml -K -i localhost
 ```
+Here, `localhost` is an inventory file just specifying the current PC as the only host.
+Other inventory files can easily be used.
+Attention: all hosts specified in the inventory file are used.
+If the setup routine shall be run on a headless machine, add `-e headless=True` to the command.
 
 ## Ubuntu 16.04 or later
 On modern distributions, installation is quite straight forward:
