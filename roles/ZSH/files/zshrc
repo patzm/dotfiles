@@ -139,7 +139,6 @@ plugins=(
 	git
 	npm
 	pip
-	python
 	ssh-agent
 	tldr
 	tmux
