@@ -10,14 +10,15 @@
 		"CMake",
 		"CUDA C++",
 		"Git",
+		"Jinja2",
 		"LaTeXTools",
 		"MarkdownEditing",
+		"MarkdownPreview",
 		"Materialize",
 		"MatlabFilenameAutoComplete",
 		"Origami",
 		"Package Control",
 		"Protobuf Syntax Hightlighting",
-		"TodoReview",
-		"MarkdownPreview"
+		"TodoReview"
 	]
 }
