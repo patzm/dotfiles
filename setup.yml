@@ -1,6 +1,6 @@
 ---
 - name: Setup this local machine
-  hosts: all
+  hosts: "{{ custom_hosts | default('localhost') }}"
   gather_facts: True
   
   vars:
