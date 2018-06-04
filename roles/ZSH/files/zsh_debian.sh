@@ -17,9 +17,14 @@ zstyle ':completion:*' verbose true
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 zstyle ':completion:*:kill:*' command 'ps -u $USER -o pid,%cpu,tty,cputime,cmd'
 
+# View images from the command line
+alias view="feh --scale-down --auto-zoom"
 # terminal clipboard manager
-alias  copy="xclip -selection c"
-alias paste="xclip -o"
+alias pbcopy="xclip -selection c"
+alias pbpaste="xclip -selection clipboard -o"
+o () {
+    gnome-open "$1" 2> /dev/null &
+}
 
 # launch the ssh-agent on login
 SSH_ENV="$HOME/.ssh/environment"

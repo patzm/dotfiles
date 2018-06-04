@@ -6,4 +6,3 @@ export PATH=$HOME/Library/Android/sdk/platform-tools:$PATH
 
 # Add custom plugins
 plugins+=(brew)
-

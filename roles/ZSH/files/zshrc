@@ -1,13 +1,4 @@
 # Function definitions
-program_installed() {
-    if hash "$1" 2>/dev/null; then
-        return 0 # true
-    else
-        echo "$1 does not seem to be installed"
-        return 1 # false
-    fi
-}
-
 check_zsh_theme() {
     if [[ ! -d "$ZSH_CUSTOM_THEMES" ]]; then
         mkdir -p $ZSH_CUSTOM_THEMES
@@ -30,12 +21,7 @@ check_zsh_plugin () {
 }
 
 mkcdir () {
-    mkdir -p -- "$1" &&
-        cd -P -- "$1"
-}
-
-o () {
-    gnome-open "$1" 2> /dev/null &
+    mkdir -p -- "$1" && cd -P -- "$1"
 }
 
 # If you come from bash you might have to change your $PATH.
@@ -74,7 +60,6 @@ else
 	NORMAL=""
 fi
 
-# if [ ! -d $ZSH ]; then
 if [ ! -d $ZSH ] || [ ! -d $ZSH_GIT ]; then
 	# This script is an extract from https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
 	echo "oh-my-zsh not found in $ZSH. Downloading ..."
@@ -149,7 +134,19 @@ check_zsh_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syn
 source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-plugins=(git npm pip zshmarks zsh-completions zsh-autosuggestions tldr tmux)
+plugins=(
+	docker
+	git
+	npm
+	pip
+	python
+	ssh-agent
+	tldr
+	tmux
+	zsh-autosuggestions
+	zsh-completions
+	zshmarks
+)
 
 # Load all instance dependent settings
 if [[ -f $HOME/.zshinstance ]]; then
@@ -208,15 +205,6 @@ alias to="jump"
 alias bm="bookmark"
 alias bd="deletemark"
 alias bl="showmarks"
-
-if program_installed "feh"; then
-	alias view="feh --scale-down --auto-zoom"
-fi
-
-if program_installed "xclip"; then
-	alias pbcopy="xclip -selection c"
-	alias pbpaste="xclip -selection clipboard -o"
-fi
 
 unsetopt auto_name_dirs
 
