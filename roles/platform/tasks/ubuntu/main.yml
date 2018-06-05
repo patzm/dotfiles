@@ -14,6 +14,7 @@
     - wget
     - feh
     - python-pip
+    - bpython
     - fonts-powerline
     - cmake
     # GitKraken-Begin
