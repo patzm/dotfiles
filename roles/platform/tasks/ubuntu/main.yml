@@ -24,6 +24,7 @@
     # GitKraken-End
     - libxkbcommon-dev
     - ntfs-3g
+    - sshfs
     - openvpn
     - network-manager-openvpn-gnome
     - build-essential
