@@ -156,13 +156,13 @@ else
 fi
 
 # Load all OS dependent settings
-if [[ -f .zshosdep ]]; then
-	source .zshosdep
+if [[ -f $HOME/.zshosdep ]]; then
+	source $HOME/.zshosdep
 fi
 
 # Load all machine-specific aliases
-if [[ -f .bash_aliases ]]; then
-    source .bash_aliases
+if [[ -f $HOME/.bash_aliases ]]; then
+    source $HOME/.bash_aliases
 fi
 
 source $ZSH/oh-my-zsh.sh
