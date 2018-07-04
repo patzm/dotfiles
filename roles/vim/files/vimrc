@@ -41,7 +41,10 @@ Plugin 'bling/vim-airline'
 call vundle#end()
 filetype plugin indent on
 
-autocmd vimenter * NERDTree
+" Configure NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+map <C-n> :NERDTreeToggle<CR>
 
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
