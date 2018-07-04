@@ -4,7 +4,7 @@
   gather_facts: True
   
   vars:
-    headless: "{{ headless if headless exists else false }}"
+    headless: "{{ headless if headless exists else False }}"
 
   vars_files:
     - ["vars/{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml",
