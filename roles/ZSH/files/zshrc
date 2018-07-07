@@ -205,6 +205,9 @@ alias bm="bookmark"
 alias bd="deletemark"
 alias bl="showmarks"
 
+# Alias for conventional image renaming
+alias img_rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
+
 unsetopt auto_name_dirs
 
 export NVM_DIR="$HOME/.nvm"

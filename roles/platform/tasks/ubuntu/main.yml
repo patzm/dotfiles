@@ -40,6 +40,7 @@
     - wmctrl
     - software-properties-common
     - imagemagick
+    - exiv2
     - tree
     - gir1.2-gtop-2.0
     - gir1.2-networkmanager-1.0

@@ -14,5 +14,6 @@
     - wget
     - tmux
     - neofetch
+    - exiv2
     # TODO: add zsh here
 
