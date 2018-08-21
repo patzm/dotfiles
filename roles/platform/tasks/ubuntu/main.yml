@@ -66,5 +66,5 @@
 
 - include_role:
     name: i3
-  when: not headless
+  when: headless is not defined
 
