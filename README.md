@@ -12,12 +12,15 @@ Then, execute the following:
 ```
 mkdir -p ~/repos/configs
 git clone https://github.com/patzm/configs.git ~/repos/configs
-ansible-playbook ~/repos/configs/ansible/setup.yml -K -i localhost
+ansible-playbook ~/repos/configs/ansible/setup.yml -K [-i localhost] [--extra-vars "headless=True"]
 ```
+The switch `-K` requests root priviliges on the current machine.
 Here, `localhost` is an inventory file just specifying the current PC as the only host.
+This is the default behavior.
 Other inventory files can easily be used.
 Attention: all hosts specified in the inventory file are used.
 If the setup routine shall be run on a headless machine, add `-e headless=True` to the command.
+Then, programs like `i3` will not be installed.
 
 ## Ubuntu 16.04 or later
 On modern distributions, installation is quite straight forward:
