@@ -139,7 +139,6 @@ plugins=(
 	git
 	npm
 	pip
-	ssh-agent
 	tldr
 	tmux
 	zsh-autosuggestions
