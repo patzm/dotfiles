@@ -1,0 +1,17 @@
+---
+- name: install virtualenv
+  pip:
+    name: "{{ python_package }}"
+    executable: "{{ pip_executable }}"
+  become: true
+  loop_control:
+    loop_var: python_package
+  with_items:
+    - virtualenv
+    - virtualenvwrapper
+
+- name: create directory for virtual environments
+  file:
+    path: ~/.virtualenvs
+    state: directory
+

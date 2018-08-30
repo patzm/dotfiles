@@ -13,4 +13,5 @@
     - role: ZSH
     - role: vim
     - role: tmux
+    - role: python
 

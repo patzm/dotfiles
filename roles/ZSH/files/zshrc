@@ -139,8 +139,11 @@ plugins=(
 	git
 	npm
 	pip
+	rsync
 	tldr
 	tmux
+	virtualenv
+	virtualenvwrapper
 	zsh-autosuggestions
 	zsh-completions
 	zshmarks
@@ -211,4 +214,10 @@ unsetopt auto_name_dirs
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
+# Python
+export WORKON_HOME=~/.virtualenvs
+if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
+	. /usr/local/bin/virtualenvwrapper.sh
+fi
 

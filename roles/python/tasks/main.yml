@@ -1,0 +1,10 @@
+---
+- include_tasks: "virtualenv.yml"
+  vars:
+    pip_executable: "{{ _pip_executable }}"
+  loop_control:
+    loop_var: _pip_executable
+  with_items:
+    - pip
+    - pip3
+
