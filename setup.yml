@@ -1,5 +1,5 @@
 ---
-- name: Setup this local machine
+- name: Run setup
   hosts: "{{ custom_hosts|default('localhost') }}"
   gather_facts: True
   
