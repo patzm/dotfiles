@@ -15,5 +15,16 @@
     - tmux
     - neofetch
     - exiv2
-    # TODO: add zsh here
+    - zsh
+    - python2
+    - python3
 
+- name: ensure correct permissions of the zsh folders
+  file:
+    path: "{{ item }}"
+    owner: "{{ ansible_user_id }}"
+    group: admin
+    mode: 0755
+  with_items:
+    - /usr/local/share/zsh
+    - /usr/local/share/zsh/site-functions
