@@ -5,6 +5,6 @@
   loop_control:
     loop_var: _pip_executable
   with_items:
-    - pip
-    - pip3
+    - "{{ pip2_bin }}"
+    - "{{ pip3_bin }}"
 

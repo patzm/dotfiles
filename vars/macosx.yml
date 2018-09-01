@@ -1,3 +1,4 @@
 ---
 user_group: "staff"
-
+pip2_bin: /usr/local/bin/pip2
+pip3_bin: /usr/local/bin/pip3

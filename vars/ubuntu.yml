@@ -1,0 +1,3 @@
+---
+pip2_bin: /usr/bin/pip2
+pip3_bin: /usr/bin/pip3
