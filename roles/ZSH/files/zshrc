@@ -109,8 +109,14 @@ export ZSH_CUSTOM_THEMES=$ZSH/custom/themes
 export ZSH_THEMES=$ZSH/themes
 
 check_zsh_theme "powerline" "https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git"
+check_zsh_theme "powerlevel9k" "https://github.com/bhilburn/powerlevel9k.git"
 
-ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel9k/powerlevel9k"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(time)
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
 # Completion settings
 autoload -Uz compinit
