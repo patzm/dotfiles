@@ -1,8 +1,19 @@
 ---
-- name: check if i3-gaps is already installed
+- name: make sure that the i3 package is not installed (i3 without gaps)
+  become: True
+  package: name={{ item }} state=absent
+  with_items:
+    - i3*
+
+- name: detect if i3-gaps is already installed
   shell: command -v i3 >/dev/null 2>&1
   register: cmd_exists_i3_gaps
   ignore_errors: yes
+
+- name: detect if light is already installed
+  shell: command -v light >/dev/null 2>&1
+  register: cmd_exists_light
+  ignore_errors: True
 
 - name: create i3 config directory
   file:
@@ -34,36 +45,17 @@
   args:
     chdir: "{{ ansible_env.HOME }}"
 
-- name: install i3-gaps requirements from package manager
-  become: True
-  package: name={{ item }} state=latest
-  with_items:
-    - libxcb1-dev
-    - libxcb-keysyms1-dev
-    - libpango1.0-dev
-    - libxcb-util0-dev
-    - libxcb-icccm4-dev
-    - libyajl-dev
-    - libstartup-notification0-dev
-    - libxcb-randr0-dev
-    - libev-dev
-    - libxcb-cursor-dev
-    - libxcb-xinerama0-dev
-    - libxcb-xkb-dev
-    - libxkbcommon-dev
-    - libxkbcommon-x11-dev
-    - autoconf
-    - libxcb-xrm0
-    - libxcb-xrm-dev
-    - automake
-  when: not cmd_exists_i3_gaps
+- name: install i3-gaps
+  include_tasks: install-i3.yml
+  when: cmd_exists_i3_gaps.rc > 0
 
 - name: install polybar
   include_role:
     name: polybar
 
+- name: install light
+  include_tasks: install-light.yml
+  when: cmd_exists_light.rc > 0
+
 - name: install i3-gaps requirements from source
-  include_tasks: "{{ item }}.yml"
-  with_items:
-  - light
-  - font-awesome
+  include_tasks: font-awesome.yml

@@ -1,12 +1,12 @@
 ---
-- name: check if polybar is already installed
+- name: detect if polybar is already installed
   shell: command -v polybar >/dev/null 2>&1
   register: cmd_exists_polybar
   ignore_errors: True
 
 - name: install polybar
-  include_tasks: polybar.yml
-  when: not cmd_exists_polybar
+  include_tasks: install-polybar.yml
+  when: cmd_exists_polybar.rc > 0
 
 - name: create the configuration directory
   file:

@@ -1,0 +1,54 @@
+---
+- name: install i3-gaps requirements from package manager
+  become: True
+  package: name={{ item }} state=latest
+  with_items:
+    - libxcb1-dev
+    - libxcb-keysyms1-dev
+    - libpango1.0-dev
+    - libxcb-util0-dev
+    - libxcb-icccm4-dev
+    - libyajl-dev
+    - libstartup-notification0-dev
+    - libxcb-randr0-dev
+    - libev-dev
+    - libxcb-cursor-dev
+    - libxcb-xinerama0-dev
+    - libxcb-xkb-dev
+    - libxkbcommon-dev
+    - libxkbcommon-x11-dev
+    - autoconf
+    - libxcb-xrm0
+    - libxcb-xrm-dev
+    - automake
+
+- name: create temporary checkout directory
+  tempfile: state=directory suffix=.i3_gaps
+  register: i3_gaps_repo_dir
+
+- name: clone the git repository
+  git:
+    repo: https://www.github.com/Airblader/i3
+    dest: "{{ i3_gaps_repo_dir.path }}"
+    version: 4.15
+
+- name: create temporary build directory
+  file:
+    path: "{{ i3_gaps_repo_dir.path }}/build"
+    state: directory
+
+- name: autoreconf
+  shell: autoreconf --force --install
+  args:
+    chdir: "{{ i3_gaps_repo_dir.path }}"
+
+- name: configure
+  shell: "{{ i3_gaps_repo_dir.path }}/configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers"
+  args:
+    chdir:"{{ i3_gaps_repo_dir.path }}/build"
+
+- name: make and install
+  become: True
+  shell: "make -j{{ ansible_processor_vcpus }} install"
+  args:
+    chdir:"{{ i3_gaps_repo_dir.path }}/build"
