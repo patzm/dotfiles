@@ -19,7 +19,7 @@
 - name: copy the config files
   copy:
     src: "{{ role_path }}/files/{{ item }}"
-    dest: "{{ i3_dir }}/{{ item }}"
+    dest: "{{ polybar_dir }}/{{ item }}"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     mode: 0700
