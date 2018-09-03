@@ -12,6 +12,8 @@ alert-middle = #e2580b
 alert-high = #cc060c
 
 [bar/base]
+monitor = ${env:MONITOR:eDP-1}
+
 width = 100%
 height = 20
 
@@ -34,8 +36,6 @@ font-5 = Font Awesome 5 Brands:pixelsize=12;2
 
 [bar/topbar]
 inherit = bar/base
-
-;monitor = ${env:MONITOR:HDMI-1}
 
 line-size = 3
 line-color = #f00
