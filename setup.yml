@@ -10,8 +10,8 @@
 
   roles:
     - role: platform
+    - role: git
     - role: ZSH
     - role: vim
     - role: tmux
     - role: python
-
