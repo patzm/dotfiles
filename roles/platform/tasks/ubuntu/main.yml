@@ -67,6 +67,6 @@
     loop_var: task
 
 - include_role:
-    name: i3
+    name: i3-gaps
   when: headless is not defined
 
