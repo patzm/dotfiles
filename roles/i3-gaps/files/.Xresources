@@ -1,0 +1,23 @@
+! Colors
+color.primary.color_01: #073642
+color.primary.color_02: #dc322f
+color.primary.color_03: #859900
+color.primary.color_04: #b58900
+color.primary.color_05: #268bd2
+color.primary.color_06: #ec0048
+color.primary.color_07: #2aa198
+color.primary.color_08: #94a3a5
+
+color.secondary.color_09: #586e75
+color.secondary.color_10: #cb4b16
+color.secondary.color_11: #859900
+color.secondary.color_12: #b58900
+color.secondary.color_13: #268bd2
+color.secondary.color_14: #d33682
+color.secondary.color_15: #2aa198
+color.secondary.color_16: #6c71c4
+
+color.special.background_color: #252e32
+color.special.foreground_color: #D9DEDC
+color.special.cursor_color: #839496
+color.special.profile_name: Freya

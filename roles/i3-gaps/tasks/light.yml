@@ -1,0 +1,9 @@
+---
+- name: detect if light is already installed
+  shell: command -v light >/dev/null 2>&1
+  register: cmd_exists_light
+  ignore_errors: True
+
+- debug:
+    msg: "'light' is installed: {{ cmd_exists_light }}"
+# https://github.com/haikarainen/light

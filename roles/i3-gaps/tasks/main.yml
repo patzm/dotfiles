@@ -1,0 +1,69 @@
+---
+- name: check if i3-gaps is already installed
+  shell: command -v i3 >/dev/null 2>&1
+  register: cmd_exists_i3_gaps
+  ignore_errors: yes
+
+- name: create i3 config directory
+  file:
+    path: "{{ i3_dir }}"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+
+- name: copy the config file
+  copy:
+    src: "{{ role_path }}/files/config"
+    dest: "{{ i3_dir }}/config"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+    force: yes
+
+- name: copy .Xresources
+  copy:
+    src: "{{ role_path }}/files/.Xresources"
+    dest: "{{ ansible_env.HOME }}/.Xresources"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+
+- name: reload .Xresources
+  command: xrdb .Xresources
+  args:
+    chdir: "{{ ansible_env.HOME }}"
+
+- name: install i3-gaps requirements from package manager
+  become: True
+  package: name={{ item }} state=latest
+  with_items:
+    - libxcb1-dev
+    - libxcb-keysyms1-dev
+    - libpango1.0-dev
+    - libxcb-util0-dev
+    - libxcb-icccm4-dev
+    - libyajl-dev
+    - libstartup-notification0-dev
+    - libxcb-randr0-dev
+    - libev-dev
+    - libxcb-cursor-dev
+    - libxcb-xinerama0-dev
+    - libxcb-xkb-dev
+    - libxkbcommon-dev
+    - libxkbcommon-x11-dev
+    - autoconf
+    - libxcb-xrm0
+    - libxcb-xrm-dev
+    - automake
+  when: not cmd_exists_i3_gaps
+
+- name: install polybar
+  include_role:
+    name: polybar
+
+- name: install i3-gaps requirements from source
+  include_tasks: "{{ item }}.yml"
+  with_items:
+  - light
+  - font-awesome

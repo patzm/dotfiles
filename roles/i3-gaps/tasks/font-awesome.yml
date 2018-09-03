@@ -1,0 +1,20 @@
+---
+- name: make sure the user's .fonts folder exists
+   file:
+    path: "{{ fonts_dir }}/opentype"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+
+- name: copy all FontAwesome font files
+  copy:
+    src: "{{ role_path }}/files/FontAwesome/"
+    dest: "{{ fonts_dir }}/opentype/"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+    force: yes
+
+- name: load the new fonts
+  command: fc-cache -f
