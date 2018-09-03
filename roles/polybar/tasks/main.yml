@@ -10,7 +10,7 @@
 
 - name: create the configuration directory
   file:
-  	path: "{{ polybar_dir }}/themes"
+    path: "{{ polybar_dir }}/themes"
     state: directory
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"

@@ -6,4 +6,5 @@
 
 - debug:
     msg: "'light' is installed: {{ cmd_exists_light }}"
+
 # https://github.com/haikarainen/light
