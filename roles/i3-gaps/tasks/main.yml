@@ -7,9 +7,7 @@
 
 - name: make sure that the i3 package is not installed (i3 without gaps)
   become: True
-  package: name={{ item }} state=absent
-  with_items:
-    - i3*
+  package: name="i3*" state=absent
 
 - name: detect if i3-gaps is already installed
   shell: command -v i3 >/dev/null 2>&1
