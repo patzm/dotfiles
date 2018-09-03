@@ -18,27 +18,28 @@
     - bpython
     - fonts-powerline
     - cmake
-    # GitKraken-Begin
+    # begin GitKraken
     - gconf2
     - gconf-service
     - libgnome-keyring-common
     - libgnome-keyring-dev
-    # GitKraken-End
+    # end GitKraken
     - libxkbcommon-dev
     - ntfs-3g
     - sshfs
     - openvpn
     - network-manager-openvpn-gnome
     - build-essential
-    # nethogs
+    # begin nethogs
     - libncurses5-dev
     - libpcap-dev
     # end nethogs
-    # nvm for nodejs
+    # begin nvm for nodejs
     - checkinstall
     - libssl-dev
     # end nvm
     - wmctrl
+    - arandr
     - software-properties-common
     - imagemagick
     - apcalc
