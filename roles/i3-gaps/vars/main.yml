@@ -1,3 +1,7 @@
 ---
-i3_dir: "{{ ansible_env.HOME }}/.config/i3"
+i3_config_dir: "{{ ansible_env.HOME }}/.config/i3"
+i3_config_file: "{{ i3_config_dir }}/config"
 fonts_dir: "{{ ansible_env.HOME }}/.fonts"
+
+placeholder_mod: '\<mod\>$'
+placeholder_i3_config_dir: '\<i3-config-dir\>'

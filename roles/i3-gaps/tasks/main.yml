@@ -1,4 +1,10 @@
 ---
+- name: load OS-dependent variables
+  include_vars: "{{ item }}"
+  with_first_found:
+  - "{{ ansible_os_family }}.yml"
+  - default.yml
+
 - name: make sure that the i3 package is not installed (i3 without gaps)
   become: True
   package: name={{ item }} state=absent
@@ -17,7 +23,7 @@
 
 - name: create i3 config directory
   file:
-    path: "{{ i3_dir }}"
+    path: "{{ i3_config_dir }}"
     state: directory
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
@@ -26,11 +32,40 @@
 - name: copy the config file
   copy:
     src: "{{ role_path }}/files/config"
-    dest: "{{ i3_dir }}/config"
+    dest: "{{ i3_config_file }}"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     mode: 0700
     force: yes
+
+- name: copy the shell scripts
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ i3_config_dir }}/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+    force: yes
+  with_items:
+  - screenshot.sh
+  - i3exit.sh
+
+- name: replace modifier key in config file
+  replace:
+    path: "{{ i3_config_file }}"
+    regexp: "{{ placeholder_mod }}"
+    replace: "{{ mod }}"
+
+- name: replace i3 config folder path in config file
+  replace:
+    path: "{{ i3_config_file }}"
+    regexp: "{{ placeholder_i3_config_dir }}"
+    replace: "{{ i3_config_dir }}"
+
+- name: "legacy : ensure that the old ~/.i3 config folder does not exist"
+  file:
+    path: "{{ ansible_env.HOME }}/.i3"
+    state: absent
 
 - name: copy .Xresources
   copy:
