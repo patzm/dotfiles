@@ -45,10 +45,12 @@
 - name: configure
   shell: "{{ i3_gaps_repo_dir.path }}/configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers"
   args:
-    chdir:"{{ i3_gaps_repo_dir.path }}/build"
+    chdir: "{{ i3_gaps_repo_dir.path }}/build"
 
 - name: make and install
   become: True
-  shell: "make -j{{ ansible_processor_vcpus }} install"
-  args:
-    chdir:"{{ i3_gaps_repo_dir.path }}/build"
+  make:
+    chdir: "{{ i3_gaps_repo_dir.path }}/build"
+    target: install
+    params:
+      NUM_THREADS: "{{ ansible_processor_vcpus }}"

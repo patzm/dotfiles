@@ -48,10 +48,12 @@
 - name: configure with cmake
   shell: "cmake {{ polybar_repo_dir.path }}"
   args:
-    chdir:"{{ polybar_repo_dir.path }}/build"
+    chdir: "{{ polybar_repo_dir.path }}/build"
 
 - name: make and install
   become: True
-  shell: "make -j{{ ansible_processor_vcpus }} install"
-  args:
-    chdir:"{{ polybar_repo_dir.path }}/build"
+  make:
+    chdir: "{{ polybar_repo_dir.path }}/build"
+    target: install
+    params:
+      NUM_THREADS: "{{ ansible_processor_vcpus }}"

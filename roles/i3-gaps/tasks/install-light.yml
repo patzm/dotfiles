@@ -1,33 +1,35 @@
 ---
-- name: install requirements
+- name: "light : install requirements"
   become: True
   package: name={{ item }} state=latest
   with_items:
     - automake
     - autoconf
 
-- name: create temporary checkout directory
+- name: "light : create temporary checkout directory"
   tempfile: state=directory suffix=.light
   register: light_repo_dir
 
-- name: clone the git repository
+- name: "light : clone the git repository"
   git:
     repo: https://github.com/haikarainen/light
     dest: "{{ light_repo_dir.path }}"
-    version: v1.1.2
 
-- name: autogen
-  shell: autogen.sh
+- name: "light : autogen"
+  shell: ./autogen.sh
   args:
-    chdir:"{{ light_repo_dir.path }}"
+    chdir: "{{ light_repo_dir.path }}"
 
-- name: configure
-  shell: configure.sh
+- name: "light : configure"
+  shell: ./configure
   args:
-    chdir:"{{ light_repo_dir.path }}"
+    chdir: "{{ light_repo_dir.path }}"
 
-- name: make and install
+- name: "light : make and install"
   become: True
-  shell: "make -j{{ ansible_processor_vcpus }} install"
-  args:
-    chdir:"{{ light_repo_dir.path }}"
+  make:
+    chdir: "{{ light_repo_dir.path }}"
+    target: install
+    params:
+      NUM_THREADS: "{{ ansible_processor_vcpus }}"
+
