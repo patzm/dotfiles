@@ -200,7 +200,9 @@ client.background       $bg
 #   WM_CLASS(STRING) = "<instance_name>", "<class_name>"
 # use this information to assign windows to workspaces
 assign [class="Firefox"] → 1
+assign [class="jetbrains-pycharm"] → 2
 assign [class="Thunderbird"] → 8
+assign [class="GitKraken"] → 9
 
 # Program launches
 exec_always $HOME/.config/i3/autostart.sh
