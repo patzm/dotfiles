@@ -1,0 +1,2 @@
+---
+polybar_dir: "{{ ansible_env.HOME }}/.config/polybar"

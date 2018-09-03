@@ -1,0 +1,31 @@
+---
+- name: check if polybar is already installed
+  shell: command -v polybar >/dev/null 2>&1
+  register: cmd_exists_polybar
+  ignore_errors: True
+
+- name: install polybar
+  include_tasks: polybar.yml
+  when: not cmd_exists_polybar
+
+- name: create the configuration directory
+  file:
+  	path: "{{ polybar_dir }}/themes"
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+
+- name: copy the config files
+  copy:
+    src: "{{ role_path }}/files/{{ item }}"
+    dest: "{{ i3_dir }}/{{ item }}"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+    force: yes
+  with_items:
+  - config
+  - launch.sh
+  - theme.ini
+  - themes
