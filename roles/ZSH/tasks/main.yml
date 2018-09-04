@@ -17,7 +17,7 @@
       group: "{{ user_group }}"
       force: yes
 
-- name: "Copy the OS dependent configuration for user {{ ansible_env.USER }}: {{ ansible_os_family }}"
+- name: "Copy the OS dependent configuration for user {{ ansible_env.USER }}"
   copy:
     src: "{{ role_path }}/files/zsh_{{ ansible_os_family|lower }}.sh"
     dest: "{{ ansible_env.HOME }}/.zshosdep"

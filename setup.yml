@@ -1,12 +1,12 @@
 ---
-- name: Run setup
+- name: run setup
   hosts: "{{ custom_hosts|default('localhost') }}"
   gather_facts: True
-  
+
   vars_files:
+    - "vars/common.yml"
     - ["vars/{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml",
-       "vars/{{ ansible_distribution|lower }}.yml",
-       "vars/common.yml"]
+       "vars/{{ ansible_distribution|lower }}.yml"]
 
   roles:
     - role: platform
