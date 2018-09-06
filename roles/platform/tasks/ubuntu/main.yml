@@ -15,7 +15,6 @@
     - feh
     - python-pip
     - python3-pip
-    - bpython
     - fonts-powerline
     - cmake
     # begin GitKraken
