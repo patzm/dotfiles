@@ -1,6 +1,6 @@
 #!/bin/sh
 lock() {
-    i3lock
+    gnome-screensaver-command -l
 }
 
 case "$1" in
@@ -13,9 +13,6 @@ case "$1" in
     suspend)
         lock && systemctl suspend
         ;;
-    hibernate)
-        lock && systemctl hibernate
-        ;;
     reboot)
         systemctl reboot
         ;;
@@ -23,7 +20,7 @@ case "$1" in
         systemctl poweroff
         ;;
     *)
-        echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
+        echo "Usage: $0 {lock|logout|suspend|reboot|shutdown}"
         exit 2
 esac
 

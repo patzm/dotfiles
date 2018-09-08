@@ -3,5 +3,9 @@ i3_config_dir: "{{ ansible_env.HOME }}/.config/i3"
 i3_config_file: "{{ i3_config_dir }}/config"
 fonts_dir: "{{ ansible_env.HOME }}/.fonts"
 
-placeholder_mod: '\<mod\>$'
-placeholder_i3_config_dir: '\<i3-config-dir\>'
+placeholder_mod: '\<mod-1\>$'
+placeholder_mod_2: '\<mod-2\>$'
+
+placeholder_i3_exit_script: '\<i3-exit-script\>'
+
+i3_exit_script: "{{ user_bin_dir }}/i3exit.sh"

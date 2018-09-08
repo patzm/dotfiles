@@ -39,7 +39,7 @@
 - name: copy the shell scripts
   copy:
     src: "{{ role_path }}/files/{{ item }}"
-    dest: "{{ i3_config_dir }}/{{ item }}"
+    dest: "{{ user_bin_dir }}/{{ item }}"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     mode: 0700
@@ -48,17 +48,23 @@
   - screenshot.sh
   - i3exit.sh
 
-- name: replace modifier key in config file
+- name: insert the modifier key into config file
   replace:
     path: "{{ i3_config_file }}"
     regexp: "{{ placeholder_mod }}"
     replace: "{{ mod }}"
 
-- name: replace i3 config folder path in config file
+- name: insert the alternative modifier key into the config file
   replace:
     path: "{{ i3_config_file }}"
-    regexp: "{{ placeholder_i3_config_dir }}"
-    replace: "{{ i3_config_dir }}"
+    regexp: "{{ placeholder_mod_2 }}"
+    replace: "{{ mod_2 }}"
+
+- name: insert the i3exit script location into the config file
+  replace:
+    path: "{{ i3_config_file }}"
+    regexp: "{{ placeholder_i3_exit_script }}"
+    replace: "{{ i3_exit_script }}"
 
 - name: "legacy : ensure that the old ~/.i3 config folder does not exist"
   file:

@@ -1,4 +1,11 @@
 ---
+# Platform independent tasks
+- name: create the user bin directory
+  file:
+    path: "{{ user_bin_dir }}"
+    state: directory
+    mode: 0700
+
 - name: run the platform dependent tasks
   include_tasks: "execute_task.yml"
   vars:

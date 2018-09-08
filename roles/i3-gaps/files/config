@@ -1,7 +1,7 @@
 # Set the mod key
 # Mod1: ALT
 # Mod4: Win/CMD
-set $mod <mod>
+set $mod <mod-1>
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -171,12 +171,12 @@ bindsym $mod+r mode "resize"
 # Create Log out, Reboot, Poweroff bindings
 set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id <i3-config-dir>/i3exit.sh lock, mode "default"
-    bindsym e exec --no-startup-id <i3-config-dir>/i3exit.sh logout, mode "default"
-    bindsym s exec --no-startup-id <i3-config-dir>/i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id <i3-config-dir>/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id <i3-config-dir>/i3exit.sh reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id <i3-config-dir>/i3exit.sh shutdown, mode "default"
+    bindsym l exec --no-startup-id <i3-exit-script> lock, mode "default"
+    bindsym e exec --no-startup-id <i3-exit-script> logout, mode "default"
+    bindsym s exec --no-startup-id <i3-exit-script> suspend, mode "default"
+    bindsym h exec --no-startup-id <i3-exit-script> hibernate, mode "default"
+    bindsym r exec --no-startup-id <i3-exit-script> reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id <i3-exit-script> shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
