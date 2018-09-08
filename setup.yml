@@ -1,7 +1,7 @@
 ---
 - name: run setup
   hosts: "{{ custom_hosts|default('localhost') }}"
-  gather_facts: True
+  gather_facts: yes
 
   vars_files:
     - "vars/common.yml"

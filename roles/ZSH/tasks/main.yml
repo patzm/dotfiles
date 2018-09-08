@@ -4,7 +4,7 @@
   register: zsh_bin
 
 - name: "Make ZSH default shell for user {{ ansible_env.USER }}"
-  become: True
+  become: yes
   user:
     name: "{{ ansible_env.USER }}"
     shell: "{{ zsh_bin.stdout }}"

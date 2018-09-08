@@ -2,7 +2,7 @@
 - name: detect if polybar is already installed
   shell: command -v polybar >/dev/null 2>&1
   register: cmd_exists_polybar
-  ignore_errors: True
+  ignore_errors: yes
 
 - name: install polybar
   include_tasks: install-polybar.yml

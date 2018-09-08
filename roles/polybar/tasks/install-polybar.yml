@@ -1,6 +1,6 @@
 ---
 - name: install polybar dependencies
-  become: True
+  become: yes
   package: name={{ item }} state=latest
   with_items:
   - gcc
@@ -51,7 +51,7 @@
     chdir: "{{ polybar_repo_dir.path }}/build"
 
 - name: make and install
-  become: True
+  become: yes
   make:
     chdir: "{{ polybar_repo_dir.path }}/build"
     target: install

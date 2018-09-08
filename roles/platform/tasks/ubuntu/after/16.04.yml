@@ -6,7 +6,7 @@
     state: latest
 
 - name: install tmux
-  become: true
+  become: yes
   package:
     name: tmux
     state: latest

@@ -1,6 +1,6 @@
 ---
 - name: install Ubuntu 18.04 or later only software
-  become: true
+  become: yes
   package: name={{ item }} state=latest
   with_items:
     - neofetch

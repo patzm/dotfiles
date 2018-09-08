@@ -20,12 +20,12 @@
     state: absent
 
 - name: add the repository for tmux 2.0-1
-  become: true
+  become: yes
   apt_repository:
     repo: 'ppa:pi-rho/dev'
 
 - name: install tmux 2.0-1
-  become: true
+  become: yes
   apt:
     name: tmux=2.0-1~ppa1~t
 

@@ -6,7 +6,7 @@
   - default.yml
 
 - name: make sure that the i3 package is not installed (i3 without gaps)
-  become: True
+  become: yes
   package: name="i3*" state=absent
 
 - name: detect if i3-gaps is already installed
@@ -17,7 +17,7 @@
 - name: detect if light is already installed
   shell: command -v light >/dev/null 2>&1
   register: cmd_exists_light
-  ignore_errors: True
+  ignore_errors: yes
 
 - name: create i3 config directory
   file:

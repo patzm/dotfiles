@@ -1,6 +1,6 @@
 ---
 - name: installing core packages
-  become: true
+  become: yes
   package: name={{ item }} state=latest
   with_items:
     - htop

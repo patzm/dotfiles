@@ -1,7 +1,7 @@
 ---
 # Installation
 - name: install i3 window manager
-  become: true
+  become: yes
   package: name={{ item }} state=latest
   with_items:
     - i3
@@ -10,7 +10,7 @@
     - python3-pip
 
 - name: install py3status "clock" module depenencies
-  become: True
+  become: yes
   pip:
     name: "{{ item }}"
     executable: pip
@@ -20,7 +20,7 @@
 
 - name: check if py3status is already installed
   command: which py3status
-  ignore_errors: True
+  ignore_errors: yes
   register: py3status_bin
 
 - name: install py3status from source
@@ -29,7 +29,7 @@
 
 - name: install the j4 desktop launcher
   when: ansible_distribution_version is version_compare('16.04','>=')
-  become: true
+  become: yes
   package:
     name: j4-dmenu-desktop
     state: latest
@@ -76,7 +76,7 @@
 
 - name: determine i3exit file name
   set_fact:
-    i3_14_10_or_less: true
+    i3_14_10_or_less: yes
   when: ansible_distribution_version is version_compare('14.10', '<=')
 
 - name: link the correct i3exit script

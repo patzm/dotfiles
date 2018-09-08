@@ -1,18 +1,18 @@
 ---
 - name: create temporary build directory
-  become: True
+  become: yes
   file:
     state: directory
     path: "{{ py3status_build_dir }}"
 
 - name: clone the py3status git repository
-  become: True
+  become: yes
   git:
     repo: https://github.com/ultrabug/py3status.git
     dest: "{{ py3status_build_dir }}"
 
 - name: install
-  become: True
+  become: yes
   command: python setup.py develop
   args:
     chdir: "{{ py3status_build_dir }}"

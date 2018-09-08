@@ -4,7 +4,7 @@
     - files:
       - "{{ task }}.yml"
       paths: "{{ task_prefix }}"
-      skip: True
+      skip: yes
   loop_control:
     loop_var: task_file
 

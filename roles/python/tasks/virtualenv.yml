@@ -3,7 +3,7 @@
   pip:
     name: "{{ python_package }}"
     executable: "{{ pip_executable }}"
-  become: true
+  become: yes
   loop_control:
     loop_var: python_package
   with_items:

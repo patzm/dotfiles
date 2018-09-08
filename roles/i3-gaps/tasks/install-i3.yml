@@ -1,6 +1,6 @@
 ---
 - name: install i3-gaps requirements from package manager
-  become: True
+  become: yes
   package: name={{ item }} state=latest
   with_items:
     - libxcb1-dev
@@ -48,7 +48,7 @@
     chdir: "{{ i3_gaps_repo_dir.path }}/build"
 
 - name: make and install
-  become: True
+  become: yes
   make:
     chdir: "{{ i3_gaps_repo_dir.path }}/build"
     target: install

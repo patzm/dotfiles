@@ -1,6 +1,6 @@
 ---
 - name: "light : install requirements"
-  become: True
+  become: yes
   package: name={{ item }} state=latest
   with_items:
     - automake
@@ -26,7 +26,7 @@
     chdir: "{{ light_repo_dir.path }}"
 
 - name: "light : make and install"
-  become: True
+  become: yes
   make:
     chdir: "{{ light_repo_dir.path }}"
     target: install
