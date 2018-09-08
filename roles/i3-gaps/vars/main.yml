@@ -7,5 +7,7 @@ placeholder_mod: '\<mod-1\>$'
 placeholder_mod_2: '\<mod-2\>$'
 
 placeholder_i3_exit_script: '\<i3-exit-script\>'
+placeholder_screenshot_script: '\<screenshot-script\>'
 
 i3_exit_script: "{{ user_bin_dir }}/i3exit.sh"
+screenshot_script: "{{ user_bin_dir }}/screenshot.sh"

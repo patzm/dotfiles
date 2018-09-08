@@ -2,6 +2,7 @@
 # Mod1: ALT
 # Mod4: Win/CMD
 set $mod <mod-1>
+set $mod2 <mod-2>
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
@@ -127,8 +128,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # Screenshot control
-bindsym --release Shift+Print exec <i3-config-dir>/screenshot.sh -p ~/Desktop -r
-bindsym --release Print exec <i3-config-dir>/screenshot.sh -p ~/Desktop -s
+bindsym --release $mod+$mod2+p exec <screenshot-script> -p ~/Desktop -r
+bindsym --release $mod+p exec <screenshot-script> -p ~/Desktop -s
 
 # Enable Volume± and Mute
 bindsym XF86AudioRaiseVolume  exec "amixer -q -D pulse sset Master 5%+ unmute"
