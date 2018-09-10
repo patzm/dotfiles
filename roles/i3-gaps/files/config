@@ -84,7 +84,19 @@ set $w10 "10 10"
 set $m1 primary
 set $m2 "DP-1"
 
-# switch to workspace
+# assign workspaces to monitors
+workspace 1 output $m1
+workspace 2 output $m2
+workspace 3 output $m1
+workspace 4 output $m2
+workspace 5 output $m2
+workspace 6 output $m2
+workspace 7 output $m2
+workspace 8 output $m1
+workspace 9 output $m1
+workspace 10 output $m1
+
+# switch to workspace n shorcuts
 bindsym $mod+1 workspace number $w1
 bindsym $mod+2 workspace number $w2
 bindsym $mod+3 workspace number $w3
@@ -96,7 +108,7 @@ bindsym $mod+8 workspace number $w8
 bindsym $mod+9 workspace number $w9
 bindsym $mod+0 workspace number $w10
 
-# assign workspaces to monitors
+# assign workspaces with their new names to monitors
 workspace number $w1 output $m1
 workspace number $w2 output $m2
 workspace number $w3 output $m1
