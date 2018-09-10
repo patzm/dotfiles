@@ -193,17 +193,16 @@ label = %percentage_used%%
 [module/wlan]
 type = internal/network
 interface = wlp3s0
-interval = 3.0
+interval = 1.0
 
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 format-connected = <ramp-signal> <label-connected>
-label-connected = %essid%
+label-connected = "%essid%   %downspeed:8%  %upspeed:8%"
 
 format-disconnected-prefix = " "
 format-disconnected-prefix-foreground = ${colors.foreground-alt}
-; format-disconnected = <label-disconnected>
-label-disconnected = "%ifname% disconnected"
+label-disconnected = "%ifname% off"
 
 ramp-signal-0 = 100%
 ramp-signal-1 = 80%
