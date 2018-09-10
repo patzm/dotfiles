@@ -204,6 +204,9 @@ bindkey '^X^S' history-incremental-pattern-search-forward
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 alias zshconfig="vim ~/.zshrc"
+alias i3config="vim ~/.config/i3/config"
+alias polybarconfig="vim ~/.config/polybar/config"
+
 alias clc="clear"
 alias ll="ls -la"
 
