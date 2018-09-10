@@ -219,6 +219,13 @@ exec --no-startup-id  xsetroot -solid "#232829"
 # disable automatic launching of deskop along with nautilus
 exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-icons false
 
+# if the workspaces have other names than 1, 2, 3, ..., make sure we start
+# with a workspace that we have configure, e.g. "1 www"
+exec_always --no-startup-id i3-msg "workspace number $w3"
+exec_always --no-startup-id i3-msg "workspace number $w4"
+exec_always --no-startup-id i3-msg "workspace number $w2"
+exec_always --no-startup-id i3-msg "workspace number $w1"
+
 # Program launches
 exec_always --no-startup-id $HOME/.config/i3/autostart.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
