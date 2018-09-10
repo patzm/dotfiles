@@ -9,9 +9,12 @@
   become: yes
   package: name="i3*" state=absent
 
-- name: install rofi
+- name: install rofi, synaptics touchpad drivers
   become: yes
-  package: name=rofi state=present
+  package: name="{{ item }}" state=present
+  with_items:
+  - rofi
+  - xserver-xorg-input-synaptics
 
 - name: detect if i3-gaps is already installed
   shell: command -v i3 >/dev/null 2>&1
@@ -86,6 +89,15 @@
   command: xrdb .Xresources
   args:
     chdir: "{{ ansible_env.HOME }}"
+
+- name: copy the custom xorg.conf
+  become: yes
+  copy:
+    src: "{{ role_path }}/files/xorg.conf"
+    dest: "/etc/X11/xorg.conf"
+    owner: root
+    group: root
+    mode: 0644
 
 - name: install i3-gaps
   include_tasks: install-i3.yml
