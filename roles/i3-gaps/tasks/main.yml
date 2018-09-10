@@ -27,18 +27,11 @@
   file:
     path: "{{ i3_config_dir }}"
     state: directory
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
-    mode: 0700
 
 - name: copy the config file
   copy:
     src: "{{ role_path }}/files/config"
     dest: "{{ i3_config_file }}"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
-    mode: 0700
-    force: yes
 
 - name: copy the shell scripts
   copy:
@@ -108,3 +101,7 @@
 
 - name: install i3-gaps requirements from source
   include_tasks: font-awesome.yml
+
+- name: install autorandr
+  include_role:
+    name: autorandr

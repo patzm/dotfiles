@@ -1,2 +1,3 @@
 ---
 user_bin_dir: "{{ ansible_env.HOME }}/bin"
+user_config_dir: "{{ ansible_env.HOME }}/.config"
