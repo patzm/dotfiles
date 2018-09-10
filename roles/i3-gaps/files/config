@@ -137,8 +137,8 @@ bindsym XF86AudioLowerVolume  exec "amixer -q -D pulse sset Master 5%- unmute"
 bindsym XF86AudioMute exec "amixer -q -D pulse sset Master toggle"
 
 # Enable Birghtness±
-bindsym XF86MonBrightnessUp     exec light -A 10
-bindsym XF86MonBrightnessDown   exec light -U 10
+bindsym XF86MonBrightnessUp     exec light -A 5
+bindsym XF86MonBrightnessDown   exec light -U 5
 
 bindsym XF86KbdBrightnessUp     exec light -k -A 10
 bindsym XF86KbdBrightnessDown   exec light -k -U 10
@@ -146,11 +146,6 @@ bindsym XF86KbdBrightnessDown   exec light -k -U 10
 # resize window (you can also use the mouse for that)
 mode "resize" {
     # These bindings trigger as soon as you enter the resize mode
-
-    # Pressing left will shrink the window’s width.
-    # Pressing right will grow the window’s width.
-    # Pressing up will shrink the window’s height.
-    # Pressing down will grow the window’s height.
     bindsym h resize shrink width 10 px or 10 ppt
     bindsym k resize grow height 10 px or 10 ppt
     bindsym j resize shrink height 10 px or 10 ppt
