@@ -205,17 +205,18 @@ client.background       $bg
 # the output you can find the line
 #   WM_CLASS(STRING) = "<instance_name>", "<class_name>"
 # use this information to assign windows to workspaces
-assign [class="Firefox"] → $w1
-assign [class="jetbrains-pycharm"] → $w2
-assign [class="Thunderbird"] → $w8
-assign [class="GitKraken"] → $w9
-
-# Program launches
-exec_always $HOME/.config/i3/autostart.sh
-exec_always $HOME/.config/polybar/launch.sh
+assign [class="Firefox"] $w1
+assign [class="jetbrains-pycharm"] $w2
+assign [class="Thunderbird"] $w8
+assign [class="Slack"] $w8
+assign [class="GitKraken"] $w9
 
 # Set desktop background
 exec --no-startup-id  xsetroot -solid "#232829"
 
 # disable automatic launching of deskop along with nautilus
 exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-icons false
+
+# Program launches
+exec_always --no-startup-id $HOME/.config/i3/autostart.sh
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
