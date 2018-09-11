@@ -249,3 +249,6 @@ exec --no-startup-id  xsetroot -solid "#232829"
 
 # disable automatic launching of deskop along with nautilus
 exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-icons false
+
+# launch the network applet
+exec --no-startup-id nm-applet
