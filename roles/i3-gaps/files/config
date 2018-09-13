@@ -1,10 +1,10 @@
-# Set the mod key
+# set the mod key
 # Mod1: ALT
 # Mod4: Win/CMD
 set $mod <mod-1>
 set $mod2 <mod-2>
 
-# Font for window titles. Will also be used by the bar unless a different font
+# font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # The font above is very space-efficient, that is, it looks good, sharp and
@@ -13,7 +13,7 @@ font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
 # chose a FreeType font, such as:
 # font pango:DejaVu Sans Mono 10
 
-# Use Mouse+$mod to drag floating windows to their wanted position
+# use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # disable focusing a window on mouse hover over
@@ -68,7 +68,7 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+Shift+a focus child
 
-# Configure workspace names
+# configure workspace names
 set $w1 "1 www"
 set $w2 "2 dev"
 set $w3 "3 3"
@@ -158,11 +158,11 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
-# Screenshot control
+# screenshot control
 bindsym --release $mod+$mod2+p exec <screenshot-script> -p ~/Desktop -r
 bindsym --release $mod+p exec <screenshot-script> -p ~/Desktop -s
 
-# Enable Volume± and Mute
+# Enable volume± and mute
 bindsym XF86AudioRaiseVolume exec "amixer -q -D pulse sset Master 5%+ unmute"
 bindsym XF86AudioLowerVolume exec "amixer -q -D pulse sset Master 5%- unmute"
 bindsym XF86AudioMute exec "amixer -q -D pulse sset Master toggle"
@@ -210,12 +210,12 @@ mode "$mode_system" {
 }
 bindsym $mod+Shift+e mode "$mode_system"
 
-# Layouting
+# layouting
 for_window [class="^.*"] border pixel 1
 gaps inner 5
 smart_gaps on
 
-# Style
+# style
 set_from_resource $bg       color.special.background_color  #000000
 set_from_resource $bg_alt   color.primary.color_01          #111111
 set_from_resource $fg       color.special.foreground_color  #ffffff
@@ -230,7 +230,7 @@ client.unfocused        $bg     $bg     $fg     $bg         $bg
 client.urgent           $bg     $bg     $fg     $bg         $snd
 client.background       $bg
 
-# Window assignments
+# window assignments
 # call xprop on the command line and click the window you want to identiy. On 
 # the output you can find the line
 #   WM_CLASS(STRING) = "<instance_name>", "<class_name>"
@@ -241,7 +241,7 @@ assign [class="Thunderbird"] $w8
 assign [class="Slack"] $w8
 assign [class="GitKraken"] $w9
 
-# Program launches
+# program launches
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Set desktop background
@@ -249,6 +249,9 @@ exec --no-startup-id  xsetroot -solid "#232829"
 
 # disable automatic launching of deskop along with nautilus
 exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-icons false
+
+# make sure the gnome keyring is launched on login
+exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
 # launch the network applet
 exec_always --no-startup-id nm-applet
