@@ -12,7 +12,7 @@ Then, execute the following:
 ```
 mkdir -p ~/repos/configs
 git clone https://github.com/patzm/configs.git ~/repos/configs
-ansible-playbook ~/repos/configs/ansible/setup.yml -K [-i localhost] [--extra-vars "headless=yes"]
+ansible-playbook ~/repos/configs/setup.yml -K [-i localhost] [--extra-vars "headless=yes"]
 ```
 The switch `-K` requests root priviliges on the current machine.
 Here, `localhost` is an inventory file just specifying the current PC as the only host.
@@ -26,9 +26,7 @@ Then, programs like `i3` will not be installed.
 On modern distributions, installation is quite straight forward:
 ```
 sudo apt-get update
-sudo apt-get install \
-    git \
-    ansible
+sudo apt-get install git ansible
 ```
 
 ## Ubuntu 14.04 or earlier
@@ -36,10 +34,7 @@ Ansible ships with Ubuntu 12.04 or 14.04 in version `1.x`.
 However we need version `2.x` or higher.
 ```
 sudo apt-get update
-sudo apt-get install \
-    software-properties-common \
-    ca-certificates \
-    git
+sudo apt-get install software-properties-common ca-certificates git
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install ansible
