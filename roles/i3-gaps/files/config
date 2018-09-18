@@ -70,15 +70,15 @@ bindsym $mod+Shift+a focus child
 
 # configure workspace names
 set $w1 "1 www"
-set $w2 "2 dev"
-set $w3 "3 3"
-set $w4 "4 4"
-set $w5 "5 5"
-set $w6 "6 6"
-set $w7 "7 7"
-set $w8 "8 mail"
-set $w9 "9 git"
-set $w10 "10 10"
+set $w2 "2 "
+set $w3 "3 "
+set $w4 "4 "
+set $w5 "5 "
+set $w6 "6 "
+set $w7 "7 "
+set $w8 "8 "
+set $w9 "9 "
+set $w10 "10 "
 
 # define monitors
 set $m1 primary

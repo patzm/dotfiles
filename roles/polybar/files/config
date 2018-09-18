@@ -41,7 +41,7 @@ line-size = 3
 line-color = #f00
 
 modules-left = xwindow
-modules-right = xbacklight alsa xkeyboard wlan eth battery date powermenu
+modules-right = xbacklight alsa xkeyboard battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -61,7 +61,7 @@ inherit = bar/base
 bottom = True
 
 modules-left = i3
-modules-right = filesystem memory cpu temperature 
+modules-right = wlan eth filesystem memory cpu temperature 
 
 scroll-up = i3wm-wsnext
 scroll-down = i3wm-wsprev
