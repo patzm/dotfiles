@@ -121,6 +121,10 @@ workspace number $w9 output $m1
 workspace number $w10 output $m1
 
 # force move all workspaces to their corresponding outputs
+exec_always --no-startup-id i3-msg 'workspace number $w3'
+exec_always --no-startup-id i3-msg 'workspace number $w4'
+exec_always --no-startup-id i3-msg 'workspace number $w1'
+exec_always --no-startup-id i3-msg 'workspace number $w2'
 exec_always --no-startup-id i3-msg '\
     workspace number $w1; move workspace to output $m1; \
     workspace number $w2; move workspace to output $m2; \
@@ -132,9 +136,6 @@ exec_always --no-startup-id i3-msg '\
     workspace number $w8; move workspace to output $m1; \
     workspace number $w9; move workspace to output $m1; \
     workspace number $w10; move workspace to output $m1;'
-exec_always --no-startup-id i3-msg '\
-    workspace number $w3; workspace number $w4; \
-    workspace number $w1; workspace number $w2;'
 
 # switch to neighbouring workspaces
 bindsym $mod+Shift+Left workspace prev
