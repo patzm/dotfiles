@@ -69,7 +69,7 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+a focus child
 
 # configure workspace names
-set $w1 "1 www"
+set $w1 "1 "
 set $w2 "2 "
 set $w3 "3 "
 set $w4 "4 "
@@ -241,6 +241,9 @@ assign [class="Thunderbird"] $w8
 assign [class="Slack"] $w8
 assign [class="GitKraken"] $w9
 
+# make sure the display configuration is loaded properly
+exec --no-startup-id autorandr --change
+
 # program launches
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
@@ -255,6 +258,3 @@ exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-ico
 
 # make sure the gnome keyring is launched on login
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
-
-# make sure the display configuration is loaded properly
-exec --no-startup-id autorandr --change
