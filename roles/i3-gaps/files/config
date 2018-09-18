@@ -244,6 +244,9 @@ assign [class="GitKraken"] $w9
 # program launches
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
+# launch the network applet
+exec_always --no-startup-id nm-applet
+
 # Set desktop background
 exec --no-startup-id  xsetroot -solid "#232829"
 
@@ -253,5 +256,5 @@ exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-ico
 # make sure the gnome keyring is launched on login
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
 
-# launch the network applet
-exec_always --no-startup-id nm-applet
+# make sure the display configuration is loaded properly
+exec --no-startup-id autorandr --change
