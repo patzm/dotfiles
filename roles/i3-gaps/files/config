@@ -75,7 +75,7 @@ set $w3 "3 "
 set $w4 "4 "
 set $w5 "5 "
 set $w6 "6 "
-set $w7 "7 "
+set $w7 "7 "
 set $w8 "8 "
 set $w9 "9 "
 set $w10 "10 "
@@ -115,8 +115,8 @@ workspace number $w3 output $m1
 workspace number $w4 output $m2
 workspace number $w5 output $m2
 workspace number $w6 output $m2
-workspace number $w7 output $m2
-workspace number $w8 output $m1
+workspace number $w7 output $m1
+workspace number $w8 output $m2
 workspace number $w9 output $m1
 workspace number $w10 output $m1
 
@@ -132,8 +132,8 @@ exec_always --no-startup-id i3-msg '\
     workspace number $w4; move workspace to output $m2; \
     workspace number $w5; move workspace to output $m2; \
     workspace number $w6; move workspace to output $m2; \
-    workspace number $w7; move workspace to output $m2; \
-    workspace number $w8; move workspace to output $m1; \
+    workspace number $w7; move workspace to output $m1; \
+    workspace number $w8; move workspace to output $m2; \
     workspace number $w9; move workspace to output $m1; \
     workspace number $w10; move workspace to output $m1;'
 
