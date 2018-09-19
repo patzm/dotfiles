@@ -198,11 +198,11 @@ interval = 1.0
 format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 format-connected = <ramp-signal> <label-connected>
-label-connected = "%essid%   %downspeed:8%  %upspeed:8%"
+label-connected = " %downspeed:8%  %upspeed:8%"
 
 format-disconnected-prefix = " "
 format-disconnected-prefix-foreground = ${colors.foreground-alt}
-label-disconnected = "%ifname% off"
+label-disconnected = "off"
 
 ramp-signal-0 = 100%
 ramp-signal-1 = 80%
@@ -224,18 +224,15 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
-date = 
-date-alt = " %Y-%m-%d"
+date = " %Y-%m-%d"
+date-alt = 
 
-time = %H:%M
-time-alt = %H:%M:%S
+time = %H:%M:%S
+time-alt = %H:%M
 
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-
-label = %date% %time%
+label = "%date%  %time%"
 
 [module/alsa]
 type = internal/alsa
@@ -312,10 +309,12 @@ label-warn = %temperature-c%
 label-warn-foreground = ${colors.alert-high}
 
 ramp-0 = ""
-ramp-1 = ""
-ramp-2 = ""
-ramp-3 = ""
-ramp-4 = ""
+ramp-1 = ""
+ramp-2 = ""
+ramp-3 = ""
+ramp-4 = ""
+ramp-5 = ""
+ramp-6 = ""
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
