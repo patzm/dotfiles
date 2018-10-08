@@ -1,34 +1,27 @@
 ---
-- name: load OS-dependent variables
-  include_vars: "{{ item }}"
-  with_first_found:
-  - "{{ ansible_os_family }}.yml"
-  - default.yml
-  tags: dotfiles
-
 - name: make sure that the i3 package is not installed (i3 without gaps)
   become: yes
   package: name="i3*" state=absent
+  tags: ui
 
-- name: install rofi, synaptics touchpad drivers
-  become: yes
-  package: name="{{ item }}" state=present
-  with_items:
-  - rofi
-  - xserver-xorg-input-synaptics
-
-- name: detect if i3-gaps is already installed
-  shell: command -v i3 >/dev/null 2>&1
-  register: cmd_exists_i3_gaps
-  ignore_errors: yes
-
-- name: detect if light is already installed
-  shell: command -v light >/dev/null 2>&1
-  register: cmd_exists_light
-  ignore_errors: yes
-
-- name: i3 configuration
+- name: pre-installation routines & configuration files
   block:
+    - name: load OS-dependent variables
+      include_vars: "{{ item }}"
+      with_first_found:
+      - "{{ ansible_os_family }}.yml"
+      - default.yml
+
+    - name: detect if i3-gaps is already installed
+      shell: command -v i3 >/dev/null 2>&1
+      register: cmd_exists_i3_gaps
+      ignore_errors: yes
+
+    - name: detect if light is already installed
+      shell: command -v light >/dev/null 2>&1
+      register: cmd_exists_light
+      ignore_errors: yes
+
     - name: create i3 config directory
       file:
         path: "{{ i3_config_dir }}"
@@ -92,7 +85,7 @@
       command: xrdb .Xresources
       args:
         chdir: "{{ ansible_env.HOME }}"
-  tags: dotfiles
+  tags: [ui, dotfiles]
 
 - name: copy the custom xorg.conf
   become: yes
@@ -102,23 +95,33 @@
     owner: root
     group: root
     mode: 0644
-  tags: dotfiles-root
+  tags: [ui, dotfiles-root]
 
-- name: install i3-gaps
-  include_tasks: install-i3.yml
-  when: cmd_exists_i3_gaps.rc > 0
+- name: i3-gaps and dependencies installation
+  block:
+    - name: install rofi, synaptics touchpad drivers
+      become: yes
+      package: name="{{ item }}" state=present
+      with_items:
+      - rofi
+      - xserver-xorg-input-synaptics
 
-- name: install polybar
-  include_role:
-    name: polybar
+    - name: install i3-gaps
+      include_tasks: install-i3.yml
+      when: cmd_exists_i3_gaps.rc > 0
 
-- name: install light
-  include_tasks: install-light.yml
-  when: cmd_exists_light.rc > 0
+    - name: install polybar
+      include_role:
+        name: polybar
 
-- name: install i3-gaps requirements from source
-  include_tasks: font-awesome.yml
+    - name: install light
+      include_tasks: install-light.yml
+      when: cmd_exists_light.rc > 0
 
-- name: install autorandr
-  include_role:
-    name: autorandr
+    - name: install i3-gaps requirements from source
+      include_tasks: font-awesome.yml
+
+    - name: install autorandr
+      include_role:
+        name: autorandr
+  tags: ui
