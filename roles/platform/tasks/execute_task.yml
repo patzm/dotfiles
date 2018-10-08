@@ -1,5 +1,6 @@
 ---
-- include_tasks: "{{ task_file }}"
+- name: "include {{ task }}"
+  include_tasks: "{{ task_file }}"
   with_first_found:
     - files:
       - "{{ task }}.yml"
@@ -7,4 +8,4 @@
       skip: yes
   loop_control:
     loop_var: task_file
-
+  tags: always

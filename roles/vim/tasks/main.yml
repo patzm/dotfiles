@@ -7,6 +7,7 @@
     group: "{{ user_group }}"
     force: yes
     mode: 0700
+  tags: dotfiles
 
 - name: create vim vundle dir
   file:

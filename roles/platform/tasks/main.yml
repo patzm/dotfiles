@@ -5,6 +5,7 @@
     path: "{{ user_bin_dir }}"
     state: directory
     mode: 0700
+  tags: always
 
 - name: run the platform dependent tasks
   include_tasks: "execute_task.yml"
@@ -15,6 +16,7 @@
   with_items:
     - "main"
     - "{{ ansible_distribution_major_version }}" 
+  tags: always
 
 ## Possible values
 # RedHat = 'RedHat'

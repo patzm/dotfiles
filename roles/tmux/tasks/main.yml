@@ -6,6 +6,7 @@
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
       force: yes
+  tags: dotfiles
 
 - name: create the tmux plugin directory
   file:

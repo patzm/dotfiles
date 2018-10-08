@@ -55,6 +55,7 @@
   with_items: "{{ supported_distribution_versions_ubuntu }}"
   loop_control:
     loop_var: task
+  tags: always
 
 - name: run distribution specific tasks defined by a lower bound
   include_tasks: "execute_task.yml"
@@ -64,8 +65,8 @@
   with_items: "{{ supported_distribution_versions_ubuntu }}"
   loop_control:
     loop_var: task
+  tags: always
 
 - include_role:
     name: i3-gaps
-  when: headless is not defined
-
+  tags: [ 'never', 'ui' ]

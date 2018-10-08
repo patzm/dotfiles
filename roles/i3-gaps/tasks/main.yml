@@ -4,6 +4,7 @@
   with_first_found:
   - "{{ ansible_os_family }}.yml"
   - default.yml
+  tags: dotfiles
 
 - name: make sure that the i3 package is not installed (i3 without gaps)
   become: yes
@@ -26,69 +27,72 @@
   register: cmd_exists_light
   ignore_errors: yes
 
-- name: create i3 config directory
-  file:
-    path: "{{ i3_config_dir }}"
-    state: directory
+- name: i3 configuration
+  block:
+    - name: create i3 config directory
+      file:
+        path: "{{ i3_config_dir }}"
+        state: directory
 
-- name: copy the config file
-  copy:
-    src: "{{ role_path }}/files/config"
-    dest: "{{ i3_config_file }}"
+    - name: copy the config file
+      copy:
+        src: "{{ role_path }}/files/config"
+        dest: "{{ i3_config_file }}"
 
-- name: copy the shell scripts
-  copy:
-    src: "{{ role_path }}/files/{{ item }}"
-    dest: "{{ user_bin_dir }}/{{ item }}"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
-    mode: 0700
-    force: yes
-  with_items:
-  - screenshot.sh
-  - i3exit.sh
+    - name: copy the shell scripts
+      copy:
+        src: "{{ role_path }}/files/{{ item }}"
+        dest: "{{ user_bin_dir }}/{{ item }}"
+        owner: "{{ ansible_env.USER }}"
+        group: "{{ user_group }}"
+        mode: 0700
+        force: yes
+      with_items:
+      - screenshot.sh
+      - i3exit.sh
 
-- name: insert the modifier key into config file
-  replace:
-    path: "{{ i3_config_file }}"
-    regexp: "{{ placeholder_mod }}"
-    replace: "{{ mod }}"
+    - name: insert the modifier key into config file
+      replace:
+        path: "{{ i3_config_file }}"
+        regexp: "{{ placeholder_mod }}"
+        replace: "{{ mod }}"
 
-- name: insert the alternative modifier key into the config file
-  replace:
-    path: "{{ i3_config_file }}"
-    regexp: "{{ placeholder_mod_2 }}"
-    replace: "{{ mod_2 }}"
+    - name: insert the alternative modifier key into the config file
+      replace:
+        path: "{{ i3_config_file }}"
+        regexp: "{{ placeholder_mod_2 }}"
+        replace: "{{ mod_2 }}"
 
-- name: insert the screenshot script location into the config file
-  replace:
-    path: "{{ i3_config_file }}"
-    regexp: "{{ placeholder_screenshot_script }}"
-    replace: "{{ screenshot_script }}"
+    - name: insert the screenshot script location into the config file
+      replace:
+        path: "{{ i3_config_file }}"
+        regexp: "{{ placeholder_screenshot_script }}"
+        replace: "{{ screenshot_script }}"
 
-- name: insert the i3exit script location into the config file
-  replace:
-    path: "{{ i3_config_file }}"
-    regexp: "{{ placeholder_i3_exit_script }}"
-    replace: "{{ i3_exit_script }}"
+    - name: insert the i3exit script location into the config file
+      replace:
+        path: "{{ i3_config_file }}"
+        regexp: "{{ placeholder_i3_exit_script }}"
+        replace: "{{ i3_exit_script }}"
 
-- name: "legacy : ensure that the old ~/.i3 config folder does not exist"
-  file:
-    path: "{{ ansible_env.HOME }}/.i3"
-    state: absent
+    - name: "legacy : ensure that the old ~/.i3 config folder does not exist"
+      file:
+        path: "{{ ansible_env.HOME }}/.i3"
+        state: absent
 
-- name: copy .Xresources
-  copy:
-    src: "{{ role_path }}/files/.Xresources"
-    dest: "{{ ansible_env.HOME }}/.Xresources"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
-    mode: 0700
+    - name: copy .Xresources
+      copy:
+        src: "{{ role_path }}/files/.Xresources"
+        dest: "{{ ansible_env.HOME }}/.Xresources"
+        owner: "{{ ansible_env.USER }}"
+        group: "{{ user_group }}"
+        mode: 0700
 
-- name: reload .Xresources
-  command: xrdb .Xresources
-  args:
-    chdir: "{{ ansible_env.HOME }}"
+    - name: reload .Xresources
+      command: xrdb .Xresources
+      args:
+        chdir: "{{ ansible_env.HOME }}"
+  tags: dotfiles
 
 - name: copy the custom xorg.conf
   become: yes
@@ -98,6 +102,7 @@
     owner: root
     group: root
     mode: 0644
+  tags: dotfiles-root
 
 - name: install i3-gaps
   include_tasks: install-i3.yml

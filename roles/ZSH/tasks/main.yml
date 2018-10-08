@@ -3,24 +3,26 @@
   shell: which zsh
   register: zsh_bin
 
-- name: "Make ZSH default shell for user {{ ansible_env.USER }}"
+- name: Make ZSH default shell
   become: yes
   user:
     name: "{{ ansible_env.USER }}"
     shell: "{{ zsh_bin.stdout }}"
 
-- name: "Copy default ZSH config for user {{ ansible_env.USER }}"
+- name: Copy default ZSH config
   copy:
       src: "{{ role_path }}/files/zshrc"
       dest: "{{ ansible_env.HOME }}/.zshrc"
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
       force: yes
+  tags: dotfiles
 
-- name: "Copy the OS dependent configuration for user {{ ansible_env.USER }}"
+- name: Copy the OS dependent configuration
   copy:
     src: "{{ role_path }}/files/zsh_{{ ansible_os_family|lower }}.sh"
     dest: "{{ ansible_env.HOME }}/.zshosdep"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     force: yes
+  tags: dotfiles
