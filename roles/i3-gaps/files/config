@@ -109,16 +109,16 @@ bindsym $mod+9 workspace number $w9
 bindsym $mod+0 workspace number $w10
 
 # assign workspaces with their new names to monitors
-workspace number $w1 output $m1
-workspace number $w2 output $m2
-workspace number $w3 output $m1
-workspace number $w4 output $m2
-workspace number $w5 output $m2
-workspace number $w6 output $m2
-workspace number $w7 output $m1
-workspace number $w8 output $m2
-workspace number $w9 output $m1
-workspace number $w10 output $m1
+workspace $w1 output $m1
+workspace $w2 output $m2
+workspace $w3 output $m1
+workspace $w4 output $m2
+workspace $w5 output $m2
+workspace $w6 output $m2
+workspace $w7 output $m1
+workspace $w8 output $m2
+workspace $w9 output $m1
+workspace $w10 output $m1
 
 # force move all workspaces to their corresponding outputs
 exec_always --no-startup-id i3-msg 'workspace number $w3'
