@@ -7,6 +7,7 @@
 * autorandr
 * python (virtualenv)
 * tmux
+* htop
 * ranger (to be added)
 
 # Setup
