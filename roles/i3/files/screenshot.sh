@@ -28,8 +28,7 @@ function screenshot_screen () {
 
 function validate_input_folder () {
     if [ ! -d "$1" ]; then
-        echo "Invalid input folder $1"
-        help_and_exit 1
+        mkdir -p "$1"
     fi
 }
 
@@ -64,4 +63,3 @@ case "${mode}" in
 esac
 
 xclip -selection clipboard -target image/png -i < "${image_file}"
-

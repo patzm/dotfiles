@@ -160,8 +160,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # screenshot control
-bindsym --release $mod+$mod2+p exec <screenshot-script> -p ~/Desktop -r
-bindsym --release $mod+p exec <screenshot-script> -p ~/Desktop -s
+bindsym --release $mod+$mod2+p exec <screenshot-script> -p ~/Pictures/screenshots -r
+bindsym --release $mod+p exec <screenshot-script> -p ~/Pictures/screenshots -s
 
 # Enable volume± and mute
 bindsym XF86AudioRaiseVolume exec "amixer -q -D pulse sset Master 5%+ unmute"
