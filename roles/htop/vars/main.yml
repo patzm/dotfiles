@@ -1,0 +1,2 @@
+---
+htop_config_dir: "{{ user_config_dir }}/htop"

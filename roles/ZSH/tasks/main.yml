@@ -11,11 +11,11 @@
 
 - name: Copy default ZSH config
   copy:
-      src: "{{ role_path }}/files/zshrc"
-      dest: "{{ ansible_env.HOME }}/.zshrc"
-      owner: "{{ ansible_env.USER }}"
-      group: "{{ user_group }}"
-      force: yes
+    src: "{{ role_path }}/files/zshrc"
+    dest: "{{ ansible_env.HOME }}/.zshrc"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    force: yes
   tags: dotfiles
 
 - name: Copy the OS dependent configuration
