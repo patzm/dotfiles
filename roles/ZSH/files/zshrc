@@ -14,10 +14,10 @@ check_zsh_theme() {
 }
 
 check_zsh_plugin () {
-	if [[ ! -d "$ZSH_PLUGINS/$1" ]]; then
-		echo "\n${GREEN}ZSH-plugin $1 not found. Downloading ...${NORMAL}"
-		git clone $2 "$ZSH_PLUGINS/$1"
-	fi
+    if [[ ! -d "$ZSH_PLUGINS/$1" ]]; then
+        echo "\n${GREEN}ZSH-plugin $1 not found. Downloading ...${NORMAL}"
+        git clone $2 "$ZSH_PLUGINS/$1"
+    fi
 }
 
 mkcdir () {
@@ -25,14 +25,18 @@ mkcdir () {
 }
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$PATH:/usr/local/sbin
+export PATH="$PATH:/usr/local/sbin"
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    export PATH=$HOME/bin:$PATH
+    export PATH="$HOME/bin:$PATH"
 fi
+if [ -d "$HOME/.local/bin" ]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi
+
 # If snap is installed
 if [ -d "/snap/bin" ]; then
-	export PATH=/snap/bin:$PATH
+    export PATH="/snap/bin:$PATH"
 fi
 export XDG_CONFIG_HOME=${HOME}/.config
 export XDG_DATA_HOME=${HOME}/.local/share
@@ -42,63 +46,63 @@ ZSH_GIT=$ZSH/.git
 # Use colors, but only if connected to a terminal, and that terminal
 # supports them.
 if which tput >/dev/null 2>&1; then
-		ncolors=$(tput colors)
+    ncolors=$(tput colors)
 fi
 if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
-	RED="$(tput setaf 1)"
-	GREEN="$(tput setaf 2)"
-	YELLOW="$(tput setaf 3)"
-	BLUE="$(tput setaf 4)"
-	BOLD="$(tput bold)"
-	NORMAL="$(tput sgr0)"
+    RED="$(tput setaf 1)"
+    GREEN="$(tput setaf 2)"
+    YELLOW="$(tput setaf 3)"
+    BLUE="$(tput setaf 4)"
+    BOLD="$(tput bold)"
+    NORMAL="$(tput sgr0)"
 else
-	RED=""
-	GREEN=""
-	YELLOW=""
-	BLUE=""
-	BOLD=""
-	NORMAL=""
+    RED=""
+    GREEN=""
+    YELLOW=""
+    BLUE=""
+    BOLD=""
+    NORMAL=""
 fi
 
 if [ ! -d $ZSH ] || [ ! -d $ZSH_GIT ]; then
-	# This script is an extract from https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
-	echo "oh-my-zsh not found in $ZSH. Downloading ..."
-	# Only enable exit-on-error after the non-critical colorization stuff,
-	# which may fail on systems lacking tput or terminfo
-	set -e
+    # This script is an extract from https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh
+    echo "oh-my-zsh not found in $ZSH. Downloading ..."
+    # Only enable exit-on-error after the non-critical colorization stuff,
+    # which may fail on systems lacking tput or terminfo
+    set -e
 
-	CHECK_ZSH_INSTALLED=$(grep /zsh$ /etc/shells | wc -l)
-	if [ ! $CHECK_ZSH_INSTALLED -ge 1 ]; then
-		printf "${YELLOW}Zsh is not installed!${NORMAL} Please install zsh first!\n"
-		exit
-	fi
-	unset CHECK_ZSH_INSTALLED
+    CHECK_ZSH_INSTALLED=$(grep /zsh$ /etc/shells | wc -l)
+    if [ ! $CHECK_ZSH_INSTALLED -ge 1 ]; then
+        printf "${YELLOW}Zsh is not installed!${NORMAL} Please install zsh first!\n"
+        exit
+    fi
+    unset CHECK_ZSH_INSTALLED
 
-	if [ ! -d $ZSH_GIT ]; then
-		printf "${RED}Warning: $ZSH already exists but is not a repository\nClearing ...\n${NORMAL}"
-		rm -rf $ZSH
-	fi
+    if [ ! -d $ZSH_GIT ]; then
+        printf "${RED}Warning: $ZSH already exists but is not a repository\nClearing ...\n${NORMAL}"
+        rm -rf $ZSH
+    fi
 
-	# Prevent the cloned repository from having insecure permissions. Failing to do
-	# so causes compinit() calls to fail with "command not found: compdef" errors
-	# for users with insecure umasks (e.g., "002", allowing group writability). Note
-	# that this will be ignored under Cygwin by default, as Windows ACLs take
-	# precedence over umasks except for filesystems mounted with option "noacl".
-	umask g-w,o-w
+    # Prevent the cloned repository from having insecure permissions. Failing to do
+    # so causes compinit() calls to fail with "command not found: compdef" errors
+    # for users with insecure umasks (e.g., "002", allowing group writability). Note
+    # that this will be ignored under Cygwin by default, as Windows ACLs take
+    # precedence over umasks except for filesystems mounted with option "noacl".
+    umask g-w,o-w
 
-	printf "${GREEN}Cloning Oh My Zsh...${NORMAL}\n"
-	# The Windows (MSYS) Git is not compatible with normal use on cygwin
-	if [ "$OSTYPE" = cygwin ]; then
-		if git --version | grep msysgit > /dev/null; then
-			echo "Error: Windows/MSYS Git is not supported on Cygwin"
-			echo "Error: Make sure the Cygwin git package is installed and is first on the path"
-			exit 1
-		fi
-	fi
-	env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH || {
-		printf "Error: git clone of oh-my-zsh repo failed\n"
-		# exit 1
-	}
+    printf "${GREEN}Cloning Oh My Zsh...${NORMAL}\n"
+    # The Windows (MSYS) Git is not compatible with normal use on cygwin
+    if [ "$OSTYPE" = cygwin ]; then
+        if git --version | grep msysgit > /dev/null; then
+            echo "Error: Windows/MSYS Git is not supported on Cygwin"
+            echo "Error: Make sure the Cygwin git package is installed and is first on the path"
+            exit 1
+        fi
+    fi
+    env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git $ZSH || {
+        printf "Error: git clone of oh-my-zsh repo failed\n"
+        # exit 1
+    }
 fi
 unset ZSH_GIT
 
@@ -141,18 +145,18 @@ source $ZSH_PLUGINS/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 plugins=(
-	docker
-	git
-	npm
-	pip
-	rsync
-	tldr
-	tmux
-	virtualenv
-	virtualenvwrapper
-	zsh-autosuggestions
-	zsh-completions
-	zshmarks
+    docker
+    git
+    npm
+    pip
+    rsync
+    tldr
+    tmux
+    virtualenv
+    virtualenvwrapper
+    zsh-autosuggestions
+    zsh-completions
+    zshmarks
 )
 
 # Load all instance dependent settings
@@ -165,7 +169,7 @@ fi
 
 # Load all OS dependent settings
 if [[ -f $HOME/.zshosdep ]]; then
-	source $HOME/.zshosdep
+    source $HOME/.zshosdep
 fi
 
 # Load all machine-specific aliases
@@ -227,6 +231,5 @@ export NVM_DIR="$HOME/.nvm"
 # Python
 export WORKON_HOME=~/.virtualenvs
 if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-	. /usr/local/bin/virtualenvwrapper.sh
+    . /usr/local/bin/virtualenvwrapper.sh
 fi
-
