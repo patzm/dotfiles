@@ -1,7 +1,11 @@
 ---
+- name: add font repo for Thunderbird icons
+  apt_repository: 
+    repo: ppa:eosrei/fonts
+
 - name: install Ubuntu 18.04 or later only software
   become: yes
   package: name={{ item }} state=latest
   with_items:
     - neofetch
-
+    - fonts-twemoji-svginot
