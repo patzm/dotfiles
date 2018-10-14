@@ -4,15 +4,6 @@
 set $mod <mod-1>
 set $mod2 <mod-2>
 
-# font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below. ISO 10646 = Unicode
-font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, if you need a lot of unicode glyphs or
-# right-to-left text rendering, you should instead use pango for rendering and
-# chose a FreeType font, such as:
-# font pango:DejaVu Sans Mono 10
-
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -51,16 +42,12 @@ bindsym $mod+Shift+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
-# change container layout (stacked, tabbed, toggle split)
+# change container layout (stacked, tabbed)
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
-bindsym $mod+g layout toggle split
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
@@ -241,6 +228,8 @@ assign [class="jetbrains-pycharm"] $w2
 assign [class="Thunderbird"] $w8
 assign [class="Slack"] $w8
 assign [class="GitKraken"] $w9
+
+for_window [class="(?i)gnome-calculator"] floating enable
 
 # make sure the display configuration is loaded properly
 exec --no-startup-id autorandr --change
