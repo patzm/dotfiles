@@ -110,10 +110,6 @@
       include_tasks: install-i3.yml
       when: cmd_exists_i3_gaps.rc > 0
 
-    - name: install polybar
-      include_role:
-        name: polybar
-
     - name: install light
       include_tasks: install-light.yml
       when: cmd_exists_light.rc > 0
@@ -125,3 +121,8 @@
       include_role:
         name: autorandr
   tags: ui
+
+- name: install and/or configure polybar
+  include_role:
+    name: polybar
+  tags: always
