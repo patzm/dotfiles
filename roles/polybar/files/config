@@ -1,11 +1,11 @@
 [colors]
-background = ${xrdb:color.special.background_color:#000000}
-background-alt = ${xrdb:color.primary.color_01:#111111}
-foreground = ${xrdb:color.special.foreground_color:#ffffff}
-foreground-alt = ${xrdb:color.primary.color_08:#ee11ee}
+background = ${xrdb:polybar.background:#000000}
+background-alt = ${xrdb:polybar.color1:#111111}
+foreground = ${xrdb:polybar.foreground:#ffffff}
+foreground-alt = ${xrdb:polybar.color8:#ee11ee}
 
-primary = ${xrdb:color.primary.color_05:#cf5c36}
-secondary = ${xrdb:color.primary.color_03:#d3d5d7}
+primary = ${xrdb:polybar.color5:#cf5c36}
+secondary = ${xrdb:polybar.color3:#d3d5d7}
 
 alert-low = #f2930c
 alert-middle = #e2580b
@@ -15,6 +15,7 @@ alert-high = #cc060c
 monitor = ${env:MONITOR:eDP-1}
 ; set the default MONITOR in ~/.profile with
 ; export MONITOR="DP-xyz"
+; TODO: think about using .xsession for this
 
 width = 100%
 height = 20

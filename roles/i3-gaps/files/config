@@ -204,16 +204,16 @@ gaps inner 5
 smart_gaps on
 
 # style
-set_from_resource $bg       color.special.background_color  #000000
-set_from_resource $bg_alt   color.primary.color_01          #111111
-set_from_resource $fg       color.special.foreground_color  #ffffff
-set_from_resource $fg_alt   color.primary.color_08          #eeeeee
-set_from_resource $pri      color.primary.color_05          #cf5c36
-set_from_resource $snd      color.primary.color_03          #d3d5d7
+set_from_resource $bg       i3wm.background     #000000
+set_from_resource $bg_alt   i3wm.color1         #111111
+set_from_resource $fg       i3wm.foreground     #ffffff
+set_from_resource $fg_alt   i3wm.color8         #eeeeee
+set_from_resource $pri      i3wm.color5         #cf5c36
+set_from_resource $snd      i3wm.color3         #d3d5d7
 
 # class                 border  backgr. text    indicator   child_border
-client.focused          $bg     $bg     $fg     $bg         $pri
-client.focused_inactive $bg     $bg     $fg     $bg         $fg-alt
+client.focused          $bg     $bg     $pri    $bg         $pri
+client.focused_inactive $bg     $bg     $pri    $bg         $fg-alt
 client.unfocused        $bg     $bg     $fg     $bg         $bg
 client.urgent           $bg     $bg     $fg     $bg         $snd
 client.background       $bg
