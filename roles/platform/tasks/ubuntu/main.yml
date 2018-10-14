@@ -46,6 +46,7 @@
     - tree
     - gir1.2-gtop-2.0
     - gir1.2-networkmanager-1.0
+    - rename
 
 - name: run distribution specific tasks defined by an upper bound
   include_tasks: "execute_task.yml"
