@@ -17,7 +17,7 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     mode: 0700
-  tags: ['ui', 'dotfiles']
+  tags: ['ui', 'ui-dotfiles']
 
 - name: copy the config files
   copy:
@@ -32,4 +32,4 @@
   - launch.sh
   - theme.ini
   - themes
-  tags: ['ui', 'dotfiles']
+  tags: ['ui', 'ui-dotfiles']

@@ -85,7 +85,7 @@
       command: xrdb .Xresources
       args:
         chdir: "{{ ansible_env.HOME }}"
-  tags: [ui, dotfiles]
+  tags: [ui, ui-dotfiles]
 
 - name: copy the custom xorg.conf
   become: yes
