@@ -20,10 +20,6 @@ check_zsh_plugin () {
     fi
 }
 
-mkcdir () {
-    mkdir -p -- "$1" && cd -P -- "$1"
-}
-
 # If you come from bash you might have to change your $PATH.
 export PATH="$PATH:/usr/local/sbin"
 # set PATH so it includes user's private bin if it exists
@@ -162,9 +158,6 @@ plugins=(
 # Load all instance dependent settings
 if [[ -f $HOME/.zshinstance ]]; then
     source $HOME/.zshinstance
-else
-    echo "# Place any commands you want to execute on start here" > $HOME/.zshinstance
-    chmod +x $HOME/.zshinstance
 fi
 
 # Load all OS dependent settings
@@ -186,6 +179,7 @@ tabs -4
 if [[ ! -d "$HOME/.git" ]]; then
     mkdir "$HOME/.git"
 fi
+# TODO: maybe handle this through ansible exclusively
 GIT_AUTHOR_NAME="Martin Patz"
 GIT_AUTHOR_EMAIL="mailto@martin-patz.de"
 GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
@@ -207,23 +201,13 @@ bindkey '^X^S' history-incremental-pattern-search-forward
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-alias zshconfig="vim ~/.zshrc"
-alias i3config="vim ~/.config/i3/config"
-alias polybarconfig="vim ~/.config/polybar/config"
-
-alias clc="clear"
-alias ll="ls -la"
-
-# Alias related to zshmarks
-alias to="jump"
-alias bm="bookmark"
-alias bd="deletemark"
-alias bl="showmarks"
-
-# Alias for conventional image renaming
-alias img_rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
+if [ -f ~/.bash_aliases ]; then
+    source ~/.bash_aliases
+fi
 
 unsetopt auto_name_dirs
+unset -f check_zsh_plugin
+unset -f check_zsh_theme
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm

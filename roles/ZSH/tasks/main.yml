@@ -9,12 +9,23 @@
     name: "{{ ansible_env.USER }}"
     shell: "{{ zsh_bin.stdout }}"
 
+- name: Copy default ZSH instance if it doesn't exist
+  copy:
+    src: "{{ role_path }}/files/.zshinstance"
+    dest: "{{ ansible_env.HOME }}/.zshinstance"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+    force: no
+  tags: dotfiles
+
 - name: Copy default ZSH config
   copy:
-    src: "{{ role_path }}/files/zshrc"
+    src: "{{ role_path }}/files/.zshrc"
     dest: "{{ ansible_env.HOME }}/.zshrc"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
+    mode: 0700
     force: yes
   tags: dotfiles
 
@@ -24,5 +35,16 @@
     dest: "{{ ansible_env.HOME }}/.zshosdep"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
+    mode: 0700
+    force: yes
+  tags: dotfiles
+
+- name: Copy the aliases
+  copy:
+    src: "{{ role_path }}/files/.bash_aliases"
+    dest: "{{ ansible_env.HOME }}/.bash_aliases"
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
     force: yes
   tags: dotfiles
