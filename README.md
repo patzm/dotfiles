@@ -23,9 +23,12 @@ ansible-playbook ~/repos/configs/setup.yml [-i <inventory_file>] --tags dotfiles
 The switch `-K` requests root priviliges on the current machine.
 This is not required if running the tag `dotfiles` only.
 The `localhost` is the default installation target.
+
 Other inventory files can easily be used.
 Attention: all hosts specified in the inventory file are used.
 Use `--extra-vars custom_hosts=GROUP` to select a group specified in `<inventory_file>`.
+If no inventory file is available or you want to run this playbook for a temporary target, pass `-i '<host_1>,[host_2]'`.
+Note, that the `,` after the first host is important.
 
 ## Ubuntu 16.04 or later
 On modern distributions, installation is quite straight forward:
