@@ -31,7 +31,7 @@
 
 - name: Copy the OS dependent configuration
   copy:
-    src: "{{ role_path }}/files/zsh_{{ ansible_os_family|lower }}.sh"
+    src: "{{ role_path }}/files/.zsh_{{ ansible_os_family|lower }}"
     dest: "{{ ansible_env.HOME }}/.zshosdep"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"

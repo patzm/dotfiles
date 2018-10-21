@@ -6,12 +6,6 @@
 
 - name: pre-installation routines & configuration files
   block:
-    - name: load OS-dependent variables
-      include_vars: "{{ item }}"
-      with_first_found:
-      - "{{ ansible_os_family }}.yml"
-      - default.yml
-
     - name: detect if i3-gaps is already installed
       shell: command -v i3 >/dev/null 2>&1
       register: cmd_exists_i3_gaps
@@ -44,18 +38,6 @@
       - screenshot.sh
       - i3exit.sh
 
-    - name: insert the modifier key into config file
-      replace:
-        path: "{{ i3_config_file }}"
-        regexp: "{{ placeholder_mod }}"
-        replace: "{{ mod }}"
-
-    - name: insert the alternative modifier key into the config file
-      replace:
-        path: "{{ i3_config_file }}"
-        regexp: "{{ placeholder_mod_2 }}"
-        replace: "{{ mod_2 }}"
-
     - name: insert the screenshot script location into the config file
       replace:
         path: "{{ i3_config_file }}"
@@ -79,7 +61,17 @@
         dest: "{{ ansible_env.HOME }}/.Xresources"
         owner: "{{ ansible_env.USER }}"
         group: "{{ user_group }}"
-        mode: 0700
+        mode: 0600
+        force: yes
+
+    - name: copy the .Xinstance file for the user to configure
+      copy:
+        src: "{{ role_path }}/files/.Xinstance"
+        dest: "{{ ansible_env.HOME }}/.Xinstance"
+        owner: "{{ ansible_env.USER }}"
+        group: "{{ user_group }}"
+        mode: 0600
+        force: no
 
     - name: reload .Xresources
       command: xrdb .Xresources

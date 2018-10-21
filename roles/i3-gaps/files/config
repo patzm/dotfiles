@@ -1,8 +1,8 @@
 # set the mod key
 # Mod1: ALT
 # Mod4: Win/CMD
-set $mod <mod-1>
-set $mod2 <mod-2>
+set_from_resource $mod  *.i3.mod_primary    Mod1
+set_from_resource $mod2 *.i3.mod_secondary  Mod4
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
