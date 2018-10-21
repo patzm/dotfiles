@@ -25,6 +25,7 @@
       copy:
         src: "{{ role_path }}/files/config"
         dest: "{{ i3_config_file }}"
+        force: yes
 
     - name: copy the shell scripts
       copy:
@@ -35,20 +36,27 @@
         mode: 0700
         force: yes
       with_items:
-      - screenshot.sh
-      - i3exit.sh
+      - "{{ screenshot_script }}"
+      - "{{ i3_exit_script }}"
+      - "{{ i3_refresh_script }}"
 
     - name: insert the screenshot script location into the config file
       replace:
         path: "{{ i3_config_file }}"
         regexp: "{{ placeholder_screenshot_script }}"
-        replace: "{{ screenshot_script }}"
+        replace: "{{ user_bin_dir }}/{{ screenshot_script }}"
 
     - name: insert the i3exit script location into the config file
       replace:
         path: "{{ i3_config_file }}"
         regexp: "{{ placeholder_i3_exit_script }}"
-        replace: "{{ i3_exit_script }}"
+        replace: "{{ user_bin_dir }}/{{ i3_exit_script }}"
+
+    - name: insert the i3refresh script location into the config file
+      replace:
+        path: "{{ i3_config_file }}"
+        regexp: "{{ placeholder_i3_refresh_script }}"
+        replace: "{{ user_bin_dir }}/{{ i3_refresh_script }}"
 
     - name: "legacy : ensure that the old ~/.i3 config folder does not exist"
       file:

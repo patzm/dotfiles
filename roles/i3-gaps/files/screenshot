@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Source: ddnomad - https://unix.stackexchange.com/a/346800/247336
 # alternative: gnome-screenshot

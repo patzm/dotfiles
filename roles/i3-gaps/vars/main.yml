@@ -4,8 +4,10 @@ i3_config_file: "{{ i3_config_dir }}/config"
 fonts_dir: "{{ ansible_env.HOME }}/.fonts"
 
 placeholder_i3_exit_script: '\<i3-exit-script\>'
+placeholder_i3_refresh_script: '\<i3-refresh-script\>'
 placeholder_screenshot_script: '\<screenshot-script\>'
 
-i3_exit_script: "{{ user_bin_dir }}/i3exit.sh"
-screenshot_script: "{{ user_bin_dir }}/screenshot.sh"
+i3_exit_script: "i3exit"
+i3_refresh_script: "i3refresh"
+screenshot_script: "screenshot"
 

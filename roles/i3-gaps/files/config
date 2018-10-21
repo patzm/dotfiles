@@ -1,8 +1,8 @@
 # set the mod key
 # Mod1: ALT
 # Mod4: Win/CMD
-set_from_resource $mod  *.i3.mod_primary    Mod1
-set_from_resource $mod2 *.i3.mod_secondary  Mod4
+set_from_resource $mod  i3.mod_primary    Mod1
+set_from_resource $mod2 i3.mod_secondary  Mod4
 
 # use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -141,10 +141,10 @@ bindsym $mod+Shift+9 move container to workspace number $w9
 bindsym $mod+Shift+0 move container to workspace number $w10
 
 # reload the configuration file
-bindsym $mod+Shift+c reload
+bindsym $mod+Shift+c exec <i3-refresh-script> reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r exec <i3-refresh-script> restart
 
 # screenshot control
 bindsym --release $mod+$mod2+p exec <screenshot-script> -p ~/Pictures/screenshots -r
@@ -241,10 +241,11 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nm-applet
 
 # Set desktop background
-exec --no-startup-id  xsetroot -solid "#232829"
+exec --no-startup-id xsetroot -solid "#232829"
 
 # disable automatic launching of deskop along with nautilus
 exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-icons false
 
 # make sure the gnome keyring is launched on login
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
+

@@ -1,6 +1,6 @@
 ! Place any Xresource settings specific for this system here
 ! e.g.
-! *.i3.mod_primary: Mod4
-! *.i3.mod_secondary: Mod1
+! *i3.mod_primary: Mod4
+! *i3.mod_secondary: Mod1
 
 ! vim: set filetype=xdefaults :
