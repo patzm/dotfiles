@@ -141,10 +141,10 @@ bindsym $mod+Shift+9 move container to workspace number $w9
 bindsym $mod+Shift+0 move container to workspace number $w10
 
 # reload the configuration file
-bindsym $mod+Shift+c exec <i3-refresh-script> reload
+bindsym $mod+Shift+c exec --no-startup-id <i3-refresh-script> reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec <i3-refresh-script> restart
+bindsym $mod+Shift+r exec --no-startup-id <i3-refresh-script> restart
 
 # screenshot control
 bindsym --release $mod+$mod2+p exec <screenshot-script> -p ~/Pictures/screenshots -r
@@ -163,17 +163,18 @@ bindsym XF86KbdBrightnessUp     exec light -k -A 10
 bindsym XF86KbdBrightnessDown   exec light -k -U 10
 
 # resize window (you can also use the mouse for that)
+set $rs	15
 mode "resize" {
-    bindsym h resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym j resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize shrink width $rs px or $rs ppt
+    bindsym k resize grow height $rs px or $rs ppt
+    bindsym j resize shrink height $rs px or $rs ppt
+    bindsym l resize grow width $rs px or $rs ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left resize shrink width 10 px or 10 ppt
-    bindsym Down resize grow height 10 px or 10 ppt
-    bindsym Up resize shrink height 10 px or 10 ppt
-    bindsym Right resize grow width 10 px or 10 ppt
+    bindsym Left resize shrink width $rs px or $rs ppt
+    bindsym Down resize grow height $rs px or $rs ppt
+    bindsym Up resize shrink height $rs px or $rs ppt
+    bindsym Right resize grow width $rs px or $rs ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -230,6 +231,7 @@ assign [class="Slack"] $w8
 assign [class="GitKraken"] $w9
 
 for_window [class="(?i)gnome-calculator"] floating enable
+for_window [class="(?i)plexamp"] floating enable
 
 # make sure the display configuration is loaded properly
 exec --no-startup-id autorandr --change
