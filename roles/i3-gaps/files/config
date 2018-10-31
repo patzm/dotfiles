@@ -162,7 +162,10 @@ bindsym XF86MonBrightnessDown   exec light -U 5
 bindsym XF86KbdBrightnessUp     exec light -k -A 10
 bindsym XF86KbdBrightnessDown   exec light -k -U 10
 
-# resize window (you can also use the mouse for that)
+# Configure keyboard layout toggles
+exec --no-startup-id setxkbmap us,de -option 'grp:alt_space_toggle'
+
+# Resize window (you can also use the mouse for that)
 set $rs	15
 mode "resize" {
     bindsym h resize shrink width $rs px or $rs ppt
