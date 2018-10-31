@@ -6,6 +6,8 @@
 set nocompatible " Fuck VI... That's for grandpas.
 filetype off
 
+""""""""""""""""""""""""""""""
+" Plugin management
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
@@ -39,12 +41,8 @@ Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'bling/vim-airline'
 
 call vundle#end()
-filetype plugin indent on
 
-" Configure NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-map <C-n> :NERDTreeToggle<CR>
+filetype plugin indent on
 
 " We have to turn this stuff back on if we want all of our features.
 filetype plugin indent on " Filetype auto-detection
@@ -138,7 +136,15 @@ nnoremap <leader><leader> <c-^>
 noremap j gj
 noremap k gk
 
+""""""""""""""""""""""""""""""
 " Plugin settings:
+
+" Configure NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeMinimalUI = 1
+let NERDTreeShowHidden = 1
 
 " Remap ctrlp to ctrl-t -- map it however you like, or stick with the
 " defaults. Additionally, in my OS, I remap caps lock to control. I never use

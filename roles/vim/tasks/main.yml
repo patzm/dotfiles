@@ -1,7 +1,7 @@
 ---
 - name: copy .vimrc
   copy:
-    src: "{{ role_path }}/files/vimrc"
+    src: "{{ role_path }}/files/.vimrc"
     dest: "{{ ansible_env.HOME }}/.vimrc"
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
