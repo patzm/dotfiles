@@ -2,6 +2,7 @@
 alias zshconfig="vim ~/.zshrc"
 alias i3config="vim ~/.config/i3/config"
 alias polybarconfig="vim ~/.config/polybar/config"
+alias sshconfig="vim ~/.ssh/config"
 
 # Alias related to zshmarks
 alias to="jump"
