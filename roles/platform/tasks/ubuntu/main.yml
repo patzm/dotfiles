@@ -23,11 +23,8 @@
     - libgnome-keyring-common
     - libgnome-keyring-dev
     # end GitKraken
-    - libxkbcommon-dev
     - ntfs-3g
     - sshfs
-    - openvpn
-    - network-manager-openvpn-gnome
     - build-essential
     # begin nethogs
     - libncurses5-dev
@@ -38,14 +35,10 @@
     - libssl-dev
     # end nvm
     - wmctrl
-    - arandr
     - software-properties-common
     - imagemagick
-    - apcalc
     - exiv2
     - tree
-    - gir1.2-gtop-2.0
-    - gir1.2-networkmanager-1.0
     - rename
 
 - name: run distribution specific tasks defined by an upper bound
