@@ -63,4 +63,4 @@
 
 - include_role:
     name: i3-gaps
-  tags: always
+  tags: ['never', 'dotfiles', 'ui', 'dotfiles-ui']
