@@ -128,7 +128,7 @@ exec_always --no-startup-id i3-msg '\
 bindsym $mod+Shift+Left workspace prev
 bindsym $mod+Shift+Right workspace next
 
-# move focused container to workspace
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $w1
 bindsym $mod+Shift+2 move container to workspace number $w2
 bindsym $mod+Shift+3 move container to workspace number $w3
@@ -140,15 +140,15 @@ bindsym $mod+Shift+8 move container to workspace number $w8
 bindsym $mod+Shift+9 move container to workspace number $w9
 bindsym $mod+Shift+0 move container to workspace number $w10
 
-# reload the configuration file
+# Reload the configuration file
 bindsym $mod+Shift+c exec --no-startup-id <i3-refresh-script> reload
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r exec --no-startup-id <i3-refresh-script> restart
 
-# screenshot control
-bindsym --release $mod+$mod2+p exec <screenshot-script> -p ~/Pictures/screenshots -r
-bindsym --release $mod+p exec <screenshot-script> -p ~/Pictures/screenshots -s
+# Screenshot control
+bindsym --release $mod+$mod2+p	exec --no-startup-id <screenshot-script> -p ~/Pictures/screenshots -r
+bindsym --release $mod+p		exec --no-startup-id <screenshot-script> -p ~/Pictures/screenshots -s
 
 # Enable volume± and mute
 bindsym XF86AudioRaiseVolume exec "amixer -q -D pulse sset Master 5%+ unmute"
