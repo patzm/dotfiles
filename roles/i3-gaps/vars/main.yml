@@ -2,6 +2,7 @@
 i3_config_dir: "{{ user_config_dir }}/i3"
 i3_config_file: "{{ i3_config_dir }}/config"
 fonts_dir: "{{ ansible_env.HOME }}/.fonts"
+xresources_dir: "{{ ansible_env.HOME }}/.Xresources.d"
 
 placeholder_i3_exit_script: '\<i3-exit-script\>'
 placeholder_i3_refresh_script: '\<i3-refresh-script\>'

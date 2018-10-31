@@ -2,7 +2,6 @@
 
 # Pre-Reload tasks
 xrdb $HOME/.Xresources
-xrdb -merge $HOME/.Xinstance
 
 # Execute the actual i3-command (reload / restart)
 i3-msg $1

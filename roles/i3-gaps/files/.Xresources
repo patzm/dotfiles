@@ -27,3 +27,6 @@
 *foreground: #d9dedc
 *cursorColor: #839496
 *profile_name: Freya
+
+#include ".Xresources.d/instance"
+

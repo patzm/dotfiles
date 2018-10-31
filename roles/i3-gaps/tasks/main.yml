@@ -71,11 +71,16 @@
         group: "{{ user_group }}"
         mode: 0600
         force: yes
+    
+    - name: make sure the .Xresources.d directory exists
+      file:
+        path: "{{ xresources_dir }}"
+        state: directory
 
     - name: copy the .Xinstance file for the user to configure
       copy:
         src: "{{ role_path }}/files/.Xinstance"
-        dest: "{{ ansible_env.HOME }}/.Xinstance"
+        dest: "{{ xresources_dir }}/instance"
         owner: "{{ ansible_env.USER }}"
         group: "{{ user_group }}"
         mode: 0600
