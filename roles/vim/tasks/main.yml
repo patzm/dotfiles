@@ -1,4 +1,9 @@
 ---
+- name: create vim vundle dir
+  file:
+    path: "{{ vundle_dir }}"
+    state: directory
+
 - name: copy vimrcbase
   copy:
     src: "{{ role_path }}/files/vimrcbase"
@@ -19,11 +24,6 @@
     dest: "{{ansible_env.HOME }}/.ideavimrc"
     force: yes
   tags: dotfiles
-
-- name: create vim vundle dir
-  file:
-    path: "{{ vundle_dir }}"
-    state: directory
 
 - name: clone vundle from github
   git:
