@@ -14,11 +14,11 @@
 Execute the platform- and version-specific instructions below **first**.
 Then, execute the following:
 ```
-mkdir -p ~/repos/configs
-git clone https://github.com/patzm/configs.git ~/repos/configs
-ansible-playbook ~/repos/configs/setup.yml -K [-i <inventory_file>] [--tags ui,dotfiles-root]
+mkdir -p ~/repos/dotfiles
+git clone https://github.com/patzm/dotfiles.git ~/repos/dotfiles
+ansible-playbook ~/repos/dotfiles/setup.yml -K [-i <inventory_file>] [--tags ui,dotfiles-root]
 # only copy the dotfiles
-ansible-playbook ~/repos/configs/setup.yml [-i <inventory_file>] --tags dotfiles
+ansible-playbook ~/repos/dotfiles/setup.yml [-i <inventory_file>] --tags dotfiles
 ```
 The switch `-K` requests root priviliges on the current machine.
 This is not required if running the tag `dotfiles` only.
