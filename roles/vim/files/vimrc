@@ -1,0 +1,82 @@
+""""""""""""""""""""""""""""""
+" Plugin management
+set rtp+=~/.vim/bundle/vundle/
+call vundle#begin()
+
+Plugin 'hzchirs/vim-material'
+Plugin 'godlygeek/tabular'
+" Markdown support
+Plugin 'plasticboy/vim-markdown'
+Plugin 'JamshedVesuna/vim-markdown-preview'
+Plugin 'vim-python/python-syntax'
+" Just a shitload of color schemes.
+" https://github.com/flazz/vim-colorschemes#current-colorschemes
+Plugin 'flazz/vim-colorschemes'
+" Fuzzy finder -- absolutely must have.
+Plugin 'kien/ctrlp.vim'
+" Let vundle manage itself:
+Plugin 'gmarik/vundle'
+" Support for easily toggling comments.
+Plugin 'tpope/vim-commentary'
+" Proper JSON filetype detection, and support.
+Plugin 'leshill/vim-json'
+" vim indents HTML very poorly on it's own. This fixes a lot of that.
+Plugin 'indenthtml.vim'
+" Ansible yaml
+Plugin 'chase/vim-ansible-yaml'
+" git wrapper
+Plugin 'tpope/vim-fugitive'
+" directory tree with git support
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+" airline statusline
+Plugin 'bling/vim-airline'
+
+call vundle#end()
+
+" Load the base vim configuration
+source ~/.vim/vimrcbase
+
+set nocompatible " Fuck VI... That's for grandpas.
+filetype off
+
+syntax on " Syntax highlighting
+" Python syntax highlighting
+let g:python_highlight_all = 1
+
+" Use sane regex's when searching
+nnoremap / /\v
+vnoremap / /\v
+
+" We have VCS -- we don't need this stuff.
+set nobackup " We have vcs, we don't need backups.
+set nowritebackup " We have vcs, we don't need backups.
+set noswapfile " They're just annoying. Who likes them?
+
+" Quick buffer switching - like cmd-tab'ing
+nnoremap <leader><leader> <c-^>
+
+""""""""""""""""""""""""""""""
+" Plugin settings:
+
+" Configure NERDTree
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+map <C-n> :NERDTreeToggle<CR>
+let NERDTreeMinimalUI = 1
+let NERDTreeShowHidden = 1
+
+" Remap ctrlp to ctrl-t -- map it however you like, or stick with the
+" defaults. Additionally, in my OS, I remap caps lock to control. I never use
+" caps lock. This is highly recommended.
+let g:ctrlp_map = '<c-t>'
+
+" Let ctrlp have up to 30 results.
+let g:ctrlp_max_height = 30
+
+" Finally the color scheme. Choose whichever you want from the list in the
+" link above (back up where we included the bundle of a ton of themes.)
+if isdirectory("~/.vim/bundle/vim-material")
+    colorscheme vim-material
+endif
+

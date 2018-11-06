@@ -1,21 +1,29 @@
 ---
-- name: copy .vimrc
+- name: copy vimrcbase
   copy:
-    src: "{{ role_path }}/files/.vimrc"
-    dest: "{{ ansible_env.HOME }}/.vimrc"
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
+    src: "{{ role_path }}/files/vimrcbase"
+    dest: "{{ vim_dir }}/vimrcbase"
     force: yes
-    mode: 0700
+  tags: dotfiles
+
+- name: copy vimrc
+  copy:
+    src: "{{ role_path }}/files/vimrc"
+    dest: "{{ vim_dir }}/vimrc"
+    force: yes
+  tags: dotfiles
+
+- name: copy .ideavimrc
+  copy:
+    src: "{{ role_path }}/files/.ideavimrc"
+    dest: "{{ansible_env.HOME }}/.ideavimrc"
+    force: yes
   tags: dotfiles
 
 - name: create vim vundle dir
   file:
     path: "{{ vundle_dir }}"
     state: directory
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
-    mode: 0700
 
 - name: clone vundle from github
   git:
