@@ -24,21 +24,15 @@
   tags: dotfiles
 
 - name: install the plugins
-  shell: "{{ cmd }}"
-  loop_control:
-    loop_var: cmd
-  with_items:
-  - tmux start-server
-  - tmux new-session -d -n plugins
-  - "{{ tpm_dir }}/scripts/install_plugins.sh"
+  shell: |
+    tmux new-session -d -s plugin
+    "{{ tpm_dir }}/scripts/install_plugins.sh"
+    tmux kill-session -t plugin
 
 - name: update all plugins
-  shell: "{{ cmd }}"
-  loop_control:
-    loop_var: cmd
-  with_items:
-  - tmux start-server
-  - tmux new-session -d -n plugins
-  - "{{ tpm_dir }}/scripts/update_plugin.sh all"
+  shell: |
+    tmux new-session -d -s plugin
+    "{{ tpm_dir }}/scripts/update_plugin.sh all"
+    tmux kill-session -t plugin
   tags: dotfiles
 
