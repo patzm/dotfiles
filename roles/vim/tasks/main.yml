@@ -30,8 +30,10 @@
   git:
     repo: https://github.com/VundleVim/Vundle.vim.git
     dest: "{{ vundle_dir }}"
+  tags: dotfiles
 
 - name: install all vim plugins
   # We use '+PluginInstall' to install all Vundle packages
   shell: vim +PluginInstall +qall
+  tags: dotfiles
 
