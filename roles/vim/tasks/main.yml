@@ -3,6 +3,7 @@
   file:
     path: "{{ vundle_dir }}"
     state: directory
+  tags: dotfiles
 
 - name: copy vimrcbase
   copy:

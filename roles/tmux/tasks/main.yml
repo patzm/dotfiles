@@ -15,11 +15,13 @@
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
       mode: 0700
+  tags: dotfiles
 
 - name: clone tpm (tmux plugin manager)
   git:
       repo: https://github.com/tmux-plugins/tpm
       dest: "{{ tpm_dir }}"
+  tags: dotfiles
 
 - name: install the plugins
   shell: "{{ cmd }}"
