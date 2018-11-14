@@ -21,3 +21,22 @@
       repo: https://github.com/tmux-plugins/tpm
       dest: "{{ tpm_dir }}"
 
+- name: install the plugins
+  shell: "{{ cmd }}"
+  loop_control:
+    loop_var: cmd
+  with_items:
+  - tmux start-server
+  - tmux new-session -d -n plugins
+  - "{{ tpm_dir }}/scripts/install_plugins.sh"
+
+- name: update all plugins
+  shell: "{{ cmd }}"
+  loop_control:
+    loop_var: cmd
+  with_items:
+  - tmux start-server
+  - tmux new-session -d -n plugins
+  - "{{ tpm_dir }}/scripts/update_plugin.sh all"
+  tags: dotfiles
+
