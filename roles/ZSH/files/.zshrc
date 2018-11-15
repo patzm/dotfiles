@@ -112,8 +112,8 @@ check_zsh_theme "powerline" "https://github.com/jeremyFreeAgent/oh-my-zsh-powerl
 check_zsh_theme "powerlevel9k" "https://github.com/bhilburn/powerlevel9k.git"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(virtualenv time)
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context time dir dir_writable virtualenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
