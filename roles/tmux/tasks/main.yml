@@ -23,15 +23,10 @@
       dest: "{{ tpm_dir }}"
   tags: dotfiles
 
-- name: install the plugins
+- name: install and update all plugins
   shell: |
     tmux new-session -d -s plugin
     "{{ tpm_dir }}/scripts/install_plugins.sh"
-    tmux kill-session -t plugin
-
-- name: update all plugins
-  shell: |
-    tmux new-session -d -s plugin
     "{{ tpm_dir }}/scripts/update_plugin.sh all"
     tmux kill-session -t plugin
   tags: dotfiles
