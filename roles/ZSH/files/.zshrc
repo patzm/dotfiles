@@ -146,7 +146,6 @@ plugins=(
     npm
     pip
     rsync
-    tldr
     tmux
     virtualenv
     virtualenvwrapper
