@@ -48,6 +48,9 @@ let g:python_highlight_all = 1
 nnoremap / /\v
 vnoremap / /\v
 
+" Prefer tabs instead of buffers
+set switchbuf=usetab,newtab
+
 " We have VCS -- we don't need this stuff.
 set nobackup " We have vcs, we don't need backups.
 set nowritebackup " We have vcs, we don't need backups.
@@ -69,10 +72,10 @@ let NERDTreeShowHidden = 1
 " Remap ctrlp to ctrl-t -- map it however you like, or stick with the
 " defaults. Additionally, in my OS, I remap caps lock to control. I never use
 " caps lock. This is highly recommended.
-let g:ctrlp_map = '<c-t>'
+let g:ctrlp_map = '<c-p>'
 
-" Let ctrlp have up to 30 results.
-let g:ctrlp_max_height = 30
+" Set the maximum number of CtrlP results
+let g:ctrlp_max_height = 15
 
 " Finally the color scheme. Choose whichever you want from the list in the
 " link above (back up where we included the bundle of a ton of themes.)
