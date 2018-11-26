@@ -11,7 +11,7 @@ alias bd="deletemark"
 alias bl="showmarks"
 
 # Alias for conventional image renaming
-alias img_rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
+alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
 
 # Common system / file system interaction
 alias clc="clear"
