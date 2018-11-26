@@ -1,8 +1,8 @@
 # Configure /edit various dotfiles
-alias zshconfig="vim ~/.zshrc"
-alias i3config="vim ~/.config/i3/config"
-alias polybarconfig="vim ~/.config/polybar/config"
-alias sshconfig="vim ~/.ssh/config"
+alias zshconfig="vim ${HOME}/.zshrc"
+alias i3config="vim ${HOME}/.config/i3/config"
+alias polybarconfig="vim ${HOME}/.config/polybar/config"
+alias sshconfig="vim ${HOME}/.ssh/config"
 
 # Alias related to zshmarks
 alias to="jump"
