@@ -9,6 +9,9 @@ def run(config):
 
     cmd = ['ansible-playbook', setup_file_path]
 
+    if config.K:
+        cmd.append('-K')
+
     if config.hosts:
         cmd.append('-e custom_hosts=all')
         cmd.append('-i')
@@ -24,6 +27,7 @@ def run(config):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='facilitator to launch setup.yml')
+    parser.add_argument('-K', action='store_true', help='prompt for SUDO password')
     parser.add_argument('--hosts', nargs='*', help='specify any remote hosts if not the local host')
     parser.add_argument('--tags', nargs='*', help='specify tags')
     args = parser.parse_args()
