@@ -3,6 +3,8 @@ alias zshconfig="vim ${HOME}/.zshrc"
 alias i3config="vim ${HOME}/.config/i3/config"
 alias polybarconfig="vim ${HOME}/.config/polybar/config"
 alias sshconfig="vim ${HOME}/.ssh/config"
+alias vimconfig="vim ${HOME}/.vim/vimrc"
+alias nvimconfig="vim ${HOME}/.config/init.rc"
 
 # Alias related to zshmarks
 alias to="jump"
