@@ -1,5 +1,6 @@
 ---
 - name: add font repo for Thunderbird icons
+  become: yes
   apt_repository: 
     repo: ppa:eosrei/fonts
 
