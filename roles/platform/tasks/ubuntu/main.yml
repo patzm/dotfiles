@@ -16,7 +16,6 @@
     - python-pip
     - python3-pip
     - fonts-powerline
-    - cmake
     # begin GitKraken
     - gconf2
     - gconf-service
@@ -25,7 +24,6 @@
     # end GitKraken
     - ntfs-3g
     - sshfs
-    - build-essential
     # begin nethogs
     - libncurses5-dev
     - libpcap-dev
@@ -35,7 +33,6 @@
     - libssl-dev
     # end nvm
     - wmctrl
-    - software-properties-common
     - imagemagick
     - exiv2
     - tree
