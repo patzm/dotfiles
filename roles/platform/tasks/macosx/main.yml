@@ -11,6 +11,7 @@
   with_items:
     - tree
     - vim
+    - neovim
     - htop
     - wget
     - tmux

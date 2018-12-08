@@ -1,4 +1,5 @@
 ---
+neovim_dir: "{{ user_config_dir }}/nvim"
 vim_dir: "{{ ansible_env.HOME }}/.vim"
 autoload_dir: "{{ vim_dir }}/autoload"
 bundle_dir: "{{ vim_dir }}/bundle"

@@ -8,6 +8,7 @@
     - lm-sensors
     - git
     - vim
+    - neovim
     - zsh
     - unrar
     - curl
