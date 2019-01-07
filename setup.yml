@@ -6,13 +6,23 @@
   vars_files:
     - "vars/common.yml"
     - ["vars/{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml",
-       "vars/{{ ansible_distribution|lower }}.yml"]
+       "vars/{{ ansible_distribution|lower }}.yml",
+       "vars/unix.yml"]
 
   roles:
-    - role: platform
+    - role: packages
+      tags: ['packages', 'ui']
     - role: git
+      tags: always
     - role: ZSH
+      tags: always
     - role: vim
+      tags: always
     - role: tmux
+      tags: always
     - role: htop
+      tags: always
     - role: python
+      tags: always
+    - role: i3-gaps
+      tags: ['never', 'dotfiles', 'ui', 'dotfiles-ui']

@@ -6,11 +6,9 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     mode: 0700
-  tags: always
 
 - name: set this as the global gitignore file
   git_config:
     name: core.excludesfile
     scope: global
     value: "{{ ansible_env.HOME }}/.gitignore_global"
-  tags: always

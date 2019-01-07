@@ -6,7 +6,6 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     mode: 0700
-  tags: dotfiles
 
 - name: copy the htop config file
   copy:
@@ -15,4 +14,3 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     force: yes
-  tags: dotfiles

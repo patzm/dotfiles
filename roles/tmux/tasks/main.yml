@@ -6,7 +6,6 @@
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
       force: yes
-  tags: dotfiles
 
 - name: create the tmux plugin directory
   file:
@@ -15,13 +14,11 @@
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
       mode: 0700
-  tags: dotfiles
 
 - name: clone tpm (tmux plugin manager)
   git:
       repo: https://github.com/tmux-plugins/tpm
       dest: "{{ tpm_dir }}"
-  tags: dotfiles
 
 - name: install and update all plugins
   shell: |
@@ -29,5 +26,3 @@
     "{{ tpm_dir }}/scripts/install_plugins.sh"
     "{{ tpm_dir }}/scripts/update_plugin.sh all"
     tmux kill-session -t plugin
-  tags: dotfiles
-

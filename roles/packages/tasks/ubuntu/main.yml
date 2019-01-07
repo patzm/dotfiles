@@ -58,7 +58,3 @@
   loop_control:
     loop_var: task
   tags: always
-
-- include_role:
-    name: i3-gaps
-  tags: ['never', 'dotfiles', 'ui', 'dotfiles-ui']
