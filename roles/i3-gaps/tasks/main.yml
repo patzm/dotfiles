@@ -109,14 +109,28 @@
       package: name="{{ item }}" state=present
       with_items:
       - rofi
-      - xserver-xorg-input-synaptics
+      - "{{ synaptics_input_package }}"
 
     - name: install i3-gaps
-      include_tasks: install-i3.yml
+      include_tasks: "{{ i3_gaps_install_tasks }}"
+      with_first_found:
+        - files:
+          - "{{ ansible_distribution|lower }}.yml"
+          - "from-source.yml"
+          paths: "install-i3"
+      loop_control:
+        loop_var: i3_gaps_install_tasks
       when: cmd_exists_i3_gaps.rc > 0
 
     - name: install light
-      include_tasks: install-light.yml
+      include_tasks: "{{ light_install_tasks }}"
+      with_first_found:
+        - files:
+          - "{{ ansible_distribution|lower }}.yml"
+          - "from-source.yml"
+          paths: "install-light"
+      loop_control:
+        loop_var: light_install_tasks
       when: cmd_exists_light.rc > 0
 
     - name: install i3-gaps requirements from source

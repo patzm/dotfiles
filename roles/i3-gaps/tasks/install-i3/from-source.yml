@@ -3,7 +3,6 @@
   become: yes
   package: name={{ item }} state=latest
   with_items:
-    - arandr
     - libxcb1-dev
     - libxcb-keysyms1-dev
     - libpango1.0-dev

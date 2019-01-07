@@ -3,36 +3,33 @@
   become: yes
   package: name={{ item }} state=latest
   with_items:
-  - gcc
-  - cmake
-  - cmake-data
-  - pkg-config
-  - libcairo2-dev
-  - libxcb1-dev
-  - libxcb-util0-dev
-  - libxcb-randr0-dev
-  - python-xcbgen
-  - xcb-proto
-  - libxcb-image0-dev
-  - libxcb-ewmh-dev
-  - libxcb-icccm4-dev
-  - libxcb-xkb-dev
-  - libxcb-xrm-dev
-  - libxcb-cursor-dev
-  - libasound2-dev
-  - libpulse-dev
-  - libjsoncpp-dev
-  - libmpdclient-dev
-  - libcurl4-openssl-dev
-  - libiw-dev
-  - libnl-3-dev
+    - gcc
+    - cmake
+    - cmake-data
+    - pkg-config
+    - libcairo2-dev
+    - libxcb1-dev
+    - libxcb-util0-dev
+    - libxcb-randr0-dev
+    - python-xcbgen
+    - xcb-proto
+    - libxcb-image0-dev
+    - libxcb-ewmh-dev
+    - libxcb-icccm4-dev
+    - libxcb-xkb-dev
+    - libxcb-xrm-dev
+    - libxcb-cursor-dev
+    - libasound2-dev
+    - libpulse-dev
+    - libjsoncpp-dev
+    - libmpdclient-dev
+    - libcurl4-openssl-dev
+    - libiw-dev
+    - libnl-3-dev
 
 - name: create temporary checkout directory
   tempfile: state=directory suffix=.polybar
   register: polybar_repo_dir
-
-- debug:
-    msg: 'after install polybar dependencies'
 
 - name: clone the git repository
   git:

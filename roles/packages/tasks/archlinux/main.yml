@@ -1,0 +1,28 @@
+---
+- name: installing core packages
+  become: yes
+  package: name={{ item }} state=latest
+  with_items:
+    - htop
+    - xclip
+    - git
+    - vim
+    - neovim
+    - zsh
+    - unrar
+    - curl
+    - wget
+    - feh
+    - python2-pip
+    - python3
+    - powerline-fonts
+    - wmctrl
+    - imagemagick
+    - exiv2
+    - tree
+    - tmux
+    - neofetch
+    - yaourt
+
+- name: update the AUR
+  command: yaourt -Syy

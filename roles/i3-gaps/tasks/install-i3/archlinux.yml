@@ -1,0 +1,6 @@
+---
+- name: install i3-gaps from AUR
+  become: yes
+  package:
+    name: i3-gaps
+    state: latest

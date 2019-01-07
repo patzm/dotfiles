@@ -6,7 +6,14 @@
   tags: ui
 
 - name: install polybar
-  include_tasks: install-polybar.yml
+  include_tasks: "{{ polybar_install_tasks }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution|lower }}.yml"
+      - "from-source.yml"
+      paths: "install-polybar"
+  loop_control:
+    loop_var: polybar_install_tasks
   when: cmd_exists_polybar.rc > 0
   tags: ui
 
