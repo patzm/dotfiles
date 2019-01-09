@@ -188,7 +188,7 @@ git config --global credential.helper 'cache --timeout 36000'
 git config --global user.name "$GIT_AUTHOR_NAME"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
 git config --global push.default simple
-git config --global core.editor $(which vim) # Set a default editor to avoid "Could not execute editor" error
+git config --global core.editor vim # Set a default editor to avoid "Could not execute editor" error
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
