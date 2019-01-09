@@ -23,10 +23,9 @@
 *color8: #94a3a5
 *color16: #6c71c4
 
-*background: #252e32
+i3wm.background: #252e32
 *foreground: #d9dedc
 *cursorColor: #839496
 *profile_name: Freya
 
 #include ".Xresources.d/instance"
-
