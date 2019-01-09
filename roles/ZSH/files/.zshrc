@@ -24,7 +24,6 @@ check_zsh_plugin () {
 export PATH="${PATH}:/usr/local/sbin"
 
 # set PATH so it includes user's private bin if it exists
-# TODO: remove ~/bin in favor of ~/.local/bin
 if [ -d "${HOME}/bin" ] ; then
     export PATH="${HOME}/bin:${PATH}"
 fi
