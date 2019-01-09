@@ -172,6 +172,9 @@ fi
 
 source ${ZSH}/oh-my-zsh.sh
 
+# Fix missing virtualenv status
+export VIRTUAL_ENV_DISABLE_PROMPT=
+
 # User configuration
 tabs -4
 
