@@ -28,8 +28,8 @@ function screenshot_screen () {
 
 function validate_input_folder () {
     if [ ! -d "$1" ]; then
-        echo "Invalid input folder $1"
-        help_and_exit 1
+        echo "Input folder $1 does not exist, creating ..."
+		mkdir -p "$1"
     fi
 }
 
