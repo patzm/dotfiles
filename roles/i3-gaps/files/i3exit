@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
 
-lock() {
-    gnome-screensaver-command -l
-}
-
 case "$1" in
     lock)
-        lock
+        blurlock
         ;;
     logout)
         i3-msg exit

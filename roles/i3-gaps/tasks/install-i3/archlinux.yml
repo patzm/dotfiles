@@ -1,6 +1,7 @@
 ---
 - name: install i3-gaps from AUR
   become: yes
-  package:
-    name: i3-gaps
-    state: latest
+  package: name={{ item }} state=latest
+  with_items:
+  - i3-gaps
+  - i3exit
