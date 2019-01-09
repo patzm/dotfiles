@@ -27,6 +27,12 @@
         dest: "{{ i3_config_file }}"
         force: yes
 
+    - name: copy the compton config file
+      copy:
+        src: "{{ role_path }}/files/.compton.conf"
+        dest: "{{ compton_config_file }}"
+        force: yes
+
     - name: copy the shell scripts
       copy:
         src: "{{ role_path }}/files/{{ item }}"
@@ -109,6 +115,7 @@
       package: name={{ item }} state=present
       with_items:
       - rofi
+      - compton
       - "{{ synaptics_input_package }}"
 
     - name: install i3-gaps

@@ -248,6 +248,9 @@ exec_always --no-startup-id nm-applet
 # Set desktop background
 exec --no-startup-id xsetroot -solid "#232829"
 
+# Start composite window manager
+exec --no-startup-id compton
+
 # disable automatic launching of deskop along with nautilus
 exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-icons false
 

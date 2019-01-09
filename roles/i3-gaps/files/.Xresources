@@ -28,4 +28,18 @@ i3wm.background: #252e32
 *cursorColor: #839496
 *profile_name: Freya
 
+! URxvt configuration
+! test new fonts: `printf '\e]710;%s\007' "xft:<font-name>:size=12"`
+URxvt.font: xft:Meslo LG S DZ for Powerline:size=11
+URxvt.scrollBar: false
+URxvt.depth: 32
+URxvt.background: [70]#252e32
+
+URxvt.perl-ext-common: default,url-select,keyboard-select
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.url-select.launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+URxvt.keyboard-select.clipboard: true
+
 #include ".Xresources.d/instance"

@@ -15,7 +15,6 @@
     - feh
     - python2-pip
     - python3
-    - powerline-fonts
     - wmctrl
     - imagemagick
     - exiv2
@@ -23,6 +22,12 @@
     - tmux
     - neofetch
     - yaourt
+    - rxvt-unicode
+    - rxvt-unicode-terminfo
+    - urxvt-perls
 
 - name: update the AUR
   command: yaourt -Syy
+
+- name: install powerline fonts
+  command: yaourt -S --noconfirm powerline-fonts-git
