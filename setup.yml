@@ -15,7 +15,6 @@
     - role: git
       tags: always
     - role: ZSH
-      tags: always
     - role: vim
       tags: always
     - role: tmux
@@ -23,6 +22,4 @@
     - role: htop
       tags: always
     - role: python
-      tags: always
     - role: i3-gaps
-      tags: ['never', 'dotfiles', 'ui', 'dotfiles-ui']

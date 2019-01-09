@@ -21,7 +21,7 @@
         path: "{{ i3_config_dir }}"
         state: directory
 
-    - name: copy the config file
+    - name: copy the i3 config file
       copy:
         src: "{{ role_path }}/files/config"
         dest: "{{ i3_config_file }}"
@@ -90,7 +90,7 @@
       command: xrdb .Xresources
       args:
         chdir: "{{ ansible_env.HOME }}"
-  tags: [ui, ui-dotfiles]
+  tags: [ui, dotfiles-ui]
 
 - name: copy the custom xorg.conf
   become: yes

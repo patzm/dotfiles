@@ -2,12 +2,14 @@
 - name: Find the location of the zsh executable
   shell: which zsh
   register: zsh_bin
+  tags: packages
 
 - name: Make ZSH default shell
   become: yes
   user:
     name: "{{ ansible_env.USER }}"
     shell: "{{ zsh_bin.stdout }}"
+  tags: packages
 
 - name: Copy default ZSH instance if it doesn't exist
   copy:
@@ -17,7 +19,7 @@
     group: "{{ user_group }}"
     mode: 0700
     force: no
-  tags: dotfiles
+  tags: always
 
 - name: Copy default ZSH config
   copy:
@@ -27,7 +29,7 @@
     group: "{{ user_group }}"
     mode: 0700
     force: yes
-  tags: dotfiles
+  tags: always
 
 - name: Copy the OS dependent configuration
   copy:
@@ -37,7 +39,7 @@
     group: "{{ user_group }}"
     mode: 0700
     force: yes
-  tags: dotfiles
+  tags: always
 
 - name: Copy the aliases
   copy:
@@ -47,4 +49,4 @@
     group: "{{ user_group }}"
     mode: 0700
     force: yes
-  tags: dotfiles
+  tags: always
