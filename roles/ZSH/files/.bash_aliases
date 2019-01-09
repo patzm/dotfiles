@@ -25,6 +25,10 @@ alias getp='readlink -f'
 # For the deep learning guys
 alias nv='watch -n 0.1 nvidia-smi'
 
+# Use neovim
+alias _vim='/usr/bin/vim'
+alias vim='nvim'
+
 # Functions
 mkcdir () {
     mkdir -p -- '$1' && cd -P -- '$1'
