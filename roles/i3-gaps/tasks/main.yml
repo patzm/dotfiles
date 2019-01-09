@@ -106,7 +106,7 @@
   block:
     - name: install rofi, synaptics touchpad drivers
       become: yes
-      package: name="{{ item }}" state=present
+      package: name={{ item }} state=present
       with_items:
       - rofi
       - "{{ synaptics_input_package }}"

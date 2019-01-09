@@ -7,4 +7,3 @@
   with_items:
     - "{{ pip2_bin }}"
     - "{{ pip3_bin }}"
-
