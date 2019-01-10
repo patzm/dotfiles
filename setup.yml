@@ -23,3 +23,4 @@
       tags: always
     - role: python
     - role: i3-gaps
+      tags: never

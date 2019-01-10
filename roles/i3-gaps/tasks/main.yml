@@ -151,4 +151,4 @@
 - name: install and/or configure polybar
   include_role:
     name: polybar
-  tags: always
+
