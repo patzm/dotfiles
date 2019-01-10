@@ -1,13 +1,21 @@
 ---
 # Powerline fonts
-- name: install powerline fonts
-  package:
-    name: fonts-powerline
-    state: latest
+- name: install Ubuntu 16.04 and later only packages
+  become: yes
+  package: name={{ item }} state=latest
+  with_items:
+  - fonts-powerline
+  - software-properties-common
+  - tmux
 
-- name: install tmux
+- name: add the neovim repo
+  become: yes
+  apt_repository:
+    repo: ppa:neovim-ppa/stable
+
+- name: install neovim
   become: yes
   package:
-    name: tmux
+    name: neovim
     state: latest
 

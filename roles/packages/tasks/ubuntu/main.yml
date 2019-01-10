@@ -8,7 +8,6 @@
     - lm-sensors
     - git
     - vim
-    - neovim
     - zsh
     - unrar
     - curl
@@ -16,7 +15,6 @@
     - feh
     - python-pip
     - python3-pip
-    - fonts-powerline
     # begin GitKraken
     - gconf2
     - gconf-service
