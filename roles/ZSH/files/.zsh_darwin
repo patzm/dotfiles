@@ -1,3 +1,6 @@
+# Disable compfix checking for multi-user setup
+ZSH_DISABLE_COMPFIX=true
+
 # Add custom plugins
 plugins+=(brew)
 

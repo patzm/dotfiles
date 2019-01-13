@@ -23,7 +23,7 @@ check_zsh_plugin () {
 # If you come from bash you might have to change your ${PATH}.
 export PATH="${PATH}:/usr/local/sbin"
 
-# set PATH so it includes user's private bin if it exists
+# Include the user's private bin directories
 if [ -d "${HOME}/bin" ] ; then
     export PATH="${HOME}/bin:${PATH}"
 fi
@@ -119,17 +119,8 @@ POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
 POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
 POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
 
-# Completion settings
-autoload -Uz compinit
-compinit
-
 # Advanced renaming cmd line tool
 autoload -U zmv
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Check if ZSH plugins are missing
 export ZSH_PLUGINS=${ZSH}/custom/plugins
@@ -170,6 +161,7 @@ if [[ -f ${HOME}/.bash_aliases ]]; then
     source ${HOME}/.bash_aliases
 fi
 
+# Load oh-my-zsh
 source ${ZSH}/oh-my-zsh.sh
 
 # Fix missing virtualenv status
