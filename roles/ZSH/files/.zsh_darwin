@@ -2,8 +2,8 @@
 ZSH_DISABLE_COMPFIX=true
 
 # Add custom plugins
-plugins+=(brew)
+plugins+=(brew ssh-agent)
 
-alias brew_update='brew update && brew upgrade && brew cleanup'
+alias brew-update='brew update && brew upgrade && brew cleanup'
 
 # vim: set filetype=zsh : 

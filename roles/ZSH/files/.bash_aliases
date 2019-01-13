@@ -1,8 +1,13 @@
 # Configure /edit various dotfiles
 alias zshconfig='vim ${HOME}/.zshrc'
+alias zshosconfig='vim ${HOME}/.zshosdep'
+alias zshinstanceconfig='vim ${HOME}/.zshinstance'
+
 alias i3config='vim ${HOME}/.config/i3/config'
 alias polybarconfig='vim ${HOME}/.config/polybar/config'
+
 alias sshconfig='vim ${HOME}/.ssh/config'
+
 alias vimconfig='vim ${HOME}/.vim/vimrc'
 alias nvimconfig='vim ${HOME}/.config/init.rc'
 
