@@ -6,6 +6,8 @@
     - htop
     - xclip
     - git
+    - gnome-keyring
+    - libsecret
     - vim
     - neovim
     - zsh
