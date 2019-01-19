@@ -1,4 +1,13 @@
 ---
+- name: ensure correct permissions of the zsh and Homebrew folders
+  become: yes
+  file:
+    path: /usr/local
+    owner: root
+    group: admin
+    recurse: yes
+    mode: '775'  
+
 - name: update Homebrew
   homebrew:
     update_homebrew: yes
@@ -21,12 +30,3 @@
     - python2
     - python3
 
-- name: ensure correct permissions of the zsh folders
-  file:
-    path: "{{ item }}"
-    owner: "{{ ansible_user_id }}"
-    group: admin
-    mode: 0755
-  with_items:
-    - /usr/local/share/zsh
-    - /usr/local/share/zsh/site-functions
