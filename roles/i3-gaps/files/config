@@ -231,9 +231,10 @@ assign [class="Firefox"] $w1
 assign [class="jetbrains-pycharm"] $w2
 assign [class="Thunderbird"] $w8
 assign [class="Slack"] $w8
+assign [class="MineTime"] $w8
 assign [class="GitKraken"] $w9
 
-for_window [class="(?i)gnome-calculator"] floating enable
+for_window [class="(?i)calculator"] floating enable
 for_window [class="(?i)plexamp"] floating enable
 
 # make sure the display configuration is loaded properly
