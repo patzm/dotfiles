@@ -7,3 +7,17 @@
   with_items:
     - "{{ pip2_bin }}"
     - "{{ pip3_bin }}"
+
+- name: create the bpython config folder
+  file:
+    path: "{{ bpython_config_dir }}"
+    state: directory
+  tags: dotfiles
+
+- name: copy the bpython config file
+  copy:
+    src: "{{ role_path }}/files/bpython/config"
+    dest: "{{ bpython_config_dir }}/config"
+    force: yes
+  tags: dotfiles
+
