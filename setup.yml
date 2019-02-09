@@ -16,7 +16,7 @@
       tags: always
     - role: ZSH
     - role: vim
-      tags: always
+      tags: dotfiles
     - role: tmux
       tags: always
     - role: htop
@@ -24,3 +24,4 @@
     - role: python
     - role: i3-gaps
       tags: never
+
