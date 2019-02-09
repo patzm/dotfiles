@@ -18,7 +18,7 @@
   tags: ['ui', 'dotfiles-ui']
 
 - name: execute pywal once
-  shell: wal -n --theme base16-codeschool
+  shell: wal -n -a 70 --theme sexy-monokai
   tags: ui
 
 - name: link the colors file to the to-be-created cache file
