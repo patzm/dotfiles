@@ -1,19 +1,19 @@
 # Various configurations scripts
 
-* vim
-* zsh
+* autorandr
+* git
+* htop
 * i3wm (i3-gaps)
 * polybar
-* autorandr
 * python (virtualenv)
 * tmux
-* htop
-* ranger (to be added)
+* vim
+* zsh
 
 # Setup
 Execute the platform- and version-specific instructions below **first**.
 Then, execute the following:
-```
+```bash
 mkdir -p ~/repos/dotfiles
 git clone https://github.com/patzm/dotfiles.git ~/repos/dotfiles
 ansible-playbook ~/repos/dotfiles/setup.yml -K [-i <inventory_file>] [--tags ui,dotfiles-root]
@@ -32,7 +32,7 @@ Note, that the `,` after the first host is important.
 
 ## Ubuntu 16.04 or later
 On modern distributions, installation is quite straight forward:
-```
+```bash
 sudo apt-get update
 sudo apt-get install git ansible
 ```
@@ -40,7 +40,7 @@ sudo apt-get install git ansible
 ## Ubuntu 14.04 or earlier
 Ansible ships with Ubuntu 12.04 or 14.04 in version `1.x`.
 However we need version `2.x` or higher.
-```
+```bash
 sudo apt-get update
 sudo apt-get install software-properties-common ca-certificates git
 sudo apt-add-repository ppa:ansible/ansible -y
