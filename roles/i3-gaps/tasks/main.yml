@@ -97,6 +97,12 @@
         group: "{{ user_group }}"
         mode: 0600
         force: no
+    
+    - name: copy the .Xcolors file
+      copy:
+        src: "{{ role_path }}/files/.Xcolors"
+        dest: "{{ xresources_dir }}/colors.default"
+        force: yes
 
     - name: reload .Xresources
       command: xrdb .Xresources
@@ -150,11 +156,15 @@
       include_tasks: font-awesome.yml
 
     - name: install autorandr
-      include_role:
+      import_role:
         name: autorandr
   tags: ui
 
 - name: install and/or configure polybar
-  include_role:
+  import_role:
     name: polybar
+
+- name: install and/or configure pywal
+  import_role:
+    name: pywal
 

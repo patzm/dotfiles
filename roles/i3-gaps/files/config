@@ -201,23 +201,22 @@ mode "$mode_system" {
 bindsym $mod+Shift+e mode "$mode_system"
 
 # layouting
-for_window [class="^.*"] border pixel 1
-gaps inner 5
+for_window [class="^.*"] border pixel 2
+gaps inner 8
 smart_gaps on
+smart_borders on
 
-# style
-set_from_resource $bg       i3wm.background     #000000
-set_from_resource $bg_alt   i3wm.color1         #111111
-set_from_resource $fg       i3wm.foreground     #ffffff
-set_from_resource $fg_alt   i3wm.color8         #eeeeee
-set_from_resource $pri      i3wm.color5         #cf5c36
-set_from_resource $snd      i3wm.color3         #d3d5d7
+# Set colors from Xresources
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
 
-# class                 border  backgr. text    indicator   child_border
-client.focused          $bg     $bg     $pri    $bg         $pri
-client.focused_inactive $bg     $bg     $pri    $bg         $fg-alt
-client.unfocused        $bg     $bg     $fg     $bg         $bg
-client.urgent           $bg     $bg     $fg     $bg         $snd
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $bg     $bg     $fg  $bg       $bg
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
 client.background       $bg
 
 # window assignments
@@ -245,10 +244,10 @@ exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 exec_always --no-startup-id nm-applet
 
 # Set desktop background
-exec --no-startup-id xsetroot -solid "#232829"
+exec --no-startup-id hsetroot -solid "#232829"
 
 # Start composite window manager
-exec --no-startup-id compton
+exec --no-startup-id compton -b -d :0
 
 # disable automatic launching of deskop along with nautilus
 exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-icons false

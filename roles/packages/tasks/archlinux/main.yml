@@ -19,6 +19,7 @@
     - python3
     - wmctrl
     - imagemagick
+    - hsetroot
     - exiv2
     - tree
     - tmux

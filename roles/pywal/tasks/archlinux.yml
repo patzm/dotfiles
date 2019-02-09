@@ -1,0 +1,7 @@
+---
+- name: install pywal
+  become: yes
+  package:
+    name: python-pywal
+    state: present
+

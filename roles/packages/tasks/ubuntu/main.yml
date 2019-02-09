@@ -33,6 +33,7 @@
     # end nvm
     - wmctrl
     - imagemagick
+    - hsetroot
     - exiv2
     - tree
     - rename

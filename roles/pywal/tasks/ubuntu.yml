@@ -1,0 +1,7 @@
+---
+- name: install pywal
+  become: yes
+  pip:
+    name: pywal
+    executable: pip3
+

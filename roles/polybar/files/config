@@ -12,10 +12,8 @@ alert-middle = #e2580b
 alert-high = #cc060c
 
 [bar/base]
-monitor = ${env:MONITOR:eDP-1}
-; set the default MONITOR in ~/.profile with
-; export MONITOR="DP-xyz"
-; TODO: think about using .xsession for this
+monitor = ${xrdb:polybar.monitor_1:eDP-1}
+; set the default monitor_1 in ~/.Xresources.d/instance
 
 width = 100%
 height = 20

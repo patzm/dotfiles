@@ -5,11 +5,13 @@
   with_items:
   - autorandr
   - arandr
+  tags: ui
 
 - name: create the config directory
   file:
     path: "{{ user_config_dir }}/autorandr"
     state: directory
+  tags: ui
 
 - name: copy hooks
   copy:
@@ -18,3 +20,5 @@
     mode: 0700
   with_items:
   - postswitch
+  tags: [ui, dotfiles-ui]
+

@@ -2,6 +2,7 @@
 ! e.g.
 ! *i3.mod_primary: Mod4
 ! *i3.mod_secondary: Mod1
-! *i3.monitor_2: DP1
+! *.monitor_1: eDP1
+! *.monitor_2: DP1
 
 ! vim: set filetype=xdefaults :

@@ -1,0 +1,4 @@
+---
+pywal_template_dir: "{{ user_config_dir }}/wal/templates"
+pywal_cache_dir: "{{ user_cache_dir }}/wal"
+

@@ -1,32 +1,4 @@
-! Colors
-*color1: #073642
-*color9: #586e75
-
-*color2: #dc322f
-*color10: #cb4b16
-
-*color3: #859900
-*color11: #859900
-
-*color4: #b58900
-*color12: #b58900
-
-*color5: #2a9ae8
-*color13: #268bd2
-
-*color6: #ec0048
-*color14: #d33682
-
-*color7: #2aa198
-*color15: #2aa198
-
-*color8: #94a3a5
-*color16: #6c71c4
-
-i3wm.background: #252e32
-*foreground: #d9dedc
-*cursorColor: #839496
-*profile_name: Freya
+#include ".Xresources.d/colors"
 
 ! URxvt configuration
 ! test new fonts: `printf '\e]710;%s\007' "xft:<font-name>:size=12"`
