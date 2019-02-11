@@ -20,6 +20,8 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -show drun"
 # Start a all-in-one rofi menu
 bindsym $mod2+d exec "rofi -combi-modi drun,window,ssh,run -show combi -modi combi"
+# Start a open-window selector
+bindsym $mod+Tab exec "rofi -show window"
 
 # Change focus
 bindsym $mod+h focus left
