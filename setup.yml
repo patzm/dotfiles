@@ -21,6 +21,8 @@
       tags: always
     - role: htop
       tags: always
+    - role: ranger
+      tags: always
     - role: python
     - role: i3-gaps
       tags: never

@@ -1,0 +1,15 @@
+---
+- name: make sure the ranger config folder exists
+  file:
+    path: "{{ ranger_config_dir }}"
+    state: directory
+
+- name: copy the ranger config
+  copy:
+    src: "{{ item }}/rc.conf"
+    dest: "{{ ranger_config_dir }}/rc.conf"
+    force: yes
+  with_first_found:
+    - "{{ role_path }}/files/{{ ansible_distribution }}"
+    - "{{ role_path }}/files/default"
+
