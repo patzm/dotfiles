@@ -226,9 +226,6 @@ exec --no-startup-id autorandr --change
 # Launch the network applet
 exec_always --no-startup-id nm-applet
 
-# Set desktop background
-exec --no-startup-id wal -R
-
 # Program launches
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
