@@ -12,3 +12,4 @@
     name: core.excludesfile
     scope: global
     value: "{{ ansible_env.HOME }}/.gitignore_global"
+

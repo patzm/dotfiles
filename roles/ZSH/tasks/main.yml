@@ -19,7 +19,7 @@
     group: "{{ user_group }}"
     mode: 0700
     force: no
-  tags: always
+  tags: dotfiles
 
 - name: Copy default ZSH config
   copy:
@@ -29,7 +29,7 @@
     group: "{{ user_group }}"
     mode: 0700
     force: yes
-  tags: always
+  tags: dotfiles
 
 - name: Copy the OS dependent configuration
   copy:
@@ -39,7 +39,7 @@
     group: "{{ user_group }}"
     mode: 0700
     force: yes
-  tags: always
+  tags: dotfiles
 
 - name: Copy the aliases
   copy:
@@ -49,4 +49,5 @@
     group: "{{ user_group }}"
     mode: 0700
     force: yes
-  tags: always
+  tags: dotfiles
+

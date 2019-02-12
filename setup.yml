@@ -13,16 +13,16 @@
     - role: packages
       tags: ['packages', 'ui']
     - role: git
-      tags: always
+      tags: dotfiles
     - role: ZSH
     - role: vim
       tags: dotfiles
     - role: tmux
-      tags: always
+      tags: dotfiles
     - role: htop
-      tags: always
+      tags: dotfiles
     - role: ranger
-      tags: always
+      tags: dotfiles
     - role: python
     - role: i3-gaps
       tags: never

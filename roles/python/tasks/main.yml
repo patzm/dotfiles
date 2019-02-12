@@ -13,7 +13,7 @@
   file:
     path: ~/.virtualenvs
     state: directory
-  tags: [packages, dotfiles]
+  tags: packages
 
 - name: create the bpython config folder
   file:
@@ -26,5 +26,5 @@
     src: "{{ role_path }}/files/bpython/config"
     dest: "{{ bpython_config_dir }}/config"
     force: yes
-  tags: [packages, dotfiles]
+  tags: dotfiles
 
