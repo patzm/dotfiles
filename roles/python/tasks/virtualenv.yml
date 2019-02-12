@@ -4,11 +4,5 @@
   pip:
     name: ['virtualenv', 'virtualenvwrapper']
     executable: "{{ pip_executable }}"
-  tags: packages
-
-- name: create directory for virtual environments
-  file:
-    path: ~/.virtualenvs
-    state: directory
   tags: always
 

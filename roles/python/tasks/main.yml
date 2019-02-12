@@ -7,17 +7,24 @@
   with_items:
     - "{{ pip2_bin }}"
     - "{{ pip3_bin }}"
+  tags: packages
+
+- name: create directory for virtual environments
+  file:
+    path: ~/.virtualenvs
+    state: directory
+  tags: [packages, dotfiles]
 
 - name: create the bpython config folder
   file:
     path: "{{ bpython_config_dir }}"
     state: directory
-  tags: dotfiles
+  tags: [packages, dotfiles]
 
 - name: copy the bpython config file
   copy:
     src: "{{ role_path }}/files/bpython/config"
     dest: "{{ bpython_config_dir }}/config"
     force: yes
-  tags: dotfiles
+  tags: [packages, dotfiles]
 
