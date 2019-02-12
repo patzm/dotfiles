@@ -1,5 +1,5 @@
 ---
-- name: install virtualenv
+- name: "install virtualenv for {{ pip_executable }}"
   become: yes
   pip:
     name: ['virtualenv', 'virtualenvwrapper']
