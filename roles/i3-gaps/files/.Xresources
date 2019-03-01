@@ -2,19 +2,26 @@
 
 ! URxvt configuration
 ! test new fonts: `printf '\e]710;%s\007' "xft:<font-name>:size=12"`
-URxvt.font: xft:Meslo LG S DZ for Powerline:size=11
-URxvt.scrollBar: false
-URxvt.depth: 32
+URxvt*font: xft:Meslo LG S DZ for Powerline:size=11
+URxvt*scrollBar: false
+URxvt*depth: 32
 
-URxvt.perl-ext-common: default,clipboard,url-select,keyboard-select
-URxvt.keysym.M-u: perl:url-select:select_next
-URxvt.keysym.M-s: perl:keyboard-select:search
-URxvt.keysym.M-Escape: perl:keyboard-select:activate
-URxvt.url-select.launcher: /usr/bin/xdg-open
-URxvt.url-select.underline: true
+URxvt*perl-ext-common: default,clipboard,url-select,keyboard-select
+URxvt*keysym.M-u: perl:url-select:select_next
+URxvt*keysym.M-s: perl:keyboard-select:search
+URxvt*keysym.M-Escape: perl:keyboard-select:activate
+URxvt*url-select.launcher: /usr/bin/xdg-open
+URxvt*url-select.underline: true
 
-URxvt.keyboard-select.clipboard: true
-URxvt.clipboard.autocopy: true
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+URxvt*keyboard-select.clipboard: true
+URxvt*clipboard.autocopy: true
 
 #include ".Xresources.d/instance"
 
