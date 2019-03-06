@@ -4,3 +4,6 @@ source ~/.vim/vimrcbase
 " Copy from and paste to the system clipboard
 set clipboard+=unnamed
 
+" Enable vim-surround emulation
+set surround
+

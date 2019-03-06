@@ -31,6 +31,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 " airline statusline
 Plugin 'bling/vim-airline'
+" vim surround
+Plugin 'tpope/vim-surround'
 
 call vundle#end()
 
