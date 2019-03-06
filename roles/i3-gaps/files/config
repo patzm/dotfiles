@@ -225,6 +225,9 @@ exec --no-startup-id setxkbmap us,de -option 'grp:alt_space_toggle'
 # Make sure the display configuration is loaded properly
 exec --no-startup-id autorandr --change
 
+# Re-load the last wallpaper setting
+exec --no-startup-id nitrogen --restore
+
 # Launch the network applet
 exec_always --no-startup-id nm-applet
 
