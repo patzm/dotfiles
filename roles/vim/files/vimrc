@@ -74,13 +74,9 @@ map <C-n> :NERDTreeToggle<CR>
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 
-" Remap ctrlp to ctrl-t -- map it however you like, or stick with the
-" defaults. Additionally, in my OS, I remap caps lock to control. I never use
-" caps lock. This is highly recommended.
-let g:ctrlp_map = '<c-p>'
-
 " Set the maximum number of CtrlP results
 let g:ctrlp_max_height = 15
+set wildignore+=*.pyc
 
 " Finally the color scheme. Choose whichever you want from the list in the
 " link above (back up where we included the bundle of a ton of themes.)
