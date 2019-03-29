@@ -126,8 +126,9 @@ autoload -U zmv
 export ZSH_PLUGINS=${ZSH}/custom/plugins
 
 check_zsh_plugin "zshmarks" "https://github.com/jocelynmallon/zshmarks.git"
-export ZSH_PLUGIN_SYNTAX_HIGHLIGHTING="${ZSH_PLUGINS}/"
 check_zsh_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting"
+check_zsh_plugin "zsh-autosuggestions" "https://github.com/zsh-users/zsh-autosuggestions"
+check_zsh_plugin "zsh-completions" "https://github.com/zsh-users/zsh-completions"
 
 source ${ZSH_PLUGINS}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
