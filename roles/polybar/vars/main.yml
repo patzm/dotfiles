@@ -1,2 +1,2 @@
 ---
-polybar_dir: "{{ user_config_dir }}/polybar"
+polybar_dir: '{{ user_config_dir }}/polybar'

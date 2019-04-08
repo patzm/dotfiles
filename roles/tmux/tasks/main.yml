@@ -1,15 +1,15 @@
 ---
 - name: copy the tmux configuration
   copy:
-      src: "{{ role_path }}/files/tmux.conf"
-      dest: "{{ ansible_env.HOME }}/.tmux.conf"
+      src: '{{ role_path }}/files/tmux.conf'
+      dest: '{{ ansible_env.HOME }}/.tmux.conf'
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
       force: yes
 
 - name: create the tmux plugin directory
   file:
-      path: "{{ tpm_dir }}"
+      path: '{{ tpm_dir }}'
       state: directory
       owner: "{{ ansible_env.USER }}"
       group: "{{ user_group }}"
@@ -18,11 +18,11 @@
 - name: clone tpm (tmux plugin manager)
   git:
       repo: https://github.com/tmux-plugins/tpm
-      dest: "{{ tpm_dir }}"
+      dest: '{{ tpm_dir }}'
 
 - name: install and update all plugins
   shell: |
     tmux new-session -d -s plugin
-    "{{ tpm_dir }}/scripts/install_plugins.sh"
-    "{{ tpm_dir }}/scripts/update_plugin.sh all"
+    '{{ tpm_dir }}/scripts/install_plugins.sh'
+    '{{ tpm_dir }}/scripts/update_plugin.sh all'
     tmux kill-session -t plugin

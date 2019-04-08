@@ -3,4 +3,4 @@ supported_distribution_versions_ubuntu:
   - "14.10"
   - "16.04"
   - "18.04"
-yaourt_config_dir: "{{ user_config_dir }}/yaourt"
+yaourt_config_dir: '{{ user_config_dir }}/yaourt'

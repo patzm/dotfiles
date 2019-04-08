@@ -2,20 +2,20 @@
 # Platform independent tasks
 - name: create the user bin directory
   file:
-    path: "{{ user_bin_dir }}"
+    path: '{{ user_bin_dir }}'
     state: directory
     mode: 0700
   tags: always
 
 - name: "run the platform dependent tasks in {{ ansible_distribution }}"
-  include_tasks: "execute_task.yml"
+  include_tasks: 'execute_task.yml'
   vars:
     task_prefix: "{{ ansible_distribution|lower }}"
   loop_control:
     loop_var: task
   with_items:
-    - "main"
-    - "{{ ansible_distribution_major_version|lower }}" 
+    - 'main'
+    - '{{ ansible_distribution_major_version|lower }}' 
   tags: always
 
 ## Possible values for ansible_distribution

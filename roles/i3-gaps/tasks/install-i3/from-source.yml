@@ -30,28 +30,28 @@
 - name: clone the git repository
   git:
     repo: https://www.github.com/Airblader/i3
-    dest: "{{ i3_gaps_repo_dir.path }}"
+    dest: '{{ i3_gaps_repo_dir.path }}'
     version: 4.15
 
 - name: create temporary build directory
   file:
-    path: "{{ i3_gaps_repo_dir.path }}/build"
+    path: '{{ i3_gaps_repo_dir.path }}/build'
     state: directory
 
 - name: autoreconf
   shell: autoreconf --force --install
   args:
-    chdir: "{{ i3_gaps_repo_dir.path }}"
+    chdir: '{{ i3_gaps_repo_dir.path }}'
 
 - name: configure
-  shell: "{{ i3_gaps_repo_dir.path }}/configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers"
+  shell: '{{ i3_gaps_repo_dir.path }}/configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers'
   args:
-    chdir: "{{ i3_gaps_repo_dir.path }}/build"
+    chdir: '{{ i3_gaps_repo_dir.path }}/build'
 
 - name: make and install
   become: yes
   make:
-    chdir: "{{ i3_gaps_repo_dir.path }}/build"
+    chdir: '{{ i3_gaps_repo_dir.path }}/build'
     target: install
     params:
       NUM_THREADS: "{{ ansible_processor_vcpus }}"

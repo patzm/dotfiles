@@ -3,6 +3,6 @@
   become: yes
   pip:
     name: ['virtualenv', 'virtualenvwrapper']
-    executable: "{{ pip_executable }}"
+    executable: '{{ pip_executable }}'
   tags: always
 

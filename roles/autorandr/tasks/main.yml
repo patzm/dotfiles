@@ -9,16 +9,15 @@
 
 - name: create the config directory
   file:
-    path: "{{ user_config_dir }}/autorandr"
+    path: '{{ user_config_dir }}/autorandr'
     state: directory
   tags: ui
 
 - name: copy hooks
   copy:
-    src: "{{ role_path }}/files/{{ item }}"
-    dest: "{{ user_config_dir }}/autorandr"
+    src: '{{ role_path }}/files/{{ item }}'
+    dest: '{{ user_config_dir }}/autorandr'
     mode: 0700
   with_items:
   - postswitch
   tags: [ui, dotfiles-ui]
-

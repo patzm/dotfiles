@@ -34,23 +34,23 @@
 - name: clone the git repository
   git:
     repo: https://github.com/jaagr/polybar.git
-    dest: "{{ polybar_repo_dir.path }}"
+    dest: '{{ polybar_repo_dir.path }}'
     version: 3.2.1
 
 - name: create temporary build directory
   file:
-    path: "{{ polybar_repo_dir.path }}/build"
+    path: '{{ polybar_repo_dir.path }}/build'
     state: directory
 
 - name: configure with cmake
-  shell: "cmake {{ polybar_repo_dir.path }}"
+  shell: 'cmake {{ polybar_repo_dir.path }}'
   args:
-    chdir: "{{ polybar_repo_dir.path }}/build"
+    chdir: '{{ polybar_repo_dir.path }}/build'
 
 - name: make and install
   become: yes
   make:
-    chdir: "{{ polybar_repo_dir.path }}/build"
+    chdir: '{{ polybar_repo_dir.path }}/build'
     target: install
     params:
       NUM_THREADS: "{{ ansible_processor_vcpus }}"

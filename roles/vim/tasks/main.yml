@@ -1,42 +1,42 @@
 ---
 - name: create vim vundle dir
   file:
-    path: "{{ vundle_dir }}"
+    path: '{{ vundle_dir }}'
     state: directory
 
 - name: create neovim config folder
   file:
-    path: "{{ neovim_dir }}"
+    path: '{{ neovim_dir }}'
     state: directory
 
 - name: copy vimrcbase
   copy:
-    src: "{{ role_path }}/files/vimrcbase"
-    dest: "{{ vim_dir }}/vimrcbase"
+    src: '{{ role_path }}/files/vimrcbase'
+    dest: '{{ vim_dir }}/vimrcbase'
     force: yes
 
 - name: copy vimrc
   copy:
-    src: "{{ role_path }}/files/vimrc"
-    dest: "{{ vim_dir }}/vimrc"
+    src: '{{ role_path }}/files/vimrc'
+    dest: '{{ vim_dir }}/vimrc'
     force: yes
 
 - name: copy .ideavimrc
   copy:
-    src: "{{ role_path }}/files/.ideavimrc"
-    dest: "{{ ansible_env.HOME }}/.ideavimrc"
+    src: '{{ role_path }}/files/.ideavimrc'
+    dest: '{{ ansible_env.HOME }}/.ideavimrc'
     force: yes
 
 - name: copy neovim init.vim
   copy:
-    src: "{{ role_path }}/files/init.vim"
-    dest: "{{ neovim_dir }}/init.vim"
+    src: '{{ role_path }}/files/init.vim'
+    dest: '{{ neovim_dir }}/init.vim'
     force: yes
 
 - name: clone vundle from github
   git:
     repo: https://github.com/VundleVim/Vundle.vim.git
-    dest: "{{ vundle_dir }}"
+    dest: '{{ vundle_dir }}'
 
 - name: install all plugins in vim and neovim
   # We use '+PluginInstall' to install all Vundle packages
@@ -44,4 +44,3 @@
   with_items:
     - vim
     - nvim
-

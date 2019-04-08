@@ -32,13 +32,13 @@
 
 - name: create the yaourt config directory
   file:
-    path: "{{ yaourt_config_dir }}"
+    path: '{{ yaourt_config_dir }}'
     state: directory
 
 - name: copy the yaourt no-pain-in-the-ass-config
   copy:
-    src: "{{ role_path }}/files/archlinux/yaourtrc"
-    dest: "{{ yaourt_config_dir }}/yaourtrc"
+    src: '{{ role_path }}/files/archlinux/yaourtrc'
+    dest: '{{ yaourt_config_dir }}/yaourtrc'
     force: yes
 
 - name: update the AUR

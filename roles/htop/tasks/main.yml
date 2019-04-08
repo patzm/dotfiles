@@ -1,7 +1,7 @@
 ---
 - name: make sure the htop config folder exists
   file:
-    path: "{{ htop_config_dir }}"
+    path: '{{ htop_config_dir }}'
     state: directory
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
@@ -9,9 +9,8 @@
 
 - name: copy the htop config file
   copy:
-    src: "{{ role_path }}/files/htoprc"
-    dest: "{{ htop_config_dir }}/htoprc"
+    src: '{{ role_path }}/files/htoprc'
+    dest: '{{ htop_config_dir }}/htoprc'
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     force: yes
-

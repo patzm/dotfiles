@@ -1,5 +1,4 @@
 ---
-tmux_dir: "{{ ansible_env.HOME }}/.tmux"
-plugin_dir: "{{ tmux_dir }}/plugins"
-tpm_dir: "{{ plugin_dir }}/tpm"
-
+tmux_dir: '{{ ansible_env.HOME }}/.tmux'
+plugin_dir: '{{ tmux_dir }}/plugins'
+tpm_dir: '{{ plugin_dir }}/tpm'

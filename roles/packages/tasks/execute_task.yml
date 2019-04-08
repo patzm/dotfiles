@@ -1,10 +1,10 @@
 ---
 - name: "include {{ task }}"
-  include_tasks: "{{ task_file }}"
+  include_tasks: '{{ task_file }}'
   with_first_found:
     - files:
-      - "{{ task }}.yml"
-      paths: "{{ task_prefix }}"
+      - '{{ task }}.yml'
+      paths: '{{ task_prefix }}'
       skip: yes
   loop_control:
     loop_var: task_file

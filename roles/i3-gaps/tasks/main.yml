@@ -18,31 +18,31 @@
 
     - name: create i3 config directory
       file:
-        path: "{{ i3_config_dir }}"
+        path: '{{ i3_config_dir }}'
         state: directory
 
     - name: copy the i3 config file
       copy:
-        src: "{{ role_path }}/files/config"
-        dest: "{{ i3_config_file }}"
+        src: '{{ role_path }}/files/config'
+        dest: '{{ i3_config_file }}'
         force: yes
 
     - name: copy the compton config file
       copy:
-        src: "{{ role_path }}/files/.compton.conf"
-        dest: "{{ compton_config_file }}"
+        src: '{{ role_path }}/files/.compton.conf'
+        dest: '{{ compton_config_file }}'
         force: yes
 
     - name: copy the .xprofile file
       copy:
-        src: "{{ role_path }}/files/.xprofile"
-        dest: "{{ ansible_env.HOME }}/.xprofile"
+        src: '{{ role_path }}/files/.xprofile'
+        dest: '{{ ansible_env.HOME }}/.xprofile'
         force: yes
 
     - name: copy the shell scripts
       copy:
-        src: "{{ role_path }}/files/{{ item }}"
-        dest: "{{ user_bin_dir }}/{{ item }}"
+        src: '{{ role_path }}/files/{{ item }}'
+        dest: '{{ user_bin_dir }}/{{ item }}'
         owner: "{{ ansible_env.USER }}"
         group: "{{ user_group }}"
         mode: 0700
@@ -54,31 +54,31 @@
 
     - name: insert the screenshot script location into the config file
       replace:
-        path: "{{ i3_config_file }}"
-        regexp: "{{ placeholder_screenshot_script }}"
-        replace: "{{ user_bin_dir }}/{{ screenshot_script }}"
+        path: '{{ i3_config_file }}'
+        regexp: '{{ placeholder_screenshot_script }}'
+        replace: '{{ user_bin_dir }}/{{ screenshot_script }}'
 
     - name: insert the i3exit script location into the config file
       replace:
-        path: "{{ i3_config_file }}"
-        regexp: "{{ placeholder_i3_exit_script }}"
-        replace: "{{ user_bin_dir }}/{{ i3_exit_script }}"
+        path: '{{ i3_config_file }}'
+        regexp: '{{ placeholder_i3_exit_script }}'
+        replace: '{{ user_bin_dir }}/{{ i3_exit_script }}'
 
     - name: insert the i3refresh script location into the config file
       replace:
-        path: "{{ i3_config_file }}"
-        regexp: "{{ placeholder_i3_refresh_script }}"
-        replace: "{{ user_bin_dir }}/{{ i3_refresh_script }}"
+        path: '{{ i3_config_file }}'
+        regexp: '{{ placeholder_i3_refresh_script }}'
+        replace: '{{ user_bin_dir }}/{{ i3_refresh_script }}'
 
     - name: "legacy : ensure that the old ~/.i3 config folder does not exist"
       file:
-        path: "{{ ansible_env.HOME }}/.i3"
+        path: '{{ ansible_env.HOME }}/.i3'
         state: absent
 
     - name: copy .Xresources
       copy:
-        src: "{{ role_path }}/files/.Xresources"
-        dest: "{{ ansible_env.HOME }}/.Xresources"
+        src: '{{ role_path }}/files/.Xresources'
+        dest: '{{ ansible_env.HOME }}/.Xresources'
         owner: "{{ ansible_env.USER }}"
         group: "{{ user_group }}"
         mode: 0600
@@ -86,13 +86,13 @@
     
     - name: make sure the .Xresources.d directory exists
       file:
-        path: "{{ xresources_dir }}"
+        path: '{{ xresources_dir }}'
         state: directory
 
     - name: copy the .Xinstance file for the user to configure
       copy:
-        src: "{{ role_path }}/files/.Xinstance"
-        dest: "{{ xresources_dir }}/instance"
+        src: '{{ role_path }}/files/.Xinstance'
+        dest: '{{ xresources_dir }}/instance'
         owner: "{{ ansible_env.USER }}"
         group: "{{ user_group }}"
         mode: 0600
@@ -100,21 +100,21 @@
     
     - name: copy the .Xcolors file
       copy:
-        src: "{{ role_path }}/files/.Xcolors"
-        dest: "{{ xresources_dir }}/colors.default"
+        src: '{{ role_path }}/files/.Xcolors'
+        dest: '{{ xresources_dir }}/colors.default'
         force: yes
 
     - name: reload .Xresources
       command: xrdb .Xresources
       args:
-        chdir: "{{ ansible_env.HOME }}"
+        chdir: '{{ ansible_env.HOME }}'
   tags: [ui, dotfiles-ui]
 
 - name: copy the custom xorg.conf
   become: yes
   copy:
-    src: "{{ role_path }}/files/xorg.conf"
-    dest: "/etc/X11/xorg.conf"
+    src: '{{ role_path }}/files/xorg.conf'
+    dest: '/etc/X11/xorg.conf'
     owner: root
     group: root
     mode: 0644
@@ -137,7 +137,7 @@
         - files:
           - "{{ ansible_distribution|lower }}.yml"
           - "from-source.yml"
-          paths: "install-i3"
+          paths: 'install-i3'
       loop_control:
         loop_var: i3_gaps_install_tasks
       when: cmd_exists_i3_gaps.rc > 0
@@ -148,7 +148,7 @@
         - files:
           - "{{ ansible_distribution|lower }}.yml"
           - "from-source.yml"
-          paths: "install-light"
+          paths: 'install-light'
       loop_control:
         loop_var: light_install_tasks
       when: cmd_exists_light.rc > 0

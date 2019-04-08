@@ -4,10 +4,10 @@
   gather_facts: yes
 
   vars_files:
-    - "vars/common.yml"
-    - ["vars/{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml",
-       "vars/{{ ansible_distribution|lower }}.yml",
-       "vars/unix.yml"]
+    - 'vars/common.yml'
+    - ['vars/{{ ansible_distribution|lower }}-{{ ansible_distribution_major_version }}.yml',
+       'vars/{{ ansible_distribution|lower }}.yml',
+       'vars/unix.yml']
 
   roles:
     - role: packages
