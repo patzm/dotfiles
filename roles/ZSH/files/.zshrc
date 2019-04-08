@@ -201,7 +201,7 @@ export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Python
-export WORKON_HOME=${HOME}/.virtualenvs
+export WORKON_HOME=${HOME}/.venvs
 if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
     . /usr/local/bin/virtualenvwrapper.sh
 fi
