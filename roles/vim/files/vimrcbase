@@ -74,4 +74,3 @@ noremap <leader><space> :noh<cr>:call clearmatches()<cr>
 " wrapped portion. This fixes that.
 noremap j gj
 noremap k gk
-

@@ -3,38 +3,59 @@
 set rtp+=~/.vim/bundle/vundle/
 call vundle#begin()
 
+" Let vundle manage itself:
+Plugin 'gmarik/vundle'
+
 Plugin 'hzchirs/vim-material'
 Plugin 'godlygeek/tabular'
+
 " Markdown support
 Plugin 'plasticboy/vim-markdown'
 Plugin 'JamshedVesuna/vim-markdown-preview'
-Plugin 'vim-python/python-syntax'
+
+" Python
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'vim-syntastic/syntastic'
+Plugin 'nvie/vim-flake8'
+Bundle 'plytophogy/vim-virtualenv'
+
 " Just a shitload of color schemes.
 " https://github.com/flazz/vim-colorschemes#current-colorschemes
 Plugin 'flazz/vim-colorschemes'
+
 " Fuzzy finder -- absolutely must have.
 Plugin 'kien/ctrlp.vim'
-" Let vundle manage itself:
-Plugin 'gmarik/vundle'
+
 " Support for easily toggling comments.
 Plugin 'tpope/vim-commentary'
+
 " Proper JSON filetype detection, and support.
 Plugin 'leshill/vim-json'
+
 " vim indents HTML very poorly on it's own. This fixes a lot of that.
 Plugin 'indenthtml.vim'
+
 " Ansible yaml
 Plugin 'chase/vim-ansible-yaml'
+
 " git wrapper
 Plugin 'tpope/vim-fugitive'
+
 " directory tree with git support
 Plugin 'scrooloose/nerdtree'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 " airline statusline
 Plugin 'bling/vim-airline'
+
 " vim surround
 Plugin 'tpope/vim-surround'
 
+" Auto-complete
+" Bundle 'Valloric/YouCompleteMe'
+
 call vundle#end()
+filetype plugin indent on
 
 " Load the base vim configuration
 source ~/.vim/vimrcbase
@@ -42,9 +63,9 @@ source ~/.vim/vimrcbase
 set nocompatible " Fuck VI... That's for grandpas.
 filetype off
 
-syntax on " Syntax highlighting
-" Python syntax highlighting
-let g:python_highlight_all = 1
+" Syntax highlighting
+syntax on
+let g:python_highlight_all=1
 
 " Use sane regex's when searching
 nnoremap / /\v
@@ -61,11 +82,29 @@ set noswapfile " They're just annoying. Who likes them?
 " Set the copy buffer to be CLIPBOARD
 set clipboard=unnamedplus
 
-" Quick buffer switching - like cmd-tab'ing
-nnoremap <leader><leader> <c-^>
+" Enable folding with za
+set foldmethod=indent
+set foldlevel=99
+
+" Generic
+set nu
+
+" Python settings
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=79 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix
+highlight BadWhitespace ctermbg=red guibg=darkred
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+set encoding=utf-8
 
 """"""""""""""""""""""""""""""
-" Plugin settings:
+" Plugin settings            "
+""""""""""""""""""""""""""""""
 
 " Configure NERDTree
 autocmd StdinReadPre * let s:std_in=1
@@ -73,6 +112,7 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 map <C-n> :NERDTreeToggle<CR>
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
+let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " Set the maximum number of CtrlP results
 let g:ctrlp_max_height = 15
