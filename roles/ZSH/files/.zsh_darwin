@@ -2,7 +2,7 @@
 ZSH_DISABLE_COMPFIX=true
 
 # Add custom plugins
-plugins+=(brew ssh-agent)
+plugins+=(brew)
 
 alias brew-update='brew update && brew upgrade && brew cleanup'
 
