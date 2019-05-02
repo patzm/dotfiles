@@ -11,6 +11,8 @@ alias sshconfig='vim ${HOME}/.ssh/config'
 alias vimconfig='vim ${HOME}/.vim/vimrc'
 alias nvimconfig='vim ${HOME}/.config/init.rc'
 
+alias tmuxconfig='vim ${HOME}/.tmux.conf'
+
 # Alias related to zshmarks
 alias to='jump'
 alias bm='bookmark'
@@ -38,3 +40,4 @@ alias vim='nvim'
 mkcdir () {
     mkdir -p -- '$1' && cd -P -- '$1'
 }
+
