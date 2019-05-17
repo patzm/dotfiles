@@ -4,4 +4,5 @@
   package:
     name: python-pywal
     state: present
+  tags: always
 
