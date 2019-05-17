@@ -9,6 +9,7 @@
     - git
     - vim
     - zsh
+    - rxvt-unicode
     - ranger
     - unrar
     - curl
