@@ -101,6 +101,9 @@ highlight BadWhitespace ctermbg=red guibg=darkred
 au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 set encoding=utf-8
 
+" Jenkinsfile
+au BufRead,BufNewFile Jenkinsfile setf groovy
+
 """"""""""""""""""""""""""""""
 " Plugin settings            "
 """"""""""""""""""""""""""""""
@@ -108,13 +111,14 @@ set encoding=utf-8
 " Configure NERDTree
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-map <C-n> :NERDTreeToggle<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 let NERDTreeMinimalUI = 1
 let NERDTreeShowHidden = 1
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
 " Set the maximum number of CtrlP results
 let g:ctrlp_max_height = 15
+nnoremap <A-p> :<C-U>CtrlPBuffer<CR>
 set wildignore+=*.pyc
 
 " Finally the color scheme. Choose whichever you want from the list in the
