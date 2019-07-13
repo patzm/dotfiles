@@ -22,6 +22,19 @@ alias bl='showmarks'
 # Alias for conventional image renaming
 alias img-rename='exiv2 -Fr '%Y-%m-%d_%H%M%S''
 
+# Alias for video file conversion
+function convert-video () {
+	input=${1}
+	input_dir=$(dirname ${input})
+	input_file_name=$(basename ${input})
+	output=${2:-${input_dir}/out_${input_file_name}}
+	echo "Converting ${input} and storing it in ${output}"
+	ffmpeg -i ${input} \
+		-c:v libx264 -preset slow -crf 26 \
+		-c:a aac \
+		${output}
+}
+
 # Common system / file system interaction
 alias clc='clear'
 alias ll='ls -la'
