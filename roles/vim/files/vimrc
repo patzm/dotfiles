@@ -88,6 +88,7 @@ set foldlevel=99
 
 " Generic
 set nu
+set fileformat=unix
 
 " Python settings
 au BufNewFile,BufRead *.py
@@ -95,14 +96,21 @@ au BufNewFile,BufRead *.py
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
     \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+    \ set autoindent
 highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufNewFile,BufRead *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 set encoding=utf-8
 
 " Jenkinsfile
-au BufRead,BufNewFile Jenkinsfile setf groovy
+au BufNewFile,BufRead Jenkinsfile setf groovy
+
+" Yaml files
+au BufNewFile,BufRead *.yml,*.yaml
+	\ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+	\ set expandtab |
+	\ set autoindent
 
 """"""""""""""""""""""""""""""
 " Plugin settings            "
