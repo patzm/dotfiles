@@ -29,7 +29,7 @@ function convert-video () {
 	input_file_name=$(basename ${input})
 	output=${2:-${input_dir}/out_${input_file_name}}
 	echo "Converting ${input} and storing it in ${output}"
-	ffmpeg -i ${input} \
+	nice ffmpeg -i ${input} \
 		-c:v libx264 -preset slow -crf 26 \
 		-c:a aac \
 		${output}
