@@ -26,4 +26,5 @@
     src: '{{ pywal_cache_dir }}/colors.Xresources'
     dest: '{{ xresources_color }}'
     state: link
+    force: yes
   tags: [ui, dotfiles-ui]
