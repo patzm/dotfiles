@@ -1,60 +1,60 @@
 """"""""""""""""""""""""""""""
 " Plugin management
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
+call plug#begin()
 
-" Let vundle manage itself:
-Plugin 'gmarik/vundle'
+" Let plug manage itself:
+Plug 'gmarik/plug'
 
-Plugin 'hzchirs/vim-material'
-Plugin 'godlygeek/tabular'
+Plug 'hzchirs/vim-material'
+Plug 'godlygeek/tabular'
 
 " Markdown support
-Plugin 'plasticboy/vim-markdown'
-Plugin 'JamshedVesuna/vim-markdown-preview'
+Plug 'plasticboy/vim-markdown'
+Plug 'JamshedVesuna/vim-markdown-preview'
 
 " Python
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'vim-syntastic/syntastic'
-Plugin 'nvie/vim-flake8'
-Bundle 'plytophogy/vim-virtualenv'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'vim-syntastic/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'plytophogy/vim-virtualenv'
 
 " Just a shitload of color schemes.
 " https://github.com/flazz/vim-colorschemes#current-colorschemes
-Plugin 'flazz/vim-colorschemes'
+Plug 'flazz/vim-colorschemes'
 
 " Fuzzy finder -- absolutely must have.
-Plugin 'kien/ctrlp.vim'
+Plug 'kien/ctrlp.vim'
 
 " Support for easily toggling comments.
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
 " Proper JSON filetype detection, and support.
-Plugin 'leshill/vim-json'
-
-" vim indents HTML very poorly on it's own. This fixes a lot of that.
-Plugin 'indenthtml.vim'
+Plug 'leshill/vim-json'
 
 " Ansible yaml
-Plugin 'chase/vim-ansible-yaml'
+Plug 'chase/vim-ansible-yaml'
 
 " git wrapper
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
 " directory tree with git support
-Plugin 'scrooloose/nerdtree'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " airline statusline
-Plugin 'bling/vim-airline'
+Plug 'bling/vim-airline'
 
 " vim surround
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 
 " Auto-complete
-" Bundle 'Valloric/YouCompleteMe'
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+Plug 'junegunn/fzf'
 
-call vundle#end()
+call plug#end()
 filetype plugin indent on
 
 " Load the base vim configuration

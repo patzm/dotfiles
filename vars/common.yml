@@ -2,5 +2,6 @@
 user_bin_dir: '{{ ansible_env.HOME }}/bin'
 user_cache_dir: '{{ ansible_env.HOME }}/.cache'
 user_config_dir: '{{ ansible_env.HOME }}/.config'
+user_local_dir: '{{ ansible_env.HOME }}/.local'
 xresources_dir: '{{ ansible_env.HOME }}/.Xresources.d'
 xresources_color: '{{ xresources_dir }}/colors'
