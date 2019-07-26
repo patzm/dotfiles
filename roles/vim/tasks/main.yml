@@ -48,6 +48,14 @@
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: '{{ nvim_autoload_dir }}/plug.vim'
 
+- name: install dependencies
+  pip:
+    executable: pip3
+    name:
+      - pynvim
+      - python-language-server
+    extra_args: --user
+
 - name: install all plugins in vim and neovim
   # We use '+PluginInstall' to install all Vundle packages
   shell: "nvim +'PlugInstall --sync' +qall"
