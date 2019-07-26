@@ -4,6 +4,11 @@
     path: '{{ nvim_autoload_dir }}'
     state: directory
 
+- name: create neovim config dir
+  file:
+    path: '{{ nvim_config_dir }}'
+    state: directory
+
 - name: create vim autoload dir
   file:
     path: '{{ vim_autoload_dir }}'
@@ -30,7 +35,7 @@
 - name: copy neovim init.vim
   copy:
     src: '{{ role_path }}/files/init.vim'
-    dest: '{{ nvim_dir }}/init.vim'
+    dest: '{{ nvim_config_dir }}/init.vim'
     force: yes
 
 - name: download the plug autoload script for vim
