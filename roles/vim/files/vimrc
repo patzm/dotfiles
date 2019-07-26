@@ -2,9 +2,6 @@
 " Plugin management
 call plug#begin()
 
-" Let plug manage itself:
-Plug 'gmarik/plug'
-
 Plug 'hzchirs/vim-material'
 Plug 'godlygeek/tabular'
 
@@ -55,17 +52,9 @@ Plug 'autozimu/LanguageClient-neovim', {
 Plug 'junegunn/fzf'
 
 call plug#end()
-filetype plugin indent on
 
 " Load the base vim configuration
 source ~/.vim/vimrcbase
-
-set nocompatible " Fuck VI... That's for grandpas.
-filetype off
-
-" Syntax highlighting
-syntax on
-let g:python_highlight_all=1
 
 " Use sane regex's when searching
 nnoremap / /\v
