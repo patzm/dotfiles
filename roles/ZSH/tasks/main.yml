@@ -16,7 +16,6 @@
     src: '{{ role_path }}/files/.zshinstance'
     dest: '{{ ansible_env.HOME }}/.zshinstance'
     owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
     mode: 0700
     force: no
   tags: dotfiles
@@ -26,7 +25,6 @@
     src: '{{ role_path }}/files/.zshrc'
     dest: '{{ ansible_env.HOME }}/.zshrc'
     owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
     mode: 0700
     force: yes
   tags: dotfiles
@@ -36,7 +34,6 @@
     src: '{{ role_path }}/files/.zsh_{{ ansible_os_family|lower }}'
     dest: '{{ ansible_env.HOME }}/.zshosdep'
     owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
     mode: 0700
     force: yes
   tags: dotfiles
@@ -46,7 +43,6 @@
     src: '{{ role_path }}/files/.bash_aliases'
     dest: '{{ ansible_env.HOME }}/.bash_aliases'
     owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
     mode: 0700
     force: yes
   tags: dotfiles
