@@ -5,9 +5,10 @@ call plug#begin()
 Plug 'hzchirs/vim-material'
 Plug 'godlygeek/tabular'
 
-" Markdown support
+" Syntax support
 Plug 'plasticboy/vim-markdown'
 Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'cespare/vim-toml'
 
 " Python
 Plug 'vim-scripts/indentpython.vim'
