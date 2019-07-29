@@ -1,17 +1,17 @@
 # Configure /edit various dotfiles
-alias zshconfig='vim ${HOME}/.zshrc'
-alias zshosconfig='vim ${HOME}/.zshosdep'
-alias zshinstanceconfig='vim ${HOME}/.zshinstance'
+alias zshconfig='nvim ${HOME}/.zshrc'
+alias zshosconfig='nvim ${HOME}/.zshosdep'
+alias zshinstanceconfig='nvim ${HOME}/.zshinstance'
 
-alias i3config='vim ${HOME}/.config/i3/config'
-alias polybarconfig='vim ${HOME}/.config/polybar/config'
+alias i3config='nvim ${HOME}/.config/i3/config'
+alias polybarconfig='nvim ${HOME}/.config/polybar/config'
 
-alias sshconfig='vim ${HOME}/.ssh/config'
+alias sshconfig='nvim ${HOME}/.ssh/config'
 
-alias vimconfig='vim ${HOME}/.vim/vimrc'
-alias nvimconfig='vim ${HOME}/.config/init.rc'
+alias vimconfig='nvim ${HOME}/.vim/vimrc'
+alias nvimconfig='nvim ${HOME}/.config/init.rc'
 
-alias tmuxconfig='vim ${HOME}/.tmux.conf'
+alias tmuxconfig='nvim ${HOME}/.tmux.conf'
 
 # Alias related to zshmarks
 alias to='jump'
@@ -44,10 +44,6 @@ alias getp='readlink -f'
 
 # For the deep learning guys
 alias nv='watch -n 0.1 nvidia-smi'
-
-# Use neovim
-alias _vim='/usr/bin/vim'
-alias vim='nvim'
 
 # Functions
 mkcdir () {

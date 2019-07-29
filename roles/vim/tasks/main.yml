@@ -57,5 +57,9 @@
     extra_args: --user
 
 - name: install all plugins in vim and neovim
-  # We use '+PluginInstall' to install all Vundle packages
-  shell: "nvim +'PlugInstall --sync' +qall"
+  # We use '+PlugInstall' to install all Plug packages
+  shell: "{{ item }} +'PlugInstall --sync' +qall"
+  with_items:
+    - vim
+    - nvim
+
