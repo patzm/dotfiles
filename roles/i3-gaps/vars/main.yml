@@ -11,4 +11,5 @@ placeholder_screenshot_script: '\<screenshot-script\>'
 i3_exit_script: "i3exit"
 i3_refresh_script: "i3refresh"
 screenshot_script: "screenshot"
+note_script: "note"
 
