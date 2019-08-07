@@ -90,12 +90,6 @@ set nu
 set fileformat=unix
 
 " Python settings
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set expandtab |
-    \ set autoindent
 highlight BadWhitespace ctermbg=red guibg=darkred
 au BufNewFile,BufRead *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
 set encoding=utf-8
@@ -107,9 +101,7 @@ au BufNewFile,BufRead Jenkinsfile setf groovy
 au BufNewFile,BufRead *.yml,*.yaml
 	\ set tabstop=2 |
     \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-	\ set expandtab |
-	\ set autoindent
+    \ set shiftwidth=2
 
 """"""""""""""""""""""""""""""
 " Plugin settings            "
