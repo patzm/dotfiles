@@ -15,29 +15,30 @@ let vim_markdown_preview_github=1
 let vim_markdown_preview_browser='Firefox'
 let vim_markdown_preview_temp_file=1
 
+" Tab behavior
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
-set noexpandtab " use tabs instead of spaces.
-set smarttab " let's tab key insert 'tab stops', and bksp deletes tabs.
-set shiftround " tab / shifting moves to closest tabstop.
+set expandtab " Use spaces.
+set smarttab " Lets tab key insert 'tab stops', and bksp deletes tabs.
+set shiftround " Tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
-set pastetoggle=<F3> " simplifies toggling normal insert and paste insert modes
+set pastetoggle=<F3> " Simplifies toggling normal insert and paste insert modes
 
 " Make search more sane
-set ignorecase " case insensitive search
+set ignorecase " Case insensitive search.
 set smartcase " If there are uppercase letters, become case-sensitive.
-set incsearch " live incremental searching
-set showmatch " live match highlighting
-set hlsearch " highlight matches
-set gdefault " use the `g` flag by default.
+set incsearch " Live incremental searching.
+set showmatch " Live match highlighting.
+set hlsearch " Highlight matches.
+set gdefault " Use the `g` flag by default.
 
 " don't nag me when hiding buffers
-set hidden " allow me to have buffers with unsaved changes.
-set autoread " when a file has changed on disk, just load it. Don't ask.
+set hidden " Allow me to have buffers with unsaved changes.
+set autoread " When a file has changed on disk, just load it. Don't ask.
 
-" allow the cursor to go anywhere in visual block mode.
+" Allow the cursor to go anywhere in visual block mode.
 set virtualedit+=block
 
 " leader is a key that allows you to have your own "namespace" of keybindings.
