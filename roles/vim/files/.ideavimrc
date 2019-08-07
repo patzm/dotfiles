@@ -2,8 +2,7 @@
 source ~/.vim/vimrcbase
 
 " Copy from and paste to the system clipboard
-set clipboard+=unnamed
-set clipboard+=ideaput
+set clipboard+=unnamed,ideaput
 
 " Enable vim-surround emulation
 set surround
