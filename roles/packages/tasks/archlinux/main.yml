@@ -17,7 +17,7 @@
     - wget
     - feh
     - python2-pip
-    - python3
+    - python-pip  # Python 3
     - wmctrl
     - imagemagick
     - hsetroot
@@ -25,24 +25,9 @@
     - tree
     - tmux
     - neofetch
-    - yaourt
     - rxvt-unicode
     - rxvt-unicode-terminfo
     - urxvt-perls
 
-- name: create the yaourt config directory
-  file:
-    path: '{{ yaourt_config_dir }}'
-    state: directory
-
-- name: copy the yaourt no-pain-in-the-ass-config
-  copy:
-    src: '{{ role_path }}/files/archlinux/yaourtrc'
-    dest: '{{ yaourt_config_dir }}/yaourtrc'
-    force: yes
-
-- name: update the AUR
-  command: yaourt -Syy
-
 - name: install powerline fonts
-  command: yaourt -S --noconfirm powerline-fonts-git
+  command: yay --nodiffmenu --nocleanmenu -S powerline-fonts-git
