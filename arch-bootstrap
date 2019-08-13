@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Install ansible
+sudo pacman --needed -S ansible
+
+# Install YAY for 
+yay_repo_dir=/tmp/yay
+mkdir -p ${yay_repo_dir}
+git clone https://aur.archlinux.org/yay.git ${yay_repo_dir}
+cd ${yay_repo_dir}
+makepkg -si
+rm -rf ${yay_repo_dir}
