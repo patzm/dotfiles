@@ -1,4 +1,4 @@
 ---
 - name: install polybar from AUR
-  become: yes
-  command: yay -S --nodiffmenu --nocleanmenu polybar
+  command: yay -S --noconfirm polybar
+  tags: ui
