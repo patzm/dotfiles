@@ -12,7 +12,7 @@ alert-middle = #e2580b
 alert-high = #cc060c
 
 [bar/base]
-monitor = ${xrdb:polybar.monitor_1:eDP-1}
+monitor = ${xrdb:polybar.monitor_1:eDP1}
 ; set the default monitor_1 in ~/.Xresources.d/instance
 
 width = 100%
