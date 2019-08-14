@@ -7,6 +7,5 @@ if [ ! -d "${NOTE_DIR}" ]; then
 fi
 
 nvim "${NOTE_DIR}/$(date +"%H-%M-%S").md"
-exit
 
 # vim: set filetype=sh : 
