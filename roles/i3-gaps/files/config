@@ -168,10 +168,10 @@ bindsym $mod+Shift+n exec i3-sensible-terminal -ls -title "i3-note" -e "note"
 # Resize window (you can also use the mouse for that)
 set $rs	15
 mode "resize" {
-    bindsym h resize shrink width $rs px or $rs ppt
+    bindsym l resize shrink width $rs px or $rs ppt
     bindsym k resize grow height $rs px or $rs ppt
     bindsym j resize shrink height $rs px or $rs ppt
-    bindsym l resize grow width $rs px or $rs ppt
+    bindsym h resize grow width $rs px or $rs ppt
 
     # same bindings, but for the arrow keys
     bindsym Left resize shrink width $rs px or $rs ppt
