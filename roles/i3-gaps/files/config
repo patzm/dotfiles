@@ -235,6 +235,9 @@ exec --no-startup-id nitrogen --restore
 # Launch the network applet
 exec_always --no-startup-id nm-applet
 
+# Launch the notification daemon
+exec --no-startup-id dunst
+
 # Program launches
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 

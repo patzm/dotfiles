@@ -22,6 +22,7 @@
     - libxcb-xrm-dev
     - automake
     - i3lock
+    # TODO: install dunst, notification-daemon, libnotify
 
 - name: create temporary checkout directory
   tempfile: state=directory suffix=.i3_gaps

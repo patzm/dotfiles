@@ -21,6 +21,11 @@
         path: '{{ i3_config_dir }}'
         state: directory
 
+    - name: create the dunst config directory
+      file:
+        path: '{{ dunst_config_dir }}'
+        state: directory
+
     - name: copy the i3 config file
       copy:
         src: '{{ role_path }}/files/config'
@@ -31,6 +36,12 @@
       copy:
         src: '{{ role_path }}/files/.compton.conf'
         dest: '{{ compton_config_file }}'
+        force: yes
+
+    - name: copy the dunst config file
+      copy:
+        src: '{{ role_path }}/files/dunstrc'
+        dest: '{{ dunst_config_file }}'
         force: yes
 
     - name: copy the .xprofile file

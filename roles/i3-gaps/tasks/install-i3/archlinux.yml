@@ -5,3 +5,6 @@
   with_items:
   - i3-gaps
   - i3exit
+  - libnotify
+  - notification-daemon
+  - dunst
