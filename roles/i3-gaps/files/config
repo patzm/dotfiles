@@ -212,12 +212,13 @@ smart_gaps on
 # the output you can find the line
 #   WM_CLASS(STRING) = "<instance_name>", "<class_name>"
 # use this information to assign windows to workspaces
-assign [class="Firefox"] $w1
-assign [class="jetbrains-pycharm"] $w2
-assign [class="Thunderbird"] $w8
-assign [class="Slack"] $w8
-assign [class="MineTime"] $w8
-assign [class="GitKraken"] $w9
+assign [class="(?i)firefox"] $w1
+assign [class="(?i)google-chrome"] $w7
+assign [class="(?i)jetbrains-pycharm"] $w2
+assign [class="(?i)thunderbird"] $w8
+assign [class="(?i)slack"] $w8
+assign [class="(?i)minetime"] $w8
+assign [class="(?i)gitkraken"] $w9
 
 for_window [class="(?i)calculator"] floating enable
 for_window [class="(?i)plexamp"] floating enable
