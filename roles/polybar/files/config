@@ -333,15 +333,15 @@ label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = ""
-menu-0-0-exec = ~/bin/i3exit.sh reboot
+menu-0-0-exec = systemctl reboot
 menu-0-1 = ""
-menu-0-1-exec = ~/bin/i3exit.sh shutdown
+menu-0-1-exec = systemctl shutdown
 menu-0-2 = ""
-menu-0-2-exec = ~/bin/i3exit.sh suspend
+menu-0-2-exec = systemctl suspend
 menu-0-3 = ""
-menu-0-3-exec = ~/bin/i3exit.sh logout
+menu-0-3-exec = i3-msg exit
 menu-0-4 = ""
-menu-0-4-exec = ~/bin/i3exit.sh lock
+menu-0-4-exec = light-locker-command -l
 
 [settings]
 screenchange-reload = true

@@ -60,7 +60,6 @@
         force: yes
       with_items:
       - "{{ screenshot_script }}"
-      - "{{ i3_exit_script }}"
       - "{{ i3_refresh_script }}"
       - "{{ note_script }}"
 
@@ -69,12 +68,6 @@
         path: '{{ i3_config_file }}'
         regexp: '{{ placeholder_screenshot_script }}'
         replace: '{{ user_bin_dir }}/{{ screenshot_script }}'
-
-    - name: insert the i3exit script location into the config file
-      replace:
-        path: '{{ i3_config_file }}'
-        regexp: '{{ placeholder_i3_exit_script }}'
-        replace: '{{ user_bin_dir }}/{{ i3_exit_script }}'
 
     - name: insert the i3refresh script location into the config file
       replace:

@@ -187,14 +187,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Create Log out, Reboot, Poweroff bindings
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system System (l) lock | (e) logout | (s) suspend | (h) hibernate | (r) reboot | (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id <i3-exit-script> lock, mode "default"
-    bindsym e exec --no-startup-id <i3-exit-script> logout, mode "default"
-    bindsym s exec --no-startup-id <i3-exit-script> suspend, mode "default"
-    bindsym h exec --no-startup-id <i3-exit-script> hibernate, mode "default"
-    bindsym r exec --no-startup-id <i3-exit-script> reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id <i3-exit-script> shutdown, mode "default"
+    bindsym l exec light-locker-command -l, mode "default"
+    bindsym e exec i3-msg exit, mode "default"
+    bindsym s exec systemctl suspend, mode "default"
+    bindsym h exec systemctl hibernate, mode "default"
+    bindsym r exec systemctl reboot, mode "default"
+    bindsym Shift+s exec systemctl shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -234,6 +234,9 @@ exec --no-startup-id nitrogen --restore
 
 # Launch the network applet
 exec_always --no-startup-id nm-applet
+
+# Launch the screen locker
+exec --no-startup-id light-locker
 
 # Launch the notification daemon
 exec --no-startup-id dunst
