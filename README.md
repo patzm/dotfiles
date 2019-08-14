@@ -47,3 +47,14 @@ sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get update
 sudo apt-get install ansible
 ```
+
+# Configuration
+
+## `i3`
+
+### Wallpaper
+There are various ways to set the wallpaper.
+The recommended way is to use `nitrogen` to set the wallpaper.
+This will also persist across sessions.
+
+An alternative is to use `hsetroot`.
