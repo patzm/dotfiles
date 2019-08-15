@@ -180,10 +180,10 @@ mode "resize" {
     bindsym h resize grow width $rs px or $rs ppt
 
     # same bindings, but for the arrow keys
-    bindsym Left resize shrink width $rs px or $rs ppt
-    bindsym Down resize grow height $rs px or $rs ppt
-    bindsym Up resize shrink height $rs px or $rs ppt
-    bindsym Right resize grow width $rs px or $rs ppt
+    bindsym Left    resize shrink width $rs px or $rs ppt
+    bindsym Down    resize grow height $rs px or $rs ppt
+    bindsym Up      resize shrink height $rs px or $rs ppt
+    bindsym Right   resize grow width $rs px or $rs ppt
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -195,12 +195,12 @@ bindsym $mod+r mode "resize"
 # Create Log out, Reboot, Poweroff bindings
 set $mode_system System (l) lock | (e) logout | (s) suspend | (h) hibernate | (r) reboot | (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec light-locker-command -l, mode "default"
-    bindsym e exec i3-msg exit, mode "default"
-    bindsym s exec systemctl suspend, mode "default"
-    bindsym h exec systemctl hibernate, mode "default"
-    bindsym r exec systemctl reboot, mode "default"
-    bindsym Shift+s exec systemctl shutdown, mode "default"
+    bindsym l       exec light-locker-command -l,   mode "default"
+    bindsym e       exec i3-msg exit,               mode "default"
+    bindsym s       exec systemctl suspend,         mode "default"
+    bindsym h       exec systemctl hibernate,       mode "default"
+    bindsym r       exec systemctl reboot,          mode "default"
+    bindsym Shift+s exec systemctl shutdown,        mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -228,6 +228,7 @@ assign [class="(?i)gitkraken"] $w9
 
 for_window [class="(?i)calculator"] floating enable
 for_window [class="(?i)plexamp"] floating enable
+for_window [class="(?i)java-lang-thread"] floating enable
 for_window [title="^i3-note$"] floating enable
 
 # Configure keyboard layout toggles
