@@ -28,6 +28,7 @@
     - rxvt-unicode
     - rxvt-unicode-terminfo
     - urxvt-perls
+    - deepin-calculator
 
 - name: install powerline fonts
   command: yay --nodiffmenu --nocleanmenu -S powerline-fonts-git
