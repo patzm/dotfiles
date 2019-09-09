@@ -1,12 +1,9 @@
 ---
-- include_tasks: "virtualenv.yml"
-  vars:
-    pip_executable: "{{ _pip_executable }}"
-  loop_control:
-    loop_var: _pip_executable
-  with_items:
-    - '{{ pip2_bin }}'
-    - '{{ pip3_bin }}'
+- name: "install virtualenv"
+  become: yes
+  pip:
+    name: ['virtualenv', 'virtualenvwrapper']
+    executable: '{{ pip3_bin }}'
   tags: packages
 
 - name: create directory for virtual environments
