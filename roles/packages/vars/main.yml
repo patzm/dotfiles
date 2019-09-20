@@ -3,3 +3,5 @@ supported_distribution_versions_ubuntu:
   - "14.10"
   - "16.04"
   - "18.04"
+
+yay_config_file: '{{ user_config_dir }}/yay/config.json'

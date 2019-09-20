@@ -30,5 +30,13 @@
     - urxvt-perls
     - deepin-calculator
 
+- name: copy yay config files
+  copy:
+    src: '{{ role_path }}/files/archlinux/yay/config.json'
+    dest: '{{ yay_config_file }}'
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    force: yes
+
 - name: install powerline fonts
-  command: yay --nodiffmenu --nocleanmenu -S powerline-fonts-git
+  command: yay -S powerline-fonts-git
