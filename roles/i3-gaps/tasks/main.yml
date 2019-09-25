@@ -118,8 +118,8 @@
 - name: copy the custom xorg.conf
   become: yes
   copy:
-    src: '{{ role_path }}/files/xorg.conf'
-    dest: '/etc/X11/xorg.conf'
+    src: '{{ role_path }}/files/synaptics.conf'
+    dest: '/etc/X11/xorg.conf.d/70-touchpad.conf'
     owner: root
     group: root
     mode: 0644
