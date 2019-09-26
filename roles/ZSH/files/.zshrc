@@ -165,9 +165,6 @@ fi
 # Load oh-my-zsh
 source ${ZSH}/oh-my-zsh.sh
 
-# Fix missing virtualenv status
-export VIRTUAL_ENV_DISABLE_PROMPT=
-
 # User configuration
 tabs -4
 
@@ -200,8 +197,10 @@ unset -f check_zsh_theme
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Python
+# Python and virtualenv
 export WORKON_HOME=${HOME}/.venvs
+export VIRTUAL_ENV_DISABLE_PROMPT=
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
     . /usr/local/bin/virtualenvwrapper.sh
 fi
