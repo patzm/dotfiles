@@ -25,10 +25,7 @@
     # end GitKraken
     - ntfs-3g
     - sshfs
-    # begin nethogs
-    - libncurses5-dev
-    - libpcap-dev
-    # end nethogs
+    - bmon
     # begin nvm for nodejs
     - checkinstall
     - libssl-dev

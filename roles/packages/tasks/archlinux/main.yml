@@ -15,6 +15,7 @@
     - unrar
     - curl
     - wget
+    - bmon
     - feh
     - python2-pip
     - python-pip  # Python 3
