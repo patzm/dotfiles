@@ -219,12 +219,13 @@ smart_gaps on
 #   WM_CLASS(STRING) = "<instance_name>", "<class_name>"
 # use this information to assign windows to workspaces
 assign [class="(?i)firefox"] $w1
-assign [class="(?i)google-chrome"] $w7
 assign [class="(?i)jetbrains-pycharm"] $w2
 assign [class="(?i)mendeley desktop"] $w6
+assign [class="(?i)google-chrome"] $w7
 assign [class="(?i)thunderbird"] $w8
 assign [class="(?i)slack"] $w8
 assign [class="(?i)minetime"] $w8
+assign [class="(?i)mailspring"] $w8
 assign [class="(?i)gitkraken"] $w9
 
 for_window [class="(?i)calculator"] floating enable
