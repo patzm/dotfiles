@@ -146,6 +146,9 @@ bindsym $mod+Shift+c exec --no-startup-id <i3-refresh-script> reload
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r exec --no-startup-id <i3-refresh-script> restart
 
+# Trigger detecting a new display configuration
+bindsym $mod+Shift+d exec --no-startup-id autorandr --change && nitrogen --restore
+
 # Screenshot control
 bindsym --release $mod+$mod2+p	exec --no-startup-id <screenshot-script> -p ~/Pictures/screenshots -r
 bindsym --release $mod+p		exec --no-startup-id <screenshot-script> -p ~/Pictures/screenshots -s
