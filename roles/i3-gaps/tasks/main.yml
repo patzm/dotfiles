@@ -158,6 +158,12 @@
         loop_var: light_install_tasks
       when: cmd_exists_light.rc > 0
 
+    - name: "light: enable current user to change the brightness"
+      user:
+        name: "{{ ansible_user_id }}"
+        groups: video,
+        append: yes
+
     - name: install i3-gaps requirements from source
       include_tasks: font-awesome.yml
 
