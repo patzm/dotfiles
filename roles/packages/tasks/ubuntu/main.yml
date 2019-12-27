@@ -17,6 +17,7 @@
     - feh
     - python-pip
     - python3-pip
+    - python3.7
     # begin GitKraken
     - gconf2
     - gconf-service

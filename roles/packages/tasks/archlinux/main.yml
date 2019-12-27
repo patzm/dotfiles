@@ -41,3 +41,7 @@
 
 - name: install powerline fonts
   command: yay -S powerline-fonts-git
+
+- name: install Python3.7
+  command: yay -S python37
+
