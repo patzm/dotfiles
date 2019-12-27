@@ -201,7 +201,7 @@ export NVM_DIR="${HOME}/.nvm"
 export WORKON_HOME=${HOME}/.venvs
 export VIRTUAL_ENV_DISABLE_PROMPT=
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export VIRTUALENV_PYTHON=${VIRTUALENVWRAPPER_PYTHON}
+export VIRTUALENV_PYTHON=$(which python3.7)
 if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
     . /usr/local/bin/virtualenvwrapper.sh
 fi
