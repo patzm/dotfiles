@@ -6,9 +6,7 @@ dunst_config_dir: '{{ user_config_dir }}/dunst'
 dunst_config_file: '{{ dunst_config_dir }}/dunstrc'
 fonts_dir: '{{ ansible_env.HOME }}/.fonts'
 
-placeholder_i3_refresh_script: '\<i3-refresh-script\>'
 placeholder_screenshot_script: '\<screenshot-script\>'
 
-i3_refresh_script: "i3refresh"
-screenshot_script: "screenshot"
 note_script: "note"
+screenshot_script: "screenshot"

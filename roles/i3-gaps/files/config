@@ -141,10 +141,10 @@ bindsym $mod+Shift+9 move container to workspace number $w9
 bindsym $mod+Shift+0 move container to workspace number $w10
 
 # Reload the configuration file
-bindsym $mod+Shift+c exec --no-startup-id <i3-refresh-script> reload
+bindsym $mod+Shift+c exec --no-startup-id xrdb $HOME/.Xresources && i3-msg reload
 
 # Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r exec --no-startup-id <i3-refresh-script> restart
+bindsym $mod+Shift+r exec --no-startup-id xrdb $HOME/.Xresources && i3-msg restart
 
 # Trigger detecting a new display configuration
 bindsym $mod+Shift+d exec --no-startup-id autorandr --change && nitrogen --restore
@@ -265,4 +265,3 @@ exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-ico
 
 # make sure the gnome keyring is launched on login
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets
-
