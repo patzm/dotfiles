@@ -6,6 +6,7 @@
     - htop
     - xclip
     - lm-sensors
+    - blueman
     - git
     - vim
     - zsh

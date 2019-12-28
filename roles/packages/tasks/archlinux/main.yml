@@ -20,6 +20,7 @@
     - python2-pip
     - python-pip  # Python 3
     - wmctrl
+    - blueman
     - imagemagick
     - hsetroot
     - exiv2
