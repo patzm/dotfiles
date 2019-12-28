@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
+~/bin/detect-monitors
 i3-msg restart
 nitrogen --restore
-

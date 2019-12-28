@@ -59,8 +59,9 @@
         mode: 0700
         force: yes
       with_items:
-      - "{{ screenshot_script }}"
+      - "{{ detect_monitors_script }}"
       - "{{ note_script }}"
+      - "{{ screenshot_script }}"
 
     - name: insert the screenshot script location into the config file
       replace:
@@ -96,6 +97,15 @@
         mode: 0600
         force: no
     
+    - name: copy the monitors template file for the user to configure
+      copy:
+        src: '{{ role_path }}/files/monitors.in'
+        dest: '{{ xresources_dir }}/monitors.in'
+        owner: "{{ ansible_env.USER }}"
+        group: "{{ user_group }}"
+        mode: 0600
+        force: yes
+
     - name: copy the .Xcolors file
       copy:
         src: '{{ role_path }}/files/.Xcolors'

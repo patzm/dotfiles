@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Generate a now Xresouces file with the current screen names
+XRESOURCES_DIR=~/.Xresources.d
+MONITORS_OUT="${XRESOURCES_DIR}/monitors"
+cp "${XRESOURCES_DIR}/monitors.in" "${MONITORS_OUT}"
+
+readarray -t displays <<< "$(xrandr --query | grep -Po '.*(?=\sconnected\s)')"
+readarray -t monitor_vars <<< "$(grep -oh '%%.*%%' ${MONITORS_OUT})"
+
+n_connected="${#displays[@]}"
+n_monitor_vars="${#monitor_vars[@]}"
+
+for i in "${!monitor_vars[@]}"; do
+    sed -i "s/${monitor_vars[$i]}/${displays[$((i % n_connected))]}/g" ${MONITORS_OUT}
+done
+
+xrdb ~/.Xresources

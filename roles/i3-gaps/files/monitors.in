@@ -1,0 +1,7 @@
+! Template file to be filled with the connected monitors
+
+*.monitor_1: %%monitor_1%%
+*.monitor_2: %%monitor_2%%
+*.monitor_3: %%monitor_3%%
+
+! vim: set filetype=xdefaults :

@@ -68,8 +68,9 @@ set $w9 "9 "
 set $w10 "10 "
 
 # Define monitors
-set $m1 primary
-set_from_resource $m2 i3.monitor_2 "DP-1"
+exec_always --no-startup-id detect-monitors
+set_from_resource $m1 i3.monitor_1 primary
+set_from_resource $m2 i3.monitor_2 primary
 
 # Assign workspaces to monitors
 workspace 1 output $m1

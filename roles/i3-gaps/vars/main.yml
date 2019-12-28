@@ -8,5 +8,6 @@ fonts_dir: '{{ ansible_env.HOME }}/.fonts'
 
 placeholder_screenshot_script: '\<screenshot-script\>'
 
+detect_monitors_script: "detect-monitors"
 note_script: "note"
 screenshot_script: "screenshot"
