@@ -1,0 +1,26 @@
+---
+- name: installing core packages
+  become: yes
+  package: name={{ item }} state=latest
+  with_items:
+    - ncurses
+    - htop
+    - xclip
+    - git
+    - vim
+    - neovim
+    - zsh
+    - zsh-vcs
+    - ranger
+    - unrar
+    - curl
+    - wget
+    - bmon
+    - python2-dev
+    - py2-pip
+    - python3-dev
+    - py3-pip
+    - imagemagick
+    - exiv2
+    - tree
+    - tmux
