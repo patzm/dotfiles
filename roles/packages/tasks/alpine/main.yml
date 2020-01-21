@@ -16,8 +16,6 @@
     - curl
     - wget
     - bmon
-    - python2-dev
-    - py2-pip
     - python3-dev
     - py3-pip
     - imagemagick
