@@ -1,0 +1,13 @@
+#! /usr/bin/env bash
+
+BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ')
+BUILD_VERSION=0.1
+IMAGE_NAME=patzm/home
+VCS_REF=$(git rev-parse --short HEAD)
+
+docker build \
+  --build-arg BUILD_DATE \
+  --build-arg BUILD_VERSION \
+  --build-arg VCS_REF \
+  -t $IMAGE_NAME:latest -t $IMAGE_NAME:$BUILD_VERSION \
+  .
