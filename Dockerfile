@@ -3,6 +3,7 @@ FROM alpine:3.11
 ARG   BUILD_DATE
 ARG   VCS_REF
 ARG   BUILD_VERSION
+
 LABEL maintainer="Martin Patz <mailto@martin-patz.de>" \
       org.label-schema.schema-version="1.0" \
       org.label-schema.name="patzm/home" \
@@ -14,10 +15,13 @@ LABEL maintainer="Martin Patz <mailto@martin-patz.de>" \
       org.label-schema.vcs-ref=$VCS_REF
 
 ENV TERM=xterm-256color
+
 COPY . /dotfiles
-RUN apk --update add ansible build-base python3 git && \
+RUN apk --update \
+      add --no-cache --virtual .build-deps \
+      ansible build-base python3 git shadow && \
     USER=$(whoami) ansible-playbook /dotfiles/setup.yml && \
-    apk del ansible build-base && \
+    apk del .build-deps && \
     rm -r /dotfiles && \
     USER=$(whoami) exec zsh --interactive --login
 
