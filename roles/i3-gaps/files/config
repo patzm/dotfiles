@@ -214,7 +214,7 @@ bindsym $mod+Shift+e mode "$mode_system"
 
 # Layouting
 for_window [class="^.*"] border pixel 0
-gaps inner 8
+gaps inner 20
 smart_gaps on
 
 # Window assignments
