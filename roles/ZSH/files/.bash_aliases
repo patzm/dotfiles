@@ -35,6 +35,12 @@ function convert-video () {
 		${output}
 }
 
+function convert-videos () {
+    for i in ${@}; do
+        convert-video $i
+    done
+}
+
 # Common system / file system interaction
 alias clc='clear'
 alias ll='ls -la'
