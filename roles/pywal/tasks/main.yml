@@ -8,23 +8,33 @@
   with_items:
   - '{{ pywal_cache_dir }}'
   - '{{ pywal_template_dir }}'
-  tags: ['ui', 'dotfiles-ui']
+  tags: [ui, dotfiles-ui]
 
 - name: copy the colors template
   copy:
-    src: '{{ role_path }}/files/templates/colors.Xresources'
-    dest: '{{ pywal_template_dir }}/colors.Xresources'
+    src: '{{ item }}'
+    dest: '{{ pywal_template_dir }}'
     force: yes
-  tags: ['ui', 'dotfiles-ui']
+  with_fileglob:
+    - '{{ role_path }}/files/templates/*'
+  tags: [ui, dotfiles-ui]
 
 - name: execute pywal once
   shell: wal -n -a 80 --theme base16-google
-  tags: ui
+  tags: [ui, dotfiles-ui]
 
-- name: link the colors file to the to-be-created cache file
+- name: link the Xresource colors file
   file:
     src: '{{ pywal_cache_dir }}/colors.Xresources'
     dest: '{{ xresources_color }}'
+    state: link
+    force: yes
+  tags: [ui, dotfiles-ui]
+
+- name: link the termite config file
+  file:
+    src: '{{ pywal_cache_dir }}/termite.config'
+    dest: '{{ termite_config_dir }}/config'
     state: link
     force: yes
   tags: [ui, dotfiles-ui]
