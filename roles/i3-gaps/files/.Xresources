@@ -1,8 +1,6 @@
 #include ".Xresources.d/colors"
 
 ! URxvt configuration
-! test new fonts: `printf '\e]710;%s\007' "xft:<font-name>:size=12"`
-URxvt*font: xft:Meslo LG S DZ for Powerline:size=11
 URxvt*scrollBar: false
 URxvt*depth: 32
 
