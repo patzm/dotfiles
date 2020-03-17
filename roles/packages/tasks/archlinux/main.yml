@@ -41,11 +41,11 @@
     force: yes
 
 - name: install powerline fonts
-  command: yay --answerdiff=None --noconfirm -S powerline-fonts-git
+  command: yay --answerdiff=None --noconfirm --needed -S powerline-fonts-git
 
 - name: install emoji fonts
-  command: yay --answerdiff=None --noconfirm -S ttf-joypixels
+  command: yay --answerdiff=None --noconfirm --needed -S ttf-joypixels
 
 - name: install Python3.7
-  command: yay --answerdiff=None --noconfirm -S python37
+  command: yay --answerdiff=None --noconfirm --needed -S python37
 
