@@ -8,6 +8,7 @@
     - git
     - gnome-keyring
     - libsecret
+    - libva-intel-driver
     - vim
     - neovim
     - zsh
