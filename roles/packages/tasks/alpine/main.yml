@@ -3,22 +3,23 @@
   become: yes
   package: name={{ item }} state=latest
   with_items:
-    - ncurses
-    - htop
-    - xclip
+    - bmon
+    - curl
+    - exiv2
     - git
-    - vim
+    - htop
+    - imagemagick
+    - ncurses
     - neovim
+    - py3-pip
+    - python3-dev
+    - ranger
+    - tmux
+    - tree
+    - unrar
+    - util-linux
+    - vim
+    - wget
+    - xclip
     - zsh
     - zsh-vcs
-    - ranger
-    - unrar
-    - curl
-    - wget
-    - bmon
-    - python3-dev
-    - py3-pip
-    - imagemagick
-    - exiv2
-    - tree
-    - tmux
