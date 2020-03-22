@@ -10,7 +10,7 @@
   - '{{ pywal_template_dir }}'
   - '{{ termite_config_dir }}'
   - '{{ kitty_config_dir }}'
-  tags: [ui, dotfiles-ui]
+  tags: [ui, dotfiles, dotfiles-ui]
 
 - name: copy the colors template
   copy:
@@ -19,7 +19,7 @@
     force: yes
   with_fileglob:
     - '{{ role_path }}/files/templates/*'
-  tags: [ui, dotfiles-ui]
+  tags: [ui, dotfiles, dotfiles-ui]
 
 - name: link the Xresource colors file
   file:
@@ -27,7 +27,7 @@
     dest: '{{ xresources_color }}'
     state: link
     force: yes
-  tags: [ui, dotfiles-ui]
+  tags: [ui, dotfiles, dotfiles-ui]
 
 - name: link the termite config file
   file:
@@ -35,7 +35,7 @@
     dest: '{{ termite_config_dir }}/config'
     state: link
     force: yes
-  tags: [ui, dotfiles-ui]
+  tags: [ui, dotfiles, dotfiles-ui]
 
 - name: link the kitty colors config file
   file:
@@ -43,15 +43,15 @@
     dest: '{{ kitty_config_dir }}/colors.conf'
     state: link
     force: yes
-  tags: [ui, dotfiles-ui]
+  tags: [ui, dotfiles, dotfiles-ui]
 
 - name: execute pywal once
   shell: wal -n -a 80 --theme base16-google
-  tags: [ui, dotfiles-ui]
+  tags: [ui, dotfiles, dotfiles-ui]
 
 - name: copy the kitty config file
   copy:
     src: '{{ role_path }}/files/kitty.conf'
     dest: '{{ kitty_config_dir }}/kitty.conf'
     force: yes
-  tags: [ui, dotfiles-ui]
+  tags: [ui, dotfiles, dotfiles-ui]
