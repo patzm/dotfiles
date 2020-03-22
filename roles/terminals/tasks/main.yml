@@ -10,6 +10,7 @@
   - '{{ pywal_template_dir }}'
   - '{{ termite_config_dir }}'
   - '{{ kitty_config_dir }}'
+  - '{{ xresources_dir }}'
   tags: [ui, dotfiles-ui]
 
 - name: copy the colors template
