@@ -10,6 +10,8 @@
        'vars/unix.yml']
 
   roles:
+    - role: scripts
+      tags: dotfiles
     - role: packages
       tags: ['packages', 'ui']
     - role: git
