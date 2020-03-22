@@ -22,7 +22,12 @@ alias bl='showmarks'
 # Alias for conventional image renaming
 alias img-rename='exiv2 -Fr '%Y-%m-%d_%H%M%S''
 
-# Alias for video file conversion
+# Functions
+mkcdir () {
+    mkdir -p -- '$1' && cd -P -- '$1'
+}
+
+# video file conversion
 function convert-video () {
 	input=${1}
 	input_dir=$(dirname ${input})
@@ -43,16 +48,10 @@ function convert-videos () {
 
 # Common system / file system interaction
 alias clc='clear'
-alias ll='ls -la'
+alias l='ls -la'
 alias dush='du -sm * | sort -h'
 alias pa='ps aux | grep'
 alias getp='readlink -f'
 
 # For the deep learning guys
 alias nv='watch -n 0.1 nvidia-smi'
-
-# Functions
-mkcdir () {
-    mkdir -p -- '$1' && cd -P -- '$1'
-}
-
