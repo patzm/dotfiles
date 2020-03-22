@@ -2,7 +2,7 @@
 - name: copy the .gitignore_global file
   copy:
     src: '{{ role_path }}/files/.gitignore_global'
-    dest: '{{ ansible_env.HOME }}/.gitignore_global'
+    dest: '{{ user_home_dir }}/.gitignore_global'
     owner: "{{ ansible_env.USER }}"
     mode: 0700
 
@@ -10,4 +10,4 @@
   git_config:
     name: core.excludesfile
     scope: global
-    value: "{{ ansible_env.HOME }}/.gitignore_global"
+    value: "{{ user_home_dir }}/.gitignore_global"

@@ -1,4 +1,4 @@
 ---
-tmux_dir: '{{ ansible_env.HOME }}/.tmux'
+tmux_dir: '{{ user_home_dir }}/.tmux'
 plugin_dir: '{{ tmux_dir }}/plugins'
 tpm_dir: '{{ plugin_dir }}/tpm'

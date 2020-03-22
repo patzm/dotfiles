@@ -4,7 +4,7 @@ i3_config_file: '{{ i3_config_dir }}/config'
 compton_config_file: '{{ user_config_dir }}/compton.conf'
 dunst_config_dir: '{{ user_config_dir }}/dunst'
 dunst_config_file: '{{ dunst_config_dir }}/dunstrc'
-fonts_dir: '{{ ansible_env.HOME }}/.fonts'
+fonts_dir: '{{ user_home_dir }}/.fonts'
 
 placeholder_screenshot_script: '\<screenshot-script\>'
 

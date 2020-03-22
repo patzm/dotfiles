@@ -29,7 +29,7 @@
 - name: copy .ideavimrc
   copy:
     src: '{{ role_path }}/files/.ideavimrc'
-    dest: '{{ ansible_env.HOME }}/.ideavimrc'
+    dest: '{{ user_home_dir }}/.ideavimrc'
     force: yes
 
 - name: copy neovim init.vim

@@ -47,7 +47,7 @@
     - name: copy the .xprofile file
       copy:
         src: '{{ role_path }}/files/.xprofile'
-        dest: '{{ ansible_env.HOME }}/.xprofile'
+        dest: '{{ user_home_dir }}/.xprofile'
         force: yes
 
     - name: copy the shell scripts
@@ -71,13 +71,13 @@
 
     - name: "legacy : ensure that the old ~/.i3 config folder does not exist"
       file:
-        path: '{{ ansible_env.HOME }}/.i3'
+        path: '{{ user_home_dir }}/.i3'
         state: absent
 
     - name: copy .Xresources
       copy:
         src: '{{ role_path }}/files/.Xresources'
-        dest: '{{ ansible_env.HOME }}/.Xresources'
+        dest: '{{ user_home_dir }}/.Xresources'
         owner: "{{ ansible_env.USER }}"
         group: "{{ user_group }}"
         mode: 0600
@@ -115,7 +115,7 @@
     - name: reload .Xresources
       command: xrdb .Xresources
       args:
-        chdir: '{{ ansible_env.HOME }}'
+        chdir: '{{ user_home_dir }}'
   tags: [ui, dotfiles-ui]
 
 - name: copy the custom xorg.conf

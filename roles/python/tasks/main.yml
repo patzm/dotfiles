@@ -8,7 +8,7 @@
 
 - name: create directory for virtual environments
   file:
-    path: '{{ ansible_env.HOME }}/.venvs'
+    path: '{{ user_home_dir }}/.venvs'
     state: directory
   tags: packages
 

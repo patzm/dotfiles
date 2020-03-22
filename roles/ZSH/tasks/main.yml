@@ -14,7 +14,7 @@
 - name: Copy default ZSH instance if it doesn't exist
   copy:
     src: '{{ role_path }}/files/.zshinstance'
-    dest: '{{ ansible_env.HOME }}/.zshinstance'
+    dest: '{{ user_home_dir }}/.zshinstance'
     owner: "{{ ansible_env.USER }}"
     mode: 0700
     force: no
@@ -23,7 +23,7 @@
 - name: Copy default ZSH config
   copy:
     src: '{{ role_path }}/files/.zshrc'
-    dest: '{{ ansible_env.HOME }}/.zshrc'
+    dest: '{{ user_home_dir }}/.zshrc'
     owner: "{{ ansible_env.USER }}"
     mode: 0700
     force: yes
@@ -32,7 +32,7 @@
 - name: Copy the OS dependent configuration
   copy:
     src: '{{ role_path }}/files/.zsh_{{ ansible_os_family|lower }}'
-    dest: '{{ ansible_env.HOME }}/.zshosdep'
+    dest: '{{ user_home_dir }}/.zshosdep'
     owner: "{{ ansible_env.USER }}"
     mode: 0700
     force: yes
@@ -41,7 +41,7 @@
 - name: Copy the aliases
   copy:
     src: '{{ role_path }}/files/.bash_aliases'
-    dest: '{{ ansible_env.HOME }}/.bash_aliases'
+    dest: '{{ user_home_dir }}/.bash_aliases'
     owner: "{{ ansible_env.USER }}"
     mode: 0700
     force: yes
