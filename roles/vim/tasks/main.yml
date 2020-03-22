@@ -42,24 +42,24 @@
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: '{{ vim_autoload_dir }}/plug.vim'
+    validate_certs: no
 
 - name: download the plug autoload script for neovim
   get_url:
     url: https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     dest: '{{ nvim_autoload_dir }}/plug.vim'
+    validate_certs: no
 
 - name: install dependencies
   pip:
-    executable: pip3
+    executable: "{{ pip3_exe }}"
     name:
       - pynvim
       - python-language-server
-    extra_args: --user
+    extra_args: "{{ pip3_args }}"
+  environment: "{{ env }}"
 
 - name: install all plugins in vim and neovim
   # We use '+PlugInstall' to install all Plug packages
   shell: "{{ item }} +'PlugInstall --sync' +qall"
-  with_items:
-    - vim
-    - nvim
-
+  with_items: "{{ vim_distros }}"

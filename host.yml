@@ -1,0 +1,7 @@
+all:
+  children:
+    QTS:
+      hosts:
+        tatooine:
+          ansible_python_interpreter: /opt/bin/python
+          home_dir: /share/homes/admin

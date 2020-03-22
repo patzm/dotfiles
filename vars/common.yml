@@ -7,3 +7,12 @@ user_local_dir: '{{ user_home_dir }}/.local'
 xresources_dir: '{{ user_home_dir }}/.Xresources.d'
 xresources_color: '{{ xresources_dir }}/colors'
 termite_config_dir: '{{ user_config_dir }}/termite'
+
+pip3_args: "--user"
+pip3_exe: pip3
+
+vim_distros:
+  - vim
+  - nvim
+
+env:
