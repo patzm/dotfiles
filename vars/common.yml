@@ -6,6 +6,7 @@ user_config_dir: '{{ user_home_dir }}/.config'
 user_local_dir: '{{ user_home_dir }}/.local'
 xresources_dir: '{{ user_home_dir }}/.Xresources.d'
 xresources_color: '{{ xresources_dir }}/colors'
+kitty_config_dir: '{{ user_config_dir }}/kitty'
 termite_config_dir: '{{ user_config_dir }}/termite'
 
 pip3_args: "--user"

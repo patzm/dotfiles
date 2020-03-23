@@ -178,8 +178,3 @@
 - name: install and/or configure polybar
   import_role:
     name: polybar
-
-- name: install and/or configure pywal
-  import_role:
-    name: pywal
-

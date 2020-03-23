@@ -13,7 +13,8 @@
     - role: scripts
       tags: dotfiles
     - role: packages
-      tags: ['packages', 'ui']
+      tags: [packages, ui]
+    - role: terminals
     - role: git
       tags: dotfiles
     - role: ZSH

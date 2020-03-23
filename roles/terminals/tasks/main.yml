@@ -1,0 +1,64 @@
+---
+# - name: install pywal
+#   include_tasks: "{{ ansible_distribution|lower }}.yml"
+#   tags: ui
+- name: install pywal
+  become: yes
+  pip:
+    name: git+https://github.com/patzm/pywal.git@r3.3.1
+    executable: pip3
+  tags: ui
+
+- name: create all terminal directories
+  file: path={{ item }} state=directory
+  with_items:
+  - '{{ pywal_cache_dir }}'
+  - '{{ pywal_template_dir }}'
+  - '{{ termite_config_dir }}'
+  - '{{ kitty_config_dir }}'
+  - '{{ xresources_dir }}'
+  tags: [ui, dotfiles-ui]
+
+- name: copy the colors template
+  copy:
+    src: '{{ item }}'
+    dest: '{{ pywal_template_dir }}'
+    force: yes
+  with_fileglob:
+    - '{{ role_path }}/files/templates/*'
+  tags: [ui, dotfiles-ui]
+
+- name: link the Xresource colors file
+  file:
+    src: '{{ pywal_cache_dir }}/colors.Xresources'
+    dest: '{{ xresources_color }}'
+    state: link
+    force: yes
+  tags: [ui, dotfiles-ui]
+
+- name: link the termite config file
+  file:
+    src: '{{ pywal_cache_dir }}/termite.config'
+    dest: '{{ termite_config_dir }}/config'
+    state: link
+    force: yes
+  tags: [ui, dotfiles-ui]
+
+- name: link the kitty colors config file
+  file:
+    src: '{{ pywal_cache_dir }}/kitty.conf'
+    dest: '{{ kitty_config_dir }}/colors.conf'
+    state: link
+    force: yes
+  tags: [ui, dotfiles-ui]
+
+- name: execute pywal once
+  shell: wal -n -a 80 --theme base16-google
+  tags: [ui, dotfiles-ui]
+
+- name: copy the kitty config file
+  copy:
+    src: '{{ role_path }}/files/kitty.conf'
+    dest: '{{ kitty_config_dir }}/kitty.conf'
+    force: yes
+  tags: [ui, dotfiles-ui]
