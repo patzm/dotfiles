@@ -1,6 +1,12 @@
 ---
+# - name: install pywal
+#   include_tasks: "{{ ansible_distribution|lower }}.yml"
+#   tags: ui
 - name: install pywal
-  include_tasks: "{{ ansible_distribution|lower }}.yml"
+  become: yes
+  pip:
+    name: git+https://github.com/patzm/pywal.git@r3.3.1
+    executable: pip3
   tags: ui
 
 - name: create all terminal directories
