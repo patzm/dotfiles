@@ -162,7 +162,7 @@ bindsym XF86KbdBrightnessUp     exec light -k -A 10
 bindsym XF86KbdBrightnessDown   exec light -k -U 10
 
 # Create a fast note
-bindsym $mod+Shift+n exec i3-sensible-terminal -ls -title "i3-note" -e bash -c "~/bin/note"
+bindsym $mod+Shift+n exec i3-sensible-terminal --title "i3-note" -e bash -c "~/bin/note"
 
 # Resize window (you can also use the mouse for that)
 set $rs	15
@@ -237,6 +237,9 @@ exec --no-startup-id nitrogen --restore
 
 # Launch the network applet
 exec_always --no-startup-id nm-applet
+
+# Launch the Bluetooth applet
+exec --no-startup-id blueman-applet
 
 # Launch the screen locker
 exec --no-startup-id light-locker
