@@ -53,5 +53,8 @@ alias dush='du -sm * | sort -h'
 alias pa='ps aux | grep'
 alias getp='readlink -f'
 
+# Pastebins
+alias tbin='nc termbin.com 9999'
+
 # For the deep learning guys
 alias nv='watch -n 0.1 nvidia-smi'
