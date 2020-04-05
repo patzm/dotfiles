@@ -19,6 +19,7 @@
   git:
     repo: https://github.com/tmux-plugins/tpm
     dest: '{{ tpm_dir }}'
+    force: yes
 
 - name: install and update all plugins
   shell: |
