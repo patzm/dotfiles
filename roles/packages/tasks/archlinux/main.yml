@@ -22,6 +22,8 @@
     - python-pip  # Python 3
     - wmctrl
     - blueman
+    - networkmanager
+    - network-manager-applet
     - imagemagick
     - hsetroot
     - exiv2
