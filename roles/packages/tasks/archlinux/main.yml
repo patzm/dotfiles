@@ -3,37 +3,37 @@
   become: yes
   package: name={{ item }} state=latest
   with_items:
-    - htop
-    - xclip
+    - blueman
+    - bmon
+    - curl
+    - deepin-calculator
+    - exiv2
+    - feh
     - git
     - gnome-keyring
+    - hsetroot
+    - htop
+    - imagemagick
     - libsecret
     - libva-intel-driver
-    - vim
-    - neovim
-    - zsh
-    - ranger
-    - unrar
-    - curl
-    - wget
-    - bmon
-    - feh
-    - python2-pip
-    - python-pip  # Python 3
-    - wmctrl
-    - blueman
-    - networkmanager
-    - network-manager-applet
-    - imagemagick
-    - hsetroot
-    - exiv2
-    - tree
-    - tmux
     - neofetch
+    - neovim
+    - network-manager-applet
+    - networkmanager
+    - python-pip  # Python 3
+    - python2-pip
+    - ranger
     - rxvt-unicode
     - termite
+    - tmux
+    - tree
+    - unrar
     - urxvt-perls
-    - deepin-calculator
+    - vim
+    - wget
+    - wmctrl
+    - xclip
+    - zsh
 
 - name: copy yay config files
   copy:

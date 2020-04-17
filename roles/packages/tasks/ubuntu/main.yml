@@ -3,41 +3,37 @@
   become: yes
   package: name={{ item }} state=latest
   with_items:
-    - htop
-    - xclip
-    - lm-sensors
     - blueman
-    - git
-    - vim
-    - zsh
-    - rxvt-unicode
-    - ranger
-    - unrar
+    - bmon
+    - checkinstall
     - curl
-    - wget
+    - exiv2
     - feh
+    - gconf-service
+    - gconf2
+    - git
+    - hsetroot
+    - htop
+    - imagemagick
+    - libgnome-keyring-common
+    - libgnome-keyring-dev
+    - libssl-dev
+    - lm-sensors
+    - ntfs-3g
     - python-pip
     - python3-pip
     - python3.7
-    # begin GitKraken
-    - gconf2
-    - gconf-service
-    - libgnome-keyring-common
-    - libgnome-keyring-dev
-    # end GitKraken
-    - ntfs-3g
-    - sshfs
-    - bmon
-    # begin nvm for nodejs
-    - checkinstall
-    - libssl-dev
-    # end nvm
-    - wmctrl
-    - imagemagick
-    - hsetroot
-    - exiv2
-    - tree
+    - ranger
     - rename
+    - rxvt-unicode
+    - sshfs
+    - tree
+    - unrar
+    - vim
+    - wget
+    - wmctrl
+    - xclip
+    - zsh
 
 - name: run distribution specific tasks defined by an upper bound
   include_tasks: "execute_task.yml"

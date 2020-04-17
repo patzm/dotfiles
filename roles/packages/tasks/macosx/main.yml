@@ -16,20 +16,20 @@
 - name: install required packages
   homebrew:
     name: [
-      'tree',
-      'vim',
-      'neovim',
-      'htop',
       'bmon',
-      'wget',
-      'tmux',
-      'neofetch',
       'exiv2',
-      'zsh',
-      'ranger',
+      'htop',
+      'neofetch',
+      'neovim',
       'python2',
       'python3',
-      'watch'
+      'ranger',
+      'tmux',
+      'tree',
+      'vim',
+      'watch',
+      'wget',
+      'zsh',
     ]
     state: present
 
