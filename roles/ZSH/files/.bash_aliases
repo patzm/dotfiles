@@ -52,6 +52,7 @@ alias l='ls -la'
 alias dush='du -sm * | sort -h'
 alias pa='ps aux | grep'
 alias getp='readlink -f'
+alias ducks='du -cks * | sort -rn | head'
 
 # Pastebins
 alias pbin='nc pbin.patz.app 9999'
