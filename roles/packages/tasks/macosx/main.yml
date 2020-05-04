@@ -21,7 +21,6 @@
       'htop',
       'neofetch',
       'neovim',
-      'python2',
       'python3',
       'ranger',
       'tmux',
@@ -32,4 +31,3 @@
       'zsh',
     ]
     state: present
-
