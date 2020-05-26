@@ -1,7 +1,8 @@
 ---
 i3_config_dir: '{{ user_config_dir }}/i3'
 i3_config_file: '{{ i3_config_dir }}/config'
-compton_config_file: '{{ user_config_dir }}/compton.conf'
+picom_config_dir: '{{ user_config_dir }}/picom'
+picom_config_file: '{{ picom_config_dir }}/picom.conf'
 dunst_config_dir: '{{ user_config_dir }}/dunst'
 dunst_config_file: '{{ dunst_config_dir }}/dunstrc'
 fonts_dir: '{{ user_home_dir }}/.fonts'

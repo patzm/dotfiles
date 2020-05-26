@@ -251,7 +251,7 @@ exec --no-startup-id dunst
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start composite window manager
-exec --no-startup-id compton -b -d :0
+exec --no-startup-id picom -b
 
 # Disable automatic launching of deskop along with nautilus
 exec --no-startup-id gsettings set org.gnome.desktop.background show-desktop-icons false

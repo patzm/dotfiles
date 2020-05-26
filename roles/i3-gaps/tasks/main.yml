@@ -32,10 +32,15 @@
         dest: '{{ i3_config_file }}'
         force: yes
 
-    - name: copy the compton config file
+    - name: create the picom config folder
+      file:
+        path: '{{ picom_config_dir }}'
+        state: directory
+
+    - name: copy the picom config file
       copy:
-        src: '{{ role_path }}/files/.compton.conf'
-        dest: '{{ compton_config_file }}'
+        src: '{{ role_path }}/files/picom.conf'
+        dest: '{{ picom_config_file }}'
         force: yes
 
     - name: copy the dunst config file
@@ -130,12 +135,12 @@
 
 - name: i3-gaps and dependencies installation
   block:
-    - name: install rofi, synaptics touchpad drivers
+    - name: install rofi, picom, nitrogen, and synaptics touchpad drivers
       become: yes
       package: name={{ item }} state=present
       with_items:
       - rofi
-      - compton
+      - picom
       - nitrogen
       - "{{ synaptics_input_package }}"
 
