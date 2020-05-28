@@ -244,6 +244,9 @@ exec --no-startup-id blueman-applet
 # Launch the screen locker
 exec --no-startup-id light-locker
 
+# Launch the sound switcher indicator
+exec --no-startup-id indicator-sound-switcher
+
 # Launch the notification daemon
 exec --no-startup-id dunst
 

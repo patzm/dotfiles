@@ -1,5 +1,5 @@
 ---
-- name: install i3-gaps from AUR
+- name: install i3-gaps
   become: yes
   package: name={{ item }} state=latest
   with_items:
