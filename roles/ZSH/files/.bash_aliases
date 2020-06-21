@@ -20,7 +20,8 @@ alias bd='deletemark'
 alias bl='showmarks'
 
 # Alias for conventional image renaming
-alias img-rename='exiv2 -Fr '%Y-%m-%d_%H%M%S''
+alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
+alias mp4-rename="exiftool '-filename<CreateDate' -d %y-%m-%d_%H%M%S%%-c.%%le"
 
 # Functions
 mkcdir () {
