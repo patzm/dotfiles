@@ -42,7 +42,7 @@ line-size = 3
 line-color = #f00
 
 modules-left = xwindow
-modules-right = xbacklight alsa xkeyboard battery date powermenu
+modules-right = xbacklight pulseaudio xkeyboard battery date powermenu
 
 tray-position = right
 tray-padding = 2
@@ -235,8 +235,8 @@ time-alt = %H:%M
 
 label = "%date%  %time%"
 
-[module/alsa]
-type = internal/alsa
+[module/pulseaudio]
+type = internal/pulseaudio
 
 format-volume = <label-volume> <bar-volume>
 label-volume = VOL %percentage%%
@@ -245,6 +245,7 @@ label-volume-foreground = ${root.foreground}
 format-muted-prefix = " "
 format-muted-foreground = ${colors.foreground-alt}
 label-muted = sound muted
+label-muted-foreground = ${colors.foreground-alt}
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
