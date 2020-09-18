@@ -43,6 +43,7 @@ bindsym $mod+n split v
 bindsym $mod+f fullscreen
 
 # Change container layout (stacked, tabbed)
+bindsym $mod+e layout default
 bindsym $mod+s layout stacking
 bindsym $mod+t layout tabbed
 
