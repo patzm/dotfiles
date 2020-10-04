@@ -21,7 +21,7 @@ alias bl='showmarks'
 
 # Alias for conventional image renaming
 alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
-alias mov-rename="exiftool '-filename<CreateDate' -d %y-%m-%d_%H%M%S%%-c.%%le"
+alias mov-rename="exiftool '-filename<CreateDate' -d %Y-%m-%d_%H%M%S%%-c.%%le"
 alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
 function mov-shift-tz () {
 	# mov-shift-tz -=2 *.mov
