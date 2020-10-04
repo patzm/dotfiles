@@ -21,7 +21,16 @@ alias bl='showmarks'
 
 # Alias for conventional image renaming
 alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
-alias mp4-rename="exiftool '-filename<CreateDate' -d %y-%m-%d_%H%M%S%%-c.%%le"
+alias mov-rename="exiftool '-filename<CreateDate' -d %y-%m-%d_%H%M%S%%-c.%%le"
+alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
+function mov-shift-tz () {
+	# mov-shift-tz -=2 *.mov
+	tz_shift=${1}
+	for f in "${@:2}"; do
+		echo "Shifting timezone of ${f} by ${tz_shift}."
+		exiftool '-*date'${tz_shift} ${f}
+	done
+}
 
 # Functions
 mkcdir () {
