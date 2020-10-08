@@ -180,6 +180,7 @@ GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
 git config --global credential.helper 'cache --timeout 36000'
 git config --global user.name "$GIT_AUTHOR_NAME"
 git config --global user.email "$GIT_AUTHOR_EMAIL"
+git config --global pull.ff only
 git config --global push.default simple
 git config --global core.editor vim # Set a default editor to avoid "Could not execute editor" error
 
