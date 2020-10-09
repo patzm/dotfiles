@@ -4,6 +4,11 @@
 set_from_resource $mod  i3.mod_primary    Mod1
 set_from_resource $mod2 i3.mod_secondary  Mod4
 
+# Define monitors
+exec_always --no-startup-id detect-monitors
+set_from_resource $m1 i3.monitor_1 primary
+set_from_resource $m2 i3.monitor_2 primary
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
@@ -68,22 +73,29 @@ set $w8 "8 "
 set $w9 "9 "
 set $w10 "10 "
 
-# Define monitors
-exec_always --no-startup-id detect-monitors
-set_from_resource $m1 i3.monitor_1 primary
-set_from_resource $m2 i3.monitor_2 primary
+# Configure workspace monitors
+set $mw1  "$m1"
+set $mw2  "$m2"
+set $mw3  "$m2"
+set $mw4  "$m1"
+set $mw5  "$m2"
+set $mw6  "$m2"
+set $mw7  "$m1"
+set $mw8  "$m2"
+set $mw9  "$m1"
+set $mw10 "$m1"
 
 # Assign workspaces to monitors
-workspace 1 output $m1
-workspace 2 output $m2
-workspace 3 output $m2
-workspace 4 output $m1
-workspace 5 output $m2
-workspace 6 output $m2
-workspace 7 output $m1
-workspace 8 output $m2
-workspace 9 output $m1
-workspace 10 output $m1
+workspace 1  output $mw1
+workspace 2  output $mw2
+workspace 3  output $mw3
+workspace 4  output $mw4
+workspace 5  output $mw5
+workspace 6  output $mw6
+workspace 7  output $mw7
+workspace 8  output $mw8
+workspace 9  output $mw9
+workspace 10 output $mw10
 
 # Switch to workspace n shorcuts
 bindsym $mod+1 workspace number $w1
@@ -98,22 +110,28 @@ bindsym $mod+9 workspace number $w9
 bindsym $mod+0 workspace number $w10
 
 # Assign workspaces with their new names to monitors
-workspace $w1 output $m1
-workspace $w2 output $m2
-workspace $w3 output $m2
-workspace $w4 output $m1
-workspace $w5 output $m2
-workspace $w6 output $m2
-workspace $w7 output $m1
-workspace $w8 output $m2
-workspace $w9 output $m1
-workspace $w10 output $m1
+workspace $w1  output $mw1
+workspace $w2  output $mw2
+workspace $w3  output $mw3
+workspace $w4  output $mw4
+workspace $w5  output $mw5
+workspace $w6  output $mw6
+workspace $w7  output $mw7
+workspace $w8  output $mw8
+workspace $w9  output $mw9
+workspace $w10 output $mw10
 
 # Force move all workspaces to their corresponding outputs
-exec_always --no-startup-id i3-msg 'workspace number $w3'
-exec_always --no-startup-id i3-msg 'workspace number $w4'
-exec_always --no-startup-id i3-msg 'workspace number $w2'
-exec_always --no-startup-id i3-msg 'workspace number $w1'
+exec_always --no-startup-id i3-msg "workspace $w1,  move workspace to output $mw1"
+exec_always --no-startup-id i3-msg "workspace $w2,  move workspace to output $mw2"
+exec_always --no-startup-id i3-msg "workspace $w3,  move workspace to output $mw3"
+exec_always --no-startup-id i3-msg "workspace $w4,  move workspace to output $mw4"
+exec_always --no-startup-id i3-msg "workspace $w5,  move workspace to output $mw5"
+exec_always --no-startup-id i3-msg "workspace $w6,  move workspace to output $mw6"
+exec_always --no-startup-id i3-msg "workspace $w7,  move workspace to output $mw7"
+exec_always --no-startup-id i3-msg "workspace $w8,  move workspace to output $mw8"
+exec_always --no-startup-id i3-msg "workspace $w9,  move workspace to output $mw8"
+exec_always --no-startup-id i3-msg "workspace $w10, move workspace to output $mw10"
 
 # switch to neighbouring workspaces
 bindsym $mod+Shift+Left workspace prev
