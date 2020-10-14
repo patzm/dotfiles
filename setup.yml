@@ -26,6 +26,8 @@
       tags: dotfiles
     - role: ranger
       tags: dotfiles
+    - role: sublime
+      tags: dotfiles
     - role: python
     - role: i3-gaps
       tags: never

@@ -1,0 +1,19 @@
+---
+- name: create the Sublime-Text 3 config folder
+  file:
+    path: '{{ st3_config_dir }}'
+    state: directory
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+
+- name: copy the configuration files
+  copy:
+    src: '{{ item }}'
+    dest: '{{ st3_config_dir }}'
+    owner: "{{ ansible_env.USER }}"
+    group: "{{ user_group }}"
+    mode: 0700
+    force: yes
+  with_fileglob:
+    - '{{ role_path }}/files/*'

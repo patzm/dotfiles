@@ -6,19 +6,13 @@
 	"installed_packages":
 	[
 		"Ansible",
-		"Caffe Prototxt Syntax",
-		"CMake",
 		"CUDA C++",
 		"Git",
-		"Jinja2",
-		"LaTeXTools",
+		"Dockerfile Syntax Highlighting",
+		"Generic Config",
 		"MarkdownEditing",
 		"MarkdownPreview",
-		"Materialize",
-		"MatlabFilenameAutoComplete",
-		"Origami",
 		"Package Control",
 		"Protobuf Syntax Hightlighting",
-		"TodoReview"
 	]
 }
