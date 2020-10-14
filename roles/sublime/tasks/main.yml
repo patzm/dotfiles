@@ -13,7 +13,7 @@
     dest: '{{ st3_config_dir }}'
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
-    mode: 0700
+    mode: 0600
     force: yes
   with_fileglob:
     - '{{ role_path }}/files/*'
