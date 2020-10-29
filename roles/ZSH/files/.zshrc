@@ -191,6 +191,9 @@ export LANG=en_US.UTF-8
 bindkey '^X^R' history-incremental-pattern-search-backward
 bindkey '^X^S' history-incremental-pattern-search-forward
 
+# Allow inserting new lines in commands pulled from the history
+bindkey '^[^M' self-insert-unmeta
+
 unsetopt auto_name_dirs
 unset -f check_zsh_plugin
 unset -f check_zsh_theme
