@@ -18,17 +18,17 @@ monitor = ${xrdb:polybar.monitor_1:eDP1}
 width = 100%
 height = 20
 
-border-size = 4
-padding-left = 2
+border-size = 3
+padding-left = 1
 padding-right = 2
-module-margin-left = 2
-module-margin-right = 2
+module-margin-left = 1
+module-margin-right = 1
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 border-color = ${colors.background}
 
-font-0 = fixed:pixelsize=10;1
+font-0 = Cascadia Code PL:pixelsize=10;1
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 font-2 = siji:pixelsize=10;1
 font-3 = Font Awesome 5 Free:pixelsize=12;2
@@ -127,7 +127,7 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 0
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
