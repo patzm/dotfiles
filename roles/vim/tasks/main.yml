@@ -55,7 +55,6 @@
     executable: "{{ pip3_exe }}"
     name:
       - pynvim
-      - python-language-server
     extra_args: "{{ pip3_args }}"
   environment: "{{ env }}"
 

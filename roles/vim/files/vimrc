@@ -13,12 +13,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'cespare/vim-toml'
 
-" Python
-Plug 'vim-scripts/indentpython.vim'
-Plug 'vim-syntastic/syntastic'
-Plug 'nvie/vim-flake8'
-Plug 'plytophogy/vim-virtualenv'
-
 " Just a shitload of color schemes.
 " https://github.com/flazz/vim-colorschemes#current-colorschemes
 Plug 'flazz/vim-colorschemes'
@@ -48,11 +42,7 @@ Plug 'bling/vim-airline'
 " vim surround
 Plug 'tpope/vim-surround'
 
-" LanguageServer support
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
+" command-line fuzzy finder
 Plug 'junegunn/fzf'
 
 call plug#end()
@@ -128,19 +118,3 @@ set wildignore+=*.pyc
 if isdirectory("~/.vim/bundle/vim-material")
     colorscheme vim-material
 endif
-
-" LanguageClient configuration
-" Required for operations modifying multiple buffers like rename.
-set hidden
-
-let g:LanguageClient_serverCommands = {'python': ['pyls']}
-
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-
-" deoplete configuration
-let g:deoplete#enable_at_startup = 1
-
