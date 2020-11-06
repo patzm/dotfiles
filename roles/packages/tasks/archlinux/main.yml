@@ -52,6 +52,3 @@
 
 - name: install Python3.7
   command: yay --answerdiff=None --noconfirm --needed -S python37
-
-- name: install the sound switcher indicator
-  command: yay --answerdiff=None --noconfirm --needed -S indicator-sound-switcher
