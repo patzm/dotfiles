@@ -201,12 +201,31 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
 bindsym $mod+r mode "resize"
+
+# Move floating windows
+bindsym $mod+Shift+m mode "move" focus floating
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym Left  move left
+    bindsym Down  move down
+    bindsym Up    move up
+    bindsym Right move right
+
+    bindsym h     move left
+    bindsym j     move down
+    bindsym k     move up
+    bindsym l     move right
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
 
 # Create Log out, Reboot, Poweroff bindings
 set $mode_system System (l) lock | (e) logout | (s) suspend | (h) hibernate | (r) reboot | (Shift+s) shutdown
-mode "$mode_system" {
+mode "$system" {
     bindsym l       exec light-locker-command -l,   mode "default"
     bindsym e       exec i3-msg exit,               mode "default"
     bindsym s       exec systemctl suspend,         mode "default"
@@ -218,7 +237,7 @@ mode "$mode_system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+e mode "$mode_system"
+bindsym $mod+Shift+e mode "$system"
 
 # Layouting
 for_window [class="^.*"] border pixel 0
