@@ -187,7 +187,7 @@ bindsym $mod+Shift+n exec i3-sensible-terminal --title "i3-note" -e bash -c "~/b
 
 # Resize window (you can also use the mouse for that)
 set $rs	15
-mode "resize" {
+mode "mode_resize" {
     bindsym l resize shrink width $rs px or $rs ppt
     bindsym k resize grow height $rs px or $rs ppt
     bindsym j resize shrink height $rs px or $rs ppt
@@ -203,11 +203,11 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+r mode "resize"
+bindsym $mod+r mode "mode_resize"
 
 # Move floating windows
-bindsym $mod+Shift+m mode "move" focus floating
-mode "move" {
+bindsym $mod+Shift+m mode "mode_move" focus floating
+mode "mode_move" {
     bindsym $mod+Tab focus right
 
     bindsym Left  move left
@@ -227,7 +227,7 @@ mode "move" {
 
 # Create Log out, Reboot, Poweroff bindings
 set $mode_system System (l) lock | (e) logout | (s) suspend | (h) hibernate | (r) reboot | (Shift+s) shutdown
-mode "$system" {
+mode "$mode_system" {
     bindsym l       exec light-locker-command -l,   mode "default"
     bindsym e       exec i3-msg exit,               mode "default"
     bindsym s       exec systemctl suspend,         mode "default"
@@ -239,7 +239,7 @@ mode "$system" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-bindsym $mod+Shift+e mode "$system"
+bindsym $mod+Shift+e mode "$mode_system"
 
 # Layouting
 for_window [class="^.*"] border pixel 0
