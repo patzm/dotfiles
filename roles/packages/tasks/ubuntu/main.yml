@@ -15,6 +15,7 @@
     - hsetroot
     - htop
     - imagemagick
+    - libimage-exiftool-perl
     - libssl-dev
     - lm-sensors
     - ntfs-3g
