@@ -1,13 +1,4 @@
 ---
-- name: ensure correct permissions of the zsh and Homebrew folders
-  become: yes
-  file:
-    path: /usr/local
-    owner: root
-    group: admin
-    recurse: yes
-    mode: '775'  
-
 - name: update Homebrew
   homebrew:
     update_homebrew: yes
