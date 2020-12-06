@@ -18,6 +18,7 @@
     name: [
       'bmon',
       'exiv2',
+      'ffmpeg',
       'htop',
       'neofetch',
       'neovim',
