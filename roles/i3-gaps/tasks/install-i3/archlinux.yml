@@ -10,3 +10,6 @@
   - dunst
   - light-locker
   - playerctl
+
+- name: install the sound switcher indicator
+  command: yay --answerdiff=None --noconfirm --needed -S indicator-sound-switcher-git
