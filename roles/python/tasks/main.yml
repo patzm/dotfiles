@@ -1,11 +1,4 @@
 ---
-- name: "install virtualenv"
-  become: yes
-  pip:
-    name: ['virtualenv', 'virtualenvwrapper']
-    executable: '{{ pip3_bin }}'
-  tags: packages
-
 - name: create directory for virtual environments
   file:
     path: '{{ user_home_dir }}/.venvs'

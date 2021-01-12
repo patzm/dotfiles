@@ -21,7 +21,8 @@
     - network-manager-applet
     - networkmanager
     - python-pip  # Python 3
-    - python2-pip
+    - python-virtualenv
+    - python-virtualenvwrapper
     - ranger
     - rxvt-unicode
     - termite
