@@ -21,6 +21,8 @@ alias bl='showmarks'
 
 # Alias for conventional image renaming
 alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
+# matches for instance "20-03-23 15-02-59 4123.jpg"
+alias img-meta-update="exiftool -d \"%y-%m-%d %H-%M-%S\" '-DateTimeOriginal<${Filename;s/[0-9]{4}\.[^.]*$//}'"
 alias mov-rename="exiftool '-filename<CreateDate' -d %Y-%m-%d_%H%M%S%%-c.%%le"
 alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
 function mov-shift-tz () {
@@ -55,7 +57,6 @@ function convert-videos () {
         convert-video $i
     done
 }
-
 # Common system / file system interaction
 alias clc='clear'
 alias l='ls -la'
