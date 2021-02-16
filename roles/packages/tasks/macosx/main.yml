@@ -23,3 +23,12 @@
       'zsh',
     ]
     state: present
+
+- name: python virtualenvwrapper
+  become: yes
+  pip:
+    name: "{{ item }}"
+    executable: pip3
+  loop:
+    - virtualenv
+    - virtualenvwrapper
