@@ -13,7 +13,7 @@
       'htop',
       'neofetch',
       'neovim',
-      'python3',
+      'python@3.7',
       'ranger',
       'tmux',
       'tree',
