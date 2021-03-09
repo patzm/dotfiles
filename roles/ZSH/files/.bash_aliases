@@ -70,3 +70,9 @@ alias pbin='nc pbin.patz.app 9999'
 
 # For the deep learning guys
 alias nv='watch -n 0.1 nvidia-smi'
+function tb () {
+    model_dir="gs://${1}"
+    echo "Launching TensorBoard for ${model_dir}"
+    tensorboard serve --bind_all --logdir ${model_dir} | grep "Press CTRL+C"
+}
+
