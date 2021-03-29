@@ -52,3 +52,6 @@
     path: '{{ powerline_dir.path }}'
     force: yes
     state: absent
+
+- name: enable long-press character accent menu
+  command: defaults write -g ApplePressAndHoldEnabled -bool true
