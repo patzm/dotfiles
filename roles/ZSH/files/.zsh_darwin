@@ -6,6 +6,8 @@ for python_version in ${HOME}/Library/Python/*; do
 	export PATH="${python_version}/bin:${PATH}"
 done
 
+brew link --overwrite python@3.7
+
 # Add custom plugins
 plugins+=(brew)
 
