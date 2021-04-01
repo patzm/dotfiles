@@ -267,7 +267,7 @@ for_window [class="(?i)java-lang-thread"] floating enable
 for_window [title="^i3-note$"] floating enable
 
 # Configure keyboard layout toggles
-exec --no-startup-id setxkbmap us,de -option 'grp:alt_space_toggle'
+exec_always --no-startup-id setxkbmap us,de -option 'grp:alt_space_toggle'
 
 # Make sure the display configuration is loaded properly
 exec --no-startup-id autorandr --change
