@@ -2,6 +2,7 @@
 source ~/.vim/vimrcbase
 
 sethandler <C-F> n-v-i:ide
+sethandler <C-B> n-v-i:ide
 
 " Copy from and paste to the system clipboard
 set clipboard+=unnamed,ideaput
