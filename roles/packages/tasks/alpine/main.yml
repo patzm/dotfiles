@@ -12,6 +12,7 @@
     - ncurses
     - neovim
     - py3-pip
+    - py3-virtualenv
     - python3-dev
     - ranger
     - tmux
@@ -23,3 +24,9 @@
     - xclip
     - zsh
     - zsh-vcs
+
+- name: python virtualenvwrapper
+  become: yes
+  pip:
+    name: virtualenvwrapper
+    executable: pip3
