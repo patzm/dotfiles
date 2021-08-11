@@ -19,8 +19,8 @@ ENV TERM=xterm-256color
 COPY . /dotfiles
 RUN apk --update \
       add --no-cache --virtual .build-deps \
-      ansible build-base python3 git shadow && \
-    USER=$(whoami) ansible-playbook /dotfiles/setup.yml && \
+      ansible build-base python3 git shadow
+RUN USER=$(whoami) ./dotfiles/setup --tags packages,dotfiles && \
     apk del .build-deps && \
     rm -r /dotfiles && \
     USER=$(whoami) exec zsh --interactive --login
