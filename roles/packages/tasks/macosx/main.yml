@@ -17,6 +17,7 @@
       'python',
       'python@3.7',
       'ranger',
+      'rsync',
       'rename',
       'tmux',
       'tree',
