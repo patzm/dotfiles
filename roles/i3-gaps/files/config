@@ -20,7 +20,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 # Kill focused window
 bindsym $mod+Shift+q kill
 
-# Start dmenu (a program launcher)
+# Start a program launcher
 bindsym $mod+d exec --no-startup-id "rofi -show drun"
 # Start a all-in-one rofi menu
 bindsym $mod2+d exec --no-startup-id "rofi -combi-modi drun,window,ssh,run -show combi -modi combi"
