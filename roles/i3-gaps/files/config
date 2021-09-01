@@ -22,6 +22,8 @@ bindsym $mod+Shift+q kill
 
 # Start a program launcher
 bindsym $mod+d exec --no-startup-id "rofi -show drun"
+# Start a root program launcher
+bindsym $mod+$mod2+d exec --no-startup-id "rofi -show drun -run-command 'kdesu {cmd}'"
 # Start a all-in-one rofi menu
 bindsym $mod2+d exec --no-startup-id "rofi -combi-modi drun,window,ssh,run -show combi -modi combi"
 # Start a open-window selector
