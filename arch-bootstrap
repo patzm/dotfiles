@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # Install ansible
+sudo pacman -Sy
 sudo pacman --needed -S ansible
 
 # Install YAY for 
