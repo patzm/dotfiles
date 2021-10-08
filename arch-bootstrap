@@ -2,7 +2,7 @@
 
 # Install ansible
 sudo pacman -Sy
-sudo pacman --needed -S ansible
+sudo pacman --needed -S ansible binutils fakeroot gcc make
 
 # Install YAY for 
 yay_repo_dir=/tmp/yay
