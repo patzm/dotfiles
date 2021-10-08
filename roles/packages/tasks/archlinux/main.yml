@@ -3,6 +3,7 @@
   become: yes
   package: name={{ item }} state=latest
   with_items:
+    - alacritty
     - blueman
     - bmon
     - curl
@@ -25,7 +26,6 @@
     - python-virtualenvwrapper
     - ranger
     - rxvt-unicode
-    - termite
     - tmux
     - tree
     - ttf-cascadia-code
