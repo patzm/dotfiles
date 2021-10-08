@@ -37,6 +37,12 @@
     - xclip
     - zsh
 
+- name: create the yay config folder
+  file:
+    path: '{{ yay_config_dir }}'
+    state: directory
+
+
 - name: copy yay config files
   copy:
     src: '{{ role_path }}/files/archlinux/yay/config.json'
