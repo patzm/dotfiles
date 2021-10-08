@@ -15,8 +15,6 @@
   copy:
     src: '.zshinstance'
     dest: '{{ user_home_dir }}/.zshinstance'
-    owner: "{{ ansible_env.USER }}"
-    mode: 0700
     force: no
   tags: dotfiles
 
@@ -24,9 +22,6 @@
   copy:
     src: '.zshrc'
     dest: '{{ user_home_dir }}/.zshrc'
-    owner: "{{ ansible_env.USER }}"
-    mode: 0700
-    force: yes
   tags: dotfiles
 
 - name: Copy the OS dependent configuration
@@ -34,15 +29,10 @@
     src: '.zsh_{{ ansible_os_family|lower }}'
     dest: '{{ user_home_dir }}/.zshosdep'
     owner: "{{ ansible_env.USER }}"
-    mode: 0700
-    force: yes
   tags: dotfiles
 
 - name: Copy the aliases
   copy:
     src: '.bash_aliases'
     dest: '{{ user_home_dir }}/.bash_aliases'
-    owner: "{{ ansible_env.USER }}"
-    mode: 0700
-    force: yes
   tags: dotfiles
