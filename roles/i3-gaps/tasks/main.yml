@@ -2,7 +2,7 @@
 - name: make sure that the i3 package is not installed (i3 without gaps)
   become: yes
   package: name="i3*" state=absent
-  tags: ui
+  tags: i3
 
 - name: pre-installation routines & configuration files
   block:
@@ -121,7 +121,7 @@
       command: xrdb .Xresources
       args:
         chdir: '{{ user_home_dir }}'
-  tags: [ui, dotfiles-ui]
+  tags: [i3, dotfiles-i3]
 
 - name: copy the custom xorg.conf
   become: yes
@@ -131,7 +131,7 @@
     owner: root
     group: root
     mode: 0644
-  tags: [ui, dotfiles-root]
+  tags: [i3, dotfiles-root]
 
 - name: i3-gaps and dependencies installation
   block:
@@ -178,7 +178,7 @@
     - name: install autorandr
       import_role:
         name: autorandr
-  tags: ui
+  tags: i3
 
 - name: install and/or configure polybar
   import_role:

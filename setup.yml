@@ -13,7 +13,7 @@
     - role: scripts
       tags: dotfiles
     - role: packages
-      tags: [packages, ui]
+      tags: [packages, i3]
     - role: terminals
     - role: git
       tags: dotfiles
@@ -30,4 +30,4 @@
       tags: dotfiles
     - role: python
     - role: i3-gaps
-      tags: ui
+      tags: i3

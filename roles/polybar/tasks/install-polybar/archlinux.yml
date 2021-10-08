@@ -1,4 +1,4 @@
 ---
 - name: install polybar from AUR
   command: yay -S --noconfirm polybar
-  tags: ui
+  tags: i3

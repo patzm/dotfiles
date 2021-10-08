@@ -1,13 +1,13 @@
 ---
 # - name: install pywal
 #   include_tasks: "{{ ansible_distribution|lower }}.yml"
-#   tags: ui
+#   tags: i3
 - name: install pywal
   become: yes
   pip:
     name: git+https://github.com/patzm/pywal.git@r3.3.1
     executable: pip3
-  tags: ui
+  tags: i3
 
 - name: create all terminal directories
   file: path={{ item }} state=directory
@@ -17,7 +17,7 @@
   - '{{ termite_config_dir }}'
   - '{{ kitty_config_dir }}'
   - '{{ xresources_dir }}'
-  tags: [ui, dotfiles-ui]
+  tags: [i3, dotfiles-i3]
 
 - name: copy the colors template
   copy:
@@ -26,7 +26,7 @@
     force: yes
   with_fileglob:
     - '{{ role_path }}/files/templates/*'
-  tags: [ui, dotfiles-ui]
+  tags: [i3, dotfiles-i3]
 
 - name: link the Xresource colors file
   file:
@@ -34,7 +34,7 @@
     dest: '{{ xresources_color }}'
     state: link
     force: yes
-  tags: [ui, dotfiles-ui]
+  tags: [i3, dotfiles-i3]
 
 - name: link the termite config file
   file:
@@ -42,7 +42,7 @@
     dest: '{{ termite_config_dir }}/config'
     state: link
     force: yes
-  tags: [ui, dotfiles-ui]
+  tags: [i3, dotfiles-i3]
 
 - name: link the kitty colors config file
   file:
@@ -50,15 +50,15 @@
     dest: '{{ kitty_config_dir }}/colors.conf'
     state: link
     force: yes
-  tags: [ui, dotfiles-ui]
+  tags: [i3, dotfiles-i3]
 
 - name: execute pywal once
   shell: wal -n -a 80 --theme base16-google
-  tags: [ui, dotfiles-ui]
+  tags: [i3, dotfiles-i3]
 
 - name: copy the kitty config file
   copy:
     src: '{{ role_path }}/files/kitty.conf'
     dest: '{{ kitty_config_dir }}/kitty.conf'
     force: yes
-  tags: [ui, dotfiles-ui]
+  tags: [i3, dotfiles-i3]

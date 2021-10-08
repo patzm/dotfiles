@@ -3,7 +3,7 @@
   shell: command -v polybar >/dev/null 2>&1
   register: cmd_exists_polybar
   ignore_errors: yes
-  tags: ui
+  tags: i3
 
 - name: install polybar
   include_tasks: "{{ polybar_install_tasks }}"
@@ -15,7 +15,7 @@
   loop_control:
     loop_var: polybar_install_tasks
   when: cmd_exists_polybar.rc > 0
-  tags: ui
+  tags: i3
 
 - name: create the configuration directory
   file:
@@ -24,7 +24,7 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     mode: 0700
-  tags: ['ui', 'dotfiles-ui']
+  tags: ['i3', 'dotfiles-i3']
 
 - name: copy the config files
   copy:
@@ -39,4 +39,4 @@
   - launch.sh
   - theme.ini
   - themes
-  tags: ['ui', 'dotfiles-ui']
+  tags: ['i3', 'dotfiles-i3']

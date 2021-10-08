@@ -16,7 +16,7 @@ Then, execute the following:
 ```bash
 mkdir -p ~/repos/dotfiles
 git clone https://github.com/patzm/dotfiles.git ~/repos/dotfiles
-ansible-playbook ~/repos/dotfiles/setup.yml -K [-i <inventory_file>] [--tags ui,dotfiles-root]
+ansible-playbook ~/repos/dotfiles/setup.yml -K [-i <inventory_file>] [--tags i3,dotfiles-root]
 # only copy the dotfiles
 ansible-playbook ~/repos/dotfiles/setup.yml [-i <inventory_file>] --tags dotfiles
 ```
