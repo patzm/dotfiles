@@ -6,55 +6,70 @@
 * i3wm (i3-gaps)
 * polybar
 * python (virtualenv)
+* ranger
+* sublime text
+* terminals
 * tmux
 * vim
 * zsh
 
-# Setup
-Execute the platform- and version-specific instructions below **first**.
-Then, execute the following:
-```bash
-mkdir -p ~/repos/dotfiles
+## Setup
+Clone the repo
+```shell
 git clone https://github.com/patzm/dotfiles.git ~/repos/dotfiles
-ansible-playbook ~/repos/dotfiles/setup.yml -K [-i <inventory_file>] [--tags i3,dotfiles-root]
-# only copy the dotfiles
-ansible-playbook ~/repos/dotfiles/setup.yml [-i <inventory_file>] --tags dotfiles
-```
-The switch `-K` requests root priviliges on the current machine.
-This is not required if running the tag `dotfiles` only.
-The `localhost` is the default installation target.
-
-Other inventory files can easily be used.
-Attention: all hosts specified in the inventory file are used.
-Use `--extra-vars custom_hosts=GROUP` to select a group specified in `<inventory_file>`.
-If no inventory file is available or you want to run this playbook for a temporary target, pass `-i '<host_1>,[host_2]'`.
-Note, that the `,` after the first host is important.
-
-## Ubuntu 16.04 or later
-On modern distributions, installation is quite straight forward:
-```bash
-sudo apt-get update
-sudo apt-get install git ansible
 ```
 
-## Ubuntu 14.04 or earlier
-Ansible ships with Ubuntu 12.04 or 14.04 in version `1.x`.
-However we need version `2.x` or higher.
-```bash
-sudo apt-get update
-sudo apt-get install software-properties-common ca-certificates git
-sudo apt-add-repository ppa:ansible/ansible -y
-sudo apt-get update
-sudo apt-get install ansible
+Run the OS-specific bootstrap script:
+* Arch / Manjaro: `./arch-bootstrap`
+* macOS: `./mac-bootstrap`
+* Ubuntu: `./ubuntu-bootstrap`
+
+Then run the setup routines through the helper script `setup`.
+
+Help:
+```
+usage: setup [-h] [-K] [--hosts [HOSTS ...]] [--tags [TAGS ...]]
+
+facilitator to launch setup.yml
+
+optional arguments:
+  -h, --help           show this help message and exit
+  -K                   prompt for SUDO password
+  --hosts [HOSTS ...]  specify any remote hosts if not the local host
+  --tags [TAGS ...]    specify tags
 ```
 
-# Configuration
+## Examples
+Install dotfiles
+```shell
+./setup --tags dotfiles
+```
 
-## `i3`
+Install all packages for the current OS, this requires `root` permissions:
+```shell
+./setup -K --tags packages
+```
 
-### Wallpaper
+Run anything from above for remote host(s)
+```shell
+./setup <other-args> --hosts my-remote-machine,
+```
+
+## Cheat-sheet for post-installation usage
+
+### `i3`
+
+#### Wallpaper
 There are various ways to set the wallpaper.
 The recommended way is to use `nitrogen` to set the wallpaper.
 This will also persist across sessions.
 
 An alternative is to use `hsetroot`.
+
+#### Manage multiple monitors
+Use `arandr` as a convenient GUI front end for XRandR to configure your monitor(s).
+Once you are happy, save the configuration with a human-readable name. E.g.
+```shell
+autorandr --save my-monitor-setup
+```
+
