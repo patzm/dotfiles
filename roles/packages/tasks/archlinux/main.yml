@@ -35,6 +35,7 @@
     - wget
     - wmctrl
     - xclip
+    - xorg-xev
     - zsh
 
 - name: create the yay config folder
