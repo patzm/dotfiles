@@ -9,9 +9,10 @@ Plug 'hzchirs/vim-material'
 Plug 'godlygeek/tabular'
 
 " Syntax support
-Plug 'plasticboy/vim-markdown'
-Plug 'JamshedVesuna/vim-markdown-preview'
 Plug 'cespare/vim-toml'
+Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'plasticboy/vim-markdown'
+Plug 'terminalnode/sway-vim-syntax'
 
 " Just a shitload of color schemes.
 " https://github.com/flazz/vim-colorschemes#current-colorschemes
