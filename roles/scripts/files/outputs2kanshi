@@ -1,0 +1,209 @@
+#! /usr/bin/env python3
+
+import argparse
+import json
+import logging
+import os
+import subprocess
+from dataclasses import dataclass
+from typing import List
+
+import dacite
+
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="[%(asctime)s] [%(levelname)8s] %(message)s",
+)
+logger = logging.getLogger(os.path.basename(__file__))
+
+
+@dataclass
+class Rectangle:
+    x: int
+    y: int
+    height: int
+    width: int
+
+
+@dataclass
+class Mode:
+    height: int
+    width: int
+    refresh: int
+
+
+@dataclass
+class SwayOutput:
+    UNKNOWN_MAKE = "Unknown"
+    UNKNOWN_SERIAL = "0x00000000"
+
+    active: bool
+    border: str
+    current_border_width: int
+    current_mode: Mode
+    deco_rect: Rectangle
+    dpms: bool
+    geometry: Rectangle
+    id: int
+    layout: str
+    make: str
+    model: str
+    modes: List[Mode]
+    name: str
+    orientation: str
+    percent: float
+    primary: bool
+    rect: Rectangle
+    scale: float
+    serial: str
+    type: str
+    urgent: bool
+    window_rect: Rectangle
+
+
+def main(config: argparse.Namespace):
+    if not os.path.exists(config.config_dir):
+        logger.warning(
+            f"Config directory {config.config_dir} does not exist. Creating it now..."
+        )
+        os.makedirs(config.config_dir)
+
+    if config.list:
+        for config_file in os.listdir(config.config_dir):
+            if not os.path.isfile(config_file):
+                logger.debug(f"Ignoring {config_file}, not a file.")
+            print(config_file)
+
+    if config.save:
+        outputs = parse_current_setup()
+        save_current_setup(config=config, outputs=outputs)
+
+
+def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
+    schema_version = "v2"
+    s_schema_version = f"# schema version={schema_version}\n"
+    config_header_prefix = "# config begin:"
+    config_footer_prefix = "# config end:"
+    config_header = f"{config_header_prefix} {config.save}\n"
+    config_footer = f"{config_footer_prefix} {config.save}\n"
+
+    config_file = os.path.join(config.config_dir, config.config_file_name)
+    if not os.path.exists(config_file):
+        logger.info(f"Config file {config_file} doesn't exist, initializing...")
+        with open(config_file, "w") as file:
+            file.write(s_schema_version)
+
+    with open(config_file, "r") as file:
+        config_lines = file.readlines()
+
+    if not len(config_lines):
+        raise RuntimeError(f"Empty config file {config_file}")
+
+    if config_lines[0] != s_schema_version:
+        s_schema_version_found = config_lines[0].rstrip("\n")
+        schema_version_found = s_schema_version_found.split("=")[-1]
+        archive_config_file = config_file + ".bak"
+        logging.error(
+            f"Schema version mismatch between {config_file} ({schema_version_found}) "
+            f"and the current code ({schema_version}). "
+            f"Archiving config file as {archive_config_file}."
+        )
+        os.rename(config_file, archive_config_file)
+        exit(1)
+
+    config_exists = False
+    existing_config_lines: List[int] = list()
+    for i, line in enumerate(config_lines):
+        if line == config_header:
+            config_exists = True
+
+        if config_exists:
+            existing_config_lines.append(i)
+            if line == config_footer:
+                break
+
+    if config_exists:
+        logger.warning(f"Config {config.save} exists, overwriting...")
+        for i in sorted(existing_config_lines, reverse=True):
+            del config_lines[i]
+
+    s_config = "".join(config_lines)
+    s_config += config_header
+    s_config += "profile {\n"
+    for output in outputs:
+        if not output.active:
+            logger.debug(f"Ignoring inactive output {output.make} {output.model}.")
+
+        if output.make == output.UNKNOWN_MAKE or output.serial == output.UNKNOWN_SERIAL:
+            output_name = output.name
+        else:
+            output_name = f'"{output.make} {output.model} {output.serial}"'
+
+        s_config += f"\toutput {output_name}"
+        s_config += f" scale {output.scale}"
+        s_config += f" mode {output.rect.width}x{output.rect.height}"
+        s_config += f" position {output.rect.x},{output.rect.y}"
+        s_config += "\n"
+
+    s_config += "}\n"
+    s_config += config_footer
+
+    with open(config_file, "w") as file:
+        file.write(s_config)
+
+    logger.info(f"Wrote current configuration to {config_file}")
+    logger.debug(f"with content:\n{s_config}")
+
+
+def parse_current_setup() -> List[SwayOutput]:
+    # Get the raw, json-encoded output
+    output = subprocess.run(
+        args=["swaymsg", "-t", "get_outputs", "--raw"], capture_output=True
+    )
+    outputs_raw = json.loads(output.stdout.decode())
+    outputs = [
+        dacite.from_dict(data_class=SwayOutput, data=output_raw)
+        for output_raw in outputs_raw
+    ]
+    return outputs
+
+
+def configure_logging(config: argparse.Namespace):
+    if args.verbose:
+        level = logging.DEBUG
+    else:
+        level = logging.INFO
+    logger.setLevel(level=level)
+
+
+if __name__ == "__main__":
+    config_home = os.path.expanduser(os.environ.get("XDG_CONFIG_HOME", "~/.config"))
+    default_config_dir = os.path.join(config_home, "kanshi")
+    parser = argparse.ArgumentParser(
+        "Parses the current monitor configuration into a kanshi-readable config file."
+    )
+    parser.add_argument(
+        "--config-dir",
+        default=default_config_dir,
+        type=str,
+        help="Store and load configurations to/from this folder.",
+    )
+    parser.add_argument(
+        "--config-file-name",
+        default="config",
+        type=str,
+        help="The name of the config file.",
+    )
+    parser.add_argument(
+        "--save",
+        default=None,
+        type=str,
+        help="Save the current monitor configuration with this name.",
+    )
+    parser.add_argument("--list", action="store_true", help="List all configurations.")
+    parser.add_argument("-v", "--verbose", action="store_true", help="Verbose output.")
+    args = parser.parse_args()
+
+    configure_logging(config=args)
+    main(config=args)
