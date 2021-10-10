@@ -4,11 +4,13 @@
     name: '{{ item }}'
     state: latest
   loop:
+    - accountsservice  # required for LightDM
     - gnome-keyring
     - kanshi
     - lightdm
     - lightdm-gtk-greeter
     - light-locker
+    - xorg-server  # required for LightDM
   tags: sway
 
 - name: copy the sway config files / directories
