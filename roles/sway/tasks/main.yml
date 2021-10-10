@@ -1,0 +1,35 @@
+---
+- name: install the required packages
+  package:
+    name: '{{ item }}'
+    state: latest
+  loop:
+    - gnome-keyring
+    - kanshi
+    - lightdm
+    - lightdm-gtk-greeter
+    - light-locker
+  tags: sway
+
+- name: copy the sway config files / directories
+  copy:
+    src: '{{ item }}'
+    dest: '{{ sway_config_dir }}/{{ item }}'
+  loop:
+    - 'config'
+    - '{{ sway_rel_config_include_dir }}/'
+    - '{{ sway_rel_definition_include_dir }}/'
+
+- name: create the environment variables folder
+  file:
+    path: '{{ environment_config_dir }}'
+    state: directory
+
+- name: copy environment config files
+  copy:
+    src: dotfiles.conf
+    dest: '{{ environment_config_dir }}/dotfiles.conf'
+
+- name: install scripts
+  include_role:
+    name: scripts

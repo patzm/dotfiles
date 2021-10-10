@@ -1,0 +1,5 @@
+---
+environment_config_dir: '{{ user_config_dir }}/environment.d'
+sway_config_dir: '{{ user_config_dir }}/sway'
+sway_rel_config_include_dir: 'config.d'
+sway_rel_definition_include_dir: 'definitions.d'
