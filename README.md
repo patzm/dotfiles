@@ -86,7 +86,7 @@ outputs2kanshi --save my-monitor-setup
 
 #### Change the default display manager
 To get the current display manager, run
-````shell
+```shell
 sudo systemctl status display-manager
 ```
 
@@ -96,3 +96,14 @@ sudo systemctl disable greetd  # if greetd is the current active display manager
 sudo systemctl enable lightdm
 ```
 
+And make sure that `/etc/lightdm/lightdm.conf` contains at least these lines
+
+```conf
+[LightDM]
+run-directory=/run/lightdm
+sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions:/usr/share/wayland-sessions
+
+[Seat:*]
+greeter-session=lightdm-gtk-greeter
+session-wrapper=/etc/lightdm/Xsession
+```
