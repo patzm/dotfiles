@@ -8,6 +8,7 @@
 * python (virtualenv)
 * ranger
 * sublime text
+* sway wm
 * terminals
 * tmux
 * vim
@@ -71,5 +72,27 @@ Use `arandr` as a convenient GUI front end for XRandR to configure your monitor(
 Once you are happy, save the configuration with a human-readable name. E.g.
 ```shell
 autorandr --save my-monitor-setup
+```
+
+### `sway`
+
+#### Manage multiple monitors
+Use `wdisplays` as a convenient GUI front end to configure displays in Wayland compositors.
+Configure your monitor layout until you are happy.
+Save the configuration with a human-readable name. E.g.
+```shell
+outputs2kanshi --save my-monitor-setup
+```
+
+#### Change the default display manager
+To get the current display manager, run
+````shell
+sudo systemctl status display-manager
+```
+
+To enable `ligthdm`, run
+```shell
+sudo systemctl disable greetd  # if greetd is the current active display manager
+sudo systemctl enable lightdm
 ```
 
