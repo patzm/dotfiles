@@ -21,6 +21,7 @@
     - neovim
     - network-manager-applet
     - networkmanager
+    - patch
     - python-pip  # Python 3
     - python-virtualenv
     - python-virtualenvwrapper
