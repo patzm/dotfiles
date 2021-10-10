@@ -32,6 +32,11 @@
     src: dotfiles.conf
     dest: '{{ environment_config_dir }}/dotfiles.conf'
 
+- name: copy the .xprofile file
+  copy:
+    src: .xprofile
+    dest: '{{ user_home_dir }}/.xprofile'
+
 - name: install scripts
   include_role:
     name: scripts

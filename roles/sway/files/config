@@ -24,6 +24,3 @@ include /etc/sway/config.d/*
 
 # user config
 include $HOME/.config/sway/config.d/*.conf
-
-# make sure the gnome keyring is launched on login
-exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=secrets,ssh
