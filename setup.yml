@@ -30,6 +30,5 @@
       tags: dotfiles
     - role: python
     - role: sway
-      tags: [sway, dotfiles-sway]
     - role: i3-gaps
       tags: i3
