@@ -17,3 +17,10 @@
     force: yes
   with_fileglob:
     - '{{ role_path }}/files/*'
+
+- name: install python dependencies
+  pip:
+    name: '{{ item }}'
+    extra_args: --user
+  loop:
+    - dacite
