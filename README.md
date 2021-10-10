@@ -107,3 +107,15 @@ sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions:/usr/share/w
 greeter-session=lightdm-gtk-greeter
 session-wrapper=/etc/lightdm/Xsession
 ```
+
+### Gnome with Wayland
+Remove all existing `gnome*.desktop`, such that they don't appear in your display manager:
+```shell
+sudo rm /usr/shares/xsessions/gnome*.desktop
+```
+
+Also, fix the default Wayland session file to contain
+```
+Exec=/usr/bin/gnome-shell --wayland
+TryExec=/usr/bin/gnome-shell
+```
