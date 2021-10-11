@@ -1,7 +1,7 @@
 # Configure /edit various dotfiles
-alias zshconfig='nvim ${HOME}/.zshrc'
-alias zshosconfig='nvim ${HOME}/.zshosdep'
-alias zshinstanceconfig='nvim ${HOME}/.zshinstance'
+alias zshconfig='nvim ${XDG_CONFIG_HOME}/zsh/.zshrc'
+alias zshosconfig='nvim ${XDG_CONFIG_HOME}/zsh/zshosdep'
+alias zshinstanceconfig='nvim ${XDG_CONFIG_HOME}/zsh/zshinstance'
 
 alias i3config='nvim ${HOME}/.config/i3/config'
 alias polybarconfig='nvim ${HOME}/.config/polybar/config'
