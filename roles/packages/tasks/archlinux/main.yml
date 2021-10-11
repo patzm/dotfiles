@@ -11,10 +11,12 @@
     - exiv2
     - feh
     - git
+    - gimp
     - gnome-keyring
     - hsetroot
     - htop
     - imagemagick
+    - inkscape
     - libsecret
     - libva-intel-driver
     - neofetch
