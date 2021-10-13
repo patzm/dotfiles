@@ -15,6 +15,8 @@
     - role: packages
       tags: [packages, i3]
     - role: terminals
+    - role: firefox
+      tags: dotfiles
     - role: git
       tags: dotfiles
     - role: ZSH

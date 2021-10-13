@@ -1,0 +1,26 @@
+---
+- name: find all firefox profiles
+  find:
+    paths: "{{ firefox_config_dir }}"
+    file_type: directory
+    patterns: '*.default*'
+  register: firefox_profile_dirs
+
+- name: create the user configuration if it doesn't exist
+  file:
+    state: file
+    path: '{{ item.path }}/prefs.js'
+  with_items: "{{ firefox_profile_dirs.files }}"
+
+- name: edit the user configuration
+  script: "set-pref {{ item[0].path }}/prefs.js {{ item[1].key }} {{ item[1].value }}"
+  with_nested:
+    - "{{ firefox_profile_dirs.files }}"
+    - [
+        {key: "browser.tabs.closeWindowWithLastTab", value: "false"},
+        {key: "privacy.webrtc.legacyGlobalIndicator", value: "false"},
+        {key: "privacy.webrtc.hideGlobalIndicator", value: "true"},
+        {key: "mousewheel.with_control.action", value: 1},
+        {key: "places.frecency.bookmarkVisitBonus", value: 1000},
+        {key: "places.frecency.unvisitedBookmarkBonus", value: 1000},
+      ]
