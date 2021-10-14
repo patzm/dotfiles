@@ -1,5 +1,6 @@
 # Start a ssh-agent with the gnome-keyring-daemon
 eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
 export SSH_AUTH_SOCK
+export MOZ_DBUS_REMOTE=1
 
 # vim: set filetype=sh : 
