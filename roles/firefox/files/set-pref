@@ -1,0 +1,14 @@
+#! /usr/bin/env bash
+
+PREFS_FILE_PATH="${1}"
+PROP_NAME="${2}"
+PROP_VALUE="${3}"
+
+echo "Setting ${PROP_NAME} to ${PROP_VALUE} in ${PREFS_FILE_PATH}"
+LINE=$(grep -n "${PROP_NAME}" ${PREFS_FILE_PATH} | cut -f1 -d:)
+if [ -z "${LINE}" ]; then
+	echo "Not found, adding a new entry..."
+	echo "user_pref(\"${PROP_NAME}\", ${PROP_VALUE});" >> ${PREFS_FILE_PATH}
+else
+	sed -i $LINE's/^\(.*("'"${PROP_NAME}"'", \).*\();\)/\1'"${PROP_VALUE}"'\2/' "${PREFS_FILE_PATH}"
+fi
