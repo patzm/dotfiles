@@ -81,6 +81,12 @@ def main(config: argparse.Namespace):
         save_current_setup(config=config, outputs=outputs)
 
 
+def read_config(config_file_path: str) -> List[str]:
+    with open(config_file_path, "r") as file:
+        config_lines = file.readlines()
+    return config_lines
+
+
 def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
     schema_version = "v2"
     s_schema_version = f"# schema version={schema_version}\n"
@@ -95,9 +101,7 @@ def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
         with open(config_file_path, "w") as file:
             file.write(s_schema_version)
 
-    with open(config_file_path, "r") as file:
-        config_lines = file.readlines()
-
+    config_lines = read_config(config_file_path=config_file_path)
     if not len(config_lines):
         raise RuntimeError(f"Empty config file {config_file_path}")
 
