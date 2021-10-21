@@ -67,6 +67,14 @@ class SwayOutput:
     window_rect: Rectangle
 
 
+def configure_logging(config: argparse.Namespace):
+    if args.verbose:
+        level = logging.DEBUG
+    else:
+        level = logging.INFO
+    logger.setLevel(level=level)
+
+
 def main(config: argparse.Namespace):
     if not os.path.exists(config.config_dir):
         logger.warning(
@@ -84,6 +92,19 @@ def main(config: argparse.Namespace):
     if config.save:
         outputs = parse_current_setup()
         save_current_setup(config=config, outputs=outputs)
+
+
+def parse_current_setup() -> List[SwayOutput]:
+    # Get the raw, json-encoded output
+    output = subprocess.run(
+        args=["swaymsg", "-t", "get_outputs", "--raw"], capture_output=True
+    )
+    outputs_raw = json.loads(output.stdout.decode())
+    outputs = [
+        dacite.from_dict(data_class=SwayOutput, data=output_raw)
+        for output_raw in outputs_raw
+    ]
+    return outputs
 
 
 def read_config(config_file_path: str) -> List[str]:
@@ -156,27 +177,6 @@ def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
 
     logger.info(f"Wrote current configuration to {config_file_path}")
     logger.debug(f"with content:\n{s_config}")
-
-
-def parse_current_setup() -> List[SwayOutput]:
-    # Get the raw, json-encoded output
-    output = subprocess.run(
-        args=["swaymsg", "-t", "get_outputs", "--raw"], capture_output=True
-    )
-    outputs_raw = json.loads(output.stdout.decode())
-    outputs = [
-        dacite.from_dict(data_class=SwayOutput, data=output_raw)
-        for output_raw in outputs_raw
-    ]
-    return outputs
-
-
-def configure_logging(config: argparse.Namespace):
-    if args.verbose:
-        level = logging.DEBUG
-    else:
-        level = logging.INFO
-    logger.setLevel(level=level)
 
 
 def validate_schema(schema_line: str) -> bool:
