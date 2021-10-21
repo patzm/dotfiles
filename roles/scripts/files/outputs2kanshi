@@ -89,28 +89,28 @@ def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
     config_header = f"{config_header_prefix} {config.save}\n"
     config_footer = f"{config_footer_prefix} {config.save}\n"
 
-    config_file = os.path.join(config.config_dir, config.config_file_name)
-    if not os.path.exists(config_file):
-        logger.info(f"Config file {config_file} doesn't exist, initializing...")
-        with open(config_file, "w") as file:
+    config_file_path = os.path.join(config.config_dir, config.config_file_name)
+    if not os.path.exists(config_file_path):
+        logger.info(f"Config file {config_file_path} doesn't exist, initializing...")
+        with open(config_file_path, "w") as file:
             file.write(s_schema_version)
 
-    with open(config_file, "r") as file:
+    with open(config_file_path, "r") as file:
         config_lines = file.readlines()
 
     if not len(config_lines):
-        raise RuntimeError(f"Empty config file {config_file}")
+        raise RuntimeError(f"Empty config file {config_file_path}")
 
     if config_lines[0] != s_schema_version:
         s_schema_version_found = config_lines[0].rstrip("\n")
         schema_version_found = s_schema_version_found.split("=")[-1]
-        archive_config_file = config_file + ".bak"
+        archive_config_file = config_file_path + ".bak"
         logging.error(
-            f"Schema version mismatch between {config_file} ({schema_version_found}) "
+            f"Schema version mismatch between {config_file_path} ({schema_version_found}) "
             f"and the current code ({schema_version}). "
             f"Archiving config file as {archive_config_file}."
         )
-        os.rename(config_file, archive_config_file)
+        os.rename(config_file_path, archive_config_file)
         exit(1)
 
     config_exists = False
@@ -150,10 +150,10 @@ def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
     s_config += "}\n"
     s_config += config_footer
 
-    with open(config_file, "w") as file:
+    with open(config_file_path, "w") as file:
         file.write(s_config)
 
-    logger.info(f"Wrote current configuration to {config_file}")
+    logger.info(f"Wrote current configuration to {config_file_path}")
     logger.debug(f"with content:\n{s_config}")
 
 
