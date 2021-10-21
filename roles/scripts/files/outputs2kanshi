@@ -18,7 +18,7 @@ logging.basicConfig(
 logger = logging.getLogger(os.path.basename(__file__))
 
 SCHEMA_VERSION = "v2"
-S_SCHEMA_VERSION = f"# schema version={SCHEMA_VERSION}\n"
+S_SCHEMA_VERSION = f"# schema version={SCHEMA_VERSION}"
 CONFIG_HEADER_PREFIX = "# config begin:"
 CONFIG_FOOTER_PREFIX = "# config end:"
 
@@ -75,23 +75,54 @@ def configure_logging(config: argparse.Namespace):
     logger.setLevel(level=level)
 
 
+def iter_config_sections(config_lines: List[str]) -> List[List[str]]:
+    config_sections: List[List[str]] = list()
+    config_section: List[str] = list()
+
+    inside_config = False
+    for line in config_lines:
+        if CONFIG_HEADER_PREFIX in line:
+            inside_config = True
+
+        if inside_config:
+            config_section.append(line)
+
+        if CONFIG_FOOTER_PREFIX in line:
+            inside_config = False
+            config_sections.append(config_section)
+            config_section = list()
+
+    return config_sections
+
+
 def main(config: argparse.Namespace):
+    config_file_path = os.path.join(config.config_dir, config.config_file_name)
     if not os.path.exists(config.config_dir):
         logger.warning(
             f"Config directory {config.config_dir} does not exist. Creating it now..."
         )
         os.makedirs(config.config_dir)
 
-    if config.list:
-        for config_file in os.listdir(config.config_dir):
-            config_file_path = os.path.join(config.config_dir, config_file)
+    if config.list_configs:
+        print(f"{config_file_path} contains the configs:")
+        config_lines = read_config(config_file_path=config_file_path)
+        validate_schema(schema_line=config_lines[0])
+        for config_section in iter_config_sections(config_lines=config_lines):
+            config_name = config_section[0].replace(CONFIG_HEADER_PREFIX, "")
+            print(f"- {config_name}")
+
+    if config.list_config_files:
+        print(f"Config files in {config.config_dir}:")
+        for config_file_name in os.listdir(config.config_dir):
             if not os.path.isfile(config_file_path):
                 logger.debug(f"Ignoring {config_file_path}, not a file.")
-            print(config_file_path)
+            print(f"- {config_file_name}")
 
     if config.save:
         outputs = parse_current_setup()
-        save_current_setup(config=config, outputs=outputs)
+        save_current_setup(
+            config=config, config_file_path=config_file_path, outputs=outputs
+        )
 
 
 def parse_current_setup() -> List[SwayOutput]:
@@ -109,19 +140,19 @@ def parse_current_setup() -> List[SwayOutput]:
 
 def read_config(config_file_path: str) -> List[str]:
     with open(config_file_path, "r") as file:
-        config_lines = file.readlines()
+        config_lines = file.read().splitlines()
     return config_lines
 
 
-def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
-    config_header = f"{CONFIG_HEADER_PREFIX} {config.save}\n"
-    config_footer = f"{CONFIG_FOOTER_PREFIX} {config.save}\n"
+def save_current_setup(
+    config: argparse.Namespace, config_file_path: str, outputs: List[SwayOutput]
+):
+    config_header = f"{CONFIG_HEADER_PREFIX} {config.save}"
+    config_footer = f"{CONFIG_FOOTER_PREFIX} {config.save}"
 
-    config_file_path = os.path.join(config.config_dir, config.config_file_name)
     if not os.path.exists(config_file_path):
         logger.info(f"Config file {config_file_path} doesn't exist, initializing...")
-        with open(config_file_path, "w") as file:
-            file.write(S_SCHEMA_VERSION)
+        write_config_file(config_file_path=config_file_path, config_sections=[])
 
     config_lines = read_config(config_file_path=config_file_path)
     if not len(config_lines):
@@ -135,26 +166,19 @@ def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
         os.rename(config_file_path, archive_config_file)
         exit(1)
 
-    config_exists = False
     existing_config_lines: List[int] = list()
-    for i, line in enumerate(config_lines):
-        if line == config_header:
-            config_exists = True
+    config_sections = list()
+    for config_section in iter_config_sections(config_lines=config_lines):
+        if config_section[0] == config_header and config_section[-1] == config_footer:
+            logger.warning(f"Config {config.save} exists, overwriting...")
 
-        if config_exists:
-            existing_config_lines.append(i)
-            if line == config_footer:
-                break
+        config_sections.append(config_section)
 
-    if config_exists:
-        logger.warning(f"Config {config.save} exists, overwriting...")
-        for i in sorted(existing_config_lines, reverse=True):
-            del config_lines[i]
-
-    s_config = "".join(config_lines)
-    s_config += config_header
-    s_config += "profile {\n"
+    new_section = list()
+    new_section.append(config_header)
+    new_section.append("profile {")
     for output in outputs:
+        output_config = ""
         if not output.active:
             logger.debug(f"Ignoring inactive output {output.make} {output.model}.")
 
@@ -163,26 +187,26 @@ def save_current_setup(config: argparse.Namespace, outputs: List[SwayOutput]):
         else:
             output_name = f'"{output.make} {output.model} {output.serial}"'
 
-        s_config += f"\toutput {output_name}"
-        s_config += f" scale {output.scale}"
-        s_config += f" mode {output.rect.width}x{output.rect.height}"
-        s_config += f" position {output.rect.x},{output.rect.y}"
-        s_config += "\n"
+        output_config += f"\toutput {output_name}"
+        output_config += f" scale {output.scale}"
+        output_config += f" mode {output.rect.width}x{output.rect.height}"
+        output_config += f" position {output.rect.x},{output.rect.y}"
+        new_section.append(output_config)
 
-    s_config += "}\n"
-    s_config += config_footer
+    new_section.append("}")
+    new_section.append(config_footer)
+    config_sections.append(new_section)
 
-    with open(config_file_path, "w") as file:
-        file.write(s_config)
-
+    write_config_file(
+        config_file_path=config_file_path, config_sections=config_sections
+    )
     logger.info(f"Wrote current configuration to {config_file_path}")
-    logger.debug(f"with content:\n{s_config}")
+    logger.debug(f"Added new output section:\n{' '.join(new_section)}")
 
 
 def validate_schema(schema_line: str) -> bool:
-    if not schema_line != S_SCHEMA_VERSION:
-        s_schema_version_found = schema_line.rstrip("\n")
-        schema_version_found = s_schema_version_found.split("=")[-1]
+    if schema_line != S_SCHEMA_VERSION:
+        schema_version_found = schema_line.split("=")[-1]
         logging.error(
             f"Schema version mismatch of the config file ({schema_version_found}) "
             f"and the current code ({SCHEMA_VERSION})."
@@ -190,6 +214,14 @@ def validate_schema(schema_line: str) -> bool:
         return False
     else:
         return True
+
+
+def write_config_file(config_file_path: str, config_sections: List[List[str]]):
+    with open(config_file_path, "w") as file:
+        file.write(S_SCHEMA_VERSION + "\n")
+        for config_section in config_sections:
+            for config_line in config_section:
+                file.write(config_line + "\n")
 
 
 if __name__ == "__main__":
@@ -216,7 +248,16 @@ if __name__ == "__main__":
         type=str,
         help="Save the current monitor configuration with this name.",
     )
-    parser.add_argument("--list", action="store_true", help="List all configurations.")
+    parser.add_argument(
+        "--list-configs",
+        action="store_true",
+        help="List all configurations in the specified config file.",
+    )
+    parser.add_argument(
+        "--list-config-files",
+        action="store_true",
+        help="List all configurations in the specified config directory.",
+    )
     parser.add_argument("-v", "--verbose", action="store_true", help="Verbose output.")
     args = parser.parse_args()
 
