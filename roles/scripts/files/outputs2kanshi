@@ -71,9 +71,10 @@ def main(config: argparse.Namespace):
 
     if config.list:
         for config_file in os.listdir(config.config_dir):
-            if not os.path.isfile(config_file):
-                logger.debug(f"Ignoring {config_file}, not a file.")
-            print(config_file)
+            config_file_path = os.path.join(config.config_dir, config_file)
+            if not os.path.isfile(config_file_path):
+                logger.debug(f"Ignoring {config_file_path}, not a file.")
+            print(config_file_path)
 
     if config.save:
         outputs = parse_current_setup()
