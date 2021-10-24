@@ -42,6 +42,6 @@
   tags: sway,dotfiles-sway
 
 - name: install scripts
-  include_role:
+  import_role:
     name: scripts
   tags: sway,dotfiles-sway
