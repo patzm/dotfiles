@@ -182,6 +182,7 @@ def save_current_setup(
         output_config = ""
         if not output.active:
             logger.debug(f"Ignoring inactive output {output.make} {output.model}.")
+            continue
 
         if output.make == output.UNKNOWN_MAKE or output.serial == output.UNKNOWN_SERIAL:
             output_name = output.name
