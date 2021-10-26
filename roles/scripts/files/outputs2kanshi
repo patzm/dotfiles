@@ -174,13 +174,7 @@ def read_config(config_file_path: str) -> List[str]:
     return config_lines
 
 
-def save_current_setup(
-    config: argparse.Namespace, config_file_path: str, outputs: List[SwayOutput]
-):
-    if not os.path.exists(config_file_path):
-        logger.info(f"Config file {config_file_path} doesn't exist, initializing...")
-        write_config_file(config_file_path=config_file_path, config_sections=[])
-
+def read_and_validate_config_sections(config_file_path: str):
     config_lines = read_config(config_file_path=config_file_path)
     if not len(config_lines):
         raise RuntimeError(f"Empty config file {config_file_path}")
@@ -193,7 +187,16 @@ def save_current_setup(
         os.rename(config_file_path, archive_config_file)
         exit(1)
 
-    config_sections = iter_config_sections(config_lines=config_lines)
+    return iter_config_sections(config_lines=config_lines)
+
+def save_current_setup(
+    config: argparse.Namespace, config_file_path: str, outputs: List[SwayOutput]
+):
+    if not os.path.exists(config_file_path):
+        logger.info(f"Config file {config_file_path} doesn't exist, initializing...")
+        write_config_file(config_file_path=config_file_path, config_sections=[])
+
+    config_sections = read_and_validate_config_sections(config_file_path=config_file_path)
     if delete_config_section(section_name=config.save, config_sections=config_sections):
         logger.warning(f"Config {config.save} exists, overwriting...")
 
