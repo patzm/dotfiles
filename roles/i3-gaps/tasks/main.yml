@@ -65,8 +65,11 @@
         force: yes
       with_items:
       - "{{ detect_monitors_script }}"
-      - "{{ note_script }}"
       - "{{ screenshot_script }}"
+
+    - name: copy all other scripts
+      import_role:
+        name: scripts
 
     - name: insert the screenshot script location into the config file
       replace:
