@@ -226,7 +226,7 @@ def save_current_setup(config: argparse.Namespace, config_file_path: str, output
             output_config += " disable"
         else:
             output_config += f" scale {output.scale or 1.0}"
-            kanoutput_config += f" mode {output.rect.width}x{output.rect.height}"
+            output_config += f" mode {output.rect.width}x{output.rect.height}"
             output_config += f" position {output.rect.x},{output.rect.y}"
 
         new_section.append(output_config)
