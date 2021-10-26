@@ -135,9 +135,8 @@ def main(config: argparse.Namespace):
 
     if config.list_configs:
         print(f"{config_file_path} contains the configs:")
-        config_lines = read_config(config_file_path=config_file_path)
-        validate_schema(schema_line=config_lines[0])
-        for config_section in iter_config_sections(config_lines=config_lines):
+        config_sections = read_and_validate_config_sections(config_file_path=config_file_path)
+        for config_section in config_sections:
             config_name = config_section[0].replace(CONFIG_HEADER_PREFIX, "")
             print(f"- {config_name}")
 
