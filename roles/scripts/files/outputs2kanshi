@@ -172,8 +172,8 @@ def save_current_setup(
     for config_section in iter_config_sections(config_lines=config_lines):
         if config_section[0] == config_header and config_section[-1] == config_footer:
             logger.warning(f"Config {config.save} exists, overwriting...")
-
-        config_sections.append(config_section)
+        else:
+            config_sections.append(config_section)
 
     new_section = list()
     new_section.append(config_header)
