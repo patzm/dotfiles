@@ -8,6 +8,7 @@
 * python (virtualenv)
 * ranger
 * sublime text
+* sway wm
 * terminals
 * tmux
 * vim
@@ -73,3 +74,48 @@ Once you are happy, save the configuration with a human-readable name. E.g.
 autorandr --save my-monitor-setup
 ```
 
+### `sway`
+
+#### Manage multiple monitors
+Use `wdisplays` as a convenient GUI front end to configure displays in Wayland compositors.
+Configure your monitor layout until you are happy.
+Save the configuration with a human-readable name. E.g.
+```shell
+outputs2kanshi --save my-monitor-setup
+```
+
+#### Change the default display manager
+To get the current display manager, run
+```shell
+sudo systemctl status display-manager
+```
+
+To enable `ligthdm`, run
+```shell
+sudo systemctl disable greetd  # if greetd is the current active display manager
+sudo systemctl enable lightdm
+```
+
+And make sure that `/etc/lightdm/lightdm.conf` contains at least these lines
+
+```conf
+[LightDM]
+run-directory=/run/lightdm
+sessions-directory=/usr/share/lightdm/sessions:/usr/share/xsessions:/usr/share/wayland-sessions
+
+[Seat:*]
+greeter-session=lightdm-gtk-greeter
+session-wrapper=/etc/lightdm/Xsession
+```
+
+### Gnome with Wayland
+Remove all existing `gnome*.desktop`, such that they don't appear in your display manager:
+```shell
+sudo rm /usr/shares/xsessions/gnome*.desktop
+```
+
+Also, fix the default Wayland session file to contain
+```
+Exec=/usr/bin/gnome-shell --wayland
+TryExec=/usr/bin/gnome-shell
+```

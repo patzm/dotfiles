@@ -1,0 +1,311 @@
+#! /usr/bin/env python3
+
+import argparse
+import json
+import logging
+import os
+import subprocess
+from dataclasses import dataclass
+from typing import List, Optional
+
+import dacite
+
+
+logging.basicConfig(
+    level=logging.DEBUG,
+    format="[%(asctime)s] [%(levelname)8s] %(message)s",
+)
+logger = logging.getLogger(os.path.basename(__file__))
+
+SCHEMA_VERSION = "v2"
+S_SCHEMA_VERSION = f"# schema version={SCHEMA_VERSION}"
+CONFIG_HEADER_PREFIX = "# config begin:"
+CONFIG_FOOTER_PREFIX = "# config end:"
+
+
+@dataclass
+class Rectangle:
+    x: int
+    y: int
+    height: int
+    width: int
+
+
+@dataclass
+class Mode:
+    height: int
+    width: int
+    refresh: int
+
+
+@dataclass
+class SwayOutput:
+    UNKNOWN_MAKE = "Unknown"
+    UNKNOWN_SERIAL = "0x00000000"
+
+    active: bool
+    dpms: bool
+    make: str
+    model: str
+    modes: List[Mode]
+    name: str
+    percent: Optional[float]
+    primary: bool
+    rect: Rectangle
+    serial: str
+    type: str
+
+    current_mode: Optional[Mode] = None
+    border: Optional[str] = None
+    current_border_width: Optional[int] = None
+    deco_rect: Optional[Rectangle] = None
+    geometry: Optional[Rectangle] = None
+    id: Optional[int] = None
+    layout: Optional[str] = None
+    orientation: Optional[str] = None
+    scale: Optional[float] = None
+    urgent: Optional[bool] = None
+    window_rect: Optional[Rectangle] = None
+
+
+def configure_logging(config: argparse.Namespace):
+    if args.verbose:
+        level = logging.DEBUG
+    else:
+        level = logging.INFO
+    logger.setLevel(level=level)
+
+
+def delete_config_section(section_name: str, config_sections: List[List[str]]) -> bool:
+    """Delete the sections that match the section name in place.
+
+    :param section_name: The name of the section to delete.
+    :param config_sections: A list of sections.
+    :return: Whether at least one section was deleted.
+    """
+    removed = False
+    for config_section in find_section(section_name=section_name, config_sections=config_sections[:]):
+        removed = True
+        config_sections.remove(config_section)
+
+    return removed
+
+
+def delete_setup(config: argparse.Namespace, config_file_path: str):
+    config_lines = read_config(config_file_path=config_file_path)
+    config_sections = iter_config_sections(config_lines=config_lines)
+    if delete_config_section(section_name=config.delete, config_sections=config_sections):
+        logger.info(f"Config {config.delete} exists, deleting it from the configuration...")
+        write_config_file(config_file_path=config_file_path, config_sections=config_sections)
+
+
+def find_section(section_name: str, config_sections: List[List[str]]) -> List[List[str]]:
+    section_footer = get_section_footer(section_name=section_name)
+    section_header = get_section_header(section_name=section_name)
+
+    matching_sections: List[List[str]] = list()
+    for config_section in config_sections:
+        if config_section[0] == section_header and config_section[-1] == section_footer:
+            matching_sections.append(config_section)
+    return matching_sections
+
+
+def get_section_footer(section_name: str) -> str:
+    return f"{CONFIG_FOOTER_PREFIX} {section_name}"
+
+
+def get_section_header(section_name: str) -> str:
+    return f"{CONFIG_HEADER_PREFIX} {section_name}"
+
+
+def iter_config_sections(config_lines: List[str]) -> List[List[str]]:
+    config_sections: List[List[str]] = list()
+    config_section: List[str] = list()
+
+    inside_config = False
+    for line in config_lines:
+        if CONFIG_HEADER_PREFIX in line:
+            inside_config = True
+
+        if inside_config:
+            config_section.append(line)
+
+        if CONFIG_FOOTER_PREFIX in line:
+            inside_config = False
+            config_sections.append(config_section)
+            config_section = list()
+
+    return config_sections
+
+
+def main(config: argparse.Namespace):
+    config_file_path = os.path.join(config.config_dir, config.config_file_name)
+    if not os.path.exists(config.config_dir):
+        logger.warning(f"Config directory {config.config_dir} does not exist. Creating it now...")
+        os.makedirs(config.config_dir)
+
+    if config.list_configs:
+        print(f"{config_file_path} contains the configs:")
+        config_sections = read_and_validate_config_sections(config_file_path=config_file_path)
+        for config_section in config_sections:
+            config_name = config_section[0].replace(CONFIG_HEADER_PREFIX, "")
+            print(f"- {config_name}")
+
+    if config.list_config_files:
+        print(f"Config files in {config.config_dir}:")
+        for config_file_name in os.listdir(config.config_dir):
+            if not os.path.isfile(config_file_path):
+                logger.debug(f"Ignoring {config_file_path}, not a file.")
+            print(f"- {config_file_name}")
+
+    if config.delete:
+        delete_setup(config=config, config_file_path=config_file_path)
+
+    if config.save:
+        outputs = parse_current_setup()
+        save_current_setup(config=config, config_file_path=config_file_path, outputs=outputs)
+
+    if config.show:
+        print(f"Configuration of the config {config.show}:")
+        config_sections = read_and_validate_config_sections(config_file_path=config_file_path)
+        for config_section in find_section(section_name=config.show, config_sections=config_sections):
+            print("\n".join(config_section))
+
+
+def parse_current_setup() -> List[SwayOutput]:
+    # Get the raw, json-encoded output
+    output = subprocess.run(args=["swaymsg", "-t", "get_outputs", "--raw"], capture_output=True)
+    outputs_raw = json.loads(output.stdout.decode())
+    outputs = [dacite.from_dict(data_class=SwayOutput, data=output_raw) for output_raw in outputs_raw]
+    return outputs
+
+
+def read_config(config_file_path: str) -> List[str]:
+    with open(config_file_path, "r") as file:
+        config_lines = file.read().splitlines()
+    return config_lines
+
+
+def read_and_validate_config_sections(config_file_path: str):
+    config_lines = read_config(config_file_path=config_file_path)
+    if not len(config_lines):
+        raise RuntimeError(f"Empty config file {config_file_path}")
+
+    if not validate_schema(schema_line=config_lines[0]):
+        archive_config_file = config_file_path + ".bak"
+        logging.error(f"Archiving config file {config_file_path} as {archive_config_file}.")
+        os.rename(config_file_path, archive_config_file)
+        exit(1)
+
+    return iter_config_sections(config_lines=config_lines)
+
+
+def save_current_setup(config: argparse.Namespace, config_file_path: str, outputs: List[SwayOutput]):
+    if not os.path.exists(config_file_path):
+        logger.info(f"Config file {config_file_path} doesn't exist, initializing...")
+        write_config_file(config_file_path=config_file_path, config_sections=[])
+
+    config_sections = read_and_validate_config_sections(config_file_path=config_file_path)
+    if delete_config_section(section_name=config.save, config_sections=config_sections):
+        logger.warning(f"Config {config.save} exists, overwriting...")
+
+    new_section = list()
+    new_section.append(get_section_header(section_name=config.save))
+    new_section.append(f"profile {config.save} " "{")
+    for output in outputs:
+        output_config = ""
+
+        if output.make == output.UNKNOWN_MAKE or output.serial == output.UNKNOWN_SERIAL:
+            output_name = output.name
+        else:
+            output_name = f'"{output.make} {output.model} {output.serial}"'
+
+        output_config += f"\toutput {output_name}"
+        if not output.active:
+            logger.debug(f"Ignoring inactive output {output.make} {output.model}.")
+            output_config += " disable"
+        else:
+            output_config += f" scale {output.scale or 1.0}"
+            kanoutput_config += f" mode {output.rect.width}x{output.rect.height}"
+            output_config += f" position {output.rect.x},{output.rect.y}"
+
+        new_section.append(output_config)
+
+    new_section.append("}")
+    new_section.append(get_section_footer(section_name=config.save))
+    config_sections.append(new_section)
+
+    write_config_file(config_file_path=config_file_path, config_sections=config_sections)
+    logger.debug(f"Added new output section:\n{' '.join(new_section)}")
+
+
+def validate_schema(schema_line: str) -> bool:
+    if schema_line != S_SCHEMA_VERSION:
+        schema_version_found = schema_line.split("=")[-1]
+        logging.error(
+            f"Schema version mismatch of the config file ({schema_version_found}) "
+            f"and the current code ({SCHEMA_VERSION})."
+        )
+        return False
+    else:
+        return True
+
+
+def write_config_file(config_file_path: str, config_sections: List[List[str]]):
+    with open(config_file_path, "w") as file:
+        file.write(S_SCHEMA_VERSION + "\n")
+        for config_section in config_sections:
+            for config_line in config_section:
+                file.write(config_line + "\n")
+    logger.info(f"Wrote current configuration to {config_file_path}")
+
+
+if __name__ == "__main__":
+    config_home = os.path.expanduser(os.environ.get("XDG_CONFIG_HOME", "~/.config"))
+    default_config_dir = os.path.join(config_home, "kanshi")
+    parser = argparse.ArgumentParser("Parses the current monitor configuration into a kanshi-readable config file.")
+    parser.add_argument(
+        "--config-dir",
+        default=default_config_dir,
+        type=str,
+        help="Store and load configurations to/from this folder.",
+    )
+    parser.add_argument(
+        "--config-file-name",
+        default="config",
+        type=str,
+        help="The name of the config file.",
+    )
+    parser.add_argument(
+        "--delete",
+        default=None,
+        type=str,
+        help="Delete a monitor configuration with this name.",
+    )
+    parser.add_argument(
+        "--save",
+        default=None,
+        type=str,
+        help="Save the current monitor configuration with this name.",
+    )
+    parser.add_argument(
+        "--show",
+        default=None,
+        type=str,
+        help="Show the content of the configuration with this name.",
+    )
+    parser.add_argument(
+        "--list-configs",
+        action="store_true",
+        help="List all configurations in the specified config file.",
+    )
+    parser.add_argument(
+        "--list-config-files",
+        action="store_true",
+        help="List all configurations in the specified config directory.",
+    )
+    parser.add_argument("-v", "--verbose", action="store_true", help="Verbose output.")
+    args = parser.parse_args()
+
+    configure_logging(config=args)
+    main(config=args)

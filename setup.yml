@@ -13,7 +13,7 @@
     - role: scripts
       tags: dotfiles
     - role: packages
-      tags: [packages, i3]
+      tags: [packages, i3, sway]
     - role: terminals
     - role: firefox
       tags: dotfiles
@@ -31,5 +31,6 @@
     - role: sublime
       tags: dotfiles
     - role: python
+    - role: sway
     - role: i3-gaps
       tags: i3
