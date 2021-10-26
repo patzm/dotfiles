@@ -165,6 +165,11 @@ def main(config: argparse.Namespace):
         outputs = parse_current_setup()
         save_current_setup(config=config, config_file_path=config_file_path, outputs=outputs)
 
+    if config.show:
+        print(f"Configuration of the config {config.show}:")
+        config_sections = read_and_validate_config_sections(config_file_path=config_file_path)
+        for config_section in find_section(section_name=config.show, config_sections=config_sections):
+            print("\n".join(config_section))
 
 
 def parse_current_setup() -> List[SwayOutput]:
@@ -280,6 +285,12 @@ if __name__ == "__main__":
         default=None,
         type=str,
         help="Save the current monitor configuration with this name.",
+    )
+    parser.add_argument(
+        "--show",
+        default=None,
+        type=str,
+        help="Show the content of the configuration with this name.",
     )
     parser.add_argument(
         "--list-configs",
