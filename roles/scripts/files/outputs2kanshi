@@ -214,9 +214,6 @@ def save_current_setup(config: argparse.Namespace, config_file_path: str, output
     new_section.append(f"profile {config.save} " "{")
     for output in outputs:
         output_config = ""
-        if not output.active:
-            logger.debug(f"Ignoring inactive output {output.make} {output.model}.")
-            continue
 
         if output.make == output.UNKNOWN_MAKE or output.serial == output.UNKNOWN_SERIAL:
             output_name = output.name
@@ -224,9 +221,14 @@ def save_current_setup(config: argparse.Namespace, config_file_path: str, output
             output_name = f'"{output.make} {output.model} {output.serial}"'
 
         output_config += f"\toutput {output_name}"
-        output_config += f" scale {output.scale or 1.0}"
-        output_config += f" mode {output.rect.width}x{output.rect.height}"
-        output_config += f" position {output.rect.x},{output.rect.y}"
+        if not output.active:
+            logger.debug(f"Ignoring inactive output {output.make} {output.model}.")
+            output_config += " disable"
+        else:
+            output_config += f" scale {output.scale or 1.0}"
+            kanoutput_config += f" mode {output.rect.width}x{output.rect.height}"
+            output_config += f" position {output.rect.x},{output.rect.y}"
+
         new_section.append(output_config)
 
     new_section.append("}")
