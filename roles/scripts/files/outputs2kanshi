@@ -6,7 +6,7 @@ import logging
 import os
 import subprocess
 from dataclasses import dataclass
-from typing import List
+from typing import List, Optional
 
 import dacite
 
@@ -44,27 +44,28 @@ class SwayOutput:
     UNKNOWN_SERIAL = "0x00000000"
 
     active: bool
-    border: str
-    current_border_width: int
-    current_mode: Mode
-    deco_rect: Rectangle
     dpms: bool
-    geometry: Rectangle
-    id: int
-    layout: str
     make: str
     model: str
     modes: List[Mode]
     name: str
-    orientation: str
-    percent: float
+    percent: Optional[float]
     primary: bool
     rect: Rectangle
-    scale: float
     serial: str
     type: str
-    urgent: bool
-    window_rect: Rectangle
+
+    current_mode: Optional[Mode] = None
+    border: Optional[str] = None
+    current_border_width: Optional[int] = None
+    deco_rect: Optional[Rectangle] = None
+    geometry: Optional[Rectangle] = None
+    id: Optional[int] = None
+    layout: Optional[str] = None
+    orientation: Optional[str] = None
+    scale: Optional[float] = None
+    urgent: Optional[bool] = None
+    window_rect: Optional[Rectangle] = None
 
 
 def configure_logging(config: argparse.Namespace):
