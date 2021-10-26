@@ -141,9 +141,7 @@ def iter_config_sections(config_lines: List[str]) -> List[List[str]]:
 def main(config: argparse.Namespace):
     config_file_path = os.path.join(config.config_dir, config.config_file_name)
     if not os.path.exists(config.config_dir):
-        logger.warning(
-            f"Config directory {config.config_dir} does not exist. Creating it now..."
-        )
+        logger.warning(f"Config directory {config.config_dir} does not exist. Creating it now...")
         os.makedirs(config.config_dir)
 
     if config.list_configs:
@@ -165,21 +163,15 @@ def main(config: argparse.Namespace):
 
     if config.save:
         outputs = parse_current_setup()
-        save_current_setup(
-            config=config, config_file_path=config_file_path, outputs=outputs
-        )
+        save_current_setup(config=config, config_file_path=config_file_path, outputs=outputs)
+
 
 
 def parse_current_setup() -> List[SwayOutput]:
     # Get the raw, json-encoded output
-    output = subprocess.run(
-        args=["swaymsg", "-t", "get_outputs", "--raw"], capture_output=True
-    )
+    output = subprocess.run(args=["swaymsg", "-t", "get_outputs", "--raw"], capture_output=True)
     outputs_raw = json.loads(output.stdout.decode())
-    outputs = [
-        dacite.from_dict(data_class=SwayOutput, data=output_raw)
-        for output_raw in outputs_raw
-    ]
+    outputs = [dacite.from_dict(data_class=SwayOutput, data=output_raw) for output_raw in outputs_raw]
     return outputs
 
 
@@ -196,17 +188,14 @@ def read_and_validate_config_sections(config_file_path: str):
 
     if not validate_schema(schema_line=config_lines[0]):
         archive_config_file = config_file_path + ".bak"
-        logging.error(
-            f"Archiving config file {config_file_path} as {archive_config_file}."
-        )
+        logging.error(f"Archiving config file {config_file_path} as {archive_config_file}.")
         os.rename(config_file_path, archive_config_file)
         exit(1)
 
     return iter_config_sections(config_lines=config_lines)
 
-def save_current_setup(
-    config: argparse.Namespace, config_file_path: str, outputs: List[SwayOutput]
-):
+
+def save_current_setup(config: argparse.Namespace, config_file_path: str, outputs: List[SwayOutput]):
     if not os.path.exists(config_file_path):
         logger.info(f"Config file {config_file_path} doesn't exist, initializing...")
         write_config_file(config_file_path=config_file_path, config_sections=[])
@@ -217,7 +206,7 @@ def save_current_setup(
 
     new_section = list()
     new_section.append(get_section_header(section_name=config.save))
-    new_section.append(f"profile {config.save} ""{")
+    new_section.append(f"profile {config.save} " "{")
     for output in outputs:
         output_config = ""
         if not output.active:
@@ -239,9 +228,7 @@ def save_current_setup(
     new_section.append(get_section_footer(section_name=config.save))
     config_sections.append(new_section)
 
-    write_config_file(
-        config_file_path=config_file_path, config_sections=config_sections
-    )
+    write_config_file(config_file_path=config_file_path, config_sections=config_sections)
     logger.debug(f"Added new output section:\n{' '.join(new_section)}")
 
 
@@ -269,9 +256,7 @@ def write_config_file(config_file_path: str, config_sections: List[List[str]]):
 if __name__ == "__main__":
     config_home = os.path.expanduser(os.environ.get("XDG_CONFIG_HOME", "~/.config"))
     default_config_dir = os.path.join(config_home, "kanshi")
-    parser = argparse.ArgumentParser(
-        "Parses the current monitor configuration into a kanshi-readable config file."
-    )
+    parser = argparse.ArgumentParser("Parses the current monitor configuration into a kanshi-readable config file.")
     parser.add_argument(
         "--config-dir",
         default=default_config_dir,
