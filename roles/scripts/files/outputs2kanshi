@@ -107,7 +107,7 @@ def find_section(section_name: str, config_sections: List[List[str]]) -> List[Li
     for config_section in config_sections:
         if config_section[0] == section_header and config_section[-1] == section_footer:
             matching_sections.append(config_section)
-    return config_sections
+    return matching_sections
 
 
 def get_section_footer(section_name: str) -> str:
