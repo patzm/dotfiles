@@ -76,6 +76,27 @@ def configure_logging(config: argparse.Namespace):
     logger.setLevel(level=level)
 
 
+def delete_config_section(section_name: str, config_sections: List[List[str]]) -> bool:
+    """Delete the sections that match the section name in place.
+
+    :param section_name: The name of the section to delete.
+    :param config_sections: A list of sections.
+    :return: Whether at least one section was deleted.
+    """
+    section_footer = get_section_footer(section_name=section_name)
+    section_header = get_section_header(section_name=section_name)
+
+    sections_to_delete: List[int] = list()
+    for i, config_section in enumerate(config_sections):
+        if config_section[0] == section_header and config_section[-1] == section_footer:
+            sections_to_delete.append(i)
+
+    for section_to_delete in reversed(sections_to_delete):
+        del config_sections[section_to_delete]
+
+    return len(sections_to_delete) > 0
+
+
 def get_section_footer(section_name: str) -> str:
     return f"{CONFIG_FOOTER_PREFIX} {section_name}"
 
@@ -156,9 +177,6 @@ def read_config(config_file_path: str) -> List[str]:
 def save_current_setup(
     config: argparse.Namespace, config_file_path: str, outputs: List[SwayOutput]
 ):
-    config_header = f"{CONFIG_HEADER_PREFIX} {config.save}"
-    config_footer = f"{CONFIG_FOOTER_PREFIX} {config.save}"
-
     if not os.path.exists(config_file_path):
         logger.info(f"Config file {config_file_path} doesn't exist, initializing...")
         write_config_file(config_file_path=config_file_path, config_sections=[])
@@ -175,12 +193,9 @@ def save_current_setup(
         os.rename(config_file_path, archive_config_file)
         exit(1)
 
-    config_sections = list()
-    for config_section in iter_config_sections(config_lines=config_lines):
-        if config_section[0] == config_header and config_section[-1] == config_footer:
-            logger.warning(f"Config {config.save} exists, overwriting...")
-        else:
-            config_sections.append(config_section)
+    config_sections = iter_config_sections(config_lines=config_lines)
+    if delete_config_section(section_name=config.save, config_sections=config_sections):
+        logger.warning(f"Config {config.save} exists, overwriting...")
 
     new_section = list()
     new_section.append(get_section_header(section_name=config.save))
