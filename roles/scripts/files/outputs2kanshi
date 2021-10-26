@@ -83,14 +83,10 @@ def delete_config_section(section_name: str, config_sections: List[List[str]]) -
     :param config_sections: A list of sections.
     :return: Whether at least one section was deleted.
     """
-    section_footer = get_section_footer(section_name=section_name)
-    section_header = get_section_header(section_name=section_name)
-
     removed = False
-    for config_section in config_sections[:]:
-        if config_section[0] == section_header and config_section[-1] == section_footer:
-            removed = True
-            config_sections.remove(config_section)
+    for config_section in find_section(section_name=section_name, config_sections=config_sections[:]):
+        removed = True
+        config_sections.remove(config_section)
 
     return removed
 
@@ -101,6 +97,17 @@ def delete_setup(config: argparse.Namespace, config_file_path: str):
     if delete_config_section(section_name=config.delete, config_sections=config_sections):
         logger.info(f"Config {config.delete} exists, deleting it from the configuration...")
         write_config_file(config_file_path=config_file_path, config_sections=config_sections)
+
+
+def find_section(section_name: str, config_sections: List[List[str]]) -> List[List[str]]:
+    section_footer = get_section_footer(section_name=section_name)
+    section_header = get_section_header(section_name=section_name)
+
+    matching_sections: List[List[str]] = list()
+    for config_section in config_sections:
+        if config_section[0] == section_header and config_section[-1] == section_footer:
+            matching_sections.append(config_section)
+    return config_sections
 
 
 def get_section_footer(section_name: str) -> str:
