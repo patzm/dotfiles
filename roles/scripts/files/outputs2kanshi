@@ -167,7 +167,6 @@ def save_current_setup(
         os.rename(config_file_path, archive_config_file)
         exit(1)
 
-    existing_config_lines: List[int] = list()
     config_sections = list()
     for config_section in iter_config_sections(config_lines=config_lines):
         if config_section[0] == config_header and config_section[-1] == config_footer:
