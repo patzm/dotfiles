@@ -86,15 +86,21 @@ def delete_config_section(section_name: str, config_sections: List[List[str]]) -
     section_footer = get_section_footer(section_name=section_name)
     section_header = get_section_header(section_name=section_name)
 
-    sections_to_delete: List[int] = list()
-    for i, config_section in enumerate(config_sections):
+    removed = False
+    for config_section in config_sections[:]:
         if config_section[0] == section_header and config_section[-1] == section_footer:
-            sections_to_delete.append(i)
+            removed = True
+            config_sections.remove(config_section)
 
-    for section_to_delete in reversed(sections_to_delete):
-        del config_sections[section_to_delete]
+    return removed
 
-    return len(sections_to_delete) > 0
+
+def delete_setup(config: argparse.Namespace, config_file_path: str):
+    config_lines = read_config(config_file_path=config_file_path)
+    config_sections = iter_config_sections(config_lines=config_lines)
+    if delete_config_section(section_name=config.delete, config_sections=config_sections):
+        logger.info(f"Config {config.delete} exists, deleting it from the configuration...")
+        write_config_file(config_file_path=config_file_path, config_sections=config_sections)
 
 
 def get_section_footer(section_name: str) -> str:
@@ -146,6 +152,9 @@ def main(config: argparse.Namespace):
             if not os.path.isfile(config_file_path):
                 logger.debug(f"Ignoring {config_file_path}, not a file.")
             print(f"- {config_file_name}")
+
+    if config.delete:
+        delete_setup(config=config, config_file_path=config_file_path)
 
     if config.save:
         outputs = parse_current_setup()
@@ -267,6 +276,12 @@ if __name__ == "__main__":
         default="config",
         type=str,
         help="The name of the config file.",
+    )
+    parser.add_argument(
+        "--delete",
+        default=None,
+        type=str,
+        help="Delete a monitor configuration with this name.",
     )
     parser.add_argument(
         "--save",
