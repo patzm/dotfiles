@@ -76,6 +76,14 @@ def configure_logging(config: argparse.Namespace):
     logger.setLevel(level=level)
 
 
+def get_section_footer(section_name: str) -> str:
+    return f"{CONFIG_FOOTER_PREFIX} {section_name}"
+
+
+def get_section_header(section_name: str) -> str:
+    return f"{CONFIG_HEADER_PREFIX} {section_name}"
+
+
 def iter_config_sections(config_lines: List[str]) -> List[List[str]]:
     config_sections: List[List[str]] = list()
     config_section: List[str] = list()
@@ -175,7 +183,7 @@ def save_current_setup(
             config_sections.append(config_section)
 
     new_section = list()
-    new_section.append(config_header)
+    new_section.append(get_section_header(section_name=config.save))
     new_section.append(f"profile {config.save} ""{")
     for output in outputs:
         output_config = ""
@@ -195,7 +203,7 @@ def save_current_setup(
         new_section.append(output_config)
 
     new_section.append("}")
-    new_section.append(config_footer)
+    new_section.append(get_section_footer(section_name=config.save))
     config_sections.append(new_section)
 
     write_config_file(
