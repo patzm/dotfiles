@@ -224,7 +224,6 @@ def save_current_setup(
     write_config_file(
         config_file_path=config_file_path, config_sections=config_sections
     )
-    logger.info(f"Wrote current configuration to {config_file_path}")
     logger.debug(f"Added new output section:\n{' '.join(new_section)}")
 
 
@@ -246,6 +245,7 @@ def write_config_file(config_file_path: str, config_sections: List[List[str]]):
         for config_section in config_sections:
             for config_line in config_section:
                 file.write(config_line + "\n")
+    logger.info(f"Wrote current configuration to {config_file_path}")
 
 
 if __name__ == "__main__":
