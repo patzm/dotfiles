@@ -189,7 +189,7 @@ def save_current_setup(
             output_name = f'"{output.make} {output.model} {output.serial}"'
 
         output_config += f"\toutput {output_name}"
-        output_config += f" scale {output.scale}"
+        output_config += f" scale {output.scale or 1.0}"
         output_config += f" mode {output.rect.width}x{output.rect.height}"
         output_config += f" position {output.rect.x},{output.rect.y}"
         new_section.append(output_config)
