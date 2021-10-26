@@ -177,7 +177,7 @@ def save_current_setup(
 
     new_section = list()
     new_section.append(config_header)
-    new_section.append("profile {")
+    new_section.append(f"profile {config.save} ""{")
     for output in outputs:
         output_config = ""
         if not output.active:
