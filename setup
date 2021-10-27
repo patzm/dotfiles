@@ -1,13 +1,18 @@
 #!/usr/bin/env python3
 
 import argparse
-import os.path
+import os
 import subprocess
 
 def run(config):
     setup_file_path = os.path.join(os.path.dirname(__file__), 'setup.yml')
 
     cmd = ['ansible-playbook', setup_file_path]
+    env = os.environ.copy()
+    ansible_library_paths = [f"{os.getcwd()}/modules/yay"]
+    if "ANSIBLE_LIBRARY" in env:
+        ansible_library_paths.extend(env["ANSIBLE_LIBRARY"].split(":"))
+    env["ANSIBLE_LIBRARY"] = ":".join(ansible_library_paths)
 
     if config.K:
         cmd.append('-K')
@@ -22,7 +27,7 @@ def run(config):
         cmd.append(','.join(config.tags))
 
     print('Invoking {}'.format(' '.join(cmd)))
-    subprocess.call(cmd)
+    subprocess.call(cmd, env=env)
 
 
 if __name__ == '__main__':
