@@ -119,3 +119,11 @@ Also, fix the default Wayland session file to contain
 Exec=/usr/bin/gnome-shell --wayland
 TryExec=/usr/bin/gnome-shell
 ```
+
+### Keychron function keys
+
+Sometimes the system disables function keys for my Keychron K2.
+To re-enable them, simply run
+```shell
+echo 0 | sudo tee /sys/module/hid_apple/parameters/fnmode
+```
