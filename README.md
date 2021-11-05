@@ -120,6 +120,8 @@ Exec=/usr/bin/gnome-shell --wayland
 TryExec=/usr/bin/gnome-shell
 ```
 
+To get legacy tray icons / applets working again, e.g. for Nextcloud, install the [Gnome extension _AppIndicator and KStatusNotifierItem Support_](https://extensions.gnome.org/extension/615/appindicator-support/).
+
 ### Keychron function keys
 
 Sometimes the system disables function keys for my Keychron K2.
