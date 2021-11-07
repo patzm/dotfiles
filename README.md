@@ -85,6 +85,8 @@ outputs2kanshi --save my-monitor-setup
 ```
 
 #### Change the default display manager
+_Note_: the `sway` role switched to GDM by default.
+
 To get the current display manager, run
 ```shell
 sudo systemctl status display-manager

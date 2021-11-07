@@ -4,13 +4,11 @@
     name: '{{ item }}'
     state: latest
   loop:
-    - accountsservice  # required for LightDM
+    - gdm
     - gnome-keyring
+    - gnome-session
     - kanshi
-    - lightdm
-    - lightdm-gtk-greeter
     - light-locker
-    - xorg-server  # required for LightDM
   tags: sway
 
 - name: copy the sway config files / directories
@@ -21,6 +19,7 @@
     - 'config'
     - '{{ sway_rel_config_include_dir }}/'
     - '{{ sway_rel_definition_include_dir }}/'
+    - '{{ sway_rel_modes_include_dir }}/'
   tags: sway,dotfiles-sway
 
 - name: create the environment variables folder
