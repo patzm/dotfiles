@@ -76,6 +76,20 @@ autorandr --save my-monitor-setup
 
 ### `sway`
 
+#### Configure environment variables
+By default, `sway`, and in general Wayland desktop managers don't read files that were commonly used in XOrg to set environment variables.
+For instance
+* `.profile`
+* `.xprofile`
+
+To bring back this easy way of pre-configuring environment variables and optionally running some `bash` commands before, we launch `sway` through a `bash` login session (using the `-l` flag).
+The `sway` role will install a custom `.bash_profile` which is configured to source the legacy profile configs.
+
+To do so, replace the `Exec` line in `/usr/share/wayland-sessions/sway.desktop` with
+```
+Exec=bash -cl sway
+```
+
 #### Manage multiple monitors
 Use `wdisplays` as a convenient GUI front end to configure displays in Wayland compositors.
 Configure your monitor layout until you are happy.
