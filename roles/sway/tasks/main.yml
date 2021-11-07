@@ -34,10 +34,10 @@
     dest: '{{ environment_config_dir }}/dotfiles.conf'
   tags: sway,dotfiles-sway
 
-- name: copy the .xprofile file
+- name: copy the .bash_profile file
   copy:
-    src: .xprofile
-    dest: '{{ user_home_dir }}/.xprofile'
+    src: .bash_profile
+    dest: '{{ user_home_dir }}/.bash_profile'
   tags: sway,dotfiles-sway
 
 - name: install scripts
