@@ -21,16 +21,20 @@ alias bl='showmarks'
 
 # Alias for conventional image renaming
 alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
-# matches for instance "20-03-23 15-02-59 4123.jpg"
-function img-meta-update() { exiftool -d \"%y-%m-%d %H-%M-%S\" '-DateTimeOriginal<${Filename;s/[0-9]{4}\.[^.]*$//}'; }
+function img-meta-update() {
+	"""img-meta-update: updates the metadata of an image base on the file name.
+	matches for instance 20-03-23 15-02-59 4123.jpg
+	"""
+	exiftool -d \"%y-%m-%d %H-%M-%S\" '-DateTimeOriginal<${Filename;s/[0-9]{4}\.[^.]*$//}';
+}
 alias mov-rename="exiftool '-filename<CreateDate' -d %Y-%m-%d_%H%M%S%%-c.%%le"
 alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
 function mov-shift-tz () {
 	# mov-shift-tz -=2 *.mov
 	tz_shift=${1}
-	for f in "${@:2}"; do
-		echo "Shifting timezone of ${f} by ${tz_shift}."
-		exiftool '-*date'${tz_shift} ${f}
+	for file in "${@:2}"; do
+		echo "Shifting timezone of ${file} by ${tz_shift}."
+		exiftool '-*date'${tz_shift} "${file}"
 	done
 }
 
