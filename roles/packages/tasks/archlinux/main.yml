@@ -49,7 +49,7 @@
 
 - name: copy yay config files
   copy:
-    src: '{{ role_path }}/files/archlinux/yay/config.json'
+    src: 'archlinux/yay/config.json'
     dest: '{{ yay_config_file }}'
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
