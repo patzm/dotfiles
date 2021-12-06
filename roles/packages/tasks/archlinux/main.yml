@@ -46,6 +46,11 @@
     path: '{{ yay_config_dir }}'
     state: directory
 
+- name: Keychron K2 function keys fix
+  become: yes
+  copy:
+    src: "archlinux/hid_apple.conf"
+    dest: "/etc/modprobe.d/hid_apple.conf"
 
 - name: copy yay config files
   copy:
