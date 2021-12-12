@@ -84,6 +84,14 @@
 		"*synctex.gz",
 		"*.sublime-workspace"
 	],
+	"folder_exclude_patterns": [
+		"*.egg-info",
+		".eggs",
+		".idea",
+		".pytest_cache",
+		"__pycache__",
+		"build",
+	],
 	"font_size": 13,
 	"ignored_packages":
 	[
