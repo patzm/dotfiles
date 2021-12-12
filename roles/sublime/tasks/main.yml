@@ -3,17 +3,10 @@
   file:
     path: '{{ st_config_dir }}'
     state: directory
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
-    mode: 0700
 
 - name: copy the configuration files
   copy:
     src: '{{ item }}'
     dest: '{{ st_config_dir }}'
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
-    mode: 0600
-    force: yes
   with_fileglob:
-    - '{{ role_path }}/files/*'
+    - '*.sublime-settings'
