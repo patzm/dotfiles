@@ -11,7 +11,7 @@
 
   roles:
     - role: scripts
-      tags: dotfiles
+      tags: ui
     - role: packages
       tags: [packages, i3, sway]
     - role: terminals
