@@ -52,7 +52,7 @@
 
 - name: install dependencies
   pip:
-    executable: "{{ pip3_exe }}"
+    executable: "{{ pip3_bin }}"
     name:
       - pynvim
     extra_args: "{{ pip3_args }}"

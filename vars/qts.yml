@@ -2,7 +2,7 @@
 user_group: administrators
 
 pip3_args: "--global-option=build_ext --global-option='-L/opt/lib:/opt/lib/gcc' --global-option='-I/opt/include/'"
-pip3_exe: /opt/bin/pip3
+pip3_bin: /opt/bin/pip3
 
 vim_distros:
   - vim

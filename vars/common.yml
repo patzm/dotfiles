@@ -10,7 +10,7 @@ kitty_config_dir: '{{ user_config_dir }}/kitty'
 termite_config_dir: '{{ user_config_dir }}/termite'
 
 pip3_args: "--user"
-pip3_exe: pip3
+pip3_bin: "pip3"
 
 vim_distros:
   - vim
