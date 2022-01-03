@@ -1,9 +1,9 @@
 # Disable compfix checking for multi-user setup
 ZSH_DISABLE_COMPFIX=true
 
-# Add all local pip install folders to the PATH
-for python_version in ${HOME}/Library/Python/*; do
-	export PATH="${python_version}/bin:${PATH}"
+# Add all local HomeBrew install folders of Python to the PATH
+for python_dir in $(brew --prefix)/opt/python@*; do
+	export PATH="${python_dir}/bin:${PATH}"
 done
 
 # Add custom plugins
