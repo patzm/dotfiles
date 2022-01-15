@@ -10,7 +10,6 @@ include /etc/sway/definitions
 # user variables
 include $HOME/.config/sway/definitions.d/*.conf
 
-include /etc/sway/inputs/*
 include /etc/sway/outputs/*
 
 # enable modes
