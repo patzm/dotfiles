@@ -12,12 +12,13 @@
 - name: create all terminal directories
   file: path={{ item }} state=directory
   with_items:
+  - '{{ alacritty_config_dir }}'
   - '{{ pywal_cache_dir }}'
   - '{{ pywal_template_dir }}'
   - '{{ termite_config_dir }}'
   - '{{ kitty_config_dir }}'
   - '{{ xresources_dir }}'
-  tags: [i3, dotfiles-i3]
+  tags: [i3, dotfiles, dotfiles-i3]
 
 - name: copy the colors template
   copy:
@@ -56,9 +57,15 @@
   shell: wal -n -a 80 --theme base16-google
   tags: [i3, dotfiles-i3]
 
+- name: copy the alacritty config file
+  copy:
+    src: alacritty.yml
+    dest: '{{ alacritty_config_dir }}/alacritty.yml'
+  tags: [dotfiles]
+
 - name: copy the kitty config file
   copy:
     src: '{{ role_path }}/files/kitty.conf'
     dest: '{{ kitty_config_dir }}/kitty.conf'
     force: yes
-  tags: [i3, dotfiles-i3]
+  tags: [i3, dotfiles, dotfiles-i3]
