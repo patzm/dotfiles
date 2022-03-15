@@ -40,6 +40,12 @@
     owner: "{{ ansible_env.USER }}"
   tags: dotfiles
 
+- name: Copy the environment variable file
+  copy:
+    src: 'zshenv'
+    dest: '{{ user_home_dir }}/.zshenv'
+  tags: dotfiles
+
 - name: Copy the aliases
   copy:
     src: 'bash_aliases'
