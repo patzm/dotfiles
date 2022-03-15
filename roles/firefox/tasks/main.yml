@@ -2,7 +2,7 @@
 - name: find all firefox profiles
   find:
     paths: "{{ firefox_config_dir }}"
-    file_type: directory
+    file_type: any
     patterns: '*.default*'
   register: firefox_profile_dirs
 
