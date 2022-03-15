@@ -24,10 +24,13 @@
     force: no
   tags: dotfiles
 
-- name: Copy default ZSH config
+- name: Copy the ZSH config files
   copy:
-    src: '.zshrc'
-    dest: '{{ zsh_config_dir }}/.zshrc'
+    src: '{{ item }}'
+    dest: '{{ zsh_config_dir }}/{{ item }}'
+  loop:
+    - .zshrc
+    - .p10k.zsh
   tags: dotfiles
 
 - name: Copy the OS dependent configuration
