@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Function definitions
 check_zsh_theme() {
     if [[ ! -d "${ZSH_CUSTOM_THEMES}" ]]; then
@@ -111,14 +118,11 @@ export ZSH_CUSTOM_THEMES=${ZSH}/custom/themes
 export ZSH_THEMES=${ZSH}/themes
 
 check_zsh_theme "powerline" "https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git"
-check_zsh_theme "powerlevel9k" "https://github.com/bhilburn/powerlevel9k.git"
+check_zsh_theme "powerlevel10k" "https://github.com/romkatv/powerlevel10k.git"
 
-ZSH_THEME="powerlevel9k/powerlevel9k"
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context time dir dir_writable virtualenv vcs)
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
-POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
-POWERLEVEL9K_SHORTEN_DIR_LENGTH=4
-POWERLEVEL9K_SHORTEN_STRATEGY="truncate_from_right"
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+[[ ! -f ${ZSH_CONFIG}/.p10k.zsh ]] || source ${ZSH_CONFIG}/.p10k.zsh
 
 # Advanced renaming cmd line tool
 autoload -U zmv
