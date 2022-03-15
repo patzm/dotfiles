@@ -117,7 +117,6 @@ unset ZSH_GIT
 export ZSH_CUSTOM_THEMES=${ZSH}/custom/themes
 export ZSH_THEMES=${ZSH}/themes
 
-check_zsh_theme "powerline" "https://github.com/jeremyFreeAgent/oh-my-zsh-powerline-theme.git"
 check_zsh_theme "powerlevel10k" "https://github.com/romkatv/powerlevel10k.git"
 
 ZSH_THEME="powerlevel10k/powerlevel10k"
