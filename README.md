@@ -9,7 +9,9 @@
 * ranger
 * sublime text
 * sway wm
-* terminals
+* [terminals](https://github.com/patzm/dotfiles/tree/master/roles/terminals):
+  * [Alacritty](https://github.com/alacritty/alacritty)
+  * [Kitty](https://github.com/kovidgoyal/kitty)
 * tmux
 * vim
 * zsh
