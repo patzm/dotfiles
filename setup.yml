@@ -18,19 +18,19 @@
       tags: dotfiles
     - role: i3-gaps
       tags: i3
-    - role: ZSH
-    - role: vim
-      tags: dotfiles
     - role: htop
       tags: dotfiles
+    - role: python
     - role: ranger
       tags: dotfiles
-    - role: sublime
-      tags: dotfiles
-    - role: python
     - role: scripts
       tags: ui
+    - role: sublime
+      tags: dotfiles
     - role: sway
     - role: terminals
     - role: tmux
       tags: dotfiles
+    - role: vim
+      tags: dotfiles
+    - role: ZSH
