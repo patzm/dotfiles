@@ -1,3 +1,11 @@
 font:
   size: 12
 
+window:
+  decorations: None
+  dynamic_padding: true
+  opacity: 0.8
+  padding:
+    x: 10
+    y: 10
+
