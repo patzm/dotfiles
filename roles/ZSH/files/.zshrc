@@ -13,7 +13,7 @@ check_zsh_theme() {
     THEME_INSTALL_FOLDER="${ZSH_CUSTOM_THEMES}/$1"
     if [[ ! -d $THEME_INSTALL_FOLDER ]]; then
         echo "\n${GREEN}ZSH-theme $1 not found. Downloading ...${NORMAL}"
-        git clone $2 $THEME_INSTALL_FOLDER
+        git clone --depth=1 $2 $THEME_INSTALL_FOLDER
         echo "Linking $THEME_INSTALL_FOLDER/*.zsh-theme to ${ZSH_THEMES}/"
         ln -sf $THEME_INSTALL_FOLDER/*.zsh-theme ${ZSH_THEMES}/
     fi
