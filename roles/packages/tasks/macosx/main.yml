@@ -7,6 +7,7 @@
 - name: install required packages
   homebrew:
     name: [
+      'alacritty',
       'bmon',
       'exiv2',
       'exiftool',
@@ -56,12 +57,3 @@
     path: '{{ powerline_dir.path }}'
     force: yes
     state: absent
-
-- name: enable long-press character accent menu
-  command: "defaults write {{ item }}"
-  loop:
-    - "-g ApplePressAndHoldEnabled -bool true"
-    - "com.jetbrains.intellij ApplePressAndHoldEnabled -bool false"
-    - "com.jetbrains.intellij.ce ApplePressAndHoldEnabled -bool false"
-    - "com.jetbrains.pycharm ApplePressAndHoldEnabled -bool false"
-    - "com.jetbrains.pycharm.ce ApplePressAndHoldEnabled -bool false"
