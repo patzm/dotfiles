@@ -10,19 +10,16 @@
        'vars/unix.yml']
 
   roles:
-    - role: scripts
-      tags: ui
     - role: packages
       tags: [packages, i3, sway]
-    - role: terminals
     - role: firefox
       tags: dotfiles
     - role: git
       tags: dotfiles
+    - role: i3-gaps
+      tags: i3
     - role: ZSH
     - role: vim
-      tags: dotfiles
-    - role: tmux
       tags: dotfiles
     - role: htop
       tags: dotfiles
@@ -31,6 +28,9 @@
     - role: sublime
       tags: dotfiles
     - role: python
+    - role: scripts
+      tags: ui
     - role: sway
-    - role: i3-gaps
-      tags: i3
+    - role: terminals
+    - role: tmux
+      tags: dotfiles
