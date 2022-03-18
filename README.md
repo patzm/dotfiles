@@ -139,3 +139,43 @@ TryExec=/usr/bin/gnome-shell
 ```
 
 To get legacy tray icons / applets working again, e.g. for Nextcloud, install the [Gnome extension _AppIndicator and KStatusNotifierItem Support_](https://extensions.gnome.org/extension/615/appindicator-support/).
+
+# Ansible cheat-sheet
+
+## Possible values for `ansible_distribution`
+| Common name | Ansible name  |
+| ----------- | ------------- |
+| RedHat      | `RedHat`      |
+| Fedora      | `RedHat`      |
+| CentOS      | `RedHat`      |
+| Scientific  | `RedHat`      |
+| SLC         | `RedHat`      |
+| Ascendos    | `RedHat`      |
+| CloudLinux  | `RedHat`      |
+| PSBM        | `RedHat`      |
+| OracleLinux | `RedHat`      |
+| OVS         | `RedHat`      |
+| OEL         | `RedHat`      |
+| Amazon      | `RedHat`      |
+| XenServer   | `RedHat`      |
+| Ubuntu      | `Debian`      |
+| Debian      | `Debian`      |
+| SLES        | `Suse`        |
+| SLED        | `Suse`        |
+| OpenSuSE    | `Suse`        |
+| SuSE        | `Suse`        |
+| Gentoo      | `Gentoo`      |
+| Archlinux   | `Archlinux`   |
+| Mandriva    | `Mandrake`    |
+| Mandrake    | `Mandrake`    |
+| Manjaro     | `Archlinux`   |
+| Solaris     | `Solaris`     |
+| Nexenta     | `Solaris`     |
+| OmniOS      | `Solaris`     |
+| OpenIndiana | `Solaris`     |
+| SmartOS     | `Solaris`     |
+| AIX         | `AIX`         |
+| Alpine      | `Alpine`      |
+| MacOSX      | `MacOSX`      |
+| FreeBSD     | `FreeBSD`     |
+| HPUX        | `HP-UX`       |
