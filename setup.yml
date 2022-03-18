@@ -20,6 +20,8 @@
       tags: i3
     - role: htop
       tags: dotfiles
+    - role: os-settings
+      tags: dotfiles
     - role: python
     - role: ranger
       tags: dotfiles
