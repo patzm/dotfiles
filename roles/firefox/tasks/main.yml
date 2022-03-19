@@ -1,4 +1,8 @@
 ---
+# changes of prefs.js will otherwise have no effect if Firefox is still running
+- name: fail if firefox is running
+  shell: "! pgrep ^firefox$"
+
 - name: find all firefox profiles
   find:
     paths: "{{ firefox_config_dir }}"
