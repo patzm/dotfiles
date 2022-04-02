@@ -34,7 +34,7 @@
   become: yes
   pip:
     name: "{{ item }}"
-    executable: pip3
+    executable: "{{ pip3_bin }}"
   loop:
     - virtualenv
     - virtualenvwrapper
