@@ -49,8 +49,10 @@
     depth: 1
     dest: '{{ powerline_dir.path }}'
 
-- name: install the fonts
-  command: './install.sh chdir={{ powerline_dir.path }}'
+- name: install powerline fonts
+  command: ./install.sh
+  args:
+    chdir: '{{ powerline_dir.path }}'
 
 - name: remove powerline fonts temporary directory
   file:
