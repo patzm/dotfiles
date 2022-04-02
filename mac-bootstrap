@@ -6,7 +6,7 @@ xcode-select --install
 # Install brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew update
+/opt/homebrew/bin/brew update
 
 # Install ansible
-brew install ansible
+/opt/homebrew/bin/brew install ansible
