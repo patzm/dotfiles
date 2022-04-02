@@ -1,6 +1,14 @@
 # Disable compfix checking for multi-user setup
 ZSH_DISABLE_COMPFIX=true
 
+# Add the correct HomeBrew folder to the PATH
+if [ "$(sysctl -n sysctl.proc_translated)" = "1" ]; then
+    local brew_path="/usr/local/homebrew/bin"
+else
+    local brew_path="/opt/homebrew/bin"
+fi
+export PATH="${brew_path}:${PATH}"
+
 # Add all local HomeBrew install folders of Python to the PATH
 for python_dir in $(brew --prefix)/opt/python@*; do
 	export PATH="${python_dir}/bin:${PATH}"
