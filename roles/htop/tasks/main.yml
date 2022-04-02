@@ -3,14 +3,10 @@
   file:
     path: '{{ htop_config_dir }}'
     state: directory
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
     mode: 0700
 
 - name: copy the htop config file
   copy:
     src: '{{ role_path }}/files/htoprc'
     dest: '{{ htop_config_dir }}/htoprc'
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
     force: yes

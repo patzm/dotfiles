@@ -3,16 +3,12 @@
   copy:
     src: '{{ role_path }}/files/tmux.conf'
     dest: '{{ user_home_dir }}/.tmux.conf'
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
     force: yes
 
 - name: create the tmux plugin directory
   file:
     path: '{{ tpm_dir }}'
     state: directory
-    owner: "{{ ansible_env.USER }}"
-    group: "{{ user_group }}"
     mode: 0700
 
 - name: clone tpm (tmux plugin manager)
