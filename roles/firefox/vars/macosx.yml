@@ -1,0 +1,2 @@
+---
+firefox_config_dir: '{{ user_home_dir }}/Library/Application Support/Firefox/Profiles'
