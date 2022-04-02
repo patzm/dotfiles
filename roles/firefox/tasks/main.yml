@@ -23,7 +23,7 @@
   with_items: "{{ firefox_profile_dirs.files }}"
 
 - name: edit the user configuration
-  script: "set-pref {{ item[0].path }}/prefs.js {{ item[1].key }} {{ item[1].value }}"
+  script: "set-pref '{{ item[0].path }}/prefs.js' {{ item[1].key }} {{ item[1].value }}"
   with_nested:
     - "{{ firefox_profile_dirs.files }}"
     - [
