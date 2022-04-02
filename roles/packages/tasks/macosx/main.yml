@@ -59,3 +59,9 @@
     path: '{{ powerline_dir.path }}'
     force: yes
     state: absent
+
+- name: install the MesloLGS NF (nerd-font)
+  copy:
+    src: '{{ item }}'
+    dest: '{{ user_home_dir }}/Library/Fonts'
+  with_fileglob: 'fonts/meslo-nerd-font/*.ttf'
