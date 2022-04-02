@@ -38,5 +38,6 @@ Thumbs.db
 
 # IDE files          #
 ######################
+*.code-workspace
 .idea
 .vscode
