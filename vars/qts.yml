@@ -3,9 +3,8 @@ user_group: administrators
 
 pip3_args: "--global-option=build_ext --global-option='-L/opt/lib:/opt/lib/gcc' --global-option='-I/opt/include/'"
 pip3_args: "{{ pip3_args }}"
-pip2_bin: /opt/bin/pip2
 pip3_bin: /opt/bin/pip3
-pip_bin: "{{ pip2_bin }}"
+pip_bin: "{{ pip3_bin }}"
 
 vim_distros:
   - vim
