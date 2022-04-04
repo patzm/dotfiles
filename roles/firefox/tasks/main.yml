@@ -1,7 +1,7 @@
 ---
 # changes of prefs.js will otherwise have no effect if Firefox is still running
 - name: fail if firefox is running
-  shell: "! pgrep ^firefox$"
+  shell: "! pgrep -U {{ ansible_user_id }} ^firefox$"
 
 - name: set distro-specific variables
   include_vars: '{{ item }}'
