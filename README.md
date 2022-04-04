@@ -144,6 +144,12 @@ TryExec=/usr/bin/gnome-shell
 
 To get legacy tray icons / applets working again, e.g. for Nextcloud, install the [Gnome extension _AppIndicator and KStatusNotifierItem Support_](https://extensions.gnome.org/extension/615/appindicator-support/).
 
+### macOS
+
+#### Fonts
+Some programs or terminals are configured to use fonts that can't be installed in an already packaged version.
+Simply manually install them from [this folder](https://github.com/patzm/dotfiles/tree/master/roles/packages/files/fonts/meslo-nerd-font) manually.
+
 # Ansible cheat-sheet
 
 ## Possible values for `ansible_distribution`
