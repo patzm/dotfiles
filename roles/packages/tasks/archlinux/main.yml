@@ -67,4 +67,4 @@
   command: yay --answerdiff=None --noconfirm --needed -S ttf-joypixels
 
 - name: install Python3.7
-  command: yay --answerdiff=None --noconfirm --needed -S python37
+  command: yay --answerdiff=None --noconfirm --needed -S python38

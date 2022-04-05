@@ -16,7 +16,7 @@
       'neofetch',
       'neovim',
       'python',
-      'python@3.7',
+      'python@3.8',
       'ranger',
       'rsync',
       'rename',

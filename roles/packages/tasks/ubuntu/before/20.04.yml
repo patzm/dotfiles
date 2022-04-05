@@ -6,4 +6,4 @@
     - libgnome-keyring-common
     - libgnome-keyring-dev
     - python-pip
-    - python3.7
+    - python3.8
