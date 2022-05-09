@@ -151,14 +151,14 @@ plugins=(
     zshmarks
 )
 
-# Load all instance dependent settings
-if [[ -f ${ZSH_CONFIG}/zshinstance ]]; then
-    source ${ZSH_CONFIG}/zshinstance
-fi
-
 # Load all OS dependent settings
 if [[ -f ${ZSH_CONFIG}/zshosdep ]]; then
     source ${ZSH_CONFIG}/zshosdep
+fi
+
+# Load all instance dependent settings
+if [[ -f ${ZSH_CONFIG}/zshinstance ]]; then
+    source ${ZSH_CONFIG}/zshinstance
 fi
 
 # Load all aliases
