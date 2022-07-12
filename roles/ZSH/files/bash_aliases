@@ -41,6 +41,11 @@ function img-meta-update() {
 	exiftool -d "\"%y-%m-%d %H-%M-%S\"" '-DateTimeOriginal<${Filename;s/[0-9]{4}\.[^.]*$//}' "$@"
 }
 
+function img-show-date() {
+	: 'img-show-date: shows the dates that are stored in the file name.'
+	exiftool -T -FileName -DateTimeOriginal "$@"
+}
+
 alias mov-rename="exiftool '-filename<CreationDate' -d %Y-%m-%d_%H%M%S%%-c.%%le"
 alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
 function mov-shift-tz () {
