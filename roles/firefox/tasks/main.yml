@@ -27,6 +27,7 @@
   with_nested:
     - "{{ firefox_profile_dirs.files }}"
     - [
+        {key: "browser.fullscreen.exit_on_escape", value: "false"},
         {key: "browser.tabs.closeWindowWithLastTab", value: "false"},
         {key: "privacy.webrtc.legacyGlobalIndicator", value: "false"},
         {key: "privacy.webrtc.hideGlobalIndicator", value: "true"},
