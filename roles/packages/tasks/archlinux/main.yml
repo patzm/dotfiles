@@ -24,6 +24,7 @@
     - network-manager-applet
     - networkmanager
     - patch
+    - powerline-fonts
     - python-pip  # Python 3
     - python-virtualenv
     - python-virtualenvwrapper
@@ -59,9 +60,6 @@
     owner: "{{ ansible_env.USER }}"
     group: "{{ user_group }}"
     force: yes
-
-- name: install powerline fonts
-  command: yay --answerdiff=None --noconfirm --needed -S powerline-fonts-git
 
 - name: install emoji fonts
   command: yay --answerdiff=None --noconfirm --needed -S ttf-joypixels
