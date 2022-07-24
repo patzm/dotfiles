@@ -4,10 +4,14 @@
   shell: "! pgrep -U {{ ansible_user_id }} ^firefox$"
 
 - name: set distro-specific variables
-  include_vars: '{{ item }}'
-  with_first_found:
-    - '{{ ansible_distribution|lower }}.yml'
-    - default.yml
+  include_vars: "{{ lookup('ansible.builtin.first_found', params) }}"
+  vars:
+    params:
+      files:
+        - '{{ ansible_distribution|lower }}.yml'
+        - default.yml
+      paths:
+        - '{{ role_path }}/vars'
 
 - name: find all firefox profiles
   find:
