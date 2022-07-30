@@ -13,7 +13,7 @@
   * [Alacritty](https://github.com/alacritty/alacritty)
   * [Kitty](https://github.com/kovidgoyal/kitty)
 * tmux
-* vim
+* neovim
 * zsh
 
 ## Setup

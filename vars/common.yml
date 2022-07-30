@@ -16,7 +16,6 @@ pip_bin: "{{ pip3_bin }}"
 pip_args: "{{ pip3_args }}"
 
 vim_distros:
-  - vim
   - nvim
 
 env:
