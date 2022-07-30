@@ -7,7 +7,6 @@
 - name: install required packages
   homebrew:
     name: [
-      'alacritty',
       'bmon',
       'exiv2',
       'exiftool',
@@ -22,10 +21,17 @@
       'rename',
       'tmux',
       'tree',
-      'vlc',
       'watch',
       'wget',
       'zsh',
+    ]
+    state: present
+
+- name: install required cask packages
+  homebrew_cask:
+    name: [
+      'alacritty',
+      'vlc',
     ]
     state: present
 
