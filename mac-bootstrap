@@ -4,9 +4,15 @@
 xcode-select --install
 
 # Install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-/opt/homebrew/bin/brew update
+if [[ $(uname -m) == 'arm64' ]]; then
+	brew_bin=/opt/homebrew/bin/brew
+else
+	brew_bin=/usr/local/bin/brew
+fi
+
+${brew_bin} update
 
 # Install ansible
-/opt/homebrew/bin/brew install ansible
+${brew_bin} install ansible
