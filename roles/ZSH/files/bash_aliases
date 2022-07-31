@@ -19,7 +19,7 @@ alias bm='bookmark'
 alias bd='deletemark'
 alias bl='showmarks'
 
-# Alias for conventional image renaming
+# Alias for conventional image and movie renaming
 alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
 function img-shift-tz () {
 	: 'img-shift-tz: Shift images timestamps by a specific offset.
@@ -99,3 +99,5 @@ function tb () {
     tensorboard serve --bind_all --logdir ${model_dir} | grep "Press CTRL+C"
 }
 
+# For docker 🐳
+alias docker-ps='docker ps --format "{{.ID}}\t{{.Names}}\t{{.Status}}"'
