@@ -4,7 +4,7 @@
 xcode-select --install
 
 # Install brew
-# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 if [[ $(uname -m) == 'arm64' ]]; then
 	brew_bin=/opt/homebrew/bin/brew
