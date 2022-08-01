@@ -16,6 +16,11 @@
 * neovim
 * zsh
 
+## `ssh` key :key: generation
+```bash
+ssh-keygen -t ed25519 -C "your_email@example.com"
+```
+
 ## Setup
 Clone the repo
 ```shell
