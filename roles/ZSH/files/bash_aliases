@@ -36,9 +36,11 @@ function img-shift-tz () {
 function img-meta-update() {
 	: 'img-meta-update: updates the metadata of an image base on the file name.
 	
-	matches for instance 20-03-23 15-02-59 4123.jpg
+	matches for instance
+	- "20-03-23 15-02-59 4123.jpg"
+	- "22-07-24 14-20-42.jpg"
 	'
-	exiftool -d "\"%y-%m-%d %H-%M-%S\"" '-DateTimeOriginal<${Filename;s/[0-9]{4}\.[^.]*$//}' "$@"
+	exiftool -d "\"%y-%m-%d %H-%M-%S\"" '-DateTimeOriginal<${Filename;s/(\s([0-9])+)?\.[^.]*$//}' "$@"
 }
 
 function img-show-date() {
