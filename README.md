@@ -155,6 +155,14 @@ To get legacy tray icons / applets working again, e.g. for Nextcloud, install th
 Some programs or terminals are configured to use fonts that can't be installed in an already packaged version.
 Simply manually install them from [this folder](https://github.com/patzm/dotfiles/tree/master/roles/packages/files/fonts/meslo-nerd-font) manually.
 
+#### `brew` for a multi-user system
+TL;DR: run
+```bash
+sudo chgrp -R admin $(brew --prefix) 
+sudo chmod -R g+rwX $(brew --prefix)
+```
+[SO source](https://stackoverflow.com/a/44481141/3702319).
+
 ### Windows :see_no_evil:
 
 Disable external numpads triggering the Office key (emulated as `Shift+Control+Alt+Windows`, [source](https://www.howtogeek.com/445318/how-to-remap-the-office-key-on-your-keyboard/))
