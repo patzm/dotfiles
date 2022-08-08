@@ -14,9 +14,14 @@ for python_dir in $(brew --prefix)/opt/python@*; do
 	export PATH="${python_dir}/bin:${PATH}"
 done
 
+# for https://github.com/pyenv/pyenv-virtualenv
+eval "$(pyenv virtualenv-init -)"
+
 # Add custom plugins
 plugins+=(brew)
 
+# from https://github.com/pyenv/pyenv#homebrew-in-macos
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 alias brew-update='brew update && brew upgrade && brew cleanup'
 
 # vim: set filetype=zsh : 

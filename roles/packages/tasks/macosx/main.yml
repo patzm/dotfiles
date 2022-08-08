@@ -14,8 +14,10 @@
       'htop',
       'neofetch',
       'neovim',
+      'pyenv',
+      'pyenv-virtualenv',
+      'pyenv-virtualenvwrapper',
       'python',
-      'python@3.8',
       'ranger',
       'rsync',
       'rename',
@@ -24,6 +26,13 @@
       'watch',
       'wget',
       'zsh',
+      # pyenv-requirements:
+      'openssl',
+      'readline',
+      'sqlite3',
+      'xz',
+      'zlib',
+      'tcl-tk'
     ]
     state: present
 
@@ -35,14 +44,11 @@
     ]
     state: present
 
-- name: python virtualenvwrapper
-  become: yes
-  pip:
-    name: "{{ item }}"
-    executable: "{{ pip3_bin }}"
-  loop:
-    - virtualenv
-    - virtualenvwrapper
+- name: install python versions
+  command: pyenv install -s 3.8.13
+
+- name: set 3.8.13 as the global pyenv version
+  command: pyenv global 3.8.13
 
 - name: create temporary directory for powerline fonts
   tempfile: state=directory suffix=powerline-fonts
