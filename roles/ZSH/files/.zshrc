@@ -144,8 +144,6 @@ plugins=(
     pip
     rsync
     tmux
-    virtualenv
-    virtualenvwrapper
     zsh-autosuggestions
     zsh-completions
     zshmarks
@@ -208,13 +206,10 @@ export NVM_DIR="${HOME}/.nvm"
 # Python, pyenv, and virtualenv
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+pyenv virtualenvwrapper
 
+export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export WORKON_HOME=${HOME}/.venvs
 export VIRTUAL_ENV_DISABLE_PROMPT=
-export VIRTUALENVWRAPPER_PYTHON=$(which python3)
-export VIRTUALENV_PYTHON=$(which python3.8 || which python3)
-if [[ -f "/usr/local/bin/virtualenvwrapper.sh" ]]; then
-    . /usr/local/bin/virtualenvwrapper.sh
-fi
 
 # vim: set filetype=zsh : 
