@@ -42,6 +42,9 @@
     ]
     state: present
 
+- name: install python versions
+  command: pyenv install 3.8
+
 - name: python virtualenvwrapper
   become: yes
   pip:
