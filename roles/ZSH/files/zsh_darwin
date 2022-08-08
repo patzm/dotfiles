@@ -17,6 +17,8 @@ done
 # Add custom plugins
 plugins+=(brew)
 
+# from https://github.com/pyenv/pyenv#homebrew-in-macos
+alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 alias brew-update='brew update && brew upgrade && brew cleanup'
 
 # vim: set filetype=zsh : 

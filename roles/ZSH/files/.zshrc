@@ -205,7 +205,10 @@ unset -f check_zsh_theme
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Python and virtualenv
+# Python, pyenv, and virtualenv
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 export WORKON_HOME=${HOME}/.venvs
 export VIRTUAL_ENV_DISABLE_PROMPT=
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
