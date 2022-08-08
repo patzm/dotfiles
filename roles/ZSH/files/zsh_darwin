@@ -14,6 +14,9 @@ for python_dir in $(brew --prefix)/opt/python@*; do
 	export PATH="${python_dir}/bin:${PATH}"
 done
 
+# for https://github.com/pyenv/pyenv-virtualenv
+eval "$(pyenv virtualenv-init -)"
+
 # Add custom plugins
 plugins+=(brew)
 

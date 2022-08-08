@@ -15,6 +15,8 @@
       'neofetch',
       'neovim',
       'pyenv',
+      'pyenv-virtualenv',
+      'pyenv-virtualenvwrapper',
       'python',
       'ranger',
       'rsync',
@@ -44,15 +46,6 @@
 
 - name: install python versions
   command: pyenv install 3.8.13
-
-- name: python virtualenvwrapper
-  become: yes
-  pip:
-    name: "{{ item }}"
-    executable: "{{ pip3_bin }}"
-  loop:
-    - virtualenv
-    - virtualenvwrapper
 
 - name: create temporary directory for powerline fonts
   tempfile: state=directory suffix=powerline-fonts
