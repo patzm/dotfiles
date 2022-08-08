@@ -3,18 +3,21 @@
   file:
     path: '{{ user_home_dir }}/.venvs'
     state: directory
-  tags: packages
+
+- name: "install python {{ default_python_version }}"
+  command: 'pyenv install -s {{ default_python_version }}'
+
+- name: "set {{ default_python_version }} as the global pyenv version"
+  command: 'pyenv global {{ default_python_version }}'
 
 - name: create the bpython config folder
   file:
     path: '{{ bpython_config_dir }}'
     state: directory
-  tags: [packages, dotfiles]
 
 - name: copy the bpython config file
   copy:
     src: '{{ role_path }}/files/bpython/config'
     dest: '{{ bpython_config_dir }}/config'
     force: yes
-  tags: dotfiles
 
