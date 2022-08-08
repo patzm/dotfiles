@@ -45,7 +45,7 @@
     state: present
 
 - name: install python versions
-  command: pyenv install 3.8.13
+  command: pyenv install -s 3.8.13
 
 - name: create temporary directory for powerline fonts
   tempfile: state=directory suffix=powerline-fonts
