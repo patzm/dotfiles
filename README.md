@@ -153,7 +153,7 @@ To get legacy tray icons / applets working again, e.g. for Nextcloud, install th
 
 #### Fonts
 Some programs or terminals are configured to use fonts that can't be installed in an already packaged version.
-Simply manually install them from [this folder](https://github.com/patzm/dotfiles/tree/master/roles/packages/files/fonts/meslo-nerd-font) manually.
+Simply manually install them from [this folder](https://github.com/patzm/dotfiles/tree/master/roles/fonts/files/meslo-nerd-font) manually.
 
 #### `brew` for a multi-user system
 TL;DR: run

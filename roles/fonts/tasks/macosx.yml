@@ -1,0 +1,27 @@
+---
+- name: create temporary directory for powerline fonts
+  tempfile: state=directory suffix=powerline-fonts
+  register: powerline_dir
+
+- name: clone powerline fonts
+  git:
+    repo: https://github.com/powerline/fonts.git
+    depth: 1
+    dest: '{{ powerline_dir.path }}'
+
+- name: install powerline fonts
+  command: ./install.sh
+  args:
+    chdir: '{{ powerline_dir.path }}'
+
+- name: remove powerline fonts temporary directory
+  file:
+    path: '{{ powerline_dir.path }}'
+    force: yes
+    state: absent
+
+- name: install the MesloLGS NF (nerd-font)
+  copy:
+    src: '{{ item }}'
+    dest: '{{ user_home_dir }}/Library/Fonts'
+  with_fileglob: 'meslo-nerd-font/*.ttf'

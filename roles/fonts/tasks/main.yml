@@ -1,0 +1,8 @@
+---
+- name: install fonts for distribution
+  include_tasks:
+    file: "{{ item }}"
+  with_first_found:
+    - files:
+      - "{{ ansible_distribution|lower }}.yml"
+      skip: True
