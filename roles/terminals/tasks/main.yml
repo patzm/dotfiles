@@ -1,7 +1,4 @@
 ---
-# - name: install pywal
-#   include_tasks: "{{ ansible_distribution|lower }}.yml"
-#   tags: i3
 - name: install pywal
   become: yes
   pip:

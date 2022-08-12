@@ -1,8 +1,0 @@
----
-- name: install pywal
-  become: yes
-  package:
-    name: python-pywal
-    state: present
-  tags: always
-
