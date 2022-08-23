@@ -1,121 +1,132 @@
-" Load the base vim configuration
-source ~/.vim/vimrcbase
+"""""""""""""""""""""""""""
+" VIM tiny doesn't support +eval
+" The following check will fail, if that's the case.
+" Further reading: https://vi.stackexchange.com/a/22449
+if 1
 
-""""""""""""""""""""""""""""""
-" Plugin management
-call plug#begin()
+    " Load the base vim configuration
+    source ~/.vim/vimrcbase
 
-Plug 'hzchirs/vim-material'
-Plug 'godlygeek/tabular'
+    """"""""""""""""""""""""""""""
+    " Plugin management
+    call plug#begin()
 
-" Syntax support
-Plug 'cespare/vim-toml'
-Plug 'JamshedVesuna/vim-markdown-preview'
-Plug 'plasticboy/vim-markdown'
-Plug 'terminalnode/sway-vim-syntax'
+    Plug 'hzchirs/vim-material'
+    Plug 'godlygeek/tabular'
 
-" Just a shitload of color schemes.
-" https://github.com/flazz/vim-colorschemes#current-colorschemes
-Plug 'flazz/vim-colorschemes'
+    " Syntax support
+    Plug 'cespare/vim-toml'
+    Plug 'JamshedVesuna/vim-markdown-preview'
+    Plug 'plasticboy/vim-markdown'
+    Plug 'terminalnode/sway-vim-syntax'
 
-" Fuzzy finder -- absolutely must have.
-Plug 'kien/ctrlp.vim'
+    " Just a shitload of color schemes.
+    " https://github.com/flazz/vim-colorschemes#current-colorschemes
+    Plug 'flazz/vim-colorschemes'
 
-" Support for easily toggling comments.
-Plug 'tpope/vim-commentary'
+    " Fuzzy finder -- absolutely must have.
+    Plug 'kien/ctrlp.vim'
 
-" Proper JSON filetype detection, and support.
-Plug 'leshill/vim-json'
+    " Support for easily toggling comments.
+    Plug 'tpope/vim-commentary'
 
-" Ansible yaml
-Plug 'chase/vim-ansible-yaml'
+    " Proper JSON filetype detection, and support.
+    Plug 'leshill/vim-json'
 
-" git wrapper
-Plug 'tpope/vim-fugitive'
+    " Ansible yaml
+    Plug 'chase/vim-ansible-yaml'
 
-" directory tree with git support
-Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+    " git wrapper
+    Plug 'tpope/vim-fugitive'
 
-" airline statusline
-Plug 'bling/vim-airline'
+    " directory tree with git support
+    Plug 'scrooloose/nerdtree'
+    Plug 'Xuyuanp/nerdtree-git-plugin'
 
-" vim surround
-Plug 'tpope/vim-surround'
+    " airline statusline
+    Plug 'bling/vim-airline'
 
-" command-line fuzzy finder
-Plug 'junegunn/fzf'
+    " vim surround
+    Plug 'tpope/vim-surround'
 
-call plug#end()
+    " command-line fuzzy finder
+    Plug 'junegunn/fzf'
 
-" Use sane regex's when searching
-nnoremap / /\v
-vnoremap / /\v
+    call plug#end()
 
-" Prefer tabs instead of buffers
-set switchbuf=usetab,newtab
+    " Use sane regex's when searching
+    nnoremap / /\v
+    vnoremap / /\v
 
-" We have VCS -- we don't need this stuff.
-set nobackup " We have vcs, we don't need backups.
-set nowritebackup " We have vcs, we don't need backups.
-set noswapfile " They're just annoying. Who likes them?
+    " Prefer tabs instead of buffers
+    set switchbuf=usetab,newtab
 
-" Set the copy buffer to be CLIPBOARD
-set clipboard=unnamedplus
+    " We have VCS -- we don't need this stuff.
+    set nobackup " We have vcs, we don't need backups.
+    set nowritebackup " We have vcs, we don't need backups.
+    set noswapfile " They're just annoying. Who likes them?
 
-" copy to attached terminal using the yank(1) script:
-" https://github.com/sunaku/home/blob/master/bin/yank
-function! Yank(text) abort
-  let escape = system('yank', a:text)
-  if v:shell_error
-    echoerr escape
-  else
-    call writefile([escape], '/dev/tty', 'b')
-  endif
-endfunction
-noremap <silent> <Leader>y y:<C-U>call Yank(@0)<CR>
+    " Set the copy buffer to be CLIPBOARD
+    set clipboard=unnamedplus
 
-" Enable folding with za
-set foldmethod=indent
-set foldlevel=99
+    " copy to attached terminal using the yank(1) script:
+    " https://github.com/sunaku/home/blob/master/bin/yank
+    function! Yank(text) abort
+    let escape = system('yank', a:text)
+    if v:shell_error
+        echoerr escape
+    else
+        call writefile([escape], '/dev/tty', 'b')
+    endif
+    endfunction
+    noremap <silent> <Leader>y y:<C-U>call Yank(@0)<CR>
 
-" Generic
-set nu
-set fileformat=unix
+    " Enable folding with za
+    set foldmethod=indent
+    set foldlevel=99
 
-" Python settings
-highlight BadWhitespace ctermbg=red guibg=darkred
-au BufNewFile,BufRead *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
-set encoding=utf-8
+    " Generic
+    set nu
+    set fileformat=unix
 
-" Jenkinsfile
-au BufNewFile,BufRead Jenkinsfile setf groovy
+    " Python settings
+    highlight BadWhitespace ctermbg=red guibg=darkred
+    au BufNewFile,BufRead *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+    set encoding=utf-8
 
-" Yaml files
-au BufNewFile,BufRead *.yml,*.yaml
-	\ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2
+    " Jenkinsfile
+    au BufNewFile,BufRead Jenkinsfile setf groovy
 
-""""""""""""""""""""""""""""""
-" Plugin settings            "
-""""""""""""""""""""""""""""""
+    " Yaml files
+    au BufNewFile,BufRead *.yml,*.yaml set tabstop=2 | set softtabstop=2 | set shiftwidth=2
 
-" Configure NERDTree
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-nnoremap <C-n> :NERDTreeToggle<CR>
-let NERDTreeMinimalUI = 1
-let NERDTreeShowHidden = 1
-let NERDTreeIgnore=['\.pyc$', '\~$']
+    """"""""""""""""""""""""""""""
+    " Plugin settings            "
+    """"""""""""""""""""""""""""""
 
-" Set the maximum number of CtrlP results
-let g:ctrlp_max_height = 15
-nnoremap <A-p> :<C-U>CtrlPBuffer<CR>
-set wildignore+=*.pyc
+    " Configure NERDTree
+    autocmd StdinReadPre * let s:std_in=1
+    autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+    nnoremap <C-n> :NERDTreeToggle<CR>
+    let NERDTreeMinimalUI = 1
+    let NERDTreeShowHidden = 1
+    let NERDTreeIgnore=['\.pyc$', '\~$']
 
-" Finally the color scheme. Choose whichever you want from the list in the
-" link above (back up where we included the bundle of a ton of themes.)
-if isdirectory("~/.vim/bundle/vim-material")
-    colorscheme vim-material
-endif
+    " Set the maximum number of CtrlP results
+    let g:ctrlp_max_height = 15
+    nnoremap <A-p> :<C-U>CtrlPBuffer<CR>
+    set wildignore+=*.pyc
+
+    " Finally the color scheme. Choose whichever you want from the list in the
+    " link above (back up where we included the bundle of a ton of themes.)
+    if isdirectory("~/.vim/bundle/vim-material")
+        colorscheme vim-material
+    endif
+
+else
+
+    " This vim configuration works for VIM tiny.
+    source ~/.vim/vimtiny
+
+endif 
+
