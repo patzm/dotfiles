@@ -25,9 +25,8 @@
     - networkmanager
     - patch
     - powerline-fonts
+    - pyenv
     - python-pip  # Python 3
-    - python-virtualenv
-    - python-virtualenvwrapper
     - ranger
     - rxvt-unicode
     - tmux
@@ -63,5 +62,5 @@
 - name: install emoji fonts
   command: yay --answerdiff=None --noconfirm --needed -S ttf-joypixels
 
-- name: install Python3.7
-  command: yay --answerdiff=None --noconfirm --needed -S python38
+- name: install python-virtualenvwrapper
+  command: yay --answerdiff=None --noconfirm --needed -S pyenv-virtualenvwrapper
