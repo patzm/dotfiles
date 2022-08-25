@@ -10,5 +10,5 @@ if [ -z "${LINE}" ]; then
 	echo "Not found, adding a new entry..."
 	echo "user_pref(\"${PROP_NAME}\", ${PROP_VALUE});" >> "${PREFS_FILE_PATH}"
 else
-	sed -i "${LINE}" 's/^\(.*("'"${PROP_NAME}"'", \).*\();\)/\1'"${PROP_VALUE}"'\2/' "${PREFS_FILE_PATH}"
+	sed -i 's/^\(.*("'"${PROP_NAME}"'", \).*\();\)/\1'"${PROP_VALUE}"'\2/g' "${PREFS_FILE_PATH}"
 fi
