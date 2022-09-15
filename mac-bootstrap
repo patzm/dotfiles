@@ -18,4 +18,4 @@ brew update
 # Install ansible
 brew install ansible
 
-echo "Run 'export PATH=${brew_path}:$${PATH}' to make sure that brew and ansible can be found."
+echo "Run 'export PATH=${brew_path}:\${PATH}' to make sure that brew and ansible can be found."
