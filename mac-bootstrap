@@ -7,12 +7,15 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 if [[ $(uname -m) == 'arm64' ]]; then
-	brew_bin=/opt/homebrew/bin/brew
+	brew_path=/opt/homebrew/bin
 else
-	brew_bin=/usr/local/bin/brew
+	brew_path=/usr/local/bin
 fi
+export PATH=${brew_path}:${PATH}
 
-${brew_bin} update
+brew update
 
 # Install ansible
-${brew_bin} install ansible
+brew install ansible
+
+echo "Run 'export PATH=${brew_path}:$${PATH}' to make sure that brew and ansible can be found."
