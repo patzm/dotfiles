@@ -8,6 +8,7 @@
   homebrew:
     name: [
       'bmon',
+      'cmake',
       'exiv2',
       'exiftool',
       'ffmpeg',
@@ -18,6 +19,7 @@
       'pyenv-virtualenv',
       'pyenv-virtualenvwrapper',
       'python',
+      'protobuf',
       'ranger',
       'rsync',
       'rename',
