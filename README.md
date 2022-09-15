@@ -54,7 +54,7 @@ optional arguments:
 ## Examples
 Install dotfiles
 ```shell
-./setup --tags dotfiles
+./setup --tags dotfiles,browser
 ```
 
 Install all packages for the current OS, this requires `root` permissions:

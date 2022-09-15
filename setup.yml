@@ -15,7 +15,7 @@
     - role: packages
       tags: [packages, i3, sway]
     - role: firefox
-      tags: dotfiles
+      tags: browser
     - role: fonts
       tags: dotfiles
     - role: git
