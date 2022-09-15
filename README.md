@@ -32,8 +32,8 @@ Run the OS-specific bootstrap script:
 * macOS:
   ```shell
   ./mac-bootstrap
-  export PATH=/opt/homebrew/bin:/usr/local/bin:${PATH}
   ```
+  and then run the `export` command that got printed.
 * Ubuntu: `./ubuntu-bootstrap`
 
 Then run the setup routines through the helper script `setup`.
