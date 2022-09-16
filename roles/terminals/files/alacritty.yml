@@ -4,6 +4,9 @@ font:
     family: "MesloLGS NF"
 
 window:
+  dimensions:
+    columns: 133
+    lines: 40
   dynamic_padding: true
   opacity: 0.8
   padding:
