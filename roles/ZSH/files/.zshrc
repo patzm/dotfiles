@@ -129,6 +129,7 @@ autoload -U zmv
 # Check if ZSH plugins are missing
 export ZSH_PLUGINS=${ZSH}/custom/plugins
 
+check_zsh_plugin "k" "https://github.com/supercrabtree/k"
 check_zsh_plugin "zshmarks" "https://github.com/jocelynmallon/zshmarks.git"
 check_zsh_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting"
 check_zsh_plugin "zsh-autosuggestions" "https://github.com/zsh-users/zsh-autosuggestions"
@@ -140,6 +141,7 @@ source ${ZSH_PLUGINS}/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 plugins=(
     docker
     git
+    k
     npm
     pip
     rsync
@@ -163,6 +165,7 @@ fi
 if [[ -f ${HOME}/.bash_aliases ]]; then
     source ${HOME}/.bash_aliases
 fi
+alias k="k -h --group-directories-first"
 
 # Load oh-my-zsh
 source ${ZSH}/oh-my-zsh.sh

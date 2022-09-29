@@ -9,6 +9,7 @@
     name: [
       'bmon',
       'cmake',
+      'coreutils',
       'exiftool',
       'exiv2',
       'ffmpeg',
