@@ -39,3 +39,16 @@
         {key: "places.frecency.bookmarkVisitBonus", value: 1000},
         {key: "places.frecency.unvisitedBookmarkBonus", value: 1000},
       ]
+
+- name: prepare a virtual environment
+  pip:
+    virtualenv: "{{ role_path }}/.venv" 
+    virtualenv_python: python3.8
+    requirements: "{{ role_path }}/files/requirements.txt"
+
+- name: attempt to synchronize user dictionaries
+  ignore_errors: yes
+  script:
+    cmd: "sync-gist '{{ item.path }}/persdict.dat'"
+    executable: "{{ role_path }}/.venv/bin/python "
+  with_items: "{{ firefox_profile_dirs.files }}"
