@@ -165,7 +165,6 @@ fi
 if [[ -f ${HOME}/.bash_aliases ]]; then
     source ${HOME}/.bash_aliases
 fi
-alias k="k -h --group-directories-first"
 
 # Load oh-my-zsh
 source ${ZSH}/oh-my-zsh.sh

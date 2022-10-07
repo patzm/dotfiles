@@ -89,6 +89,7 @@ alias dush='du -sm * | sort -h'
 alias pa='ps aux | grep'
 alias getp='readlink -f'
 alias ducks='du -cks * | sort -rn | head'
+alias ks="k -h --group-directories-first"
 
 # Pastebins
 alias pbin='nc pbin.patz.app 9999'
