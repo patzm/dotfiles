@@ -213,6 +213,7 @@ pyenv virtualenvwrapper
 
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export WORKON_HOME=${HOME}/.venvs
+export VIRTUALENVWRAPPER_HOOK_DIR="${XDG_CONFIG_HOME}/virtualenvwrapper"
 export VIRTUAL_ENV_DISABLE_PROMPT=
 
 # vim: set filetype=zsh : 
