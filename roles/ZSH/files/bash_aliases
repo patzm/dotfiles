@@ -19,6 +19,11 @@ alias bm='bookmark'
 alias bd='deletemark'
 alias bl='showmarks'
 
+# Alias related to virtualenvwrapper
+alias lsvenv="lsvirtualenv -b"
+alias mkvenv="mkvirtualenv"
+alias rmvenv="rmvirtualenv"
+
 # Alias for conventional image and movie renaming
 alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
 function img-shift-tz () {
