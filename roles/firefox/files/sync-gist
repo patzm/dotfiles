@@ -43,9 +43,7 @@ def merge_content(a: str, b: str, sort: bool) -> str:
 class PatchingGistApi(gist_lib.GistAPI):
     @gist_lib.authenticate.post
     def patch(self, request, files, gist_id):
-        request.data = json.dumps(
-            {"files": files}
-        )
+        request.data = json.dumps({"files": files})
         self.send(request, gist_id)
 
 
@@ -89,8 +87,10 @@ class Syncer:
                 self.gist_id = target_gist.id
                 logger.info(f"Using Gist {self.gist_id}")
             else:
-                logger.info(f"No Gist found containing a file "
-                            f"{self.gist_file_name}. Creating new gist.")
+                logger.info(
+                    f"No Gist found containing a file "
+                    f"{self.gist_file_name}. Creating new gist."
+                )
                 return self.upload_file()
 
         self.merge_file(remote=target_gist)
@@ -139,18 +139,38 @@ class Syncer:
             file.write(new_content)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     logging.basicConfig()
     logger.setLevel(logging.INFO)
     parser = argparse.ArgumentParser("sync-gist")
-    parser.add_argument("--auth-token", type=str, default=None, required=False,
-                        help="The GitHub authentication token that can read and write gists. Defaults to reading the "
-                             "config like python-gist does. See https://pypi.org/project/python-gist/.")
-    parser.add_argument("--gist-id", type=str, default=None, required=False, help="The Gist ID.")
-    parser.add_argument("--no-sort", default=True, action="store_false", dest="sort",
-                        help="Set this to disable sorting the file content.")
-    parser.add_argument("--public", default=False, action="store_true", help="Set this to create public gists.")
-    parser.add_argument("file_path", help="The absolute or relative path to the file that shall be synced.")
+    parser.add_argument(
+        "--auth-token",
+        type=str,
+        default=None,
+        required=False,
+        help="The GitHub authentication token that can read and write gists. Defaults to reading the "
+        "config like python-gist does. See https://pypi.org/project/python-gist/.",
+    )
+    parser.add_argument(
+        "--gist-id", type=str, default=None, required=False, help="The Gist ID."
+    )
+    parser.add_argument(
+        "--no-sort",
+        default=True,
+        action="store_false",
+        dest="sort",
+        help="Set this to disable sorting the file content.",
+    )
+    parser.add_argument(
+        "--public",
+        default=False,
+        action="store_true",
+        help="Set this to create public gists.",
+    )
+    parser.add_argument(
+        "file_path",
+        help="The absolute or relative path to the file that shall be synced.",
+    )
     parsed_args = parser.parse_args()
 
     syncer = Syncer(config=parsed_args)
