@@ -6,7 +6,7 @@ import json
 import logging
 import os.path
 import pathlib
-from typing import List, Optional, Dict
+from typing import List, Optional, Dict, Set
 
 from gist import client
 from gist import gist as gist_lib
@@ -29,15 +29,13 @@ def gist_files(gists: dict) -> List[GistFile]:
     return [GistFile(**gist_file) for _, gist_file in gists.items()]
 
 
-def merge_content(a: str, b: str, sort: bool) -> str:
-    a_lines = a.splitlines()
-    b_lines = b.splitlines()
-    merged = list(set(a_lines).union(b_lines))
+def merge_content(a: Set[str], b: Set[str], sort: bool) -> List[str]:
+    merged = list(a.union(b))
     if "" in merged:
         merged.remove("")
     if sort:
         merged.sort()
-    return "\n".join(merged) + "\n"
+    return merged
 
 
 class PatchingGistApi(gist_lib.GistAPI):
@@ -93,8 +91,9 @@ class Syncer:
                 )
                 return self.upload_file()
 
-        self.merge_file(remote=target_gist)
-        self.patch_file(target_gist=target_gist)
+        remote_up_to_date = self.merge_file(remote=target_gist)
+        if not remote_up_to_date:
+            self.patch_file(target_gist=target_gist)
 
     def _read_file(self) -> str:
         with self.file_path.open("r") as file:
@@ -122,21 +121,35 @@ class Syncer:
         new_gist = gist_lib.GistInfo(id=gist_id, public=self.public, desc=description)
         return new_gist
 
-    def merge_file(self, remote: gist_lib.GistInfo):
-        remote_content = self.gist_api.content(remote.id)[self.gist_file_name]
+    def merge_file(self, remote: gist_lib.GistInfo) -> bool:
+        remote_content = set(
+            self.gist_api.content(remote.id)[self.gist_file_name].splitlines()
+        )
 
         self.file_path.touch(exist_ok=True)
         with self.file_path.open("r") as file:
-            local_content = file.read()
+            local_content = set(file.read().splitlines())
 
         new_content = merge_content(remote_content, local_content, sort=self.sort)
-        if new_content == remote_content:
-            logger.info("No changes applied.")
-        else:
+
+        remote_up_to_date = local_up_to_date = False
+
+        if set(new_content) == remote_content:
+            logger.info("Remote content is up to date.")
+            remote_up_to_date = True
+
+        if set(new_content) == local_content:
+            logger.info("Local content is up to date.")
+            local_up_to_date = True
+
+        if not remote_up_to_date or not local_up_to_date:
             logger.info("New content merged.")
 
+        new_content_text = "\n".join(new_content) + "\n"
         with self.file_path.open("w") as file:
-            file.write(new_content)
+            file.write(new_content_text)
+
+        return remote_up_to_date
 
 
 if __name__ == "__main__":
