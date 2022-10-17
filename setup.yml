@@ -14,8 +14,6 @@
   roles:
     - role: packages
       tags: [packages, i3, sway]
-    - role: firefox
-      tags: browser
     - role: fonts
       tags: dotfiles
     - role: git
@@ -41,3 +39,5 @@
     - role: vim
       tags: dotfiles
     - role: ZSH
+    - role: firefox
+      tags: browser
