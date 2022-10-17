@@ -10,6 +10,9 @@
 - name: "set {{ default_python_version }} as the global pyenv version"
   command: 'pyenv global {{ default_python_version }}'
 
+- name: "install virtualenv and virtualenvwrapper"
+  command: 'pyenv exec pip install virtualenv virtualenvwrapper'
+
 - name: create the bpython config folder
   file:
     path: '{{ bpython_config_dir }}'
