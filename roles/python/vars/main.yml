@@ -2,3 +2,4 @@
 bpython_config_dir: '{{ user_config_dir }}/bpython'
 virtualenvwrapper_config_dir: '{{ user_config_dir }}/virtualenvwrapper'
 default_python_version: 3.8.13
+pyenv_bin: '{{ user_home_dir}}/.pyenv/bin/pyenv'

@@ -1,33 +1,70 @@
 ---
 - name: installing core packages
   become: yes
-  package: name={{ item }} state=latest
-  with_items:
-    - blueman
-    - bmon
-    - checkinstall
-    - curl
-    - exiv2
-    - feh
-    - gconf-service
-    - gconf2
-    - git
-    - hsetroot
-    - htop
-    - imagemagick
-    - libimage-exiftool-perl
-    - libssl-dev
-    - lm-sensors
-    - ntfs-3g
-    - python3-pip
-    - python3-virtualenv
-    - ranger
-    - rename
-    - rxvt-unicode
-    - sshfs
-    - tree
-    - unrar
-    - wget
-    - wmctrl
-    - xclip
-    - zsh
+  apt:
+    pkg:
+      - blueman
+      - bmon
+      - build-essential
+      - checkinstall
+      - curl
+      - exiv2
+      - feh
+      - gconf-service
+      - gconf2
+      - git
+      - hsetroot
+      - htop
+      - imagemagick
+      - libbz2-dev
+      - libffi-dev
+      - libimage-exiftool-perl
+      - liblzma-dev
+      - libncursesw5-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libssl-dev
+      - libxml2-dev
+      - libxmlsec1-dev
+      - llvm
+      - lm-sensors
+      - make
+      - ntfs-3g
+      - python3-pip
+      - ranger
+      - rename
+      - rxvt-unicode
+      - sshfs
+      - tk-dev
+      - tree
+      - unrar
+      - wget
+      - wmctrl
+      - xclip
+      - xz-utils
+      - zlib1g-dev
+      - zsh
+
+- name: check if pyenv is already installed
+  stat:
+    path: "{{ user_home_dir }}/.pyenv"
+  register: pyenv_exists
+
+
+- name: install pyenv
+  shell: "curl https://pyenv.run | bash"
+  when: pyenv_exists.stat.isdir is defined and not pyenv_exists.stat.isdir
+
+- name: install pyenv-virtualenv
+  git:
+    repo: https://github.com/pyenv/pyenv-virtualenv.git
+    dest: "{{ user_home_dir }}/.pyenv/plugins/pyenv-virtualenv"
+    single_branch: yes
+    version: master
+
+- name: install pyenv-virtualenvwrapper
+  git:
+    repo: https://github.com/pyenv/pyenv-virtualenvwrapper.git
+    dest: "{{ user_home_dir }}/.pyenv/plugins/pyenv-virtualenvwrapper"
+    single_branch: yes
+    version: master
