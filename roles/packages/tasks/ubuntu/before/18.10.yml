@@ -1,6 +1,0 @@
----
-- name: install Ubuntu 18.10 and earlier packages
-  become: yes
-  package: name={{ item }} state=latest
-  with_items:
-    - virtualenvwrapper

@@ -1,9 +1,0 @@
----
-- name: installing packages for Ubuntu versions before 20.04
-  become: yes
-  package: name={{ item }} state=latest
-  with_items:
-    - libgnome-keyring-common
-    - libgnome-keyring-dev
-    - python-pip
-    - python3.8
