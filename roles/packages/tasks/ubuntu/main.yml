@@ -8,6 +8,7 @@
       - bmon
       - build-essential
       - checkinstall
+      - cmake
       - curl
       - exiv2
       - feh
