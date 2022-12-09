@@ -30,6 +30,8 @@
       - llvm
       - lm-sensors
       - make
+      - neofetch
+      - neovim
       - ntfs-3g
       - python3-pip
       - ranger
