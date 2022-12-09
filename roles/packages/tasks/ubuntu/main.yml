@@ -50,13 +50,13 @@
 
 - name: check if pyenv is already installed
   stat:
-    path: "{{ user_home_dir }}/.pyenv"
+    path: "{{ user_home_dir }}/.pyenv/bin/pyenv"
   register: pyenv_exists
 
 
 - name: install pyenv
   shell: "curl https://pyenv.run | bash"
-  when: pyenv_exists.stat.isdir is defined and not pyenv_exists.stat.isdir
+  when: not pyenv_exists.stat.exists
 
 - name: install pyenv-virtualenv
   git:
