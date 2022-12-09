@@ -2,6 +2,7 @@
 - name: installing core packages
   become: yes
   apt:
+    update_cache: yes
     pkg:
       - blueman
       - bmon
