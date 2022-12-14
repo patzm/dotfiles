@@ -24,7 +24,6 @@
     dest: '{{ bpython_config_dir }}/config'
     force: yes
 
-
 - name: create the virtualenvwrapper config directory
   file:
     path: "{{ virtualenvwrapper_config_dir }}"

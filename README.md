@@ -51,6 +51,12 @@ optional arguments:
   --tags [TAGS ...]    specify tags
 ```
 
+## Tags
+Tags are used to select specific roles, parts of them, or groups of roles.
+The available tags are:
+* browser: synchronizes Firefox user dictionaries and copies the default user configuration
+* dotfiles: well, dotfiles
+* packages: sets up the host operating system with the default packages
 ## Examples
 Install dotfiles
 ```shell
