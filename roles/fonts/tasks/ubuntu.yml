@@ -1,4 +1,9 @@
 ---
+- name: create the local fonts folder
+  file:
+    path: '{{ user_local_dir }}/share/fonts'
+    state: directory
+
 - name: install the MesloLGS NF (nerd-font)
   copy:
     src: '{{ item }}'
