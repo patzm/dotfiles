@@ -63,12 +63,10 @@
   git:
     repo: https://github.com/pyenv/pyenv-virtualenv.git
     dest: "{{ user_home_dir }}/.pyenv/plugins/pyenv-virtualenv"
-    single_branch: yes
     version: master
 
 - name: install pyenv-virtualenvwrapper
   git:
     repo: https://github.com/pyenv/pyenv-virtualenvwrapper.git
     dest: "{{ user_home_dir }}/.pyenv/plugins/pyenv-virtualenvwrapper"
-    single_branch: yes
     version: master
