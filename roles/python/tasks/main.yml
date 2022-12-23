@@ -6,18 +6,20 @@
 
 - name: "find the pyenv executable"
   find:
-    paths: "{{ user_home_dir}}/.pyenv/bin/"
+    paths: "{{ user_home_dir }}/.pyenv/bin"
+    use_regex: true
     pattern: "^pyenv$"
+    file_type: any
   register: pyenv_bin
 
 - name: "install python {{ default_python_version }}"
-  command: "{{ pyenv_bin.files[0] | default('pyenv') }} install -s {{ default_python_version }}"
+  command: "{{ pyenv_bin.files[0].path | default('pyenv') }} install -s {{ default_python_version }}"
 
 - name: "set {{ default_python_version }} as the global pyenv version"
-  command: "{{ pyenv_bin.files[0] | default('pyenv') }} global {{ default_python_version }}"
+  command: "{{ pyenv_bin.files[0].path | default('pyenv') }} global {{ default_python_version }}"
 
 - name: "install virtualenv and virtualenvwrapper"
-  command: "{{ pyenv_bin.files[0] | default('pyenv') }} exec pip install virtualenv virtualenvwrapper"
+  command: "{{ pyenv_bin.files[0].path | default('pyenv') }} exec pip install virtualenv virtualenvwrapper"
 
 - name: create the bpython config folder
   file:
