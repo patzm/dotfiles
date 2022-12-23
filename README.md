@@ -51,6 +51,11 @@ optional arguments:
   --tags [TAGS ...]    specify tags
 ```
 
+After the first run, switch your shell to `zsh`:
+```shell
+chsh -s $(which zsh)
+```  
+
 ## Tags
 Tags are used to select specific roles, parts of them, or groups of roles.
 The available tags are:
