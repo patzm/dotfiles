@@ -55,7 +55,7 @@
   command: brew --prefix
   register: brew_prefix
 
-- name: copy libdvdcss
+- name: "copy libdvdcss libraries from {{ brew_prefix.stdout }}/lib"
   become: yes
   copy:
     src: "{{ item }}"
