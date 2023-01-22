@@ -48,7 +48,6 @@
       'alacritty',
       'meld',
       'vlc',
-      'warp',
     ]
     state: present
 
