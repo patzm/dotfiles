@@ -28,7 +28,7 @@
   register: pyenv_exists
 
 - name: install pyenv dependencies
-  becomes: yes
+  become: yes
   apt:
     update_cache: yes
     pkg:
