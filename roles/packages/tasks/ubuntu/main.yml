@@ -33,6 +33,7 @@
       - make
       - neofetch
       - neovim
+      - network-manager
       - ntfs-3g
       - python3-pip
       - ranger
