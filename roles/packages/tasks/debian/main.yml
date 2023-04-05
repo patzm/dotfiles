@@ -7,7 +7,6 @@
       - git
       - hsetroot
       - htop
-      - libssl-dev
       - make
       - neofetch
       - neovim
