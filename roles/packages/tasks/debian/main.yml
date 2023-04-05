@@ -33,20 +33,20 @@
     update_cache: yes
     pkg:
       - build-essential
-      - libssl-dev
-      - zlib1g-dev
-      - libbz2-dev
-      - libreadline-dev
-      - libsqlite3-dev
-      - wget
       - curl
-      - llvm
-      - libncurses5-dev
-      - libncursesw5-dev
-      - xz-utils
-      - tk-dev
+      - libbz2-dev
       - libffi-dev
       - liblzma-dev
+      - libncurses5-dev
+      - libncursesw5-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libssl-dev
+      - llvm
+      - tk-dev
+      - wget
+      - xz-utils
+      - zlib1g-dev
 
 - name: install pyenv
   shell: "curl https://pyenv.run | bash"
