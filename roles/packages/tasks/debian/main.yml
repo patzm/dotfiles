@@ -4,51 +4,21 @@
   apt:
     update_cache: yes
     pkg:
-      - blueman
-      - bmon
-      - build-essential
-      - checkinstall
-      - cmake
-      - curl
-      - exiv2
-      - feh
-      - gconf-service
-      - gconf2
       - git
       - hsetroot
       - htop
-      - imagemagick
-      - libbz2-dev
-      - libffi-dev
-      - libimage-exiftool-perl
-      - liblzma-dev
-      - libncursesw5-dev
-      - libreadline-dev
-      - libsqlite3-dev
-      - libssl-dev
-      - libxml2-dev
-      - libxmlsec1-dev
-      - llvm
-      - lm-sensors
       - make
       - neofetch
       - neovim
       - network-manager
-      - ntfs-3g
       - python3-pip
-      - ranger
       - rename
       - rxvt-unicode
       - sshfs
-      - tk-dev
       - tmux
       - tree
       - unrar
       - wget
-      - wmctrl
-      - xclip
-      - xz-utils
-      - zlib1g-dev
       - zsh
 
 - name: check if pyenv is already installed
@@ -56,6 +26,26 @@
     path: "{{ user_home_dir }}/.pyenv/bin/pyenv"
   register: pyenv_exists
 
+- name: install pyenv dependencies
+  become: yes
+  apt:
+    update_cache: yes
+    pkg:
+      - build-essential
+      - curl
+      - libbz2-dev
+      - libffi-dev
+      - liblzma-dev
+      - libncurses5-dev
+      - libncursesw5-dev
+      - libreadline-dev
+      - libsqlite3-dev
+      - libssl-dev
+      - llvm
+      - tk-dev
+      - wget
+      - xz-utils
+      - zlib1g-dev
 
 - name: install pyenv
   shell: "curl https://pyenv.run | bash"
