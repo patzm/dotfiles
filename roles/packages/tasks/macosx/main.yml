@@ -27,6 +27,7 @@
       'ranger',
       'rename',
       'rsync',
+      'telnet',
       'tmux',
       'tree',
       'watch',
@@ -47,7 +48,6 @@
     name: [
       'alacritty',
       'meld',
-      'telnet',
       'vlc',
     ]
     state: present
