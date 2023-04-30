@@ -62,6 +62,7 @@ The available tags are:
 * browser: synchronizes Firefox user dictionaries and copies the default user configuration
 * dotfiles: well, dotfiles
 * packages: sets up the host operating system with the default packages
+
 ## Examples
 Install dotfiles
 ```shell
@@ -159,6 +160,10 @@ TryExec=/usr/bin/gnome-shell
 ```
 
 To get legacy tray icons / applets working again, e.g. for Nextcloud, install the [Gnome extension _AppIndicator and KStatusNotifierItem Support_](https://extensions.gnome.org/extension/615/appindicator-support/).
+
+### Firefox (browser)
+A GitHub Gist token and config file are required for the user dictionary sync to work.
+Check [`python-gist`](https://pypi.org/project/python-gist/) for the details.
 
 ### macOS
 Run
