@@ -10,3 +10,8 @@
 
 - name: enable Window movement with hotkey Ctrl+CMD and drag
   command: "defaults write -g NSWindowShouldDragOnGesture -bool true"
+
+- name: copy the automatic ssh-add invocation
+  copy:
+    src: "macosx/ssh-add.plist"
+    dest: "{{ user_home_dir }}/Library/LaunchAgents/ssh-add.plist"
