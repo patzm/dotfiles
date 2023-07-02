@@ -53,7 +53,7 @@ function img-show-date() {
 	exiftool -T -FileName -DateTimeOriginal "$@"
 }
 
-alias mov-rename="exiftool '-filename<CreationDate' -d %Y-%m-%d_%H%M%S%%-c.%%le"
+alias mov-rename="exiftool '-FileName<CreateDate' -api QuickTimeUTC -d %Y-%m-%d_%H%M%S%%-c.%%le"
 alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
 function mov-shift-tz () {
 	# mov-shift-tz -=2 *.mov
