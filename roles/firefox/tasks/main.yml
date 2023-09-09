@@ -34,13 +34,14 @@
 
 - name: prepare a virtual environment
   pip:
-    virtualenv: "{{ role_path }}/.venv" 
+    virtualenv: "{{ role_path }}/.venv"
     virtualenv_python: python3.8
-    requirements: "{{ role_path }}/files/requirements.txt"
+    name: "patzm-scripts @ git+https://github.com/patzm/scripts@7d905d0e5afe2a6ada2874ef6d91b870fa183c61"
 
 - name: attempt to synchronize user dictionaries
   ignore_errors: yes
   script:
-    cmd: "sync-gist '{{ item.path }}/persdict.dat'"
-    executable: "{{ role_path }}/.venv/bin/python "
+    chdir: "{{ role_path }}/.venv/bin"
+    cmd: "'{{ item.path }}/persdict.dat'"
+    executable: "{{ role_path }}/.venv/bin/firefox-sync"
   with_items: "{{ firefox_profile_dirs.files }}"
