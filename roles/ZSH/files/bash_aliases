@@ -53,6 +53,20 @@ function img-show-date() {
 	exiftool -T -FileName -DateTimeOriginal "$@"
 }
 
+rename_to_jpg() {
+  for file in "$@"; do
+    if [[ "$file" == *.jpeg || "$file" == *.JPEG ]]; then
+      mv "$file" "${file%.*}.jpg"
+    elif [[ "$file" == *.JPG ]]; then
+      # Handling case-sensitive filesystems by using an intermediate rename
+      mv "$file" "${file%.*}.jpg.tmp"
+      mv "${file%.*}.jpg.tmp" "${file%.*}.jpg"
+    else
+      echo "Skipping file $file, extension not matching."
+    fi
+  done
+}
+
 alias mov-rename="exiftool -ExtractEmbedded '-FileName<CreateDate' -api QuickTimeUTC -d %Y-%m-%d_%H%M%S%%-c.%%le"
 alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
 function mov-shift-tz () {
