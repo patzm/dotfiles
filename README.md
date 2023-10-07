@@ -28,13 +28,19 @@ git clone https://github.com/patzm/dotfiles.git ~/repos/dotfiles
 ```
 
 Run the OS-specific bootstrap script:
-* Arch / Manjaro: `./arch-bootstrap`
+* Arch / Manjaro:
+  ```shell
+  ./arch-bootstrap
+  ```
 * macOS:
   ```shell
   ./mac-bootstrap
   ```
   and then run the `export` command that got printed.
-* Ubuntu: `./ubuntu-bootstrap`
+* Ubuntu:
+  ```shell
+  ./ubuntu-bootstrap
+  ```
 
 Then run the setup routines through the helper script `setup`.
 
