@@ -21,6 +21,14 @@
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
+It is convenient to set the following in your `~/.ssh/config` file:
+```ssh_config
+Host *
+    AddKeysToAgent yes
+    # If you are on macOS
+    UseKeychain yes
+```
+
 ## Setup
 Clone the repo
 ```shell
