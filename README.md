@@ -17,7 +17,7 @@
 * zsh
 
 ## `ssh` key :key: generation
-```bash
+```shell
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
 
@@ -184,7 +184,7 @@ Simply manually install them from [the `roles/fonts/files/meslo-nerd-font` sub-f
 
 #### `brew` for a multi-user system
 TL;DR: run
-```bash
+```shell
 sudo chgrp -R admin $(brew --prefix) 
 sudo chmod -R g+rwX $(brew --prefix)
 ```
