@@ -15,6 +15,7 @@
       'ffmpeg',
       'htop',
       'imagemagick',
+      'jq',
       'libdvdcss',
       'neofetch',
       'neovim',
