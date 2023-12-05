@@ -17,9 +17,12 @@
 * zsh
 
 ## `ssh` key :key: generation
+Generate a new key
 ```shell
 ssh-keygen -t ed25519 -C "your_email@example.com"
 ```
+
+and add it here: https://github.com/settings/keys.
 
 It is convenient to set the following in your `~/.ssh/config` file:
 ```ini
