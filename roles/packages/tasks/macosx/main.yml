@@ -51,7 +51,9 @@
   homebrew_cask:
     name: [
       'alacritty',
+      'gitkraken',
       'meld',
+      'sublime-text',
       'vlc',
     ]
     state: present
