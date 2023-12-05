@@ -52,8 +52,12 @@
       'gimp',
       'gitkraken',
       'inkscape',
+      'mattermost',
       'meld',
+      'plexamp',
+      'slack',
       'sublime-text',
+      'visual-studio-code',
       'vlc',
     ]
     state: present
