@@ -13,10 +13,8 @@
       'exiftool',
       'exiv2',
       'ffmpeg',
-      'gimp',
       'htop',
       'imagemagick',
-      'inkscape',
       'jq',
       'libdvdcss',
       'neofetch',
@@ -43,7 +41,7 @@
       'sqlite3',
       'xz',
       'zlib',
-      'tcl-tk'
+      'tcl-tk',
     ]
     state: present
 
@@ -51,7 +49,9 @@
   homebrew_cask:
     name: [
       'alacritty',
+      'gimp',
       'gitkraken',
+      'inkscape',
       'meld',
       'sublime-text',
       'vlc',
