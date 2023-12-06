@@ -49,6 +49,7 @@
   homebrew_cask:
     name: [
       'alacritty',
+      'bartender',
       'gimp',
       'gitkraken',
       'inkscape',
