@@ -15,9 +15,11 @@
 
 - name: find all firefox profiles
   find:
-    paths: "{{ firefox_config_dir }}"
+    paths:
+      - "{{ firefox_config_dir }}"
+      - "{{ firefox_profiles_dir }}"
     file_type: any
-    patterns: '*.default*'
+    patterns: '*.default*,profile-*'
   register: firefox_profile_dirs
 
 - name: create the user configuration if it doesn't exist
