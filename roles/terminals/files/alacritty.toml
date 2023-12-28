@@ -1,0 +1,27 @@
+[font]
+size = 12
+
+[font.normal]
+family = "MesloLGS NF"
+
+[[keyboard.bindings]]
+chars = "\u001BF"
+key = "Right"
+mods = "Alt"
+
+[[keyboard.bindings]]
+chars = "\u001BB"
+key = "Left"
+mods = "Alt"
+
+[window]
+dynamic_padding = true
+opacity = 0.8
+
+[window.dimensions]
+columns = 133
+lines = 40
+
+[window.padding]
+x = 10
+y = 10

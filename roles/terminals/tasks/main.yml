@@ -56,8 +56,8 @@
 
 - name: copy the alacritty config file
   copy:
-    src: alacritty.yml
-    dest: '{{ alacritty_config_dir }}/alacritty.yml'
+    src: alacritty.toml
+    dest: '{{ alacritty_config_dir }}/alacritty.toml'
   tags: [dotfiles]
 
 - name: copy the kitty config file
