@@ -1,5 +1,5 @@
 ---
-- name: detect if gsettings is  installed
+- name: detect if gsettings is installed
   shell: command -v gsettings >/dev/null 2>&1
   register: gsettings_exists
   ignore_errors: yes
