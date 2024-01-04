@@ -1,4 +1,9 @@
 ---
+- name: detect if gsettings is  installed
+  shell: command -v gsettings >/dev/null 2>&1
+  register: gsettings_exists
+  ignore_errors: yes
+
 - name: enable right-click resize
   command: gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
-  
+  when: gsettings_exists.rc > 0
