@@ -8,4 +8,13 @@
   with_items:
     - 'main'
     - '{{ ansible_distribution_major_version|lower }}' 
-  tags: always
+
+- name: Find the location of the zsh executable
+  shell: which zsh
+  register: zsh_bin
+
+- name: Make ZSH default shell
+  become: yes
+  user:
+    name: "{{ ansible_env.USER }}"
+    shell: "{{ zsh_bin.stdout }}"

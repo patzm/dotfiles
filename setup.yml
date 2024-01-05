@@ -39,5 +39,6 @@
     - role: vim
       tags: dotfiles
     - role: ZSH
+      tags: dotfiles
     - role: firefox
       tags: browser

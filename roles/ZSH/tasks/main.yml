@@ -1,28 +1,14 @@
 ---
-- name: Find the location of the zsh executable
-  shell: which zsh
-  register: zsh_bin
-  tags: packages
-
-- name: Make ZSH default shell
-  become: yes
-  user:
-    name: "{{ ansible_env.USER }}"
-    shell: "{{ zsh_bin.stdout }}"
-  tags: packages
-
 - name: Create the ZSH config dir
   file:
     path: '{{ zsh_config_dir }}'
     state: directory
-  tags: dotfiles
 
 - name: Copy default ZSH instance if it doesn't exist
   copy:
     src: 'instance.zsh'
     dest: '{{ zsh_config_dir }}/zshinstance'
     force: no
-  tags: dotfiles
 
 - name: Copy the ZSH config files
   copy:
@@ -31,23 +17,20 @@
   loop:
     - .zshrc
     - .p10k.zsh
-  tags: dotfiles
 
 - name: Copy the OS dependent configuration
   copy:
     src: 'os_{{ ansible_os_family|lower }}.zsh'
     dest: '{{ zsh_config_dir }}/zshosdep'
     owner: "{{ ansible_env.USER }}"
-  tags: dotfiles
 
 - name: Copy the environment variable file
   copy:
     src: 'env.zsh'
     dest: '{{ user_home_dir }}/.zshenv'
-  tags: dotfiles
 
 - name: Copy the aliases
   copy:
     src: 'bash_aliases.sh'
     dest: '{{ user_home_dir }}/.bash_aliases'
-  tags: dotfiles
+
