@@ -57,7 +57,14 @@
 - name: copy the alacritty config file
   copy:
     src: alacritty.toml
-    dest: '{{ alacritty_config_dir }}/alacritty.toml'
+    dest: '{{ alacritty_config_file }}'
+  tags: [dotfiles]
+
+- name: insert the `open` executable name
+  replace:
+    path: '{{ alacritty_config_file }}'
+    regexp: '\<open-command\>'
+    replace: '{{ open_bin }}'
   tags: [dotfiles]
 
 - name: copy the kitty config file
