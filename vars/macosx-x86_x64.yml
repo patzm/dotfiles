@@ -1,3 +1,4 @@
 ---
 user_group: "staff"
+open_bin: "open"
 pip3_bin: /usr/local/bin/pip3

@@ -9,6 +9,8 @@ xresources_color: '{{ xresources_dir }}/colors'
 kitty_config_dir: '{{ user_config_dir }}/kitty'
 termite_config_dir: '{{ user_config_dir }}/termite'
 
+open_bin: "xdg-open"
+
 pip3_args: "--user"
 pip3_bin: "pip3"
 
