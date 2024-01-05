@@ -34,3 +34,32 @@
     src: 'bash_aliases.sh'
     dest: '{{ user_home_dir }}/.bash_aliases'
 
+- name: check if Oh My Zsh is already installed
+  stat:
+    path: "{{ omz_installation_dir }}"
+  register: omz_dir
+
+- name: create the Oh My Zsh install script file
+  tempfile:
+    state:  file
+    prefix: ansible.omz_install_
+    suffix: .sh
+  register: omz_install_script
+  when: not omz_dir.stat.exists
+
+- name: download the Oh My Zsh install script
+  get_url:
+    url: https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
+    dest: '{{ omz_install_script.path }}'
+    validate_certs: no
+  when: not omz_dir.stat.exists
+
+- name: install Oh My Zsh
+  shell: "sh {{ omz_install_script.path }} --unattended --keep-zshrc"
+  when: not omz_dir.stat.exists
+
+- name: copy the Oh My Zsh plugin & theme downloader
+  copy:
+    src: 'omz_setup.zsh'
+    dest: '{{ omz_installation_dir }}/omz-setup'
+    mode: preserve
