@@ -8,6 +8,47 @@
 
 - name: set this as the global gitignore file
   git_config:
-    name: core.excludesfile
     scope: global
+    name: core.excludesfile
     value: "{{ user_home_dir }}/.gitignore_global"
+
+- name: configure the credential helper
+  git_config:
+    scope: global
+    name: credential.helper
+    value: 'cache --timeout 36000'
+
+- name: configure the user name
+  git_config:
+    scope: global
+    name: user.name
+    value: Martin Patz
+
+- name: configure the user email
+  git_config:
+    scope: global
+    name: user.email
+    value: martin@patz.family
+
+- name: configure pulling
+  git_config:
+    scope: global
+    name: pull.ff
+    value: only
+
+- name: configure pushing
+  git_config:
+    scope: global
+    name: push.default
+    value: simple
+
+- name: detect if neovim is already installed
+  shell: command -v nvim >/dev/null 2>&1
+  register: neovim_exists
+  ignore_errors: yes
+
+- name: configure the default editor
+  git_config:
+    scope: global
+    name: core.editor
+    value: "{{ 'nvim' if neovim_exists.rc == 0 else 'vi' }}"

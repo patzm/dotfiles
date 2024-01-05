@@ -176,17 +176,6 @@ tabs -4
 if [[ ! -d "${HOME}/.git" ]]; then
     mkdir "${HOME}/.git"
 fi
-# TODO: maybe handle this through ansible exclusively
-GIT_AUTHOR_NAME="Martin Patz"
-GIT_AUTHOR_EMAIL="mailto@martin-patz.de"
-GIT_COMMITTER_NAME="$GIT_AUTHOR_NAME"
-GIT_COMMITTER_EMAIL="$GIT_AUTHOR_EMAIL"
-git config --global credential.helper 'cache --timeout 36000'
-git config --global user.name "$GIT_AUTHOR_NAME"
-git config --global user.email "$GIT_AUTHOR_EMAIL"
-git config --global pull.ff only
-git config --global push.default simple
-git config --global core.editor nvim # Set a default editor to avoid "Could not execute editor" error
 
 # You may need to manually set your language environment
 export LANG=en_US.UTF-8
