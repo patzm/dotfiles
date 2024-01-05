@@ -68,6 +68,7 @@ if [[ ! -d "${HOME}/.git" ]]; then
 fi
 
 # You may need to manually set your language environment
+export LC_ALL=C
 export LANG=en_US.UTF-8
 
 # Activate pattern reverse / forward search
