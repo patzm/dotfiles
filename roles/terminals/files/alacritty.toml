@@ -4,16 +4,6 @@ size = 12
 [font.normal]
 family = "MesloLGS NF"
 
-[[keyboard.bindings]]
-chars = "\u001BF"
-key = "Right"
-mods = "Alt"
-
-[[keyboard.bindings]]
-chars = "\u001BB"
-key = "Left"
-mods = "Alt"
-
 [[hints.enabled]]
 regex = "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
 command = "<open-command>"
@@ -26,6 +16,7 @@ mods = "Control"
 [window]
 dynamic_padding = true
 opacity = 0.8
+option_as_alt = "Both"
 
 [window.dimensions]
 columns = 133
