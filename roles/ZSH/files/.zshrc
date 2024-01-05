@@ -27,7 +27,6 @@ plugins=(
     docker
     git
     k
-    npm
     pip
     rsync
     tmux
