@@ -25,6 +25,11 @@ eval "$(pyenv virtualenv-init -)"
 # Add custom plugins
 plugins+=(debian)
 
+# If snap is installed
+if [ -d "/snap/bin" ]; then
+    export PATH="/snap/bin:${PATH}"
+fi
+
 # View images from the command line
 alias view="feh --scale-down --auto-zoom"
 # terminal clipboard manager
