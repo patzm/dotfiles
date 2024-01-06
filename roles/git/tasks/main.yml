@@ -42,6 +42,12 @@
     name: push.default
     value: simple
 
+- name: prune remote automatically on pull / fetch
+  git_config:
+    scope: global
+    name: remote.origin.prune
+    value: true
+
 - name: detect if neovim is already installed
   shell: command -v nvim >/dev/null 2>&1
   register: neovim_exists
