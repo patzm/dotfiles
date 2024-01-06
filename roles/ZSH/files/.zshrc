@@ -81,7 +81,7 @@ bindkey '^[^M' self-insert-unmeta
 unsetopt auto_name_dirs
 
 # Add a new line before 
-postcmd() { print "" }
+precmd() { print "" }
 
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
