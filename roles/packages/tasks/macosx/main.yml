@@ -19,6 +19,7 @@
       'libdvdcss',
       'neofetch',
       'neovim',
+      'nmap',
       'pre-commit',
       'protobuf',
       'pyenv-virtualenv',
