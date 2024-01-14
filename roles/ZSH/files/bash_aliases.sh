@@ -122,4 +122,4 @@ function tb () {
 }
 
 # For docker 🐳
-alias docker-ps="docker ps -a --format '{{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}' | column -t -s $'\t\'"
+alias docker-ps="docker ps -a --format '{{.ID}}\t{{.Image}}\t{{.Status}}\t{{.Names}}' | column -t -s $'\t'"
