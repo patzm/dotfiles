@@ -13,6 +13,7 @@
       - neovim
       - network-manager
       - python3-pip
+      - python3-pynvim  # neovim
       - rename
       - rxvt-unicode
       - sshfs

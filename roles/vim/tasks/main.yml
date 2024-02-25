@@ -50,14 +50,6 @@
     dest: '{{ nvim_autoload_dir }}/plug.vim'
     validate_certs: no
 
-- name: install dependencies
-  pip:
-    executable: "{{ pip3_bin }}"
-    name:
-      - pynvim
-    extra_args: "{{ pip3_args }}"
-  environment: "{{ env }}"
-
 - name: install all plugins in vim and neovim
   # We use '+PlugInstall' to install all Plug packages
   shell: "{{ item }} +'PlugInstall --sync' +qall"
