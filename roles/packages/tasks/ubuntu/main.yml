@@ -43,7 +43,6 @@
       - tk-dev
       - tmux
       - tree
-      - unrar
       - wget
       - wmctrl
       - xclip

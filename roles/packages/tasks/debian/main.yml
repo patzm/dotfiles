@@ -18,7 +18,6 @@
       - sshfs
       - tmux
       - tree
-      - unrar
       - wget
       - zsh
 
