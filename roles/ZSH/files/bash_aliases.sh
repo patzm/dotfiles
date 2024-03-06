@@ -1,17 +1,13 @@
 # Configure /edit various dotfiles
-alias zshconfig='nvim ${XDG_CONFIG_HOME}/zsh/.zshrc'
-alias zshosconfig='nvim ${XDG_CONFIG_HOME}/zsh/zshosdep'
-alias zshinstanceconfig='nvim ${XDG_CONFIG_HOME}/zsh/zshinstance'
-
 alias i3config='nvim ${XDG_CONFIG_HOME}/i3/config'
-alias polybarconfig='nvim ${XDG_CONFIG_HOME}/polybar/config'
-
-alias sshconfig='nvim ${HOME}/.ssh/config'
-
-alias vimconfig='nvim ${HOME}/.vim/vimrc'
 alias nvimconfig='nvim ${XDG_CONFIG_HOME}/init.rc'
-
+alias polybarconfig='nvim ${XDG_CONFIG_HOME}/polybar/config'
+alias sshconfig='nvim ${HOME}/.ssh/config'
 alias tmuxconfig='nvim ${HOME}/.tmux.conf'
+alias vimconfig='nvim ${HOME}/.vim/vimrc'
+alias zshconfig='nvim ${XDG_CONFIG_HOME}/zsh/.zshrc'
+alias zshinstanceconfig='nvim ${XDG_CONFIG_HOME}/zsh/zshinstance'
+alias zshosconfig='nvim ${XDG_CONFIG_HOME}/zsh/zshosdep'
 
 # Alias related to zshmarks
 alias to='jump'
