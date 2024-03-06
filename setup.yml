@@ -33,6 +33,8 @@
     - role: sublime
       tags: dotfiles
     - role: sway
+    - role: yabai
+      tags: dotfiles
     - role: terminals
     - role: tmux
       tags: dotfiles
