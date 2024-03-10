@@ -1,6 +1,6 @@
 # Open applications
 cmd + alt - t: open -n -a "Alacritty"
-cmd + alt - f: open ~  # Finder opens the home folder
+cmd + alt - f: open ~/Downloads  # Finder opens the Downloads folder
 
 # moves focus between windows in the current focused display
 alt - h : yabai -m window --focus west
