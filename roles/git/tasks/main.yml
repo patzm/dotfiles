@@ -48,6 +48,12 @@
     name: remote.origin.prune
     value: true
 
+- name: automatically setup remote branches
+  git_config:
+    scope: global
+    name: push.autoSetupRemote
+    value: true
+
 - name: detect if neovim is already installed
   shell: command -v nvim >/dev/null 2>&1
   register: neovim_exists
