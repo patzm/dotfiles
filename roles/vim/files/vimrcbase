@@ -34,6 +34,9 @@ set showmatch " Live match highlighting.
 set hlsearch " Highlight matches.
 set gdefault " Use the `g` flag by default.
 
+" Per-file-type settings
+autocmd FileType yaml setlocal shiftwidth=2 tabstop=2
+
 " don't nag me when hiding buffers
 set hidden " Allow me to have buffers with unsaved changes.
 set autoread " When a file has changed on disk, just load it. Don't ask.
