@@ -1,6 +1,9 @@
 #! /usr/bin/env bash
 
-pip install black
-pip install ipython
-pip install isort
-pip install pyreadline
+pip install uv
+uv pip install \
+	black  \
+	ipython \
+	isort \
+	pyreadline \
+	ruff
