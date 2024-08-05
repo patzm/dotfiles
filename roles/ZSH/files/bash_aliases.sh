@@ -15,8 +15,8 @@ alias zshosconfig='nvim ${XDG_CONFIG_HOME}/zsh/zshosdep'
 # Alias related to zshmarks
 alias to='jump'
 alias bm='bookmark'
-alias bd='deletemark'
-alias bl='showmarks'
+alias bmd='deletemark'
+alias bml='showmarks'
 
 # Alias related to virtualenvwrapper
 alias lsvenv="lsvirtualenv -b"
