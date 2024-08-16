@@ -11,11 +11,11 @@ yabai -m config layout bsp
 # yabai -m config --space 1 layout float
 
 # Set all padding and gaps to Xpt (default: 0)
-yabai -m config top_padding    10
-yabai -m config bottom_padding 10
-yabai -m config left_padding   10
-yabai -m config right_padding  10
-yabai -m config window_gap     10
+yabai -m config top_padding    3
+yabai -m config bottom_padding 3
+yabai -m config left_padding   3
+yabai -m config right_padding  3
+yabai -m config window_gap     5
 
 # on or off (default: off)
 yabai -m config auto_balance on
