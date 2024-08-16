@@ -18,7 +18,7 @@ yabai -m config right_padding  3
 yabai -m config window_gap     5
 
 # on or off (default: off)
-yabai -m config auto_balance on
+yabai -m config auto_balance off
 
 # 🐁 Mouse support
 # set mouse interaction modifier key (default: fn)
