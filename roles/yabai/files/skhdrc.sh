@@ -48,8 +48,8 @@ alt - x : yabai -m window --close
 alt - d : yabai -m window --focus mouse && \
           yabai -m window --toggle zoom-parent
 
-# float / unfloat window and center on screen
-alt - t : yabai -m window --toggle float;\
+# grid / float window and center on screen
+alt - g : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # toggle window fullscreen zoom
@@ -61,12 +61,6 @@ alt + shift - f : yabai -m window --toggle native-fullscreen
 
 # balance size of windows
 alt + shift - 0 : yabai -m space --balance
-
-# increase gap in focused space
-alt - g : yabai -m space --gap rel:10
-
-# decrease gap in focused space
-alt + shift - g : yabai -m space --gap rel:-10
 
 # create a new space and follow focus
 ctrl + alt - n : \
