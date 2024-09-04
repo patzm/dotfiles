@@ -69,15 +69,17 @@ alt - g : yabai -m space --gap rel:10
 alt + shift - g : yabai -m space --gap rel:-10
 
 # create a new space and follow focus
-ctrl + alt - n : yabai -m space --create && \
-                  index="$(yabai -m query --displays --display | jq '.spaces[-1]')" && \
-                  yabai -m space --focus "${index}"
+ctrl + alt - n : \
+    yabai -m space --create && \
+    index="$(yabai -m query --displays --display | jq '.spaces[-1]')" && \
+    yabai -m space --focus "${index}"
 
 # create a new space, move window and follow focus
-ctrl + alt + shift - n : yabai -m space --create && \
-                  index="$(yabai -m query --displays --display | jq '.spaces[-1]')" && \
-                  yabai -m window --space "${index}" && \
-                  yabai -m space --focus "${index}"
+ctrl + alt + shift - n : \
+    yabai -m space --create && \
+    index="$(yabai -m query --displays --display | jq '.spaces[-1]')" && \
+    yabai -m window --space "${index}" && \
+    yabai -m space --focus "${index}"
 
 # delete focused space
 alt - q : yabai -m space --destroy
