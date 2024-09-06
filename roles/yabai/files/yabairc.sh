@@ -40,8 +40,11 @@ yabai -m config mouse_action2 resize
 yabai -m config mouse_follows_focus on
 
 # Application rules
-yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Bartender .*$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
+yabai -m rule --add app="^iStat Menus$" manage=off
+yabai -m rule --add app="^nextcloud$" manage=off
+yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="iStat Menus.*" manage=off mouse_follows_focus=off
 yabai -m rule --add app="ONLYOFFICE" manage=on
 
