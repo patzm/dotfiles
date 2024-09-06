@@ -43,5 +43,6 @@ yabai -m config mouse_follows_focus on
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="iStat Menus.*" manage=off mouse_follows_focus=off
+yabai -m rule --add app="ONLYOFFICE" manage=on
 
 echo "yabai configuration loaded."
