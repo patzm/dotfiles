@@ -17,6 +17,10 @@
   register: pyenv_exists
   ignore_errors: yes
 
+- name: "update pyenv"
+  command: "{{ pyenv_bin.files[0].path | default('pyenv') }} update"
+  when: pyenv_exists.rc == 0
+
 - name: "install python {{ default_python_version }}"
   command: "{{ pyenv_bin.files[0].path | default('pyenv') }} install -s {{ default_python_version }}"
   when: pyenv_exists.rc == 0
