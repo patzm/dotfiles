@@ -44,7 +44,7 @@ function img-meta-update() {
 	- "20-03-23 15-02-59 4123.jpg"
 	- "22-07-24 14-20-42.jpg"
 	'
-	exiftool -d "\"%y-%m-%d %H-%M-%S\"" '-DateTimeOriginal<${Filename;s/(\s([0-9])+)?\.[^.]*$//}' "$@"
+	exiftool '-DateTimeOriginal<${Filename; s/(\d{2})-(\d{2})-(\d{2}) (\d{2})-(\d{2})-(\d{2})(?: \d+)?\..*/20$1:$2:$3 $4:$5:$6/}' "$@"
 }
 
 function img-show-date() {
