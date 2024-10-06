@@ -26,30 +26,30 @@ alias rmvenv="rmvirtualenv"
 # Alias for conventional image and movie renaming
 alias img-rename="exiv2 -Fr '%Y-%m-%d_%H%M%S'"
 function img-shift-tz () {
-	: 'img-shift-tz: Shift images timestamps by a specific offset.
+  : 'img-shift-tz: Shift images timestamps by a specific offset.
 
-	img-shift-tz -=2:30 *.jpg
-		shifts by 2h30min back
-	'
-	tz_shift=${1}
-	for file in "${@:2}"; do
-		exiftool "-AllDates${tz_shift}" "${file}"
-	done
+  img-shift-tz -=2:30 *.jpg
+    shifts by 2h30min back
+  '
+  tz_shift=${1}
+  for file in "${@:2}"; do
+    exiftool "-AllDates${tz_shift}" "${file}"
+  done
 }
 
 function img-meta-update() {
-	: 'img-meta-update: updates the metadata of an image base on the file name.
-	
-	matches for instance
-	- "20-03-23 15-02-59 4123.jpg"
-	- "22-07-24 14-20-42.jpg"
-	'
-	exiftool '-DateTimeOriginal<${Filename; s/(\d{2})-(\d{2})-(\d{2}) (\d{2})-(\d{2})-(\d{2})(?: \d+)?\..*/20$1:$2:$3 $4:$5:$6/}' "$@"
+  : 'img-meta-update: updates the metadata of an image base on the file name.
+  
+  matches for instance
+  - "20-03-23 15-02-59 4123.jpg"
+  - "22-07-24 14-20-42.jpg"
+  '
+  exiftool '-DateTimeOriginal<${Filename; s/(\d{2})-(\d{2})-(\d{2}) (\d{2})-(\d{2})-(\d{2})(?: \d+)?\..*/20$1:$2:$3 $4:$5:$6/}' "$@"
 }
 
 function img-show-date() {
-	: 'img-show-date: shows the dates that are stored in the file name.'
-	exiftool -T -FileName -DateTimeOriginal "$@"
+  : 'img-show-date: shows the dates that are stored in the file name.'
+  exiftool -T -FileName -DateTimeOriginal "$@"
 }
 
 rename_to_jpg() {
@@ -69,12 +69,12 @@ rename_to_jpg() {
 alias mov-rename="exiftool -ExtractEmbedded '-FileName<CreateDate' -api QuickTimeUTC -d %Y-%m-%d_%H%M%S%%-c.%%le"
 alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
 function mov-shift-tz () {
-	# mov-shift-tz -=2 *.mov
-	tz_shift=${1}
-	for file in "${@:2}"; do
-		echo "Shifting timezone of ${file} by ${tz_shift}."
-		exiftool '-*date'${tz_shift} "${file}"
-	done
+  # mov-shift-tz -=2 *.mov
+  tz_shift=${1}
+  for file in "${@:2}"; do
+    echo "Shifting timezone of ${file} by ${tz_shift}."
+    exiftool '-*date'${tz_shift} "${file}"
+  done
 }
 
 # Functions
@@ -84,15 +84,15 @@ mkcdir () {
 
 # video file conversion
 function convert-video () {
-	input=${1}
-	input_dir=$(dirname ${input})
-	input_file_name=$(basename ${input})
-	output=${2:-${input_dir}/out_${input_file_name}}
-	echo "Converting ${input} and storing it in ${output}"
-	nice ffmpeg -i ${input} \
-		-c:v libx264 -preset slow -crf 26 \
-		-c:a aac \
-		${output}
+  input=${1}
+  input_dir=$(dirname ${input})
+  input_file_name=$(basename ${input})
+  output=${2:-${input_dir}/out_${input_file_name}}
+  echo "Converting ${input} and storing it in ${output}"
+  nice ffmpeg -i ${input} \
+    -c:v libx264 -preset slow -crf 26 \
+    -c:a aac \
+    ${output}
 }
 
 function convert-videos () {
