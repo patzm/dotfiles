@@ -53,19 +53,10 @@ Run the OS-specific bootstrap script:
   ./ubuntu-bootstrap
   ```
 
-Then run the setup routines through the helper script `setup`.
+Then run the anisble playbook roles
 
-Help:
-```
-usage: setup [-h] [-K] [--hosts [HOSTS ...]] [--tags [TAGS ...]]
-
-facilitator to launch setup.yml
-
-optional arguments:
-  -h, --help           show this help message and exit
-  -K                   prompt for SUDO password
-  --hosts [HOSTS ...]  specify any remote hosts if not the local host
-  --tags [TAGS ...]    specify tags
+```shell
+ansible-playbook setup.yml [-i 'host1,host2'] --tags tag1,tag2
 ```
 
 After the first run, switch your shell to `zsh`:
@@ -83,17 +74,17 @@ The available tags are:
 ## Examples
 Install dotfiles
 ```shell
-./setup --tags dotfiles,browser
+ansible-playbook --tags dotfiles,browser
 ```
 
 Install all packages for the current OS, this requires `root` permissions:
 ```shell
-./setup -K --tags packages
+ansible-playbook -K --tags packages
 ```
 
 Run anything from above for remote host(s)
 ```shell
-./setup <other-args> --hosts my-remote-machine,
+ansible-playbook <other-args> -i 'my-remote-machine,'
 ```
 
 ## Cheat-sheet for post-installation usage
