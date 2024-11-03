@@ -54,13 +54,8 @@
     name: push.autoSetupRemote
     value: true
 
-- name: detect if neovim is already installed
-  shell: command -v nvim >/dev/null 2>&1
-  register: neovim_exists
-  ignore_errors: yes
-
 - name: configure the default editor
   git_config:
     scope: global
     name: core.editor
-    value: "{{ 'nvim' if neovim_exists.rc == 0 else 'vi' }}"
+    value: "{{ editor }}"

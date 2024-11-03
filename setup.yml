@@ -11,6 +11,23 @@
         'vars/unix.yml'
       ]
 
+  pre_tasks:
+    - name: Find the most preferred editor executable
+      tags: always
+      block:
+        - name: Check for available editors using a loop
+          shell: "command -v {{ item }}"
+          loop: "{{ vim_distros }}"
+          register: editor_check
+          ignore_errors: true
+
+        - name: Set editor variable with the first successful command
+          set_fact:
+            editor: "{{ editor_check.results|
+                        selectattr('rc', 'equalto', 0)|
+                        map(attribute='stdout')|
+                        first }}"
+
   roles:
     - role: packages
       tags: [packages, i3, sway]

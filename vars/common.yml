@@ -19,5 +19,7 @@ pip_args: "{{ pip3_args }}"
 
 vim_distros:
   - nvim
+  - vim
+  - vi
 
 env:
