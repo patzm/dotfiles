@@ -1,7 +1,16 @@
 # for https://github.com/pyenv/pyenv-virtualenv
 export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv virtualenv-init -)"
+
+if ! command -v pyenv >/dev/null; then
+    if [ -x "$PYENV_ROOT/bin/pyenv" ]; then
+        export PATH="$PYENV_ROOT/bin:$PATH"
+    fi
+fi
+if command -v pyenv >/dev/null; then
+    eval "$(pyenv virtualenv-init -)"
+    eval "$(pyenv init -)"
+    pyenv virtualenvwrapper
+fi
 
 # Add custom plugins
 plugins+=(debian)

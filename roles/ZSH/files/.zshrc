@@ -86,11 +86,6 @@ precmd() { print "" }
 export NVM_DIR="${HOME}/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Python, pyenv, and virtualenv
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-pyenv virtualenvwrapper
-
 export PYENV_VIRTUALENVWRAPPER_PREFER_PYVENV="true"
 export WORKON_HOME=${HOME}/.venvs
 export VIRTUALENVWRAPPER_HOOK_DIR="${XDG_CONFIG_HOME}/virtualenvwrapper"

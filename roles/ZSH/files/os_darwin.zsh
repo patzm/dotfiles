@@ -16,6 +16,8 @@ done
 
 # for https://github.com/pyenv/pyenv-virtualenv
 eval "$(pyenv virtualenv-init -)"
+eval "$(pyenv init -)"
+pyenv virtualenvwrapper
 
 # Add custom plugins
 plugins+=(brew)
