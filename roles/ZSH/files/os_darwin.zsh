@@ -3,9 +3,9 @@ ZSH_DISABLE_COMPFIX=true
 
 # Add the correct HomeBrew folder to the PATH
 if [ "$(sysctl -in sysctl.proc_translated)" = "0" ]; then
-    local brew_path="/opt/homebrew/bin"
+    local brew_path="/opt/homebrew/bin:/opt/homebrew/sbin"
 else
-    local brew_path="/usr/local/bin"
+    local brew_path="/usr/local/bin:/usr/local/sbin"
 fi
 export PATH="${brew_path}:${PATH}"
 
