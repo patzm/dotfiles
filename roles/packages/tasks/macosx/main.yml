@@ -18,6 +18,7 @@
       'jq',
       'just',
       'libdvdcss',
+      'mtr',
       'neofetch',
       'neovim',
       'nmap',
