@@ -53,10 +53,14 @@ Run the OS-specific bootstrap script:
   ./ubuntu-bootstrap
   ```
 
-Then run the anisble playbook roles
-
+Then run the anisble playbook roles for localhost
 ```shell
-ansible-playbook setup.yml [-i 'host1,host2'] --tags tag1,tag2
+ansible-playbook setup.yml --tags tag1,tag2 -i localhost, --connection=local
+```
+
+or remote host[s]
+```shell
+ansible-playbook setup.yml --tags tag1,tag2 -i 'host1,host2'
 ```
 
 After the first run, switch your shell to `zsh`:
