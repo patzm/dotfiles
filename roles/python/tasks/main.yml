@@ -17,20 +17,25 @@
   register: pyenv_exists
   ignore_errors: yes
 
-- name: "update pyenv"
-  command: "{{ pyenv_bin.files[0].path | default('pyenv') }} update"
-  when: pyenv_exists.rc == 0
-
-- name: "install python {{ default_python_version }}"
-  command: "{{ pyenv_bin.files[0].path | default('pyenv') }} install -s {{ default_python_version }}"
-  when: pyenv_exists.rc == 0
-
-- name: "set {{ default_python_version }} as the global pyenv version"
-  command: "{{ pyenv_bin.files[0].path | default('pyenv') }} global {{ default_python_version }}"
-  when: pyenv_exists.rc == 0
-
-- name: "install virtualenv and virtualenvwrapper"
-  command: "{{ pyenv_bin.files[0].path | default('pyenv') }} exec pip install virtualenv virtualenvwrapper"
+- name: set up pyenv if it exists
+  block:
+  - name: Ensure pyenv-update plugin folder exists
+    file:
+      path: "{{ pyenv_dir }}/plugins/pyenv-update"
+      state: directory
+  - name: "make sure the pyenv-update plugin is installed"
+    git:
+      repo: https://github.com/pyenv/pyenv-update.git
+      dest: "{{ pyenv_dir }}/plugins/pyenv-update"
+      update: yes
+  - name: "update pyenv"
+    command: "{{ pyenv_bin.files[0].path | default('pyenv') }} update"
+  - name: "install python {{ default_python_version }}"
+    command: "{{ pyenv_bin.files[0].path | default('pyenv') }} install -s {{ default_python_version }}"
+  - name: "set {{ default_python_version }} as the global pyenv version"
+    command: "{{ pyenv_bin.files[0].path | default('pyenv') }} global {{ default_python_version }}"
+  - name: "install virtualenv and virtualenvwrapper"
+    command: "{{ pyenv_bin.files[0].path | default('pyenv') }} exec pip install virtualenv virtualenvwrapper"
   when: pyenv_exists.rc == 0
 
 - name: create the bpython config folder
