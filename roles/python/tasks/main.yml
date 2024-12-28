@@ -6,7 +6,7 @@
 
 - name: "find the pyenv executable"
   find:
-    paths: "{{ user_home_dir }}/.pyenv/bin"
+    paths: "{{ pyenv_dir }}/bin"
     use_regex: true
     pattern: "^pyenv$"
     file_type: any
