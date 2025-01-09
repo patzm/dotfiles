@@ -26,4 +26,7 @@ plugins+=(brew)
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 alias brew-update='brew update && brew upgrade && brew cleanup'
 
+# Launch commands
+alias only-office='open -na "OnlyOffice"'
+
 # vim: set filetype=zsh : 
