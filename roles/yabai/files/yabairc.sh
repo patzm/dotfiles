@@ -7,8 +7,19 @@ sudo yabai --load-sa
 # Binary Space Partitioning (BSP) layout
 yabai -m config layout bsp
 
-# Space 1 has all windows floating
-# yabai -m config --space 1 layout float
+# Assign space names
+yabai -m space 1 --label browser
+yabai -m space 2 --label dev
+yabai -m space 3 --label cli
+yabai -m space 4 --label comm
+yabai -m space 5 --label org
+yabai -m space 6 --label float
+yabai -m space 7 --label free
+yabai -m space 8 --label private
+yabai -m space 9 --label vcs
+
+# Space 6 has all windows floating
+yabai -m config --space float layout float
 
 # Set all padding and gaps to Xpt (default: 0)
 yabai -m config top_padding    3

@@ -15,27 +15,27 @@ alt + shift - k : yabai -m window --warp north
 alt + shift - l : yabai -m window --warp east
 
 # send window to a space 
-alt + shift - 1 : yabai -m window --space 1
-alt + shift - 2 : yabai -m window --space 2
-alt + shift - 3 : yabai -m window --space 3
-alt + shift - 4 : yabai -m window --space 4
-alt + shift - 5 : yabai -m window --space 5
-alt + shift - 6 : yabai -m window --space 6
-alt + shift - 7 : yabai -m window --space 7
-alt + shift - 8 : yabai -m window --space 8
-alt + shift - 9 : yabai -m window --space 9
+alt + shift - 1 : yabai -m window --space browser
+alt + shift - 2 : yabai -m window --space dev
+alt + shift - 3 : yabai -m window --space cli
+alt + shift - 4 : yabai -m window --space comm
+alt + shift - 5 : yabai -m window --space org
+alt + shift - 6 : yabai -m window --space float
+alt + shift - 7 : yabai -m window --space free
+alt + shift - 8 : yabai -m window --space private
+alt + shift - 9 : yabai -m window --space vcs
 # space 0 is reserved for balancing window sizes
 
 # moves focus between spaces 
-alt - 1 : yabai -m space --focus 1
-alt - 2 : yabai -m space --focus 2
-alt - 3 : yabai -m space --focus 3
-alt - 4 : yabai -m space --focus 4
-alt - 5 : yabai -m space --focus 5
-alt - 6 : yabai -m space --focus 6
-alt - 7 : yabai -m space --focus 7
-alt - 8 : yabai -m space --focus 8
-alt - 9 : yabai -m space --focus 9
+alt - 1 : yabai -m space --focus browser
+alt - 2 : yabai -m space --focus dev
+alt - 3 : yabai -m space --focus cli
+alt - 4 : yabai -m space --focus comm
+alt - 5 : yabai -m space --focus org
+alt - 6 : yabai -m space --focus float
+alt - 7 : yabai -m space --focus free
+alt - 8 : yabai -m space --focus private
+alt - 9 : yabai -m space --focus vcs
 # space 0 is reserved for balancing window sizes
 
 # toggle window split type
