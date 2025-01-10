@@ -53,11 +53,11 @@ alt - g : yabai -m window --toggle float;\
           yabai -m window --grid 4:4:1:1:2:2
 
 # toggle window fullscreen zoom
-alt - f : yabai -m window --focus mouse && \
-          yabai -m window --toggle zoom-fullscreen
+alt + shift - w :   yabai -m window --focus mouse && \
+                    yabai -m window --toggle zoom-fullscreen
 
 # toggle window native fullscreen
-alt + shift - f : yabai -m window --toggle native-fullscreen
+alt - w : yabai -m window --toggle native-fullscreen
 
 # balance size of windows
 alt + shift - 0 : yabai -m space --balance
@@ -80,4 +80,3 @@ alt - q : yabai -m space --destroy
 
 # restart yabai
 ctrl + alt + cmd - r : yabai --restart-service
-
