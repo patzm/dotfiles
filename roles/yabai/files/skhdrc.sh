@@ -1,5 +1,5 @@
 # Open applications
-cmd + alt - t: open -n -a "Alacritty"
+cmd + alt - t: open -n -a "Alacritty"  # Terminal
 cmd + alt - f: open ~/Downloads  # Finder opens the Downloads folder
 
 # moves focus between windows in the current focused display
@@ -45,12 +45,14 @@ alt - e : yabai -m window --toggle split
 alt - x : yabai -m window --close
 
 # toggle window parent zoom
-alt - d : yabai -m window --focus mouse && \
-          yabai -m window --toggle zoom-parent
+alt - d : \
+    yabai -m window --focus mouse && \
+    yabai -m window --toggle zoom-parent
 
 # grid / float window and center on screen
-alt - g : yabai -m window --toggle float;\
-          yabai -m window --grid 4:4:1:1:2:2
+alt - g : \
+    yabai -m window --toggle float && \
+    yabai -m window --grid 4:4:1:1:2:2
 
 # toggle window zoom fullscreen
 alt - w : \
