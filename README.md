@@ -63,6 +63,8 @@ or remote host[s]
 ansible-playbook setup.yml --tags tag1,tag2 -i 'host1,host2'
 ```
 
+Add `-K` when including tags that require elevated permissions, like `packages`.
+
 After the first run, switch your shell to `zsh`:
 ```shell
 chsh -s $(which zsh)
