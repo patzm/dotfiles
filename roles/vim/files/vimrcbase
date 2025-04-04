@@ -24,7 +24,6 @@ set smarttab " Lets tab key insert 'tab stops', and bksp deletes tabs.
 set shiftround " Tab / shifting moves to closest tabstop.
 set autoindent " Match indents on new lines.
 set smartindent " Intellegently dedent / indent new lines based on rules.
-set pastetoggle=<F3> " Simplifies toggling normal insert and paste insert modes
 
 " Make search more sane
 set ignorecase " Case insensitive search.
