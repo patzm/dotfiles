@@ -37,12 +37,14 @@ function img-shift-tz () {
   done
 }
 
-function img-meta-update() {
-  : 'img-meta-update: updates the metadata of an image base on the file name.
+function media-meta-update() {
+  : 'media-meta-update: updates the metadata of an media (images or videos) base on the file name.
   
   matches for instance
   - "20-03-23 15-02-59 4123.jpg"
   - "22-07-24 14-20-42.jpg"
+  - "20-03-23 15-02-59 4123.mov"
+  - "22-07-24 14-20-42.mov"
   '
   exiftool \
     -overwrite_original \
@@ -50,8 +52,8 @@ function img-meta-update() {
     "$@"
 }
 
-function img-show-date() {
-  : 'img-show-date: shows the dates that are stored in the file name.'
+function media-show-date() {
+  : 'media-show-date: shows the dates that are stored in the file name.'
   exiftool -T -FileName -DateTimeOriginal "$@"
 }
 
@@ -70,7 +72,6 @@ rename_to_jpg() {
 }
 
 alias mov-rename="exiftool -ExtractEmbedded '-FileName<CreateDate' -api QuickTimeUTC -d %Y-%m-%d_%H%M%S%%-c.%%le"
-alias mov-meta-update="exiftool '-*date<\${filename}' -wm w"
 function mov-shift-tz () {
   # mov-shift-tz -=2 *.mov
   tz_shift=${1}
