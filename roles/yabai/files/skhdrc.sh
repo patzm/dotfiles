@@ -15,27 +15,29 @@ alt + shift - k : yabai -m window --warp north
 alt + shift - l : yabai -m window --warp east
 
 # send window to a space 
-alt + shift - 1 : yabai -m window --space browser
-alt + shift - 2 : yabai -m window --space dev
-alt + shift - 3 : yabai -m window --space cli
-alt + shift - 4 : yabai -m window --space comm
-alt + shift - 5 : yabai -m window --space org
-alt + shift - 6 : yabai -m window --space float
-alt + shift - 7 : yabai -m window --space free
-alt + shift - 8 : yabai -m window --space private
-alt + shift - 9 : yabai -m window --space vcs
+alt + shift - 1 : yabai -m window --space  1 # browser
+alt + shift - 2 : yabai -m window --space  2 # dev
+alt + shift - 3 : yabai -m window --space  3 # cli
+alt + shift - 4 : yabai -m window --space  4 # comm
+alt + shift - 5 : yabai -m window --space  5 # org
+alt + shift - 6 : yabai -m window --space  6 # float
+alt + shift - 7 : yabai -m window --space  7 # free
+alt + shift - 8 : yabai -m window --space  8 # private
+alt + shift - 9 : yabai -m window --space  9 # vcs
+alt + shift - s : yabai -m window --space 11 # conf
 # space 0 is reserved for balancing window sizes
 
 # moves focus between spaces 
-alt - 1 : yabai -m space --focus browser
-alt - 2 : yabai -m space --focus dev
-alt - 3 : yabai -m space --focus cli
-alt - 4 : yabai -m space --focus comm
-alt - 5 : yabai -m space --focus org
-alt - 6 : yabai -m space --focus float
-alt - 7 : yabai -m space --focus free
-alt - 8 : yabai -m space --focus private
-alt - 9 : yabai -m space --focus vcs
+alt - 1 : yabai -m space --focus  1 # browser
+alt - 2 : yabai -m space --focus  2 # dev
+alt - 3 : yabai -m space --focus  3 # cli
+alt - 4 : yabai -m space --focus  4 # comm
+alt - 5 : yabai -m space --focus  5 # org
+alt - 6 : yabai -m space --focus  6 # float
+alt - 7 : yabai -m space --focus  7 # free
+alt - 8 : yabai -m space --focus  8 # private
+alt - 9 : yabai -m space --focus  9 # vcs
+alt - s : yabai -m space --focus 11 # conf
 # space 0 is reserved for balancing window sizes
 
 # toggle window split type
