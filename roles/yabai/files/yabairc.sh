@@ -28,18 +28,18 @@ yabai -m config left_padding   3
 yabai -m config right_padding  3
 yabai -m config window_gap     5
 
-# render all unfocused windows with 90% opacity
+# render all unfocused windows with 95% opacity
 yabai -m config window_shadow float
 yabai -m config window_opacity on
-yabai -m config active_window_opacity 1.0
-yabai -m config normal_window_opacity 0.9
+yabai -m config active_window_opacity 1.00
+yabai -m config normal_window_opacity 0.95
 
 # on or off (default: off)
 yabai -m config auto_balance off
 
 # 🐁 Mouse support
 # set mouse interaction modifier key (default: fn)
-yabai -m config mouse_modifier fn
+yabai -m config mouse_modifier alt
 
 # set modifier + left-click drag to move window (default: move)
 yabai -m config mouse_action1 move
