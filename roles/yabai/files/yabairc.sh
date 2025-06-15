@@ -39,7 +39,7 @@ yabai -m config auto_balance off
 
 # 🐁 Mouse support
 # set mouse interaction modifier key (default: fn)
-yabai -m config mouse_modifier fn
+yabai -m config mouse_modifier alt
 
 # set modifier + left-click drag to move window (default: move)
 yabai -m config mouse_action1 move
