@@ -7,6 +7,7 @@
     - "com.jetbrains.intellij.ce ApplePressAndHoldEnabled -bool false"
     - "com.jetbrains.pycharm ApplePressAndHoldEnabled -bool false"
     - "com.jetbrains.pycharm.ce ApplePressAndHoldEnabled -bool false"
+    - "com.apple.finder DisableAllAnimations -bool true"  # yabai
 
 - name: enable Window movement with hotkey Ctrl+CMD and drag
   command: "defaults write -g NSWindowShouldDragOnGesture -bool true"
