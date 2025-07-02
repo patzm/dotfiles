@@ -59,5 +59,6 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="iStat Menus.*" manage=off mouse_follows_focus=off
 yabai -m rule --add app="ONLYOFFICE" manage=on
 yabai -m rule --add app="^Firefox$" title=".*Bitwarden Password Manager.*$" manage=off
+yabai -m rule --add app="^Finder$" title="Copy" manage=off
 
 echo "yabai configuration loaded."
