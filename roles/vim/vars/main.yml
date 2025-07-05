@@ -1,6 +1,0 @@
----
-vim_dir: '{{ user_home_dir }}/.vim'
-nvim_dir: '{{ user_local_dir }}/share/nvim/site'
-nvim_config_dir: '{{ user_config_dir }}/nvim'
-vim_autoload_dir: '{{ vim_dir }}/autoload'
-nvim_autoload_dir: '{{ nvim_dir }}/autoload'
