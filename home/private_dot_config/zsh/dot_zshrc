@@ -14,5 +14,8 @@ znap source ohmyzsh/ohmyzsh plugins/git
 znap source ohmyzsh/ohmyzsh plugins/ssh-agent
 
 # Aliases
-source ${ZDOTDIR}/.zshalias
+source ${ZDOTDIR}/zshalias.sh
+
+# Functions
+source ${ZDOTDIR}/zshfunctions.sh
 

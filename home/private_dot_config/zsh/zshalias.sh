@@ -1,5 +1,5 @@
 # eza replaces file system listing
-alias l="eza -l"
+alias l="eza -la"
 alias ls="eza"
 alias tree="eza --tree"
 
