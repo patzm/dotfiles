@@ -1,4 +1,23 @@
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
 
+# Load Znap
+source ~/.oh-my-zsh/custom/plugins/zsh-snap/znap.zsh
+
+# Accelerate start time
+znap prompt agnoster/agnoster-zsh-theme
+
+# Self-managed plugins
+# znap source zsh-users/zsh-autosuggestions
+znap source marlonrichert/zsh-autocomplete
+# znap source zsh-users/zsh-syntax-highlighting
+znap source jocelynmallon/zshmarks
+
+# Oh-My-ZSH Plugins
+plugins=(
+  ssh-agent
+)
 
 source "$ZSH/oh-my-zsh.sh"
+
 
