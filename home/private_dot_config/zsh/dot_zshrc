@@ -2,12 +2,12 @@
 [[ $- != *i* ]] && return
 
 # Load Znap
-source ~/.znap/znap.zsh
+source ~/.zsh/znap/znap.zsh
 
 # Accelerate start time
 znap prompt agnoster/agnoster-zsh-theme
 
-# Self-managed plugins
+# Plugins
 # znap source zsh-users/zsh-autosuggestions
 znap source marlonrichert/zsh-autocomplete
 # znap source zsh-users/zsh-syntax-highlighting
