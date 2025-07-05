@@ -1,3 +1,5 @@
 ZDOTDIR=~/.config/zsh
 ZSH=${HOME}/.oh-my-zsh
 
+EDITOR=nvim
+
