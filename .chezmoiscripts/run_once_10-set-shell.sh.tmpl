@@ -1,0 +1,9 @@
+#! /usr/bin/env bash
+
+# Ensure default shell is ZSH
+ZSH_BIN=$(which zsh)
+if [ "$(getent passwd "$USER" | cut -d: -f7)" != ${ZSH_BIN} ]; then
+    echo "Setting shell to ${ZSH_BIN}"
+    chsh -s ${ZSH_BIN}
+fi
+
