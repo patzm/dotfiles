@@ -1,0 +1,7 @@
+Host *
+    IdentityFile ~/.ssh/id_ed25519
+    AddKeysToAgent yes
+{{- if eq .chezmoi.os "darwin" }}
+    UseKeychain yes
+{{ end }}
+    ForwardAgent yes
