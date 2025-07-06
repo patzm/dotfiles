@@ -6,6 +6,7 @@ vim.loader.enable()
 -- start Configuration
 vim.g.mapleader = ","
 vim.cmd([[language en_US.UTF-8]])
+require("keymaps")
 -- end Configuration
 
 -- start Plugins & their configuration
