@@ -1,0 +1,9 @@
+{{- if eq .chezmoi.os "linux" }}
+[Desktop Entry]
+Type=Application
+Name=SSH Add Keys
+Exec=/bin/bash -c "ssh-add ~/.ssh/id_ed25519"
+Hidden=false
+NoDisplay=true
+X-GNOME-Autostart-enabled=true
+{{ end }}
