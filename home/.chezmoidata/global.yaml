@@ -8,3 +8,5 @@ externalGitArgs: |
         args:
             - --depth
             - "1"
+xdgRelDataDir: .local/share
+xdgRelConfigDir: .config
