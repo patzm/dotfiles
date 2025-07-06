@@ -4,8 +4,8 @@ alias ls="eza"
 alias tree="eza --tree"
 
 # Alias related to zshmarks
-alias to='jump'
-alias bm='bookmark'
-alias bmd='deletemark'
-alias bml='showmarks'
+alias to="jump"
+alias bm="bookmark"
+alias bmd="deletemark"
+alias bml="showmarks"
 
