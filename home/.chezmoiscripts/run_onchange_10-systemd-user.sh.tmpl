@@ -1,7 +1,6 @@
 {{ if eq .chezmoi.os "linux" -}}
 #! /usr/bin/env bash
 
-
 echo "systemd: Reloading systemd user daemon"
 systemctl --user daemon-reexec
 systemctl --user daemon-reload
