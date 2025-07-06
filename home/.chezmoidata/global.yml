@@ -1,3 +1,10 @@
 githubUsername: patzm
-externalGitArgs: "clone.args = ['--depth', '1']\npull.args = ['--depth', '1']"
-
+externalGitArgs: |
+    clone:
+        args:
+            - --depth
+            - "1"
+    pull:
+        args:
+            - --depth
+            - "1"
