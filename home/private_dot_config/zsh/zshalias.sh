@@ -12,3 +12,7 @@ alias bml="showmarks"
 # dotfile management
 alias dot="chezmoi"
 alias configzsh="$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc"
+
+# Clipboard management
+alias pbcopy="${CLI_CLIP_COPY}"
+alias pbpaste="${CLI_CLIP_PASTE}"

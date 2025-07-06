@@ -1,9 +1,18 @@
-{{- if eq .chezmoi.os "darwin" }}
 # XDG directories
 export XDG_CONFIG_HOME="$HOME/.config"
-{{ end -}}
+export XDG_CACHE_HOME="$HOME/.cache"
 
 # Set custom configuration files / folders
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 export EDITOR=nvim
+
+# CLI clipboard management
+{{- if eq .chezmoi.os "darwin" }}
+export CLI_CLIP_COPY=pbcopy
+export CLI_CLIP_PASTE=pbpaste
+{{ end -}}
+{{- if eq .chezmoi.os "linux" }}
+export CLI_CLIP_COPY=wl-copy
+export CLI_CLIP_PASTE=wl-paste
+{{ end -}}
