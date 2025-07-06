@@ -1,3 +1,7 @@
-ZDOTDIR=~/.config/zsh
-EDITOR=nvim
+# XDG directories
+export XDG_CONFIG_HOME="$HOME/.config"
 
+# Set custom configuration files / folders
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+export EDITOR=nvim
