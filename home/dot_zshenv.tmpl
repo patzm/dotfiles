@@ -1,5 +1,7 @@
+{{- if eq .chezmoi.os "darwin" }}
 # XDG directories
 export XDG_CONFIG_HOME="$HOME/.config"
+{{ end -}}
 
 # Set custom configuration files / folders
 export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
