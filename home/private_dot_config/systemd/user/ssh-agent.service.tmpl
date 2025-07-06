@@ -1,3 +1,4 @@
+{{- if eq .chezmoi.os "linux" }}
 [Unit]
 Description=SSH key agent
 After=graphical-session.target
@@ -9,3 +10,4 @@ ExecStart=/usr/bin/ssh-agent -D -a $SSH_AUTH_SOCK
 
 [Install]
 WantedBy=default.target
+{{ end }}
