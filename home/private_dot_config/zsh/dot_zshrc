@@ -11,7 +11,6 @@ znap source marlonrichert/zsh-autocomplete
 # znap source zsh-users/zsh-syntax-highlighting
 znap source jocelynmallon/zshmarks
 znap source ohmyzsh/ohmyzsh plugins/git
-znap source ohmyzsh/ohmyzsh plugins/ssh-agent
 
 # Aliases
 source ${ZDOTDIR}/zshalias.sh
