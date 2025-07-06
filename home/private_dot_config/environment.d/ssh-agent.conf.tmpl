@@ -1,4 +1,5 @@
 {{- if eq .chezmoi.os "linux" }}
 SSH_AUTH_SOCK=${XDG_RUNTIME_DIR}/ssh-agent.socket
 SSH_ASKPASS=/usr/bin/ksshaskpass
+SSH_ASKPASS_REQUIRE=prefer
 {{ end }}
