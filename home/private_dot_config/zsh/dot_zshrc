@@ -6,9 +6,8 @@ znap eval starship 'starship init zsh --print-full-init'
 znap prompt
 
 # Plugins
-# znap source zsh-users/zsh-autosuggestions
 znap source marlonrichert/zsh-autocomplete
-# znap source zsh-users/zsh-syntax-highlighting
+znap source zsh-users/zsh-syntax-highlighting
 znap source jocelynmallon/zshmarks
 znap source ohmyzsh/ohmyzsh plugins/git
 
