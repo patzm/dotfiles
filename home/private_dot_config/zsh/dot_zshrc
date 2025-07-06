@@ -26,6 +26,15 @@ HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
+# vim mode configuration
+bindkey -v
+export KEYTIMEOUT=1
+
+# enable editing the current command in the default editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # PATH modificiation
 typeset -U path
 path+=(
