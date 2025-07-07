@@ -1,12 +1,16 @@
+# Git
 githubUsername: patzm
 externalGitArgs: |
+    refreshPeriod: 168h
     clone:
         args:
             - --depth
-            - "1"
+            - 1
     pull:
         args:
             - --depth
-            - "1"
+            - 1
+
+# XDG
 xdgRelDataDir: .local/share
 xdgRelConfigDir: .config
