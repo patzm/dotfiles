@@ -1,0 +1,54 @@
+# vim: set syntax=tmux:
+
+# Plugin manager & plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-yank'
+
+# Set the prefix key to be the backtick `
+unbind C-b
+set -g prefix `
+bind ` send-prefix
+
+# Mouse friendly
+set -g mouse on
+
+# Automatically set window title
+set-window-option -g automatic-rename on
+set -g set-titles on
+
+# Automatically renumber windows when one is deleted
+set-option -g renumber-windows on
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# VIM
+setw -g mode-keys vi  # enable
+set -g escape-time 0  # 0-delay
+
+# Use CTRL-Alt-vim keys without prefix key to switch panes
+bind -n C-M-h select-pane -L
+bind -n C-M-j select-pane -D 
+bind -n C-M-k select-pane -U
+bind -n C-M-l select-pane -R
+
+# Tile the current window horizontally or vertically
+bind m split-window -h
+bind n split-window -v
+
+# Reload the tmux configuration
+bind r source-file '{{ .chezmoi.homeDir }}/{{ .tmuxRelConfigPath }}/tmux.conf'
+
+# Copy mode bindings
+bind -T copy-mode-vi 'v' send -X begin-selection
+bind -T copy-mode-vi 'C-v' send -X rectangle-toggle
+bind -T copy-mode-vi 'y' send -X copy-selection-and-cancel
+
+# Enable OSC 52 for remote clipboard sync
+set -g @yank_selection 'clipboard'
+set -g @yank_selection_mouse 'clipboard'
+
+# Initialize plugin manager (keep at bottom)
+run '~/{{ .tmuxRelPluginPath }}/tpm/tpm'
+

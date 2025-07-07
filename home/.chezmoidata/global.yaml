@@ -14,3 +14,7 @@ externalGitArgs: |
 # XDG
 xdgRelDataDir: .local/share
 xdgRelConfigDir: .config
+
+# tmux
+tmuxRelConfigPath: .config/tmux
+tmuxRelPluginPath: .config/tmux/plugins

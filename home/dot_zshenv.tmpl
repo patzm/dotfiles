@@ -7,6 +7,10 @@ export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
 
 export EDITOR=nvim
 
+# tmux
+export TMUX_CONFIG_PATH="$HOME/{{ .tmuxRelConfigPath }}"
+export TMUX_PLUGIN_MANAGER_PATH="$HOME/{{ .tmuxRelPluginPath }}"
+
 # CLI clipboard management
 {{- if eq .chezmoi.os "darwin" }}
 export CLI_CLIP_COPY=pbcopy
