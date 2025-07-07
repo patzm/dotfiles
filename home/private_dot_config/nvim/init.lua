@@ -7,6 +7,21 @@ vim.loader.enable()
 vim.g.mapleader = ","
 vim.cmd([[language en_US.UTF-8]])
 require("keymaps")
+
+-- Clipboard with OSC52, require neovim 0.10+
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+  },
+}
+
+vim.opt.clipboard = 'unnamedplus'
 -- end Configuration
 
 -- start Plugins & their configuration
