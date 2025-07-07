@@ -13,6 +13,9 @@ nvim_tree.setup {
   view = {
     width = 30,
   },
+  update_focused_file = {
+    enable = true,
+  },
 }
 
 keymap.set("n", "<C-n>", require("nvim-tree.api").tree.toggle, {
