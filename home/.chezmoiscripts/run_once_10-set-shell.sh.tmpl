@@ -1,9 +1,19 @@
 #! /usr/bin/env bash
 
 # Ensure default shell is ZSH
+
 ZSH_BIN=$(which zsh)
-if [ "$(getent passwd "$USER" | cut -d: -f7)" != ${ZSH_BIN} ]; then
-    echo "Setting shell to ${ZSH_BIN}"
-    chsh -s ${ZSH_BIN}
+
+{{- if eq .chezmoi.os "darwin" }}
+# macOS
+CURRENT_SHELL=$(dscl . -read /Users/"$USER" UserShell | awk '{print $2}')
+{{- else }}
+# Linux
+CURRENT_SHELL=$(getent passwd "$USER" | cut -d: -f7)
+{{- end }}
+
+if [ "$CURRENT_SHELL" != "$ZSH_BIN" ]; then
+    echo "Setting shell to $ZSH_BIN"
+    chsh -s "$ZSH_BIN"
 fi
 
