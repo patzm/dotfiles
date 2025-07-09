@@ -1,0 +1,6 @@
+{{ if ne .chezmoi.os "linux" }}
+.config/autostart/*
+.config/environment.d/*
+.config/systemd/*
+{{ end }}
+
