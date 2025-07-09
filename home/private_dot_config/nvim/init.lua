@@ -27,12 +27,12 @@ vim.opt.clipboard = 'unnamedplus'
 -- start Plugins & their configuration
 vim.call('plug#begin')
 
-Plug ('ibhagwan/fzf-lua')
-Plug ('echasnovski/mini.icons')
-Plug ('nvim-tree/nvim-tree.lua')
-Plug ('nvim-tree/nvim-web-devicons')
-Plug ('tpope/vim-sensible')
-Plug ('tpope/vim-surround')
+vim.call('plug#', 'ibhagwan/fzf-lua')
+vim.call('plug#', 'echasnovski/mini.icons')
+vim.call('plug#', 'nvim-tree/nvim-tree.lua')
+vim.call('plug#', 'nvim-tree/nvim-web-devicons')
+vim.call('plug#', 'tpope/vim-sensible')
+vim.call('plug#', 'tpope/vim-surround')
 
 vim.call('plug#end')
 
