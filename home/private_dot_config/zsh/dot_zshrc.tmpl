@@ -41,6 +41,35 @@ path+=(
 	"${HOME}/.local/bin"
 )
 
+{{ if eq .chezmoi.os "darwin" -}}
+# start - macOS specific
+
+# Disable compfix checking for multi-user setup
+ZSH_DISABLE_COMPFIX=true
+
+# Add the correct HomeBrew folder to the PATH
+if [ "$(sysctl -in sysctl.proc_translated)" = "0" ]; then
+    path+=("/opt/homebrew/bin:/opt/homebrew/sbin")
+else
+    path+=("/usr/local/bin:/usr/local/sbin")
+fi
+
+# Add all local HomeBrew install folders of Python to the PATH
+for python_dir in $(brew --prefix)/opt/python@*; do
+    path+=("${python_dir}/bin")
+done
+
+# Add custom plugins
+znap source ohmyzsh/ohmyzsh plugins/brew
+
+alias brew-update='brew update && brew upgrade && brew cleanup'
+
+# Launch commands
+alias only-office='open -na "OnlyOffice"'
+
+# end - macOS specific
+{{- end }}
+
 source ${ZDOTDIR}/zshinstance.sh
 
 export PATH
