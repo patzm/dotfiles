@@ -7,6 +7,19 @@ vim.loader.enable()
 vim.g.mapleader = ","
 vim.cmd([[language en_US.UTF-8]])
 vim.filetype.add({})
+vim.opt.wrap = false
+vim.opt.cursorline = true
+vim.opt.list = true      -- show invisible characters
+vim.opt.undofile = true  -- persist change history
+
+-- line numbering
+vim.opt.number = true
+vim.opt.relativenumber = true
+
+-- search behavior
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 require("tabs")
 require("keymaps")
 
