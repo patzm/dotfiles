@@ -1,6 +1,10 @@
 # Load Znap
 source ~/.zsh/znap/znap.zsh
 
+# vim mode configuration
+bindkey -v
+export KEYTIMEOUT=1
+
 # Plugins
 znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-syntax-highlighting
@@ -13,15 +17,16 @@ source ${ZDOTDIR}/zshalias.sh
 # Functions
 source ${ZDOTDIR}/zshfunctions.sh
 
-# ZSH configuration
+# command history configuration
 HISTFILE=${XDG_CACHE_HOME}/zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 setopt appendhistory
 
-# vim mode configuration
-bindkey -v
-export KEYTIMEOUT=1
+# Configure zsh-autocomplete behavior
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+bindkey '^I' menu-select
+bindkey "$terminfo[kcbt]" menu-select
 
 # enable editing the current command in the default editor
 autoload -z edit-command-line
