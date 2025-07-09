@@ -1,0 +1,53 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#! /usr/bin/env bash
+
+echo "Installing macOS packages"
+packages=(
+    bat
+    bottom
+    cmake
+    eza
+    exiftool
+    exiv2
+    fd
+    ffmpeg
+    fzf
+    imagemagick
+    jq
+    just
+    neovim
+    pre-commit
+    python
+    starship
+    tmux
+    zsh
+)
+cask_packages=(
+    alacritty
+    angry-ip-scanner
+    balenaetcher
+    bartender
+    beyond-compare
+    docker
+    gimp
+    gitkraken
+    inkscape
+    mark-text
+    mattermost
+    meld
+    modern-csv
+    onlyoffice
+    plexamp
+    raspberry-pi-imager
+    slack
+    sublime-text
+    tad
+    tor-browser
+    visual-studio-code
+    vlc
+)
+
+brew install --quiet "${packages[@]}"
+brew install --quiet --cask "${cask_packages[@]}"
+
+{{ end -}}
