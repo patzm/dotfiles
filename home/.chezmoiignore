@@ -3,4 +3,7 @@
 .config/environment.d/*
 .config/systemd/*
 {{ end }}
+{{ if ne .chezmoi.os "darwin" }}
+Library/*
+{{end}}
 
