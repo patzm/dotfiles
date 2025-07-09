@@ -49,9 +49,9 @@ ZSH_DISABLE_COMPFIX=true
 
 # Add the correct HomeBrew folder to the PATH
 if [ "$(sysctl -in sysctl.proc_translated)" = "0" ]; then
-    path+=("/opt/homebrew/bin:/opt/homebrew/sbin")
+    path+=("/opt/homebrew/bin" "/opt/homebrew/sbin")
 else
-    path+=("/usr/local/bin:/usr/local/sbin")
+    path+=("/usr/local/bin" "/usr/local/sbin")
 fi
 
 # Add all local HomeBrew install folders of Python to the PATH
