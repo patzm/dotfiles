@@ -18,3 +18,7 @@ xdgRelConfigDir: .config
 # tmux
 tmuxRelConfigPath: .config/tmux
 tmuxRelPluginPath: .config/tmux/plugins
+
+# Theme
+catppuccinTheme: mocha
+

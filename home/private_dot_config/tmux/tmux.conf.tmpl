@@ -3,6 +3,7 @@
 # Plugin manager & plugins
 set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'catppuccin/tmux'
 
 # Set the prefix key to be the backtick `
 unbind C-b
@@ -48,6 +49,9 @@ bind -T copy-mode-vi 'y' send -X copy-selection-and-cancel
 # Enable OSC 52 for remote clipboard sync
 set -g @yank_selection 'clipboard'
 set -g @yank_selection_mouse 'clipboard'
+
+# Theme
+set -g @catppuccin_flavour 'mocha'
 
 # Initialize plugin manager (keep at bottom)
 run '~/{{ .tmuxRelPluginPath }}/tpm/tpm'

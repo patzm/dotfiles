@@ -27,6 +27,7 @@ vim.opt.clipboard = 'unnamedplus'
 -- start Plugins & their configuration
 vim.call('plug#begin')
 
+vim.call('plug#', 'catppuccin/nvim', { as = 'catppuccin' })
 vim.call('plug#', 'ibhagwan/fzf-lua')
 vim.call('plug#', 'echasnovski/mini.icons')
 vim.call('plug#', 'nvim-tree/nvim-tree.lua')
@@ -36,6 +37,7 @@ vim.call('plug#', 'tpope/vim-surround')
 
 vim.call('plug#end')
 
+require("theme")
 require("fzf")
 require("tree")
 -- end Plugins
