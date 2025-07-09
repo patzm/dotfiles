@@ -1,7 +1,0 @@
-# Documentation:
-# https://docs.bpython-interpreter.org/configuration.html
-
-[general]
-editor = nvim
-
-# vim: set filetype=dosini : 

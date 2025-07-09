@@ -1,0 +1,28 @@
+# XDG directories
+export XDG_CONFIG_HOME="$HOME/{{ .xdgRelConfigDir }}"
+export XDG_CACHE_HOME="$HOME/.cache"
+
+# Set custom configuration files / folders
+export ZDOTDIR="${XDG_CONFIG_HOME}/zsh"
+
+export EDITOR=nvim
+
+# tmux
+export TMUX_CONFIG_PATH="$HOME/{{ .tmuxRelConfigPath }}"
+export TMUX_PLUGIN_MANAGER_PATH="$HOME/{{ .tmuxRelPluginPath }}"
+
+# python autoswitch
+export AUTOSWITCH_DEFAULT_REQUIREMENTS="$HOME/{{ .xdgRelConfigDir }}/python-autoswitch/requirements.txt"
+export AUTOSWITCH_VIRTUAL_ENV_DIR=".venv"
+
+# CLI clipboard management
+{{- if eq .chezmoi.os "darwin" }}
+export CLI_CLIP_COPY=pbcopy
+export CLI_CLIP_PASTE=pbpaste
+{{ end -}}
+{{- if eq .chezmoi.os "linux" }}
+export CLI_CLIP_COPY=wl-copy
+export CLI_CLIP_PASTE=wl-paste
+{{ end -}}
+
+# vim: set filetype=zsh : 
