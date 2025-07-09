@@ -6,6 +6,7 @@ vim.loader.enable()
 -- start Configuration
 vim.g.mapleader = ","
 vim.cmd([[language en_US.UTF-8]])
+vim.filetype.add({})
 require("keymaps")
 
 -- Clipboard with OSC52, require neovim 0.10+
