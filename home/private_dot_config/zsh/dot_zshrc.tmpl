@@ -1,10 +1,6 @@
 # Load Znap
 source ~/.zsh/znap/znap.zsh
 
-# Accelerate start time
-znap eval starship 'starship init zsh --print-full-init'
-znap prompt
-
 # Plugins
 znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-syntax-highlighting
@@ -16,9 +12,6 @@ source ${ZDOTDIR}/zshalias.sh
 
 # Functions
 source ${ZDOTDIR}/zshfunctions.sh
-
-# fzf configuration
-source ${ZDOTDIR}/fzfrc.sh
 
 # ZSH configuration
 HISTFILE=${XDG_CACHE_HOME}/zsh_history
@@ -70,7 +63,15 @@ alias only-office='open -na "OnlyOffice"'
 # end - macOS specific
 {{- end }}
 
+# Load the instance-specific configuration
 source ${ZDOTDIR}/zshinstance.sh
+
+# Load the fzf configuration
+source ${ZDOTDIR}/fzfrc.sh
+
+# Accelerate start time
+znap eval starship 'starship init zsh --print-full-init'
+znap prompt
 
 export PATH
 # vim: set filetype=zsh : 
