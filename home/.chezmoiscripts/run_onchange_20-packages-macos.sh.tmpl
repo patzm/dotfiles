@@ -1,7 +1,9 @@
 {{ if eq .chezmoi.os "darwin" -}}
 #! /usr/bin/env bash
 
-echo "Installing macOS packages"
+fonts=(
+    font-meslo-lg-nerd-font
+)
 packages=(
     bat
     bottom
@@ -45,7 +47,11 @@ cask_packages=(
     vlc
 )
 
+echo "Installing macOS fonts"
+brew install --quiet "${fonts[@]}"
+echo "Installing macOS packages"
 brew install --quiet "${packages[@]}"
+echo "Installing macOS cask packages"
 brew install --quiet --cask "${cask_packages[@]}"
 
 # vim: set filetype=zsh : 
