@@ -1,0 +1,69 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  // AI config
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434",
+      "available_models": [
+        {
+          "name": "qwen2.5-coder",
+          "display_name": "qwen2.5-coder-16K",
+          "max_tokens": 16384,
+          "supports_tools": true,
+          "supports_images": true
+        }
+      ]
+    }
+  },
+  "agent": {
+    "default_profile": "write",
+    "inline_assistant_model": {
+      "provider": "ollama",
+      "model": "qwen2.5-coder"
+    },
+    "always_allow_tool_actions": false,
+    "play_sound_when_agent_done": true,
+    "model_parameters": [],
+    "default_model": {
+      "provider": "openai",
+      "model": "gpt-4o"
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  // Language specific settings
+  "language_servers": ["!pylsp", "pyright"],
+  // shortcuts and editing
+  "base_keymap": "JetBrains",
+  "vim_mode": true,
+  "autosave": "on_focus_change",
+  "file_scan_exclusions": ["**/build"],
+  // UI
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "theme": {
+    "mode": "system",
+    "light": "One Dark",
+    "dark": "One Dark"
+  },
+  // Extensions
+  "auto_install_extensions": {
+    "rainbow-csv": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "git-firefly": true,
+    "html": true,
+    "just": true,
+    "just-ls": true,
+    "log": true,
+    "toml": true
+  }
+}
