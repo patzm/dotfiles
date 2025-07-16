@@ -54,6 +54,9 @@
     "light": "One Dark",
     "dark": "One Dark"
   },
+  "project_panel": {
+    "hide_gitignore": true
+  },
   // Extensions
   "auto_install_extensions": {
     "rainbow-csv": true,
