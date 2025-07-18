@@ -59,11 +59,6 @@ else
     path=("/usr/local/bin" "/usr/local/sbin" $path)
 fi
 
-# Add all local HomeBrew install folders of Python to the PATH
-for python_dir in $(brew --prefix)/opt/python@*; do
-    path+=("${python_dir}/bin")
-done
-
 # Add custom plugins
 znap source ohmyzsh/ohmyzsh plugins/brew
 
