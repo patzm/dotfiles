@@ -83,6 +83,10 @@ source ${ZDOTDIR}/fzfrc.sh
 
 # Python autoswitch
 znap source MichaelAquilina/zsh-autoswitch-virtualenv
+export AUTOSWITCH_DEFAULT_REQUIREMENTS="$HOME/{{ .xdgRelConfigDir }}/python-autoswitch/requirements.txt"
+export AUTOSWITCH_VIRTUAL_ENV_DIR=".venv"
+export AUTOSWITCH_DEFAULT_PYTHON="python3"
+export AUTOSWITCH_FILE=".autoswitch"
 
 # Accelerate start time
 znap eval starship 'starship init zsh --print-full-init'

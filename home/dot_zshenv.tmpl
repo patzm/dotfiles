@@ -13,10 +13,6 @@ export VISUAL="nvim"
 export TMUX_CONFIG_PATH="$HOME/{{ .tmuxRelConfigPath }}"
 export TMUX_PLUGIN_MANAGER_PATH="$HOME/{{ .tmuxRelPluginPath }}"
 
-# python autoswitch
-export AUTOSWITCH_DEFAULT_REQUIREMENTS="$HOME/{{ .xdgRelConfigDir }}/python-autoswitch/requirements.txt"
-export AUTOSWITCH_VIRTUAL_ENV_DIR=".venv"
-
 # CLI clipboard management
 {{- if eq .chezmoi.os "darwin" }}
 export CLI_CLIP_COPY=pbcopy
