@@ -19,10 +19,14 @@ packages=(
     just
     neovim
     pre-commit
-    python
     starship
     tmux
     zsh
+)
+python_packages=(
+    virtualenv
+    python
+    python@3.10
 )
 cask_packages=(
     alacritty
@@ -47,11 +51,18 @@ cask_packages=(
     vlc
 )
 
-echo "Installing macOS fonts"
+printf "\nInstalling macOS fonts\n"
 brew install --quiet "${fonts[@]}"
-echo "Installing macOS packages"
+
+printf "\nInstalling Python packages\n"
+brew install --quiet "${python_packages[@]}"
+ln -sf "$(brew --prefix)/bin/python3" "$(brew --prefix)/bin/python"
+ln -sf "$(brew --prefix)/bin/pip3" "$(brew --prefix)/bin/pip"
+
+printf "\nInstalling macOS packages\n"
 brew install --quiet "${packages[@]}"
-echo "Installing macOS cask packages"
+
+printf "\nInstalling macOS cask packages\n"
 brew install --quiet --cask "${cask_packages[@]}"
 
 # vim: set filetype=zsh : 
