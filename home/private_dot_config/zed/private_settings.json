@@ -62,7 +62,9 @@
     "hide_gitignore": true
   },
   // Debugger
-  "show_value_hints": false,
+  "inlay_hints": {
+    "show_value_hints": false
+  },
   // Extensions
   "auto_install_extensions": {
     "rainbow-csv": true,
