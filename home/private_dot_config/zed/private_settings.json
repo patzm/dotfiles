@@ -25,15 +25,15 @@
   "agent": {
     "default_profile": "write",
     "inline_assistant_model": {
-      "provider": "ollama",
-      "model": "qwen2.5-coder"
+      "provider": "openai",
+      "model": "gpt-4o-mini"
     },
     "always_allow_tool_actions": false,
     "play_sound_when_agent_done": true,
     "model_parameters": [],
     "default_model": {
       "provider": "openai",
-      "model": "o3-mini"
+      "model": "o4-mini"
     }
   },
   "edit_predictions": {
