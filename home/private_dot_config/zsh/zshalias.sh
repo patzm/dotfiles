@@ -16,3 +16,7 @@ alias configzsh="$EDITOR $XDG_CONFIG_HOME/zsh/.zshrc"
 # Clipboard management
 alias pbcopy="${CLI_CLIP_COPY}"
 alias pbpaste="${CLI_CLIP_PASTE}"
+
+# git
+alias gcnv="git commit --no-verify"
+
