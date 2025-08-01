@@ -1,6 +1,0 @@
----
-- name: install light from AUR
-  become: yes
-  package:
-    name: light
-    state: latest

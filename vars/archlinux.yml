@@ -1,4 +1,0 @@
----
-user_group: "{{ ansible_env.USER }}"
-pip3_bin: /usr/bin/pip3
-synaptics_input_package: xf86-input-synaptics
