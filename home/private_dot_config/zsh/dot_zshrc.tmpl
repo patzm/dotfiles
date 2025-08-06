@@ -77,15 +77,15 @@ source ${ZDOTDIR}/zshinstance.sh
 # Load the fzf configuration
 source ${ZDOTDIR}/fzfrc.sh
 
-# Python virtualenvwrapper
-znap source ohmyzsh/ohmyzsh plugins/virtualenvwrapper
-
 # Python autoswitch
 znap source MichaelAquilina/zsh-autoswitch-virtualenv
 export AUTOSWITCH_DEFAULT_REQUIREMENTS="$HOME/{{ .xdgRelConfigDir }}/python-venv/requirements.txt"
 export AUTOSWITCH_VIRTUAL_ENV_DIR={{ .autoswitchEnvDir | quote }}
 export AUTOSWITCH_DEFAULT_PYTHON="python3"
 export AUTOSWITCH_FILE={{ .autoswitchFileName | quote }}
+
+# Python virtualenvwrapper
+znap source ohmyzsh/ohmyzsh plugins/virtualenvwrapper
 
 # Accelerate start time
 znap eval starship 'starship init zsh --print-full-init'
