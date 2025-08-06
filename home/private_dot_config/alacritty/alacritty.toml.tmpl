@@ -6,7 +6,7 @@ general.import = [
 size = 12
 
 [font.normal]
-family = "MesloLGMDZ Nerd Font Mono"
+family = {{ .fontFamily | quote }}
 
 [[hints.enabled]]
 regex = "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
