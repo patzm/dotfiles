@@ -1,3 +1,0 @@
----
-zsh_config_dir: '{{ user_config_dir }}/zsh'
-omz_installation_dir: '{{ user_home_dir }}/.oh-my-zsh'

@@ -1,3 +1,0 @@
----
-firefox_config_dir: '{{ user_home_dir }}/.mozilla/firefox'
-firefox_profiles_dir: '{{ firefox_config_dir }}'
