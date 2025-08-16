@@ -1,9 +1,0 @@
-#! /usr/bin/env bash
-
-pip install uv
-uv pip install \
-	black  \
-	ipython \
-	isort \
-	pyreadline \
-	ruff

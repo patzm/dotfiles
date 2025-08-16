@@ -1,0 +1,70 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#! /usr/bin/env bash
+
+fonts=(
+    font-meslo-lg-nerd-font
+)
+packages=(
+    bat
+    bottom
+    cmake
+    eza
+    exiftool
+    exiv2
+    fd
+    ffmpeg
+    fzf
+    imagemagick
+    jq
+    just
+    neovim
+    pre-commit
+    starship
+    tmux
+    zsh
+)
+python_packages=(
+    virtualenv
+    virtualenvwrapper
+    python
+    python@3.10
+)
+cask_packages=(
+    alacritty
+    angry-ip-scanner
+    balenaetcher
+    beyond-compare
+    gimp
+    gitkraken
+    inkscape
+    mark-text
+    mattermost
+    meld
+    modern-csv
+    onlyoffice
+    plexamp
+    raspberry-pi-imager
+    slack
+    sublime-text
+    tad
+    tor-browser
+    visual-studio-code
+    vlc
+)
+
+printf "\nInstalling macOS fonts\n"
+brew install --quiet "${fonts[@]}"
+
+printf "\nInstalling Python packages\n"
+brew install --quiet "${python_packages[@]}"
+ln -sf "$(brew --prefix)/bin/python3" "$(brew --prefix)/bin/python"
+ln -sf "$(brew --prefix)/bin/pip3" "$(brew --prefix)/bin/pip"
+
+printf "\nInstalling macOS packages\n"
+brew install --quiet "${packages[@]}"
+
+printf "\nInstalling macOS cask packages\n"
+brew install --quiet --cask "${cask_packages[@]}"
+
+# vim: set filetype=zsh : 
+{{ end -}}

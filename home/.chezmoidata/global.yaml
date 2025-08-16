@@ -1,0 +1,25 @@
+# Git
+githubUsername: patzm
+externalGitArgs: |
+    refreshPeriod: 168h
+    clone:
+        args:
+            - --depth
+            - 1
+    pull:
+        args:
+            - --depth
+            - 1
+
+# XDG
+xdgRelDataDir: .local/share
+xdgRelConfigDir: .config
+
+# tmux
+tmuxRelConfigPath: .config/tmux
+tmuxRelPluginPath: .config/tmux/plugins
+
+# Theme
+catppuccinTheme: mocha
+fontFamily: "MesloLGMDZ Nerd Font Mono"
+

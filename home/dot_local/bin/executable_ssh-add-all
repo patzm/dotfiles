@@ -1,0 +1,12 @@
+#! /usr/bin/env bash
+
+# Extract all IdentityFile paths from SSH config and add them
+grep -h "^[[:space:]]*IdentityFile" ~/.ssh/config 2>/dev/null | \
+    sed 's/^[[:space:]]*IdentityFile[[:space:]]*//' | \
+    sed "s|^~|$HOME|" | \
+    while read -r keyfile; do
+        if [[ -f "$keyfile" && "$keyfile" != *".pub" ]]; then
+            echo "Adding key: $keyfile"
+            ssh-add "$keyfile"
+        fi
+    done

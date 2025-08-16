@@ -1,0 +1,85 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "auto_update": true,
+  // AI config
+  "language_models": {
+    "ollama": {
+      "api_url": "http://localhost:11434",
+      "available_models": [
+        {
+          "name": "qwen2.5-coder",
+          "display_name": "qwen2.5-coder-16K",
+          "max_tokens": 16384,
+          "supports_tools": true,
+          "supports_images": true
+        }
+      ]
+    }
+  },
+  "agent": {
+    "default_profile": "write",
+    "inline_assistant_model": {
+      "provider": "anthropic",
+      "model": "claude-3-7-sonnet"
+    },
+    "always_allow_tool_actions": true,
+    "play_sound_when_agent_done": true,
+    "model_parameters": [],
+    "default_model": {
+      "provider": "anthropic",
+      "model": "claude-sonnet-4-latest"
+    }
+  },
+  "edit_predictions": {
+    "mode": "subtle"
+  },
+  // Language specific settings
+  "language_servers": ["!pylsp", "pyright"],
+  // shortcuts and editing
+  "base_keymap": "JetBrains",
+  "autosave": "on_focus_change",
+  "file_scan_exclusions": ["**/build"],
+  // VIM settings
+  "vim_mode": true,
+  "vim": {
+    "toggle_relative_line_numbers": true
+  },
+  // Editing settings
+  "extend_comment_on_newline": false,
+  // UI
+  "ui_font_size": 16,
+  "buffer_font_size": 14,
+  "buffer_font_family": "MesloLGMDZ Nerd Font Mono",
+  "theme": {
+    "mode": "system",
+    "light": "One Dark",
+    "dark": "One Dark"
+  },
+  "project_panel": {
+    "hide_gitignore": true
+  },
+  // Debugger
+  "inlay_hints": {
+    "show_value_hints": false
+  },
+  // Extensions
+  "auto_install_extensions": {
+    "rainbow-csv": true,
+    "docker-compose": true,
+    "dockerfile": true,
+    "git-firefly": true,
+    "html": true,
+    "just": true,
+    "just-ls": true,
+    "log": true,
+    "toml": true
+  }
+}
+// vim: set filetype=jsonc :

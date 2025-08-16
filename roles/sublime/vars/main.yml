@@ -1,2 +1,0 @@
----
-st_config_dir: '{{ user_config_dir }}/sublime-text/Packages/User'

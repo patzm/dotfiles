@@ -1,0 +1,96 @@
+# Load Znap
+source ~/.zsh/znap/znap.zsh
+
+# vim mode configuration
+bindkey -v
+export KEYTIMEOUT=1
+
+# Plugins
+znap source marlonrichert/zsh-autocomplete
+znap source zsh-users/zsh-syntax-highlighting
+znap source jocelynmallon/zshmarks
+znap source ohmyzsh/ohmyzsh plugins/git
+
+# ZSH marks
+fpath+=( ~[jocelynmallon/zshmarks] )
+export BOOKMARKS_FILE="${ZDOTDIR}/bookmarks"
+
+# Aliases
+source ${ZDOTDIR}/zshalias.sh
+
+# Functions
+source ${ZDOTDIR}/zshfunctions.sh
+
+# command history configuration
+HISTFILE=${XDG_CACHE_HOME}/zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+setopt appendhistory
+setopt sharehistory                 # share between sessions in real time
+setopt incappendhistory             # add to history on execution
+setopt hist_find_no_dups            # ignore duplicates when searching
+bindkey '^[[A' fzf-history-widget   # bind arrow-up to the fzf history search
+
+# Configure zsh-autocomplete behavior
+zstyle ':autocomplete:*complete*:*' insert-unambiguous yes
+bindkey '^I' menu-select
+bindkey "$terminfo[kcbt]" menu-select
+
+# enable editing the current command in the default editor
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
+# PATH modificiation
+typeset -U path
+path+=(
+	"${HOME}/.local/bin"
+)
+
+{{ if eq .chezmoi.os "darwin" -}}
+# start - macOS specific
+
+# Disable compfix checking for multi-user setup
+ZSH_DISABLE_COMPFIX=true
+
+# Add the correct HomeBrew folder to the PATH
+if [ "$(sysctl -in sysctl.proc_translated)" = "0" ]; then
+    path=("/opt/homebrew/bin" "/opt/homebrew/sbin" $path)
+else
+    path=("/usr/local/bin" "/usr/local/sbin" $path)
+fi
+
+# Add custom plugins
+znap source ohmyzsh/ohmyzsh plugins/brew
+
+alias brew-update='brew update && brew upgrade && brew cleanup'
+
+# Launch commands
+alias only-office='open -na "OnlyOffice"'
+
+# end - macOS specific
+{{- end }}
+
+# Load the instance-specific configuration
+source ${ZDOTDIR}/zshinstance.sh
+
+# Load the fzf configuration
+source ${ZDOTDIR}/fzfrc.sh
+
+# Python autoswitch
+export AUTOSWITCH_DEFAULT_PYTHON="python3"
+export AUTOSWITCH_DEFAULT_REQUIREMENTS="$HOME/{{ .xdgRelConfigDir }}/python-venv/requirements.txt"
+export AUTOSWITCH_VIRTUAL_ENV_DIR="$HOME/{{ .autoswitchEnvDir | quote }}"
+znap source MichaelAquilina/zsh-autoswitch-virtualenv
+export AUTOSWITCH_FILE={{ .autoswitchFileName | quote }}
+
+# Python virtualenvwrapper
+export WORKON_HOME={{ .autoswitchEnvDir | quote }}
+znap source ohmyzsh/ohmyzsh plugins/virtualenvwrapper
+
+# Accelerate start time
+znap eval starship 'starship init zsh --print-full-init'
+znap prompt
+
+export PATH
+# vim: set filetype=zsh : 
