@@ -2,10 +2,10 @@
 
 ## Setup
 
-1. Install `chezmoi`
+1. Install [`chezmoi`](https://www.chezmoi.io/install/)
 2. Run
    ```bash
-   chezmoi init --ssh --branch dev/chezmoi patzm
+   chezmoi init --ssh patzm
    ```
    Omit the `--ssh` if you just want to deploy a configuration.
 
