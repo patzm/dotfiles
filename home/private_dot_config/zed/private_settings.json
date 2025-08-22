@@ -7,6 +7,9 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
   "auto_update": true,
   // AI config
   "language_models": {
@@ -29,7 +32,7 @@
       "provider": "anthropic",
       "model": "claude-3-7-sonnet"
     },
-    "always_allow_tool_actions": true,
+    "always_allow_tool_actions": false,
     "play_sound_when_agent_done": true,
     "model_parameters": [],
     "default_model": {
@@ -38,6 +41,7 @@
     }
   },
   "edit_predictions": {
+    "disabled_globs": [],
     "mode": "subtle"
   },
   // Language specific settings
