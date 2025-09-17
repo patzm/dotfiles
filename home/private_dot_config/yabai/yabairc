@@ -58,6 +58,7 @@ yabai -m rule --add app="^Finder$" title="Copy" manage=off
 yabai -m rule --add app="^iStat Menus$" manage=off
 yabai -m rule --add app="^Kap$" manage=off
 yabai -m rule --add app="^nextcloud$" manage=off
+yabai -m rule --add app="^PyCharm$" title="Run\/Debug Configurations" manage=off
 yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Zed$" title="Save|Open" manage=off
 yabai -m rule --add app="iStat Menus.*" manage=off mouse_follows_focus=off
