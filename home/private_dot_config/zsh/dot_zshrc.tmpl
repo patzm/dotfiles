@@ -77,13 +77,6 @@ source ${ZDOTDIR}/zshinstance.sh
 # Load the fzf configuration
 source ${ZDOTDIR}/fzfrc.sh
 
-# Python autoswitch
-export AUTOSWITCH_DEFAULT_PYTHON="python3"
-export AUTOSWITCH_DEFAULT_REQUIREMENTS="$HOME/{{ .xdgRelConfigDir }}/python-venv/requirements.txt"
-export AUTOSWITCH_VIRTUAL_ENV_DIR="$HOME/{{ .autoswitchEnvDir | quote }}"
-znap source MichaelAquilina/zsh-autoswitch-virtualenv
-export AUTOSWITCH_FILE={{ .autoswitchFileName | quote }}
-
 # Python virtualenvwrapper
 export WORKON_HOME={{ .autoswitchEnvDir | quote }}
 znap source ohmyzsh/ohmyzsh plugins/virtualenvwrapper
