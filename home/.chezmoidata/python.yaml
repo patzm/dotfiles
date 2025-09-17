@@ -1,4 +1,6 @@
 # virtual env
-autoswitchFileName: .autoswitch
-autoswitchEnvDir: .venvs
+venvDir: .venv
+venvConfigRequirements: "python-venv/requirements.txt"
+
+# vim: set filetype=yaml : 
 

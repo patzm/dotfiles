@@ -1,11 +1,11 @@
 # Generic media
 
-function media-show-date() {
+function media-show-date () {
   : 'media-show-date: shows the dates that are stored in the file name.'
   exiftool -T -FileName -DateTimeOriginal "$@"
 }
 
-function media-meta-update() {
+function media-meta-update () {
   : 'media-meta-update: updates the metadata of an media (images or videos) base on the file name.
   
   matches for instance
@@ -38,7 +38,7 @@ function img-rename () {
   exiv2 -Fr '%Y-%m-%d_%H%M%S' "$@"
 }
 
-rename_to_jpg() {
+function rename-to-jpg () {
   for file in "$@"; do
     if [[ "$file" == *.jpeg || "$file" == *.JPEG ]]; then
       mv "$file" "${file%.*}.jpg"
@@ -67,4 +67,13 @@ function vid-shift-tz () {
   done
 }
 
+# Python
+function pydirenv () {
+    cat > .envrc <<'EOF'
+layout python3
+pip install -r "${HOME}/{{ .xdgRelConfigDir }}/{{ .venvConfigRequirements }}"
+EOF
+    direnv allow
+}
 
+# vim: set filetype=zsh : 

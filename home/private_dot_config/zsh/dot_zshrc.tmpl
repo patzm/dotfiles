@@ -9,6 +9,7 @@ export KEYTIMEOUT=1
 znap source jocelynmallon/zshmarks
 znap source marlonrichert/zsh-autocomplete
 znap source ohmyzsh/ohmyzsh plugins/git
+znap source ptavares/zsh-direnv
 znap source zsh-users/zsh-syntax-highlighting
 
 # ZSH marks
@@ -78,8 +79,11 @@ source ${ZDOTDIR}/zshinstance.sh
 source ${ZDOTDIR}/fzfrc.sh
 
 # Python virtualenvwrapper
-export WORKON_HOME={{ .autoswitchEnvDir | quote }}
+export WORKON_HOME={{ .venvDir | quote }}
 znap source ohmyzsh/ohmyzsh plugins/virtualenvwrapper
+
+# Virtual directory-based environments with direnv
+eval "$(direnv hook zsh)"
 
 # Accelerate start time
 znap eval starship 'starship init zsh --print-full-init'
