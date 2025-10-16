@@ -21,5 +21,5 @@ tmuxRelPluginPath: .config/tmux/plugins
 
 # Theme
 catppuccinTheme: mocha
-fontFamily: "MesloLGMDZ Nerd Font Mono"
-
+fontFamilyMacOS: "MesloLGMDZ Nerd Font Mono"
+fontFamilyLinux: "MesloLGS NF"
