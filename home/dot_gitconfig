@@ -16,4 +16,10 @@
 	prune = True
 
 [core]
+    pager = delta
 	excludesfile = ~/.gitignore
+
+[delta]
+    navigate = true
+
+
