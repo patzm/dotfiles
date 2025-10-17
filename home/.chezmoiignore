@@ -4,6 +4,8 @@
 .config/systemd/*
 {{ end }}
 {{ if ne .chezmoi.os "darwin" }}
+.config/yabai/*
+.config/skhd/*
 Library/*
 {{end}}
 
