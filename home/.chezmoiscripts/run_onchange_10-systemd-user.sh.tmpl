@@ -1,6 +1,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 #! /usr/bin/env bash
 
+# Read https://wiki.archlinux.org/title/GNOME/Keyring
 systemctl --user enable --now gcr-ssh-agent.socket
 
 # vim: set filetype=zsh :
