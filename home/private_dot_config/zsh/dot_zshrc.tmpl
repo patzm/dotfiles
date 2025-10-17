@@ -86,7 +86,7 @@ znap source ohmyzsh/ohmyzsh plugins/virtualenvwrapper
 eval "$(direnv hook zsh)"
 
 # Accelerate start time
-znap eval starship 'starship init zsh --print-full-init'
+eval "$(starship init zsh)"
 znap prompt
 
 export PATH
