@@ -1,7 +1,9 @@
 {{ if ne .chezmoi.os "linux" }}
 .config/autostart
 .config/environment.d
+.config/hypr
 .config/systemd
+.config/yay
 {{ end }}
 {{ if ne .chezmoi.os "darwin" }}
 .config/yabai
