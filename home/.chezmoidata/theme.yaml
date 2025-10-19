@@ -1,0 +1,6 @@
+# Theme
+catppuccinTheme: mocha
+fontFamilyMacOS: "MesloLGMDZ Nerd Font Mono"
+fontFamilyLinux: "MesloLGS NF"
+
+# vim: set filetype=yaml :

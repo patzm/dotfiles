@@ -19,7 +19,3 @@ xdgRelConfigDir: .config
 tmuxRelConfigPath: .config/tmux
 tmuxRelPluginPath: .config/tmux/plugins
 
-# Theme
-catppuccinTheme: mocha
-fontFamilyMacOS: "MesloLGMDZ Nerd Font Mono"
-fontFamilyLinux: "MesloLGS NF"
