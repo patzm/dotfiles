@@ -2,5 +2,5 @@
 venvDir: .venv
 venvConfigRequirements: "python-venv/requirements.txt"
 
-# vim: set filetype=yaml : 
+# vim: set filetype=yaml :
 
