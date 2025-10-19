@@ -27,18 +27,12 @@
     }
   },
   "agent": {
-    "default_profile": "write",
-    "inline_assistant_model": {
-      "provider": "anthropic",
-      "model": "claude-3-7-sonnet"
-    },
-    "always_allow_tool_actions": false,
-    "play_sound_when_agent_done": true,
-    "model_parameters": [],
     "default_model": {
       "provider": "anthropic",
-      "model": "claude-sonnet-4-latest"
-    }
+      "model": "claude-sonnet-4-5-latest"
+    },
+    "default_profile": "write",
+    "model_parameters": []
   },
   "edit_predictions": {
     "disabled_globs": [],
@@ -47,15 +41,11 @@
   // Language specific settings
   "languages": {
     "Python": {
-      "language_servers": ["!pylsp", "pyright", "ruff"],
+      "language_servers": ["!basedpyright", "pyright", "ruff"],
       "format_on_save": "on",
       "formatter": [
-        {
-          "code_actions": {
-            "source.fixAll.ruff": true,
-            "source.organizeImports.ruff": true
-          }
-        },
+        { "code_action": "source.fixAll.ruff" },
+        { "code_action": "source.organizeImports.ruff" },
         {
           "language_server": { "name": "ruff" }
         }
@@ -63,6 +53,18 @@
     }
   },
   "lsp": {
+    "basedpyright": {
+      "settings": {
+        "basedpyright.analysis": {
+          "diagnosticMode": "workspace",
+          "diagnosticSeverityOverrides": {
+            "reportUnknownArgumentType": false,
+            "reportUnknownMemberType": false,
+            "reportUnknownVariableType": false
+          }
+        }
+      }
+    },
     "ruff": {
       "initialization_options": {
         "settings": {
