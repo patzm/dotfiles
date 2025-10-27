@@ -15,6 +15,9 @@ externalGitArgs: |
 xdgRelDataDir: .local/share
 xdgRelConfigDir: .config
 
+# terminal
+terminal: alacritty
+
 # tmux
 tmuxRelConfigPath: .config/tmux
 tmuxRelPluginPath: .config/tmux/plugins
