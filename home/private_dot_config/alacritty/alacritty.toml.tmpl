@@ -7,9 +7,9 @@ size = 12
 
 [font.normal]
 {{ if eq .chezmoi.os "darwin" -}}
-family = {{ .fontFamilyMacOS | quote }}
+family = {{ .fontMonoMacOS | quote }}
 {{ else if eq .chezmoi.os "linux" -}}
-family = {{ .fontFamilyLinux | quote }}
+family = {{ .fontMonoLinux | quote }}
 {{- end }}
 
 [[hints.enabled]]
