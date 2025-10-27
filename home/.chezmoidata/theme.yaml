@@ -2,5 +2,9 @@
 catppuccinTheme: mocha
 fontMonoMacOS: "MesloLGMDZ Nerd Font Mono"
 fontMonoLinux: "MesloLGS NF"
+# Waybar
+wbMarginLR: 2px
+wbMarginTB: 5px
+wbPaddingLR: 10px
 
 # vim: set filetype=yaml :
