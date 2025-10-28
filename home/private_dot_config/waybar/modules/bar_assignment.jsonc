@@ -1,0 +1,15 @@
+{
+  "modules-left": ["hyprland/workspaces", "hyprland/window"],
+  "modules-center": ["mpris"],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "pulseaudio",
+    "clock#date",
+    "clock#time",
+    "tray",
+    "custom/notification",
+    "custom/power",
+  ],
+}
+

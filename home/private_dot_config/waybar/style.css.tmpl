@@ -5,6 +5,7 @@
   min-width: 0;
   font-family: Lexend, {{ .fontMonoLinux | quote }};
   font-size: 14px;
+  font-weight: bold;
 }
 
 #waybar {
@@ -15,9 +16,7 @@
 #workspaces {
   border-radius: 5px;
   margin: {{ .wbMarginTB }} {{ .wbMarginLR }};
-  padding: 0px {{ .wbPaddingLR }};
-
-  font-weight: bold;
+  padding: {{ .wbPaddingTB }} {{ .wbPaddingLR }};
 
   background-color: @surface0;
 }
@@ -27,12 +26,15 @@
 }
 
 #workspaces button.active {
-  color: @blue;
   background-color: @surface1;
+  color: @blue;
 
+  border-style: solid;
+  border-color: @blue;
 }
+
 #workspaces button.active label {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 #workspaces button:hover {
@@ -53,7 +55,7 @@
 #mpris {
   border-radius: 5px;
   margin: {{ .wbMarginTB }} {{ .wbMarginLR }};
-  padding: 0px {{ .wbPaddingLR }};
+  padding: {{ .wbPaddingTB }} {{ .wbPaddingLR }};
 
   /* background-color: #181825; */
   background-color: @surface0;
