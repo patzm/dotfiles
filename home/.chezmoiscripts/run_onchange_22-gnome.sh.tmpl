@@ -1,0 +1,38 @@
+{{ if eq .chezmoi.os "linux" -}}
+#! /usr/bin/env bash
+
+set -e
+
+# Check if gsettings is available
+if ! command -v gsettings >/dev/null 2>&1; then
+    echo "gsettings is not installed or not in PATH. Skipping configuration..."
+    exit 1
+fi
+
+printf "\nConfiguring Gnome\n"
+
+gsettings set org.gnome.nautilus.preferences always-use-location-entry false
+gsettings set org.gnome.nautilus.preferences click-policy 'double'
+gsettings set org.gnome.nautilus.preferences date-time-format 'simple'
+gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+gsettings set org.gnome.nautilus.preferences default-sort-in-reverse-order false
+gsettings set org.gnome.nautilus.preferences default-sort-order 'name'
+gsettings set org.gnome.nautilus.preferences fts-enabled true
+gsettings set org.gnome.nautilus.preferences install-mime-activation true
+gsettings set org.gnome.nautilus.preferences migrated-gtk-settings true
+gsettings set org.gnome.nautilus.preferences mouse-back-button 8
+gsettings set org.gnome.nautilus.preferences mouse-forward-button 9
+gsettings set org.gnome.nautilus.preferences mouse-use-extra-buttons true
+gsettings set org.gnome.nautilus.preferences open-folder-on-dnd-hover true
+gsettings set org.gnome.nautilus.preferences recursive-search 'local-only'
+gsettings set org.gnome.nautilus.preferences search-filter-time-type 'last_modified'
+gsettings set org.gnome.nautilus.preferences show-create-link false
+gsettings set org.gnome.nautilus.preferences show-delete-permanently false
+gsettings set org.gnome.nautilus.preferences show-directory-item-counts 'local-only'
+gsettings set org.gnome.nautilus.preferences show-hidden-files false
+gsettings set org.gnome.nautilus.preferences show-image-thumbnails 'local-only'
+gsettings set org.gnome.nautilus.preferences thumbnail-limit 50
+
+# vim: set filetype=zsh : 
+{{ end -}}
+
