@@ -22,3 +22,5 @@ terminal: alacritty
 tmuxRelConfigPath: .config/tmux
 tmuxRelPluginPath: .config/tmux/plugins
 
+# Linux
+files: nautilus
