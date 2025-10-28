@@ -13,6 +13,7 @@
     "battery",
     "tray",
     "custom/notification",
+    "hyprland/language#language",
     "custom/power",
   ],
 }
