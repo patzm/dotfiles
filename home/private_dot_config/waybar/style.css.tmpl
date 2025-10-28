@@ -42,31 +42,37 @@
   background-color: @surface2;
 }
 
+#battery,
 #clock,
-#pulseaudio,
+#cpu,
 #custom-logo,
+#custom-notification,
 #custom-power,
 #custom-spotify,
-#custom-notification,
-#cpu,
-#tray,
 #memory,
+#network,
+#pulseaudio,
+#tray,
 #window,
 #mpris {
   border-radius: 5px;
   margin: {{ .wbMarginTB }} {{ .wbMarginLR }};
   padding: {{ .wbPaddingTB }} {{ .wbPaddingLR }};
 
-  /* background-color: #181825; */
   background-color: @surface0;
 }
 
 #mpris.playing {
-  color: #a6e3a1;
+  color: @green;
 }
 
 #mpris.paused {
-  color: #9399b2;
+  color: @surface1;
+  background-color: @overlay1;
+}
+
+#battery {
+  color: @peach;
 }
 
 #custom-sep {

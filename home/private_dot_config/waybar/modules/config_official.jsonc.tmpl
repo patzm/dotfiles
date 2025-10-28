@@ -1,4 +1,10 @@
 {
+  "battery": {
+    "interval": 10,
+    "format": "{icon} {capacity}% 󱧥 {time}",
+    "format-icons": ["", "", "", "", ""],
+    "tooltip-format": "󰐦 {power:.1f}W consumption\n {cycles} cycles\n󱈑 {health}% health"
+  },
   "clock#time": { "tooltip": false, "format": " {:%H:%M}" },
   "clock#date": {
     "format": " {:L%a %d %b}",
@@ -22,9 +28,39 @@
     "interval": 1,
     "on-click": "{{ .terminal }} -e btop",
   },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 30,
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false,
+  },
   "memory": {
     "format": "󰍛  {used:0.1f}Gi",
     "on-click": "{{ .terminal }} -e btop",
+  },
+  "mpris": {
+    "dynamic-order": ["artist", "title"],
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "status-icons": { "paused": "" },
+    "player-icons": { "default": "" },
+    "max-length": 30,
+  },
+  "network": {
+    "interval": 2,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤨"],
+    "format-wifi": "{icon}: {bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏",
+    "format-ethernet": "󰱓: {bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%) {icon}\n{ipaddr}/{cidr}",
+    "tooltip-format-ethernet": "{ifname} 󰱓\n{ipaddr}/{cidr}",
+    "tooltip-format-disconnected": "󰤭 / 󰅛",
+    "max-length": 50
   },
   "pulseaudio": {
     "format": "{icon} {volume}%",
@@ -34,6 +70,10 @@
       "default": [" ", " ", " "],
     },
     "on-click": "pavucontrol",
+  },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 5,
   },
 }
 
