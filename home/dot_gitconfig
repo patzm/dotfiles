@@ -1,25 +1,26 @@
 [user]
-    email = "martin@patz.family"
-    name = "Martin Patz"
+    email = martin@patz.family
+    name = Martin Patz
 
 [credential]
-	helper = cache --timeout 36000
+    helper = cache --timeout 36000
 
 [pull]
-	ff = only
+    ff = only
 
 [push]
-	default = simple
-	autoSetupRemote = True
+    default = simple
+    autoSetupRemote = True
 
 [remote "origin"]
-	prune = True
+    prune = True
 
 [core]
     pager = delta
-	excludesfile = ~/.gitignore
+    excludesfile = ~/.gitignore
 
 [delta]
     navigate = true
-
+    side-by-side = true
+    line-numbers = true
 
