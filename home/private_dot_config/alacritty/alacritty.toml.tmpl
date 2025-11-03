@@ -21,6 +21,12 @@ post_processing = true
 enabled = true
 mods = "Control"
 
+[keyboard]
+bindings = [
+    { key = "Escape", mode="Vi", action="ToggleViMode" },
+    { key = "[", mods="Alt", action="ToggleViMode" },
+]
+
 [window]
 dynamic_padding = true
 opacity = 0.8
