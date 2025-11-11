@@ -1,0 +1,101 @@
+{
+  "battery": {
+    "interval": 5,
+    "format": "{icon} {capacity}% {time}",
+    "format-charging": " {icon} {capacity}% {time}",
+    "format-full": " {icon}",
+    "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣"],
+    /* doesn't work: */
+    /* "format-icons-charging": ["󰢟", "󱊤", "󱊥", "󱊦"], */
+    "tooltip-format": "󰐦 {power:.1f}W consumption\n {cycles} cycles\n󱈑 {health}% health"
+  },
+  "clock": {
+    "interval": 1,
+    "format": " {:%d %b  %H:%M}",
+    "format-alt": " {:%a %d %b %Y (W%W)  %H:%M:%S (%Z)}",
+    "timezones": [
+      "Europe/Berlin",
+      "America/Los_Angeles",
+      "America/Mexico_City",
+      "America/Sao_Paulo",
+      "Asia/Kolkata"
+    ],
+    "calendar": {
+      "format": {
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+      },
+      "mode": "year",
+      "mode-mon-col": 3,
+      "week-pos": "right",
+      "on-scroll": 1,
+    },
+    "actions": {
+      "on-click-right": "tz_up"
+    },
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+  },
+  "cpu": {
+    "format": " {usage}%",
+    "tooltip": true,
+    "interval": 1,
+    "on-click": "{{ .terminal }} -e btop",
+  },
+  "hyprland/language#language": {
+    "format": " {}",
+    "format-en": "US",
+    "format-de": "DE",
+  },
+  "hyprland/window": {
+    "format": "{title}",
+    "max-length": 30,
+  },
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "format": "{id}",
+    "all-outputs": true,
+    "disable-scroll": false,
+    "active-only": false,
+  },
+  "memory": {
+    "format": "󰍛 {used:0.1f}Gi",
+    "on-click": "{{ .terminal }} -e btop",
+  },
+  "mpris": {
+    "dynamic-order": ["artist", "title"],
+    "format": "{player_icon} {dynamic}",
+    "format-paused": "{status_icon} <i>{dynamic}</i>",
+    "status-icons": { "paused": "" },
+    "player-icons": { "default": "" },
+    "max-length": 30,
+  },
+  "network": {
+    "interval": 2,
+    "format-icons": ["󰤯", "󰤟", "󰤢", "󰤨"],
+    "format-wifi": "{icon}: {bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏",
+    "format-ethernet": "󰱓: {bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏",
+    "tooltip-format": "{ifname} via {gwaddr}",
+    "tooltip-format-wifi": "{ifname} via {gwaddr}\n{ipaddr}/{cidr}\n{bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏\n{essid} ({signalStrength}%) {icon}",
+    "tooltip-format-ethernet": "{ifname} 󰱓 via {gwaddr}\n{ipaddr}/{cidr}\n{bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏\n",
+    "tooltip-format-disconnected": "󰤭 / 󰅛",
+    "max-length": 50
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": " muted",
+    "format-icons": {
+      "headphone": "",
+      "default": [" ", " ", " "],
+    },
+    "on-click": "pavucontrol",
+  },
+  "tray": {
+    "show-passive-items": true,
+    "spacing": 5,
+  },
+}
+
+// vim: set filetype=css :

@@ -1,9 +1,15 @@
 {{ if ne .chezmoi.os "linux" }}
-.config/autostart/*
-.config/environment.d/*
-.config/systemd/*
+.config/autostart
+.config/environment.d
+.config/hypr
+.config/systemd
+.config/waybar
+.config/wlogout
+.config/yay
 {{ end }}
 {{ if ne .chezmoi.os "darwin" }}
+.config/yabai
+.config/skhd
 Library/*
 {{end}}
 

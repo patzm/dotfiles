@@ -6,7 +6,11 @@ general.import = [
 size = 12
 
 [font.normal]
-family = {{ .fontFamily | quote }}
+{{ if eq .chezmoi.os "darwin" -}}
+family = {{ .fontMonoMacOS | quote }}
+{{ else if eq .chezmoi.os "linux" -}}
+family = {{ .fontMonoLinux | quote }}
+{{- end }}
 
 [[hints.enabled]]
 regex = "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
@@ -16,6 +20,12 @@ post_processing = true
 [hints.enabled.mouse]
 enabled = true
 mods = "Control"
+
+[keyboard]
+bindings = [
+    { key = "Escape", mode="Vi", action="ToggleViMode" },
+    { key = "[", mods="Alt", action="ToggleViMode" },
+]
 
 [window]
 dynamic_padding = true
@@ -29,6 +39,10 @@ lines = 40
 [window.padding]
 x = 6
 y = 6
+
+[scrolling]
+history = 100000
+multiplier = 15
 
 [terminal]
 osc52 = "CopyPaste"

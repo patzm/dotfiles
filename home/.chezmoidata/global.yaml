@@ -15,11 +15,12 @@ externalGitArgs: |
 xdgRelDataDir: .local/share
 xdgRelConfigDir: .config
 
+# terminal
+terminal: alacritty
+
 # tmux
 tmuxRelConfigPath: .config/tmux
 tmuxRelPluginPath: .config/tmux/plugins
 
-# Theme
-catppuccinTheme: mocha
-fontFamily: "MesloLGMDZ Nerd Font Mono"
-
+# Linux
+files: nautilus

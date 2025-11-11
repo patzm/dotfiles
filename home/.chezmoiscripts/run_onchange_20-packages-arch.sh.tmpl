@@ -1,0 +1,79 @@
+{{ if and (eq .chezmoi.os "linux") (and .chezmoi.osRelease.idLike "arch") -}}
+#! /usr/bin/env bash
+
+set -e
+
+packages=(
+    alacritty
+    base-devel
+    bat
+    bottom
+    btop
+    cmake
+    code
+    direnv
+    errands
+    exiftool
+    exiv2
+    eza
+    fastfetch
+    fd
+    ffmpeg
+    firefox
+    fzf
+    gimp
+    git
+    git-delta
+    handbrake
+    imagemagick
+    inkscape
+    jq
+    jre-openjdk
+    just
+    lazydocker
+    mattermost-desktop
+    meld
+    neovim
+    nextcloud-client
+    onlyoffice
+    picard
+    polkit-gnome
+    pre-commit
+    python
+    python-virtualenvwrapper
+    rpi-imager
+    sound-juicer
+    starship
+    thunderbird
+    tmux
+    torbrowser-launcher
+    ttf-meslo-nerd-font-powerlevel10k
+    uv
+    vlc
+    zed
+    zsh
+)
+
+aur_packages=(
+    balenaetcher
+    bcompare
+    gitkraken
+    google-chrome
+    mailspring
+    plexamp-appimage
+    python310
+    slack
+    sourcegit-bin
+    sublime-text-4
+)
+
+
+printf "\nInstalling pacman packages\n"
+sudo pacman -Syu --noconfirm --needed "${packages[@]}"
+
+printf "\nInstalling yay packages\n"
+yay -Syu --noconfirm --needed "${aur_packages[@]}"
+
+
+# vim: set filetype=zsh : 
+{{ end -}}

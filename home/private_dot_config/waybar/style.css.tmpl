@@ -1,0 +1,126 @@
+@import "catppuccin/themes/{{ .catppuccinTheme }}.css";
+
+* {
+  min-height: 0;
+  min-width: 0;
+  font-family: Lexend, {{ .fontMonoLinux | quote }};
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#waybar {
+  background: transparent;
+  color: @text;
+}
+
+#workspaces {
+  border-radius: 5px;
+  margin: {{ .wbMarginTB }} {{ .wbMarginLR }};
+  padding: {{ .wbPaddingTB }} {{ .wbPaddingLR }};
+
+  background-color: @surface0;
+}
+
+#workspaces button {
+  color: @lavender;
+}
+
+#workspaces button.active {
+  background-color: @surface1;
+  color: @blue;
+
+  border-style: solid;
+  border-color: @blue;
+}
+
+#workspaces button.active label {
+  font-size: 18px;
+}
+
+#workspaces button:hover {
+  color: @crust;
+  background-color: @surface2;
+}
+
+#battery,
+#clock,
+#cpu,
+#custom-logo,
+#custom-notification,
+#custom-power,
+#custom-spotify,
+#language,
+#memory,
+#network,
+#pulseaudio,
+#tray,
+#window,
+#mpris {
+  border-radius: 5px;
+  margin: {{ .wbMarginTB }} {{ .wbMarginLR }};
+  padding: {{ .wbPaddingTB }} {{ .wbPaddingLR }};
+
+  background-color: @surface0;
+}
+
+#mpris.playing {
+  color: @green;
+}
+
+#mpris.paused {
+  color: @surface1;
+  background-color: @overlay1;
+}
+
+#battery {
+  color: @peach;
+}
+
+#custom-sep {
+  padding: 0px;
+  color: #585b70;
+}
+
+#cpu {
+  color: @teal;
+}
+
+#network {
+  color: @sky;
+}
+
+#memory {
+  color: @sapphire;
+}
+
+#clock {
+  color: @blue;
+}
+
+#window {
+  color: #cdd6f4;
+}
+
+#pulseaudio {
+  color: @mauve;
+}
+
+#pulseaudio.muted {
+  color: @surface1;
+  background-color: @overlay1;
+}
+
+#custom-logo {
+  color: #89b4fa;
+}
+
+#custom-power {
+  color: @red;
+}
+
+tooltip {
+  background-color: @base;
+  border: 2px solid @crust;
+}
+
+/* vim: set filetype=css : */

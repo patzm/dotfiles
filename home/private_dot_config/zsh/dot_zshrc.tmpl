@@ -70,7 +70,9 @@ alias brew-update='brew update && brew upgrade && brew cleanup'
 alias only-office='open -na "OnlyOffice"'
 
 # end - macOS specific
-{{- end }}
+{{ else if eq .chezmoi.os "linux" -}}
+alias open='xdg-open'
+{{ end -}}
 
 # Load the instance-specific configuration
 source ${ZDOTDIR}/zshinstance.sh
@@ -86,8 +88,8 @@ znap source ohmyzsh/ohmyzsh plugins/virtualenvwrapper
 eval "$(direnv hook zsh)"
 
 # Accelerate start time
-znap eval starship 'starship init zsh --print-full-init'
+eval "$(starship init zsh)"
 znap prompt
 
 export PATH
-# vim: set filetype=zsh : 
+# vim: set filetype=zsh :

@@ -1,0 +1,24 @@
+{{ if and (eq .chezmoi.os "linux") (and .chezmoi.osRelease.idLike "arch") -}}
+#! /usr/bin/env bash
+
+set -e
+
+packages=(
+    dunst
+    hyprland
+    nwg-displays
+    pipewire
+    pipewire-audio
+    pipewire-pulse
+    rofi-wayland
+    waybar
+    wireplumber
+    wofi
+    xdg-desktop-portal-hyprland
+)
+
+printf "\nInstalling pacman packages\n"
+sudo pacman -Syu --noconfirm --needed "${packages[@]}"
+
+# vim: set filetype=zsh :
+{{ end -}}

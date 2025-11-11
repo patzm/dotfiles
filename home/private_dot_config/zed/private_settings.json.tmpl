@@ -90,7 +90,11 @@
   // UI
   "ui_font_size": 16,
   "buffer_font_size": 14,
-  "buffer_font_family": "MesloLGMDZ Nerd Font Mono",
+{{- if eq .chezmoi.os "darwin" }}
+  "buffer_font_family": {{ .fontMonoMacOS | quote }},
+{{- else if eq .chezmoi.os "linux" }}
+  "buffer_font_family": {{ .fontMonoLinux | quote }},
+{{- end }}
   "theme": {
     "mode": "system",
     "light": "One Dark",

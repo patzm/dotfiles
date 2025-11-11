@@ -14,3 +14,15 @@ To add keys to the agent, add them once with
 ```bash
 ssh-add ~/.ssh/id_ed25519
 ```
+
+## OS-dependent
+
+### macOS
+
+
+### Arch
+
+#### With Hyprland
+
+Install https://github.com/JaKooLit/Arch-Hyprland afterwards.
+
