@@ -1,8 +1,7 @@
 {
   "modules-left": ["hyprland/workspaces", "hyprland/window"],
   "modules-center": [
-    "clock#date",
-    "clock#time",
+    "clock",
     "mpris"
   ],
   "modules-right": [
