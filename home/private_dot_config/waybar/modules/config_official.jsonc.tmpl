@@ -1,26 +1,42 @@
 {
   "battery": {
-    "interval": 10,
-    "format": "{icon} {capacity}% 󱧥 {time}",
-    "format-icons": ["", "", "", "", ""],
+    "interval": 5,
+    "format": "{icon} {capacity}% {time}",
+    "format-charging": " {icon} {capacity}% {time}",
+    "format-full": " {icon}",
+    "format-icons": ["󰂎", "󱊡", "󱊢", "󱊣"],
+    /* doesn't work: */
+    /* "format-icons-charging": ["󰢟", "󱊤", "󱊥", "󱊦"], */
     "tooltip-format": "󰐦 {power:.1f}W consumption\n {cycles} cycles\n󱈑 {health}% health"
   },
-  "clock#time": { "tooltip": false, "format": " {:%H:%M}" },
-  "clock#date": {
-    "format": " {:L%a %d %b}",
+  "clock": {
+    "interval": 1,
+    "format": " {:%d %b  %H:%M}",
+    "format-alt": " {:%a %d %b %Y (W%W)  %H:%M:%S (%Z)}",
+    "timezones": [
+      "Europe/Berlin",
+      "America/Los_Angeles",
+      "America/Mexico_City",
+      "America/Sao_Paulo",
+      "Asia/Kolkata"
+    ],
     "calendar": {
       "format": {
-        "days": "<span weight='normal'>{}</span>",
-        "months": "<span color='#cdd6f4'><b>{}</b></span>",
-        "today": "<span color='#f38ba8' weight='700'><u>{}</u></span>",
-        "weekdays": "<span color='#f9e2af'><b>{}</b></span>",
-        "weeks": "<span color='#a6e3a1'><b>W{}</b></span>",
+        "months":     "<span color='#ffead3'><b>{}</b></span>",
+        "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+        "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+        "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+        "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
       },
-      "mode": "month",
-      "mode-mon-col": 1,
+      "mode": "year",
+      "mode-mon-col": 3,
+      "week-pos": "right",
       "on-scroll": 1,
     },
-    "tooltip-format": "<span color='#cdd6f4' font='Lexend 16'><tt><small>{calendar}</small></tt></span>",
+    "actions": {
+      "on-click-right": "tz_up"
+    },
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
   },
   "cpu": {
     "format": " {usage}%",
@@ -62,8 +78,8 @@
     "format-wifi": "{icon}: {bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏",
     "format-ethernet": "󰱓: {bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏",
     "tooltip-format": "{ifname} via {gwaddr}",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%) {icon}\n{ipaddr}/{cidr}",
-    "tooltip-format-ethernet": "{ifname} 󰱓\n{ipaddr}/{cidr}",
+    "tooltip-format-wifi": "{ifname} via {gwaddr}\n{ipaddr}/{cidr}\n{bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏\n{essid} ({signalStrength}%) {icon}",
+    "tooltip-format-ethernet": "{ifname} 󰱓 via {gwaddr}\n{ipaddr}/{cidr}\n{bandwidthUpBytes} 󰸇 | {bandwidthDownBytes} 󰮏\n",
     "tooltip-format-disconnected": "󰤭 / 󰅛",
     "max-length": 50
   },
