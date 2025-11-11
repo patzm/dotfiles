@@ -12,6 +12,9 @@
     default = simple
     autoSetupRemote = True
 
+[merge]
+    tool = meld
+
 [remote "origin"]
     prune = True
 
