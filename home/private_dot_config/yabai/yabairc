@@ -17,6 +17,7 @@ yabai -m space 6 --label float
 yabai -m space 7 --label free
 yabai -m space 8 --label private
 yabai -m space 9 --label vcs
+yabai -m space 10 --label media
 
 # Space 6 has all windows floating
 yabai -m config --space float layout float
