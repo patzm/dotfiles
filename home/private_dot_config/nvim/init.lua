@@ -24,17 +24,7 @@ require("tabs")
 require("keymaps")
 
 -- Clipboard with OSC52, require neovim 0.10+
-vim.g.clipboard = {
-  name = 'OSC 52',
-  copy = {
-    ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
-  },
-  paste = {
-    ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
-    ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
-  },
-}
+vim.g.clipboard = 'osc52'
 
 vim.opt.clipboard = 'unnamedplus'
 -- end Configuration
