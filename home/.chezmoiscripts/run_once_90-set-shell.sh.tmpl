@@ -2,13 +2,6 @@
 
 # Ensure default shell is ZSH
 
-ZSH_BIN=$(which zsh)
-
-if [ -z "$ZSH_BIN" ]; then
-    echo "Error: zsh not found in PATH" >&2
-    exit 1
-fi
-
 {{- if eq .chezmoi.os "darwin" }}
 # macOS
 CURRENT_SHELL=$(dscl . -read /Users/"$USER" UserShell | awk '{print $2}')
@@ -17,9 +10,30 @@ CURRENT_SHELL=$(dscl . -read /Users/"$USER" UserShell | awk '{print $2}')
 CURRENT_SHELL=$(getent passwd "$USER" | cut -d: -f7)
 {{- end }}
 
-if [ "$CURRENT_SHELL" != "$ZSH_BIN" ]; then
-    echo "Setting shell to $ZSH_BIN"
-    chsh -s "$ZSH_BIN"
+# Check if current shell is already zsh
+if [[ "$CURRENT_SHELL" == *"/zsh" ]]; then
+    echo "Shell is already zsh: $CURRENT_SHELL"
+    exit 0
 fi
+
+# Look for zsh in /etc/shells
+ZSH_BIN=""
+if [ -f /etc/shells ]; then
+    ZSH_BIN=$(grep -E '^/.*/zsh$' /etc/shells | head -n 1)
+fi
+
+# If no zsh found in /etc/shells, fail
+if [ -z "$ZSH_BIN" ]; then
+    echo "Error: zsh not found in /etc/shells" >&2
+    echo "Please add zsh to /etc/shells manually:" >&2
+    ZSH_PATH=$(which zsh)
+    if [ -n "$ZSH_PATH" ]; then
+        echo "  echo \"$ZSH_PATH\" | sudo tee -a /etc/shells" >&2
+    fi
+    exit 1
+fi
+
+echo "Setting shell to $ZSH_BIN"
+chsh -s "$ZSH_BIN"
 
 # vim: set filetype=zsh :
