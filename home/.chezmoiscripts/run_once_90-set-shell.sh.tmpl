@@ -4,6 +4,11 @@
 
 ZSH_BIN=$(which zsh)
 
+if [ -z "$ZSH_BIN" ]; then
+    echo "Error: zsh not found in PATH" >&2
+    exit 1
+fi
+
 {{- if eq .chezmoi.os "darwin" }}
 # macOS
 CURRENT_SHELL=$(dscl . -read /Users/"$USER" UserShell | awk '{print $2}')
@@ -17,4 +22,4 @@ if [ "$CURRENT_SHELL" != "$ZSH_BIN" ]; then
     chsh -s "$ZSH_BIN"
 fi
 
-# vim: set filetype=zsh : 
+# vim: set filetype=zsh :
