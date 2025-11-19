@@ -1,0 +1,57 @@
+{{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.idLike "debian") -}}
+#! /usr/bin/env bash
+
+set -e
+
+packages=(
+    alacritty
+    bat
+    btop
+    cmake
+    code
+    direnv
+    errands
+    exiftool
+    exiv2
+    eza
+    fastfetch
+    ffmpeg
+    firefox
+    fzf
+    gimp
+    git
+    git-delta
+    handbrake
+    imagemagick
+    inkscape
+    jq
+    just
+    meld
+    neovim
+    picard
+    pre-commit
+    python3
+    python3-virtualenvwrapper
+    rpi-imager
+    sound-juicer
+    starship
+    thunderbird
+    tmux
+    torbrowser-launcher
+    vlc
+    zsh
+)
+
+snap_packages=(
+    astral-uv
+)
+
+printf "\nInstalling apt packages\n"
+sudo DEBIAN_FRONTEND=noninteractive apt-get update
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${packages[@]}"
+
+printf "\nInstalling snap pacakges\n"
+sudo snap install --classic "${snap_packages[@]}"
+
+# vim: set filetype=zsh :
+{{ end -}}
