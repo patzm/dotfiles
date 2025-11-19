@@ -1,0 +1,27 @@
+#! /usr/bin/env bash
+
+# Example .envrc files
+# layout uv         -> defaults to the standard python version
+# layout uv 3.10    -> uses 3.10
+
+layout_uv() {
+    # Determine python version
+    local python=${1:-python}
+    [[ $# -gt 0 ]] && shift
+    unset PYTHONHOME
+    local python_path=$(uv python find $python)
+    local python_version=$($python_path -V | cut -d' ' -f 2 | cut -d . -f 1-2)
+    if [[ -z $python_version ]]; then
+        log_error "Could not find python's version"
+        return 1
+    fi
+
+    VIRTUAL_ENV="$(pwd)/.venv"
+
+    export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
+    if [[ ! -d $VIRTUAL_ENV ]]; then
+        uv venv -p $python "$@" "$VIRTUAL_ENV"
+    fi
+    export VIRTUAL_ENV
+    PATH_add "$VIRTUAL_ENV/bin"
+}
