@@ -54,7 +54,7 @@ vim.call('plug#', 'tpope/vim-surround')
 vim.call('plug#end')
 
 require('nvim-highlight-colors').setup({})
-require("theme")
-require("fzf")
-require("tree")
+require('theme')
+require('fzf')
+require('tree')
 -- end Plugins
