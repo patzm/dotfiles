@@ -25,7 +25,6 @@ require("keymaps")
 
 -- Clipboard with OSC52, require neovim 0.10+
 vim.g.clipboard = 'osc52'
-
 vim.opt.clipboard = 'unnamedplus'
 -- end Configuration
 
