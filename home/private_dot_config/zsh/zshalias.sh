@@ -20,3 +20,7 @@ alias pbpaste="${CLI_CLIP_PASTE}"
 # git
 alias gcnv="git commit --no-verify"
 
+# docker
+alias dim='docker images --format "{{.Repository}}:{{.Tag}}" | grep -i --'
+alias dps='docker ps --format "table {{.ID}}\t{{.Names}}\t{{.Image}}"'
+

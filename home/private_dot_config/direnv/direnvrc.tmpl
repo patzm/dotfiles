@@ -21,6 +21,7 @@ layout_uv() {
     export UV_PROJECT_ENVIRONMENT=$VIRTUAL_ENV
     if [[ ! -d $VIRTUAL_ENV ]]; then
         uv venv -p $python "$@" "$VIRTUAL_ENV"
+        echo "installing default virtual env packages"
         uv pip install -r "$HOME/{{ .xdgRelConfigDir }}/{{ .venvConfigRequirements }}"
     fi
     export VIRTUAL_ENV
