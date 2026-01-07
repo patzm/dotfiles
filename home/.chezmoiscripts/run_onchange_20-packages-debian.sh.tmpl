@@ -57,7 +57,7 @@ snap_packages=(
 )
 
 if [ "$UBUNTU_VERSION" -lt 25 ]; then
-    if ! grep -q "^deb .*zhangsongcui3371/fastfetch" /etc/apt/sources.list /etc/apt/sources.list.d/* 2>/dev/null; then
+    if [ ! -f /etc/apt/sources.list.d/zhangsongcui3371-ubuntu-fastfetch-*.sources ]; then
         printf "\nAdding fastfetch PPA\n"
         sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
     fi
