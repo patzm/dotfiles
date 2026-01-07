@@ -3,6 +3,8 @@
 
 set -e
 
+UBUNTU_VERSION=$(lsb_release -rs | cut -d. -f1)
+
 packages=(
     alacritty
     bat
@@ -32,7 +34,6 @@ packages=(
     python3
     rpi-imager
     sound-juicer
-    starship
     thunderbird
     tmux
     torbrowser-launcher
@@ -41,15 +42,28 @@ packages=(
     zsh
 )
 
+if [ "$UBUNTU_VERSION" -ge 25 ]; then
+    packages+=(starship)
+else
+    URL=https://starship.rs/install.sh
+    printf "\nInstalling starship from ${URL}\n"
+    curl -sS ${URL} | sh -s -- --yes > /dev/null
+fi
+
 snap_packages=(
     astral-uv
 )
+
+if [ "$UBUNTU_VERSION" -lt 25 ]; then
+    printf "\nAdding fastfetch PPA\n"
+    sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+fi
 
 printf "\nInstalling apt packages\n"
 sudo DEBIAN_FRONTEND=noninteractive apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${packages[@]}"
 
-printf "\nInstalling snap pacakges\n"
+printf "\nInstalling snap packges\n"
 sudo snap install --classic "${snap_packages[@]}"
 
 # Some manual linking
