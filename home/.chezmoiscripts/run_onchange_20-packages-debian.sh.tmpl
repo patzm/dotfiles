@@ -49,7 +49,7 @@ printf "\nInstalling apt packages\n"
 sudo DEBIAN_FRONTEND=noninteractive apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${packages[@]}"
 
-printf "\nInstalling snap pacakges\n"
+printf "\nInstalling snap packges\n"
 sudo snap install --classic "${snap_packages[@]}"
 
 # Some manual linking
