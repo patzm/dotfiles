@@ -45,9 +45,11 @@ packages=(
 if [ "$UBUNTU_VERSION" -ge 25 ]; then
     packages+=(starship)
 else
-    URL=https://starship.rs/install.sh
-    printf "\nInstalling starship from ${URL}\n"
-    curl -sS ${URL} | sh -s -- --yes > /dev/null
+    if ! command -v starship >/dev/null 2>&1; then
+        URL=https://starship.rs/install.sh
+        printf "\nInstalling starship from ${URL}\n"
+        curl -sS ${URL} | sh -s -- --yes > /dev/null
+    fi
 fi
 
 snap_packages=(
@@ -55,8 +57,10 @@ snap_packages=(
 )
 
 if [ "$UBUNTU_VERSION" -lt 25 ]; then
-    printf "\nAdding fastfetch PPA\n"
-    sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+    if [ ! -f /etc/apt/sources.list.d/zhangsongcui3371-ubuntu-fastfetch-*.sources ]; then
+        printf "\nAdding fastfetch PPA\n"
+        sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+    fi
 fi
 
 printf "\nInstalling apt packages\n"
@@ -68,7 +72,7 @@ sudo snap install --classic "${snap_packages[@]}"
 
 # Some manual linking
 mkdir -p ~/.local/bin
-ln -s /usr/bin/batcat $HOME/.local/bin/bat
+ln -sf /usr/bin/batcat $HOME/.local/bin/bat
 
 # vim: set filetype=zsh :
 {{ end -}}
