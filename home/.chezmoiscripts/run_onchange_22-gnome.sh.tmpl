@@ -3,6 +3,14 @@
 
 set -e
 
+if ! command -v gnome-shell >/dev/null 2>&1; then
+    echo "GNOME is not installed. Skipping GNOME configuration."
+    exit 0
+fi
+
+# Read https://wiki.archlinux.org/title/GNOME/Keyring
+systemctl --user enable --now gcr-ssh-agent.socket
+
 # Check if gsettings is available
 if ! command -v gsettings >/dev/null 2>&1; then
     echo "gsettings is not installed or not in PATH. Skipping configuration..."
@@ -33,6 +41,5 @@ gsettings set org.gnome.nautilus.preferences show-hidden-files false
 gsettings set org.gnome.nautilus.preferences show-image-thumbnails 'local-only'
 gsettings set org.gnome.nautilus.preferences thumbnail-limit 50
 
-# vim: set filetype=zsh : 
+# vim: set filetype=zsh :
 {{ end -}}
-
