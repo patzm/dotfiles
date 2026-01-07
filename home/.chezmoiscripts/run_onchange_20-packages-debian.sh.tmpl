@@ -47,7 +47,7 @@ if [ "$UBUNTU_VERSION" -ge 25 ]; then
 else
     URL=https://starship.rs/install.sh
     printf "\nInstalling starship from ${URL}\n"
-    curl -sS ${URL} | sh -s -- --yes
+    curl -sS ${URL} | sh -s -- --yes > /dev/null
 fi
 
 snap_packages=(
