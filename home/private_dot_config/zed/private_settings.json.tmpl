@@ -7,119 +7,119 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
-  "tab_size": 4,
-  "features": {
-    "edit_prediction_provider": "zed"
-  },
-  "auto_update": true,
-  // AI config
-  "language_models": {
-    "ollama": {
-      "api_url": "http://localhost:11434",
-      "available_models": [
-        {
-          "name": "qwen2.5-coder",
-          "display_name": "qwen2.5-coder-16K",
-          "max_tokens": 16384,
-          "supports_tools": true,
-          "supports_images": true
-        }
-      ]
-    }
-  },
-  "agent": {
-    "default_model": {
-      "provider": "anthropic",
-      "model": "claude-sonnet-4-5-latest"
+    "tab_size": 4,
+    "features": {
+        "edit_prediction_provider": "zed"
     },
-    "default_profile": "write",
-    "model_parameters": []
-  },
-  "edit_predictions": {
-    "disabled_globs": [],
-    "mode": "subtle"
-  },
-  // Language specific settings
-  "languages": {
-    "Python": {
-      "language_servers": ["!basedpyright", "pyright", "ruff"],
-      "format_on_save": "on",
-      "formatter": [
-        { "code_action": "source.fixAll.ruff" },
-        { "code_action": "source.organizeImports.ruff" },
-        {
-          "language_server": { "name": "ruff" }
+    "auto_update": true,
+    // AI config
+    "language_models": {
+        "ollama": {
+            "api_url": "http://localhost:11434",
+            "available_models": [
+                {
+                    "name": "qwen2.5-coder",
+                    "display_name": "qwen2.5-coder-16K",
+                    "max_tokens": 16384,
+                    "supports_tools": true,
+                    "supports_images": true
+                }
+            ]
         }
-      ]
-    }
-  },
-  "lsp": {
-    "basedpyright": {
-      "settings": {
-        "basedpyright.analysis": {
-          "diagnosticMode": "workspace",
-          "diagnosticSeverityOverrides": {
-            "reportUnknownArgumentType": false,
-            "reportUnknownMemberType": false,
-            "reportUnknownVariableType": false
-          }
-        }
-      }
     },
-    "ruff": {
-      "initialization_options": {
-        "settings": {
-          "lineLength": 120,
-          "lint": {
-            "extendSelect": ["I"]
-          }
+    "agent": {
+        "default_model": {
+            "provider": "anthropic",
+            "model": "claude-sonnet-4-5-latest"
+        },
+        "default_profile": "write",
+        "model_parameters": []
+    },
+    "edit_predictions": {
+        "disabled_globs": [],
+        "mode": "subtle"
+    },
+    // Language specific settings
+    "languages": {
+        "Python": {
+            "language_servers": ["!basedpyright", "pyright", "ruff"],
+            "format_on_save": "on",
+            "formatter": [
+                { "code_action": "source.fixAll.ruff" },
+                { "code_action": "source.organizeImports.ruff" },
+                {
+                    "language_server": { "name": "ruff" }
+                }
+            ]
         }
-      }
+    },
+    "lsp": {
+        "basedpyright": {
+            "settings": {
+                "basedpyright.analysis": {
+                    "diagnosticMode": "workspace",
+                    "diagnosticSeverityOverrides": {
+                        "reportUnknownArgumentType": false,
+                        "reportUnknownMemberType": false,
+                        "reportUnknownVariableType": false
+                    }
+                }
+            }
+        },
+        "ruff": {
+            "initialization_options": {
+                "settings": {
+                    "lineLength": 120,
+                    "lint": {
+                        "extendSelect": ["I"]
+                    }
+                }
+            }
+        }
+    },
+    // shortcuts and editing
+    "base_keymap": "JetBrains",
+    "autosave": "on_focus_change",
+    "file_scan_exclusions": ["**/build"],
+    // VIM settings
+    "vim_mode": true,
+    "vim": {
+        "toggle_relative_line_numbers": true
+    },
+    // Editing settings
+    "extend_comment_on_newline": false,
+    // UI
+    "ui_font_size": 16,
+    "buffer_font_size": 14,
+    {{- if eq .chezmoi.os "darwin" }}
+    "buffer_font_family": {{ .fontMonoMacOS | quote }},
+    {{- else if eq .chezmoi.os "linux" }}
+    "buffer_font_family": {{ .fontMonoLinux | quote }},
+    {{- end }}
+    "theme": {
+        "mode": "system",
+        "light": "One Dark",
+        "dark": "One Dark"
+    },
+    "project_panel": {
+        "hide_hidden": false,
+        "hide_gitignore": true
+    },
+    // Debugger
+    "inlay_hints": {
+        "show_value_hints": false
+    },
+    // Extensions
+    "auto_install_extensions": {
+        "rainbow-csv": true,
+        "docker-compose": true,
+        "dockerfile": true,
+        "git-firefly": true,
+        "html": true,
+        "just": true,
+        "just-ls": true,
+        "log": true,
+        "toml": true
     }
-  },
-  // shortcuts and editing
-  "base_keymap": "JetBrains",
-  "autosave": "on_focus_change",
-  "file_scan_exclusions": ["**/build"],
-  // VIM settings
-  "vim_mode": true,
-  "vim": {
-    "toggle_relative_line_numbers": true
-  },
-  // Editing settings
-  "extend_comment_on_newline": false,
-  // UI
-  "ui_font_size": 16,
-  "buffer_font_size": 14,
-{{- if eq .chezmoi.os "darwin" }}
-  "buffer_font_family": {{ .fontMonoMacOS | quote }},
-{{- else if eq .chezmoi.os "linux" }}
-  "buffer_font_family": {{ .fontMonoLinux | quote }},
-{{- end }}
-  "theme": {
-    "mode": "system",
-    "light": "One Dark",
-    "dark": "One Dark"
-  },
-  "project_panel": {
-    "hide_hidden": false,
-    "hide_gitignore": true
-  },
-  // Debugger
-  "inlay_hints": {
-    "show_value_hints": false
-  },
-  // Extensions
-  "auto_install_extensions": {
-    "rainbow-csv": true,
-    "docker-compose": true,
-    "dockerfile": true,
-    "git-firefly": true,
-    "html": true,
-    "just": true,
-    "just-ls": true,
-    "log": true,
-    "toml": true
-  }
 }
 // vim: set filetype=jsonc :
