@@ -64,7 +64,7 @@ fi
 # Add custom plugins
 znap source ohmyzsh/ohmyzsh plugins/brew
 
-alias brew-update='brew update && brew upgrade && brew cleanup'
+alias brew-update='brew update && brew upgrade && brew upgrade --cask --greedy-auto-updates && brew cleanup'
 
 # Launch commands
 alias only-office='open -na "OnlyOffice"'
