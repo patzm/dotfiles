@@ -7,9 +7,12 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+    "git_panel": {
+        "tree_view": true,
+    },
     "tab_size": 4,
     "features": {
-        "edit_prediction_provider": "zed"
+        "edit_prediction_provider": "zed",
     },
     "auto_update": true,
     // AI config
@@ -22,22 +25,22 @@
                     "display_name": "qwen2.5-coder-16K",
                     "max_tokens": 16384,
                     "supports_tools": true,
-                    "supports_images": true
-                }
-            ]
-        }
+                    "supports_images": true,
+                },
+            ],
+        },
     },
     "agent": {
         "default_model": {
             "provider": "anthropic",
-            "model": "claude-sonnet-4-5-latest"
+            "model": "claude-sonnet-4-5-thinking-latest",
         },
         "default_profile": "write",
-        "model_parameters": []
+        "model_parameters": [],
     },
     "edit_predictions": {
         "disabled_globs": [],
-        "mode": "subtle"
+        "mode": "subtle",
     },
     // Language specific settings
     "languages": {
@@ -48,10 +51,10 @@
                 { "code_action": "source.fixAll.ruff" },
                 { "code_action": "source.organizeImports.ruff" },
                 {
-                    "language_server": { "name": "ruff" }
-                }
-            ]
-        }
+                    "language_server": { "name": "ruff" },
+                },
+            ],
+        },
     },
     "lsp": {
         "basedpyright": {
@@ -61,21 +64,21 @@
                     "diagnosticSeverityOverrides": {
                         "reportUnknownArgumentType": false,
                         "reportUnknownMemberType": false,
-                        "reportUnknownVariableType": false
-                    }
-                }
-            }
+                        "reportUnknownVariableType": false,
+                    },
+                },
+            },
         },
         "ruff": {
             "initialization_options": {
                 "settings": {
                     "lineLength": 120,
                     "lint": {
-                        "extendSelect": ["I"]
-                    }
-                }
-            }
-        }
+                        "extendSelect": ["I"],
+                    },
+                },
+            },
+        },
     },
     // shortcuts and editing
     "base_keymap": "JetBrains",
@@ -84,7 +87,7 @@
     // VIM settings
     "vim_mode": true,
     "vim": {
-        "toggle_relative_line_numbers": true
+        "toggle_relative_line_numbers": true,
     },
     // Editing settings
     "extend_comment_on_newline": false,
@@ -99,15 +102,15 @@
     "theme": {
         "mode": "system",
         "light": "One Dark",
-        "dark": "One Dark"
+        "dark": "One Dark",
     },
     "project_panel": {
         "hide_hidden": false,
-        "hide_gitignore": true
+        "hide_gitignore": true,
     },
     // Debugger
     "inlay_hints": {
-        "show_value_hints": false
+        "show_value_hints": false,
     },
     // Extensions
     "auto_install_extensions": {
@@ -119,7 +122,7 @@
         "just": true,
         "just-ls": true,
         "log": true,
-        "toml": true
-    }
+        "toml": true,
+    },
 }
 // vim: set filetype=jsonc :
