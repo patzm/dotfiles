@@ -6,42 +6,42 @@
 // To see the default key bindings run `zed: open default keymap`
 // from the command palette.
 [
-  {
-    "context": "Workspace",
-    "bindings": {
-      // "shift shift": "file_finder::Toggle"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == insert && !menu",
-    "bindings": {
-      // "j k": "vim::SwitchToNormalMode"
-    }
-  },
-  {
-    "context": "Editor",
-    "bindings": {
-      "cmd-left": "pane::GoBack",
-      "cmd-right": "pane::GoForward"
-    }
-  },
-  {
-    "context": "VimControl && !menu",
-    "bindings": {
-      ",": null,
-      ", n": "pane::SplitHorizontal",
-      ", m": "pane::SplitVertical",
-      "ctrl-h": "workspace::ActivatePaneLeft",
-      "ctrl-l": "workspace::ActivatePaneRight",
-      "ctrl-k": "workspace::ActivatePaneUp",
-      "ctrl-j": "workspace::ActivatePaneDown",
-      // ", f f": "file finder: toggle"
-    }
-  },
-  {
-    "context": "Editor && vim_mode == visual",
-    "bindings": {
-      "shift-s": ["vim::PushAddSurrounds", {}]
-    }
-  }
+    {
+        "context": "Workspace",
+        "bindings": {
+            // "shift shift": "file_finder::Toggle"
+        },
+    },
+    {
+        "context": "Editor && vim_mode == insert && !menu",
+        "bindings": {
+            // "j k": "vim::SwitchToNormalMode"
+        },
+    },
+    {
+        "context": "Editor",
+        "bindings": {
+            "cmd-left": "pane::GoBack",
+            "cmd-right": "pane::GoForward",
+        },
+    },
+    {
+        "context": "VimControl && !menu",
+        "bindings": {
+            ",": null,
+            ", n": "pane::SplitHorizontal",
+            ", m": "pane::SplitVertical",
+            "ctrl-h": "workspace::ActivatePaneLeft",
+            "ctrl-l": "workspace::ActivatePaneRight",
+            "ctrl-k": "workspace::ActivatePaneUp",
+            "ctrl-j": "workspace::ActivatePaneDown",
+            // ", f f": "file finder: toggle"
+        },
+    },
+    {
+        "context": "Editor && vim_mode == visual",
+        "bindings": {
+            "shift-s": ["vim::PushAddSurrounds", {}],
+        },
+    },
 ]
