@@ -42,6 +42,8 @@
         "context": "Editor && vim_mode == visual",
         "bindings": {
             "shift-s": ["vim::PushAddSurrounds", {}],
+            "i": "vim::InsertBefore",
+            "a": "vim::InsertAfter",
         },
     },
 ]
