@@ -33,6 +33,7 @@ packages=(
     lazydocker
     mattermost-desktop
     meld
+    ncdu
     neovim
     nextcloud-client
     onlyoffice
@@ -75,5 +76,5 @@ printf "\nInstalling yay packages\n"
 yay -Syu --noconfirm --needed "${aur_packages[@]}"
 
 
-# vim: set filetype=zsh : 
+# vim: set filetype=zsh :
 {{ end -}}
