@@ -11,9 +11,6 @@
         "tree_view": true,
     },
     "tab_size": 4,
-    "features": {
-        "edit_prediction_provider": "zed",
-    },
     "auto_update": true,
     // AI config
     "language_models": {
@@ -31,14 +28,38 @@
         },
     },
     "agent": {
+        "tool_permissions": {
+            "tools": {
+                "fetch": {
+                    "default_mode": "allow",
+                },
+                "terminal": {
+                    "always_allow": [
+                        {
+                            "pattern": "^cat\\s"
+                        },
+                        {
+                            "pattern": "^curl\\s"
+                        },
+                        {
+                            "pattern": "^git\\s"
+                        },
+                        {
+                            "pattern": "^pytest\\s"
+                        }
+                    ],
+                },
+            },
+        },
         "default_model": {
-            "provider": "anthropic",
-            "model": "claude-sonnet-4-5-thinking-latest",
+            "provider": "openai",
+            "model": "gpt-5-codex",
         },
         "default_profile": "write",
         "model_parameters": [],
     },
     "edit_predictions": {
+        "provider": "zed",
         "disabled_globs": [],
         "mode": "subtle",
     },
@@ -88,6 +109,9 @@
     "vim_mode": true,
     "vim": {
         "toggle_relative_line_numbers": true,
+    },
+    "terminal": {
+        "detect_venv": "off",
     },
     // Editing settings
     "extend_comment_on_newline": false,
