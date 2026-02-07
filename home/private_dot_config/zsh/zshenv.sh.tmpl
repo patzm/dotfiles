@@ -1,0 +1,8 @@
+# Fix injecting invalid LC_CTYPE=UTF-8
+if [[ "$LC_CTYPE" == "UTF-8" ]]; then
+    unset LC_CTYPE
+fi
+
+export LC_CTYPE="C.UTF-8"
+export LC_ALL="C.UTF-8"
+
