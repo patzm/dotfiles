@@ -30,7 +30,7 @@ def extract_errlist(data):
     pools = data.get("pools") or {}
     paths = set()
     for pool in pools.values():
-        print(f"Pool {pool}")
+        print(f"Pool {pool['name']}")
         errlist = pool.get("errlist") or []
         for item in errlist:
             if item is None:
