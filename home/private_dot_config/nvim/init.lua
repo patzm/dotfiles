@@ -5,7 +5,7 @@ vim.loader.enable()
 
 -- start Configuration
 vim.g.mapleader = ","
-vim.cmd([[language en_US.UTF-8]])
+vim.cmd([[language C.UTF-8]])
 vim.filetype.add({})
 vim.opt.wrap = false
 vim.opt.cursorline = true
