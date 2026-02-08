@@ -67,9 +67,9 @@ def main():
 
     lines = ["#! /usr/bin/env bash\n", "# Clean up corrupted files\n"]
     for path in err_paths:
-        cmd = "rm "
+        cmd = "rm"
         if os.path.isdir(path):
-            cmd += "-r "
+            cmd += " -r"
         lines.append(f"{cmd} {path}")
     lines.append("\n# Clear pool errors\n")
     for pool in pools_with_errors:
