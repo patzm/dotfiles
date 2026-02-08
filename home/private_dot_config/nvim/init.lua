@@ -5,12 +5,12 @@ vim.loader.enable()
 
 -- start Configuration
 vim.g.mapleader = ","
-vim.cmd([[language en_US.UTF-8]])
+vim.cmd([[language C.UTF-8]])
 vim.filetype.add({})
 vim.opt.wrap = false
 vim.opt.cursorline = true
-vim.opt.list = true      -- show invisible characters
-vim.opt.undofile = true  -- persist change history
+vim.opt.list = true     -- show invisible characters
+vim.opt.undofile = true -- persist change history
 
 -- line numbering
 vim.opt.number = true
