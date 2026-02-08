@@ -5,8 +5,7 @@
 1. Install [`chezmoi`](https://www.chezmoi.io/install/), `curl`, and `git`.
    TL;DR for `chezmoi`:
    ```bash
-   sh -c "$(curl -fsLS get.chezmoi.io)"
-   export PATH=${PATH}:${HOME}/bin
+   sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $HOME/.local/bin
    ```
 2. Run
    ```bash
