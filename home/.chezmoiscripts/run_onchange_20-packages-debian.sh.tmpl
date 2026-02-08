@@ -48,8 +48,8 @@ if [ "$UBUNTU_VERSION" -ge 25 ]; then
 else
     if ! command -v starship >/dev/null 2>&1; then
         URL=https://starship.rs/install.sh
-        printf "\nInstalling starship from ${URL}\n"
-        curl -sS ${URL} | sh -s -- --yes > /dev/null
+        printf "\nInstalling starship from %s\n" "$URL"
+        curl -sS "$URL" | sh -s -- --yes > /dev/null
     fi
 fi
 
@@ -81,12 +81,11 @@ printf "\nInstalling apt packages\n"
 sudo DEBIAN_FRONTEND=noninteractive apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${packages[@]}"
 
-printf "\nInstalling snap packges\n"
+printf "\nInstalling snap packages\n"
 sudo snap install --classic "${snap_packages[@]}"
 
-# Some manual linking
 mkdir -p ~/.local/bin
-ln -sf /usr/bin/batcat $HOME/.local/bin/bat
+ln -sf /usr/bin/batcat "$HOME/.local/bin/bat"
 
 # vim: set filetype=zsh :
 {{ end -}}
