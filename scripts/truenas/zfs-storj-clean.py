@@ -1,6 +1,7 @@
 #! /usr/bin/env python3
 
 import json
+import os
 import subprocess
 import sys
 
@@ -29,9 +30,13 @@ def extract_errlist(data):
     pools = data.get("pools") or {}
     paths = set()
     for pool in pools.values():
+        print(f"Pool {pool}")
         errlist = pool.get("errlist") or []
         for item in errlist:
             if item is None:
+                continue
+            if not os.path.exists(str(item)):
+                print(f"Path {item} does not exist.")
                 continue
             paths.add(str(item))
     return sorted(paths)
