@@ -3,10 +3,13 @@
 
 set -e
 
-UBUNTU_VERSION=$(lsb_release -rs | cut -d. -f1)
+OS_NAME="{{ .chezmoi.osRelease.name }}"
+OS_MAJOR_VERSION=$(lsb_release -rs | cut -d. -f1)
+if [[ ! "$OS_MAJOR_VERSION" =~ ^[0-9]+$ ]]; then
+    OS_MAJOR_VERSION=0
+fi
 
 packages=(
-    alacritty
     bat
     btop
     cmake
@@ -14,36 +17,65 @@ packages=(
     errands
     exiv2
     eza
-    fastfetch
     ffmpeg
-    firefox
     fzf
     gimp
     git
     git-delta
-    handbrake
     imagemagick
-    inkscape
     jq
     just
     libimage-exiftool-perl
-    meld
     ncdu
     neovim
-    picard
     pre-commit
     python3
-    rpi-imager
-    sound-juicer
-    thunderbird
     tmux
-    torbrowser-launcher
     virtualenvwrapper
-    vlc
     zsh
 )
 
-if [ "$UBUNTU_VERSION" -ge 25 ]; then
+if [ "$OS_NAME" = "Ubuntu" ]; then
+    packages+=(
+        alacritty
+        firefox
+        handbrake
+        inkscape
+        meld
+        picard
+        sound-juicer
+        thunderbird
+        vlc
+        rpi-imager
+        torbrowser-launcher
+    )
+fi
+
+fastfetch_available=0
+use_fastfetch_ppa=0
+if [ "$OS_NAME" = "Ubuntu" ]; then
+    if [ "$OS_MAJOR_VERSION" -ge 25 ]; then
+        fastfetch_available=1
+    else
+        fastfetch_available=1
+        use_fastfetch_ppa=1
+    fi
+elif [ "$OS_NAME" = "Debian GNU/Linux" ] && [ "$OS_MAJOR_VERSION" -ge 13 ]; then
+    fastfetch_available=1
+fi
+
+if [ "$fastfetch_available" -eq 1 ]; then
+    packages+=(fastfetch)
+fi
+
+install_starship_with_apt=0
+if [ "$OS_NAME" = "Ubuntu" ] && [ "$OS_MAJOR_VERSION" -ge 25 ]; then
+    install_starship_with_apt=1
+elif [ "$OS_NAME" = "Debian GNU/Linux" ] && [ "$OS_MAJOR_VERSION" -ge 13 ]; then
+    install_starship_with_apt=1
+fi
+
+if [ "$install_starship_with_apt" -eq 1 ]; then
     packages+=(starship)
 else
     if ! command -v starship >/dev/null 2>&1; then
@@ -57,7 +89,7 @@ snap_packages=(
     astral-uv
 )
 
-if [ "$UBUNTU_VERSION" -lt 25 ]; then
+if [ "$use_fastfetch_ppa" -eq 1 ]; then
     sources_file=/etc/apt/sources.list.d/fastfetch-ubuntu.sources
     keyring=/etc/apt/keyrings/fastfetch-ppa.gpg
     sudo install -d -m 755 /etc/apt/keyrings
