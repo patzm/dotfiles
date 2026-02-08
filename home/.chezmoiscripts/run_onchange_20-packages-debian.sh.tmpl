@@ -58,9 +58,21 @@ snap_packages=(
 )
 
 if [ "$UBUNTU_VERSION" -lt 25 ]; then
-    if [ ! -f /etc/apt/sources.list.d/zhangsongcui3371-ubuntu-fastfetch-*.sources ]; then
+    sources_file=/etc/apt/sources.list.d/fastfetch-ubuntu.sources
+    keyring=/etc/apt/keyrings/fastfetch-ppa.gpg
+    if [ ! -f "$sources_file" ]; then
         printf "\nAdding fastfetch PPA\n"
-        sudo add-apt-repository -y ppa:zhangsongcui3371/fastfetch
+        sudo install -d -m 755 /etc/apt/keyrings
+        curl -fsSL 'https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xF7E18AA924094E8F463F707702C0015A0F01A42F' \
+            | gpg --dearmor \
+            | sudo tee "$keyring" >/dev/null
+        cat <<EOF | sudo tee "$sources_file" >/dev/null
+Types: deb
+URIs: https://ppa.launchpadcontent.net/zhangsongcui3371/fastfetch/ubuntu
+Suites: noble
+Components: main
+Signed-By: $keyring
+EOF
     fi
 fi
 
