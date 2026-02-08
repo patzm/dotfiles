@@ -65,7 +65,7 @@ def main():
 
     err_paths, pools_with_errors = extract_errlist(data)
 
-    lines = ["#! /usr/bin/env bash\n", "# Clean up corrupted files\n"]
+    lines = ["#! /usr/bin/env bash\n", "set +e\n", "# Clean up corrupted files\n"]
     for path in err_paths:
         cmd = "rm"
         if os.path.isdir(path):
