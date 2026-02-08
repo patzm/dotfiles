@@ -65,9 +65,12 @@ def main():
 
     err_paths, pools_with_errors = extract_errlist(data)
 
-    lines = ["#! /usr/bin/env bash\n\n"]
+    lines = ["#! /usr/bin/env bash\n", "# Clean up corrupted files\n"]
     for path in err_paths:
-        lines.append(f"rm {path}")
+        cmd = "rm "
+        if os.path.isdir(path):
+            cmd += "-r "
+        lines.append(f"{cmd} {path}")
     lines.append("\n# Clear pool errors\n")
     for pool in pools_with_errors:
         lines.append(f"zpool clear {pool}")
@@ -77,7 +80,7 @@ def main():
     with open(script_path, "w", encoding="utf-8") as handle:
         handle.write("\n".join(lines))
 
-    print(f"Execute:\nsudo {script_path}")
+    print(f"Execute:\nsudo bash {script_path}")
     return 0
 
 
