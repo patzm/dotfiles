@@ -85,10 +85,6 @@ else
     fi
 fi
 
-snap_packages=(
-    astral-uv
-)
-
 if [ "$use_fastfetch_ppa" -eq 1 ]; then
     sources_file=/etc/apt/sources.list.d/fastfetch-ubuntu.sources
     keyring=/etc/apt/keyrings/fastfetch-ppa.gpg
@@ -113,8 +109,8 @@ printf "\nInstalling apt packages\n"
 sudo DEBIAN_FRONTEND=noninteractive apt-get update
 sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${packages[@]}"
 
-printf "\nInstalling snap packages\n"
-sudo snap install --classic "${snap_packages[@]}"
+printf "\nInstalling Astral uv\n"
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
 mkdir -p ~/.local/bin
 ln -sf /usr/bin/batcat "$HOME/.local/bin/bat"
