@@ -6,10 +6,11 @@
 .config/waybar
 .config/wlogout
 .config/yay
+.config/zsh/include.d/linux.sh
 {{ end }}
 {{ if ne .chezmoi.os "darwin" }}
 .config/yabai
 .config/skhd
+.config/zsh/include.d/darwin.sh
 Library/*
 {{end}}
-
