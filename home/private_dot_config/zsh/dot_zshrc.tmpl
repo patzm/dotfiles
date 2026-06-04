@@ -51,31 +51,10 @@ path+=(
 	"${HOME}/.local/bin"
 )
 
-{{ if eq .chezmoi.os "darwin" -}}
-# start - macOS specific
-
-# Disable compfix checking for multi-user setup
-ZSH_DISABLE_COMPFIX=true
-
-# Add the correct HomeBrew folder to the PATH
-if [ "$(sysctl -in sysctl.proc_translated)" = "0" ]; then
-    path=("/opt/homebrew/bin" "/opt/homebrew/sbin" $path)
-else
-    path=("/usr/local/bin" "/usr/local/sbin" $path)
-fi
-
-# Add custom plugins
-znap source ohmyzsh/ohmyzsh plugins/brew
-
-alias brew-update='brew update && brew upgrade && brew upgrade --cask --greedy-auto-updates && brew cleanup'
-
-# Launch commands
-alias only-office='open -na "OnlyOffice"'
-
-# end - macOS specific
-{{ else if eq .chezmoi.os "linux" -}}
-alias open='xdg-open'
-{{ end -}}
+# Load OS-specific and local include snippets
+for script in "${ZDOTDIR}"/include.d/*.sh(N); do
+	source "$script"
+done
 
 # Load the instance-specific configuration
 source ${ZDOTDIR}/zshinstance.sh
