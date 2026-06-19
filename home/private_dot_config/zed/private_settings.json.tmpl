@@ -7,7 +7,24 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+    "agent_servers": {
+        "opencode": {
+            "type": "registry"
+        }
+    },
+    "cli_default_open_behavior": "new_window",
+    "outline_panel": {
+        "dock": "left",
+    },
+    "collaboration_panel": {
+        "dock": "left",
+    },
+    "file_finder": {
+        "modal_max_width": "small",
+        "include_ignored": "all",
+    },
     "git_panel": {
+        "dock": "left",
         "tree_view": true,
     },
     "tab_size": 4,
@@ -28,10 +45,29 @@
         },
     },
     "agent": {
+        "dock": "right",
         "tool_permissions": {
             "tools": {
+                "delete_path": {
+                    "default": "allow"
+                },
+                "move_path": {
+                    "default": "allow"
+                },
+                "write_file": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:issue_read": {
+                    "default": "allow"
+                },
+                "create_directory": {
+                    "default": "allow"
+                },
+                "mcp:some-remote-server:notion-fetch": {
+                    "default": "allow"
+                },
                 "fetch": {
-                    "default_mode": "allow",
+                    "default": "allow",
                 },
                 "terminal": {
                     "always_allow": [
@@ -46,14 +82,33 @@
                         },
                         {
                             "pattern": "^pytest\\s"
+                        },
+                        {
+                            "pattern": "^uv\\s+run(\\s|$)"
+                        },
+                        {
+                            "pattern": "^ls\\b"
+                        },
+                        {
+                            "pattern": "^grep\\b"
+                        },
+                        {
+                            "pattern": "^git\\b"
+                        },
+                        {
+                            "pattern": "^sed\\b"
+                        },
+                        {
+                            "pattern": "^chmod\\s+\\+x(\\s|$)"
                         }
                     ],
                 },
             },
         },
         "default_model": {
+            "enable_thinking": true,
             "provider": "openai",
-            "model": "gpt-5-codex",
+            "model": "gpt-5.3-codex",
         },
         "default_profile": "write",
         "model_parameters": [],
@@ -62,6 +117,19 @@
         "provider": "zed",
         "disabled_globs": [],
         "mode": "subtle",
+    },
+    "context_servers": {
+        "some-remote-server": {
+            "enabled": true,
+            "url": "https://mcp.notion.com/mcp"
+        },
+        "mcp-server-github": {
+            "enabled": true,
+            "remote": false,
+            "settings": {
+                "github_personal_access_token": {{ (bitwardenFields "item" "github.com").pat.value | quote }},
+            },
+        },
     },
     // Language specific settings
     "languages": {
@@ -103,8 +171,13 @@
     },
     // shortcuts and editing
     "base_keymap": "JetBrains",
-    "autosave": "on_focus_change",
+    "autosave": {
+        "after_delay": {
+            "milliseconds": 1000,
+        },
+    },
     "file_scan_exclusions": ["**/build"],
+    "file_scan_inclusions": ["**/*.log", "*.log"],
     // VIM settings
     "vim_mode": true,
     "vim": {
@@ -129,6 +202,7 @@
         "dark": "One Dark",
     },
     "project_panel": {
+        "dock": "left",
         "hide_hidden": false,
         "hide_gitignore": true,
     },
@@ -149,4 +223,5 @@
         "toml": true,
     },
 }
+
 // vim: set filetype=jsonc :
