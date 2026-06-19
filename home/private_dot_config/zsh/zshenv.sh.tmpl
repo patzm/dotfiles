@@ -14,12 +14,4 @@ export VISUAL="nvim"
 export TMUX_CONFIG_PATH="$HOME/{{ .tmuxRelConfigPath }}"
 export TMUX_PLUGIN_MANAGER_PATH="$HOME/{{ .tmuxRelPluginPath }}"
 
-# CLI clipboard management
-{{- if eq .chezmoi.os "darwin" }}
-export CLI_CLIP_COPY=pbcopy
-export CLI_CLIP_PASTE=pbpaste
-{{ end -}}
-{{- if eq .chezmoi.os "linux" }}
-export CLI_CLIP_COPY=wl-copy
-export CLI_CLIP_PASTE=wl-paste
-{{ end -}}
+# vim: set filetype=zsh :
