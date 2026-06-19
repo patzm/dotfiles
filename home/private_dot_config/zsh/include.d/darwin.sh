@@ -11,6 +11,10 @@ else
     path=("/usr/local/bin" "/usr/local/sbin" $path)
 fi
 
+# Clipboard helpers
+export CLI_CLIP_COPY=pbcopy
+export CLI_CLIP_PASTE=pbpaste
+
 # Add custom plugins
 znap source ohmyzsh/ohmyzsh plugins/brew
 
