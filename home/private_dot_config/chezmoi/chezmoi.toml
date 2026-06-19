@@ -1,4 +1,6 @@
+[bitwarden]
+    unlock = "auto"
+
 [diff]
     exclude = ["scripts"]
     pager = "delta"
-

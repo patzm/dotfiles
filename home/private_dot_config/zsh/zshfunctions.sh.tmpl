@@ -76,4 +76,8 @@ EOF
     direnv allow
 }
 
+function bw_unlock () {
+  export BW_SESSION="$(bw unlock --raw)" && bw sync >/dev/null 2>&1
+}
+
 # vim: set filetype=zsh :

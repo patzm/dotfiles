@@ -44,4 +44,28 @@
             "shift-s": "vim::PushAddSurrounds",
         },
     },
+    {
+        "context": "Editor && mode == full",
+        "bindings": {
+            "cmd-p": null,
+        },
+    },
+    {
+        "context": "Editor && vim_mode == insert",
+        "bindings": {
+            "cmd-p": "editor::ShowSignatureHelp",
+        },
+    },
+    {
+        "context": "Editor && mode == full",
+        "bindings": {
+            "cmd-shift-enter": "editor::NewlineAbove"
+        }
+    },
+    {
+        "context": "Editor && mode == full",
+        "unbind": {
+            "cmd-shift-enter": "editor::NewlineAbove"
+        }
+    }
 ]

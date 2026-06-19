@@ -1,0 +1,3 @@
+# Apply these settings only to JSON[C] files
+[*.{json,jsonc}]
+indent_size = 4
