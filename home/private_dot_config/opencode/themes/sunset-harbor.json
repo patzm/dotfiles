@@ -1,0 +1,196 @@
+{
+  "$schema": "https://opencode.ai/theme.json",
+  "defs": {
+    "ink": "#0f172a",
+    "slate": "#1e293b",
+    "storm": "#334155",
+    "fog": "#64748b",
+    "mist": "#cbd5e1",
+    "paper": "#f8fafc",
+    "sun": "#f59e0b",
+    "amber": "#d97706",
+    "coral": "#fb7185",
+    "mint": "#34d399",
+    "sea": "#22d3ee",
+    "sky": "#38bdf8",
+    "violet": "#a78bfa"
+  },
+  "theme": {
+    "primary": {
+      "dark": "sky",
+      "light": "amber"
+    },
+    "secondary": {
+      "dark": "violet",
+      "light": "storm"
+    },
+    "accent": {
+      "dark": "sun",
+      "light": "coral"
+    },
+    "error": {
+      "dark": "coral",
+      "light": "coral"
+    },
+    "warning": {
+      "dark": "sun",
+      "light": "amber"
+    },
+    "success": {
+      "dark": "mint",
+      "light": "mint"
+    },
+    "info": {
+      "dark": "sea",
+      "light": "sky"
+    },
+    "text": {
+      "dark": "mist",
+      "light": "ink"
+    },
+    "textMuted": {
+      "dark": "fog",
+      "light": "storm"
+    },
+    "background": "none",
+    "backgroundPanel": "none",
+    "backgroundElement": "none",
+    "border": {
+      "dark": "storm",
+      "light": "fog"
+    },
+    "borderActive": {
+      "dark": "sky",
+      "light": "amber"
+    },
+    "borderSubtle": {
+      "dark": "#263247",
+      "light": "mist"
+    },
+    "diffAdded": {
+      "dark": "mint",
+      "light": "mint"
+    },
+    "diffRemoved": {
+      "dark": "coral",
+      "light": "coral"
+    },
+    "diffContext": {
+      "dark": "fog",
+      "light": "fog"
+    },
+    "diffHunkHeader": {
+      "dark": "sea",
+      "light": "sky"
+    },
+    "diffHighlightAdded": {
+      "dark": "mint",
+      "light": "mint"
+    },
+    "diffHighlightRemoved": {
+      "dark": "coral",
+      "light": "coral"
+    },
+    "diffAddedBg": "none",
+    "diffRemovedBg": "none",
+    "diffContextBg": "none",
+    "diffLineNumber": {
+      "dark": "fog",
+      "light": "storm"
+    },
+    "diffAddedLineNumberBg": "none",
+    "diffRemovedLineNumberBg": "none",
+    "markdownText": {
+      "dark": "mist",
+      "light": "ink"
+    },
+    "markdownHeading": {
+      "dark": "sun",
+      "light": "amber"
+    },
+    "markdownLink": {
+      "dark": "sea",
+      "light": "sky"
+    },
+    "markdownLinkText": {
+      "dark": "sky",
+      "light": "amber"
+    },
+    "markdownCode": {
+      "dark": "mint",
+      "light": "mint"
+    },
+    "markdownBlockQuote": {
+      "dark": "fog",
+      "light": "storm"
+    },
+    "markdownEmph": {
+      "dark": "coral",
+      "light": "coral"
+    },
+    "markdownStrong": {
+      "dark": "sun",
+      "light": "amber"
+    },
+    "markdownHorizontalRule": {
+      "dark": "storm",
+      "light": "fog"
+    },
+    "markdownListItem": {
+      "dark": "sky",
+      "light": "amber"
+    },
+    "markdownListEnumeration": {
+      "dark": "violet",
+      "light": "storm"
+    },
+    "markdownImage": {
+      "dark": "sea",
+      "light": "sky"
+    },
+    "markdownImageText": {
+      "dark": "sky",
+      "light": "amber"
+    },
+    "markdownCodeBlock": {
+      "dark": "mist",
+      "light": "ink"
+    },
+    "syntaxComment": {
+      "dark": "fog",
+      "light": "fog"
+    },
+    "syntaxKeyword": {
+      "dark": "violet",
+      "light": "violet"
+    },
+    "syntaxFunction": {
+      "dark": "sea",
+      "light": "sky"
+    },
+    "syntaxVariable": {
+      "dark": "mist",
+      "light": "ink"
+    },
+    "syntaxString": {
+      "dark": "mint",
+      "light": "mint"
+    },
+    "syntaxNumber": {
+      "dark": "sun",
+      "light": "amber"
+    },
+    "syntaxType": {
+      "dark": "sky",
+      "light": "sky"
+    },
+    "syntaxOperator": {
+      "dark": "coral",
+      "light": "coral"
+    },
+    "syntaxPunctuation": {
+      "dark": "fog",
+      "light": "storm"
+    }
+  }
+}
