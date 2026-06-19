@@ -1,0 +1,22 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "plugin": [
+    "~/.local/share/opencode/ponytail/.opencode/plugins/ponytail.mjs",
+  ],
+  "mcp": {
+    "notion": {
+      "type": "remote",
+      "url": "https://mcp.notion.com/mcp",
+      "enabled": true,
+    },
+    "github": {
+      "type": "remote",
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer {env:OC_GITHUB_PAT}",
+      },
+    },
+  },
+}
+
+// vim: set filetype=jsonc :
