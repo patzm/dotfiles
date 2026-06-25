@@ -9,6 +9,7 @@
     {
         "context": "Workspace",
         "bindings": {
+            "secondary-p": "file_finder::Toggle",
             // "shift shift": "file_finder::Toggle"
         },
     },
@@ -47,7 +48,7 @@
     {
         "context": "Editor && mode == full",
         "bindings": {
-            "cmd-p": null,
+            "secondary-p": "file_finder::Toggle",
         },
     },
     {
