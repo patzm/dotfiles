@@ -1,4 +1,4 @@
-{{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") -}}
+{{ if and (eq .chezmoi.os "linux") (contains "arch" .chezmoi.osRelease.idLike) -}}
 #! /usr/bin/env bash
 
 set -e
