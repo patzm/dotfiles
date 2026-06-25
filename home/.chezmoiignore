@@ -14,6 +14,6 @@
 .config/zsh/include.d/darwin.sh
 Library/*
 {{end}}
-{{ if not (and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch")) }}
+{{ if ne .chezmoi.os "linux" }}
 .local/bin/rpi-imager-hyprland
 {{ end }}
