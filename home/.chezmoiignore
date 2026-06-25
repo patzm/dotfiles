@@ -1,4 +1,5 @@
 {{ if ne .chezmoi.os "linux" }}
+.chezmoiscripts/run_onchange_23-xdg-mimetypes.sh.tmpl
 .config/autostart
 .config/environment.d
 .config/hypr
