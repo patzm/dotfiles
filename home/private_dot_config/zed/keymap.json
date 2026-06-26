@@ -9,6 +9,7 @@
     {
         "context": "Workspace",
         "bindings": {
+            "secondary-p": "file_finder::Toggle",
             // "shift shift": "file_finder::Toggle"
         },
     },
@@ -21,8 +22,8 @@
     {
         "context": "Editor",
         "bindings": {
-            "cmd-left": "pane::GoBack",
-            "cmd-right": "pane::GoForward",
+            "secondary-left": "pane::GoBack",
+            "secondary-right": "pane::GoForward",
         },
     },
     {
@@ -47,7 +48,13 @@
     {
         "context": "Editor && mode == full",
         "bindings": {
-            "cmd-p": null,
+            "secondary-p": "file_finder::Toggle",
+            "secondary-w": [
+                "pane::CloseActiveItem",
+                {
+                    "close_pinned": false,
+                },
+            ],
         },
     },
     {

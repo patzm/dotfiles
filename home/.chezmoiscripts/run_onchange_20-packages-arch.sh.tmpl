@@ -1,4 +1,4 @@
-{{ if and (eq .chezmoi.os "linux") (eq .chezmoi.osRelease.id "arch") -}}
+{{ if and (eq .chezmoi.os "linux") (contains "arch" .chezmoi.osRelease.idLike) -}}
 #! /usr/bin/env bash
 
 set -e
@@ -38,11 +38,11 @@ packages=(
     neovim
     nextcloud-client
     onlyoffice
+    opencode
     picard
     polkit-gnome
     pre-commit
     python
-    python-virtualenvwrapper
     rpi-imager
     sound-juicer
     starship
@@ -61,8 +61,8 @@ aur_packages=(
     bcompare
     gitkraken
     google-chrome
-    mailspring
     plexamp-appimage
+    python-virtualenvwrapper
     python310
     slack
     sourcegit-bin
