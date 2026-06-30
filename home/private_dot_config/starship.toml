@@ -8,6 +8,5 @@ format = """$time$all"""
 [time]
 disabled = false
 format = '[\[🕙 $time \]]($style) '
-time_format = '%v %T'
+time_format = '%Y-%m-%d %T'
 utc_time_offset = 'local'
-
