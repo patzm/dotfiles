@@ -20,13 +20,17 @@ znap source ohmyzsh/ohmyzsh plugins/brew
 
 function brew-update () {
     set -x
+    
     brew update
     brew upgrade
     brew upgrade --cask --greedy-auto-updates
     brew cleanup
 
     # Fix permissions for a few apps
-    xattr -cr /Applications/SourceGit.app
+    for app in SourceGit MarkText Alacritty; do
+      xattr -cr "/Applications/${app}.app"
+    done
+
     set +x
 }
 
