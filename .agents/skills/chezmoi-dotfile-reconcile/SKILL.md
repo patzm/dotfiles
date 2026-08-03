@@ -47,6 +47,15 @@ Generic direction controls:
   - Then review git diff in source and keep only intended changes.
   - This updates source and does not immediately rewrite target.
 
+Zed-specific machine-local sidecar (public repo safety):
+
+- Scope this pattern to Zed `ssh_connections` only.
+- Keep Zed machine-specific connection targets out of tracked templates.
+- Store Zed `ssh_connections` in local-only `~/.config/zed/ssh_connections.json`.
+- The Zed template reads that local file when it exists.
+- If a Zed diff is only the `ssh_connections` block, update the sidecar file instead of running `chezmoi add` on `~/.config/zed/settings.json`.
+- After editing that file, run `chezmoi apply .config/zed/settings.json`.
+
 ## Rules
 
 ### A) Non-template sources

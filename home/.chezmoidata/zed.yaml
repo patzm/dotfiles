@@ -1,0 +1,4 @@
+# Zed
+zedSSHConnectionsRelPath: .config/zed/ssh_connections.json
+
+# vim: set filetype=yaml :
