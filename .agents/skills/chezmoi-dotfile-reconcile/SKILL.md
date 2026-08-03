@@ -13,12 +13,19 @@ Keep one source of truth in chezmoi source files while avoiding template breakag
 
 ## Workflow
 
-1. Confirm the target file(s) and inspect corresponding chezmoi source path(s).
-2. Classify each source file:
+1. Preflight Bitwarden session before running chezmoi commands that may read secret-backed templates.
+   - Run `bw status`.
+   - If status is not `unlocked`, stop and ask the user to leave this session, run `bw_unlock`, and re-enter.
+2. Confirm the target file(s) and inspect corresponding chezmoi source path(s).
+3. For each file, choose one reconciliation mode explicitly:
+   - **Update committed from local** (promote local drift into source)
+   - **Apply committed to local** (discard local drift and enforce source)
+   - **Ignore local-only drift** (machine-specific; keep out of source)
+4. Classify each source file:
    - **Template-backed**: source path ends with `.tmpl`.
    - **Non-template**: source path does not end with `.tmpl`.
-3. Apply the correct reconciliation strategy per file type.
-4. If intent is unclear, ask a focused question before editing.
+5. Apply the correct reconciliation strategy per file type.
+6. If intent is unclear, ask a focused question before editing.
 
 ## Rules
 
@@ -41,6 +48,10 @@ Quick safety checks before keeping the add result:
 
 If any answer is "yes", do not keep the raw add result without user confirmation.
 
+If mode is **apply committed to local**, do not use `chezmoi add`; use `chezmoi apply --source-path <source-file>`.
+
+If mode is **ignore local-only drift**, make no source edit and call it out in the summary.
+
 ### B) Template-backed sources (`*.tmpl`)
 
 Do **not** blindly run `chezmoi add` when it would overwrite template logic with rendered concrete values.
@@ -53,6 +64,10 @@ Instead, propose a smart reconciliation:
 4. If new host/user-specific values appeared, prefer parameterizing via template data rather than hard-coding.
 
 When the right abstraction is uncertain, present 2-3 options (for example: literal value, template variable, or machine-specific include) and ask the user to choose.
+
+If mode is **apply committed to local**, do not edit template source unless requested; apply current rendered template to target and verify drift is gone.
+
+If mode is **ignore local-only drift**, keep template source unchanged and call out the ignored local drift.
 
 ## Non-obvious cases (must ask)
 
