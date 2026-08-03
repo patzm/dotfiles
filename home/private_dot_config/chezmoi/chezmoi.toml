@@ -3,4 +3,3 @@
 
 [diff]
     exclude = ["scripts"]
-    pager = "delta"
