@@ -27,6 +27,26 @@ Keep one source of truth in chezmoi source files while avoiding template breakag
 5. Apply the correct reconciliation strategy per file type.
 6. If intent is unclear, ask a focused question before editing.
 
+Path targeting note:
+
+- `chezmoi apply` accepts target paths directly (absolute or relative to `$HOME`).
+- Path scoping works for both files and folders.
+- Example scoped applies that should work:
+  - `chezmoi apply .agents/skills`
+  - `chezmoi apply .local/share/ponytail`
+- Prefer scoped apply over full apply when validating one subsystem.
+
+Generic direction controls:
+
+- **Committed -> local (apply source to target):**
+  - Use `chezmoi apply <target-path>` for scoped target updates.
+  - Use `chezmoi apply --source-path <source-path>` when you already have the source path.
+  - This keeps source unchanged and rewrites local target to match source.
+- **Local -> committed (promote target drift into source):**
+  - Use `chezmoi add <target-path>`.
+  - Then review git diff in source and keep only intended changes.
+  - This updates source and does not immediately rewrite target.
+
 ## Rules
 
 ### A) Non-template sources
