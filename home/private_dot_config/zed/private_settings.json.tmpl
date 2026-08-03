@@ -31,6 +31,7 @@
         "include_ignored": "all",
     },
     "git_panel": {
+        "group_by": "staging",
         "dock": "left",
         "tree_view": true,
     },
@@ -64,6 +65,15 @@
         "dock": "right",
         "tool_permissions": {
             "tools": {
+                "mcp:mcp-server-github:search_repositories": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:get_me": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:create_pull_request": {
+                    "default": "allow"
+                },
                 "mcp:mcp-server-github:list_branches": {
                     "default": "allow"
                 },
