@@ -35,3 +35,6 @@
 
 [fetch]
 	prune = true
+
+[submodule]
+    recurse = true
