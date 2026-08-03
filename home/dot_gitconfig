@@ -19,13 +19,7 @@
     prune = True
 
 [core]
-    pager = delta
     excludesfile = ~/.gitignore
-
-[delta]
-    navigate = true
-    side-by-side = true
-    line-numbers = true
 
 [filter "lfs"]
     clean = git-lfs clean -- %f
