@@ -1,5 +1,11 @@
 {
   "$schema": "https://opencode.ai/config.json",
+  "permission": {
+    "bash": {
+      "which rtk": "allow",
+      "rtk rewrite *": "allow"
+    }
+  },
   "mcp": {
     "notion": {
       "type": "remote",
