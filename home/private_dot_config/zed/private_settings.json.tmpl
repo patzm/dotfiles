@@ -233,7 +233,7 @@
     // Language specific settings
     "languages": {
         "Python": {
-            "language_servers": ["basedpyright", "ruff"],
+            "language_servers": ["pyright", "ruff"],
             "format_on_save": "on",
             "formatter": [
                 { "code_action": "source.fixAll.ruff" },
@@ -245,9 +245,9 @@
         },
     },
     "lsp": {
-        "basedpyright": {
+        "pyright": {
             "settings": {
-                "basedpyright.analysis": {
+                "python.analysis": {
                     "diagnosticMode": "workspace",
                     "diagnosticSeverityOverrides": {
                         "reportUnknownArgumentType": false,
