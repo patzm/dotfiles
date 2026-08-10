@@ -68,6 +68,21 @@
         "dock": "right",
         "tool_permissions": {
             "tools": {
+                "skill": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:list_pull_requests": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:search_commits": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:search_pull_requests": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:push_files": {
+                    "default": "allow"
+                },
                 "mcp:mcp-server-github:update_pull_request": {
                     "default": "allow"
                 },
@@ -168,6 +183,21 @@
                         },
                         {
                             "pattern": "^rg\\b"
+                        },
+                        {
+                            "pattern": "^mkdir\\b"
+                        },
+                        {
+                            "pattern": "^openssl\\s+req(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+compose(\\s|$)"
+                        },
+                        {
+                            "pattern": "^docker\\s+logs(\\s|$)"
+                        },
+                        {
+                            "pattern": "^GIT_EDITOR=true\\s+git\\s+rebase(\\s|$)"
                         }
                     ],
                 },
