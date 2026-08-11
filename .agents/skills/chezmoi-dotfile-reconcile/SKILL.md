@@ -17,15 +17,19 @@ Keep one source of truth in chezmoi source files while avoiding template breakag
    - Run `bw status`.
    - If status is not `unlocked`, stop and ask the user to leave this session, run `bw_unlock`, and re-enter.
 2. Confirm the target file(s) and inspect corresponding chezmoi source path(s).
-3. For each file, choose one reconciliation mode explicitly:
+3. Check latest change time for both target and source before choosing direction.
+   - Run `stat` (or platform equivalent) on the target file and the source file.
+   - Treat mtime as a signal, not proof: newer target usually means likely local intent; newer source usually means likely committed intent.
+   - If target is newer and intent is not explicit, default to asking before applying committed -> local.
+4. For each file, choose one reconciliation mode explicitly:
    - **Update committed from local** (promote local drift into source)
    - **Apply committed to local** (discard local drift and enforce source)
    - **Ignore local-only drift** (machine-specific; keep out of source)
-4. Classify each source file:
+5. Classify each source file:
    - **Template-backed**: source path ends with `.tmpl`.
    - **Non-template**: source path does not end with `.tmpl`.
-5. Apply the correct reconciliation strategy per file type.
-6. If intent is unclear, ask a focused question before editing.
+6. Apply the correct reconciliation strategy per file type.
+7. If intent is unclear, ask a focused question before editing.
 
 Path targeting note:
 
