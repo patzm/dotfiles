@@ -15,13 +15,13 @@ Shared baseline instructions for all local agent tools. Keep this file personal 
 
 - Commit only when explicitly requested with the keyword "commit".
 - Commit protocol (strict):
-  - `commit` means: create commit(s) now.
+  - `commit` means: create commit(s) now. Follow the rules below.
   - Before committing:
     - inspect staged and unstaged diffs
     - identify logical change groups
   - Commit grouping rules:
     - default to multiple granular commits when more than one concern is present
-    - one commit = one concern (e.g., package data, CLI behavior, tests/refactor)
+    - one commit = one concern (e.g., package data, CLI behavior, tests/refactor, the new function & its usages, etc.)
     - never mix unrelated concerns
     - if only one logical concern exists, one commit is fine
   - If grouping is ambiguous, propose a commit plan first and wait for confirmation.
