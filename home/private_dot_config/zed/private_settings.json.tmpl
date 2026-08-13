@@ -65,6 +65,18 @@
         "dock": "right",
         "tool_permissions": {
             "tools": {
+                "mcp:mcp-server-github:create_branch": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:list_issues": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:pull_request_review_write": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:get_release_by_tag": {
+                    "default": "allow"
+                },
                 "mcp:mcp-server-github:get_label": {
                     "default": "allow"
                 },
@@ -201,6 +213,15 @@
                         },
                         {
                             "pattern": "^GIT_EDITOR=true\\s+git(\\s|$)"
+                        },
+                        {
+                            "pattern": "^uvx\\s+pre-commit(\\s|$)"
+                        },
+                        {
+                            "pattern": "^uvx\\s+pytest(\\s|$)"
+                        },
+                        {
+                            "pattern": "^uv\\s+sync(\\s|$)"
                         }
                     ],
                 },
