@@ -21,6 +21,7 @@ Keep one source of truth in chezmoi source files while avoiding template breakag
    - Run `stat` (or platform equivalent) on the target file and the source file.
    - Treat mtime as a signal, not proof: newer target usually means likely local intent; newer source usually means likely committed intent.
    - If target is newer and intent is not explicit, default to asking before applying committed -> local.
+   - Also run `chezmoi diff <target-path>`; any non-empty diff means local drift exists and must be treated as intentional until the user confirms discard.
 4. For each file, choose one reconciliation mode explicitly:
    - **Update committed from local** (promote local drift into source)
    - **Apply committed to local** (discard local drift and enforce source)
@@ -30,6 +31,7 @@ Keep one source of truth in chezmoi source files while avoiding template breakag
    - **Non-template**: source path does not end with `.tmpl`.
 6. Apply the correct reconciliation strategy per file type.
 7. If intent is unclear, ask a focused question before editing.
+8. Before any committed -> local write, run `chezmoi apply --dry-run --verbose <target-path>` first.
 
 Path targeting note:
 
@@ -45,11 +47,23 @@ Generic direction controls:
 - **Committed -> local (apply source to target):**
   - Use `chezmoi apply <target-path>` for scoped target updates.
   - Use `chezmoi apply --source-path <source-path>` when you already have the source path.
+  - Do not use `--force` by default.
+  - If `chezmoi apply` reports the target changed since chezmoi last wrote it, stop and ask the user whether to discard local drift.
   - This keeps source unchanged and rewrites local target to match source.
 - **Local -> committed (promote target drift into source):**
   - Use `chezmoi add <target-path>`.
   - Then review git diff in source and keep only intended changes.
   - This updates source and does not immediately rewrite target.
+
+Safety defaults:
+
+- In doubt, default to `chezmoi add <target-path>` or ask the user; do not assume discard-local intent.
+- In non-interactive contexts, treat apply safety prompts as hard stops; do not bypass with `--force` unless the user explicitly asked to discard local changes.
+
+Apply safety gate (all file types):
+
+- If `chezmoi apply` is blocked because the target changed since chezmoi last wrote it, stop and ask whether to discard local drift.
+- Include the exact drift scope from `chezmoi diff <target-path>` in that question.
 
 Zed-specific machine-local sidecar (public repo safety):
 
@@ -110,6 +124,7 @@ Ask the user what to do when any of these apply:
 - A change removes or conflicts with existing template conditionals.
 - Multiple files could reasonably own the same setting.
 - The user’s intent (global default vs host override) is not explicit.
+- `chezmoi apply` is blocked by local drift and would need `--force`.
 
 Ask concise, decision-oriented questions and include a recommended default.
 
