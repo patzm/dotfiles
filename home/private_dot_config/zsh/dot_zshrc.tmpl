@@ -33,6 +33,7 @@ setopt appendhistory
 setopt sharehistory                 # share between sessions in real time
 setopt incappendhistory             # add to history on execution
 setopt hist_find_no_dups            # ignore duplicates when searching
+setopt extended_history             # keep execution timestamp per command in history
 bindkey '^[[A' fzf-history-widget   # bind arrow-up to the fzf history search
 
 # Configure zsh-autocomplete behavior
@@ -72,9 +73,21 @@ znap source ohmyzsh/ohmyzsh plugins/virtualenvwrapper
 # Virtual directory-based environments with direnv
 eval "$(direnv hook zsh)"
 
-# Accelerate start time
-eval "$(starship init zsh)"
-znap prompt
+# Native zsh prompt: timestamp + git branch + venv
+setopt prompt_subst
+autoload -Uz add-zsh-hook vcs_info
+zstyle ':vcs_info:git:*' formats ' (%b)'
+zstyle ':vcs_info:git:*' actionformats ' (%b|%a)'
+
+_prompt_precmd() {
+	vcs_info
+	local venv=""
+	[[ -n "$VIRTUAL_ENV" ]] && venv=" %F{#a6e3a1}[venv:${VIRTUAL_ENV:t}]%f"
+	PROMPT="%F{#a6adc8}[%D{%Y-%m-%d %H:%M:%S}]%f %F{#89b4fa}%~%f%F{#cba6f7}${vcs_info_msg_0_}%f${venv} %(!.%F{#f38ba8}#%f.%F{#f9e2af}$%f) "
+}
+add-zsh-hook -D precmd _prompt_precmd 2>/dev/null
+add-zsh-hook precmd _prompt_precmd
+PS2='cont> '
 
 export PATH
 
