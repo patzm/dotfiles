@@ -26,6 +26,9 @@ Shared baseline instructions for all local agent tools. Keep this file personal 
 
 When the user says `commit`:
 
+- Treat `commit` as a single-use authorization scoped to the current prompt only.
+- Execute the requested commit workflow for this prompt, then immediately clear that authorization.
+- Do not carry commit permission forward to later prompts; wait for a fresh `commit` instruction each time.
 - `commit` means: create commit(s) now.
 - Inspect pending changes first:
   - `git --no-pager diff --name-only`
