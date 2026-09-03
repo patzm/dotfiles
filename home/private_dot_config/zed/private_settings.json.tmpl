@@ -65,6 +65,18 @@
         "dock": "right",
         "tool_permissions": {
             "tools": {
+                "mcp:mcp-server-github:get_commit": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:list_repository_collaborators": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:search_issues": {
+                    "default": "allow"
+                },
+                "mcp:mcp-server-github:merge_pull_request": {
+                    "default": "allow"
+                },
                 "mcp:mcp-server-github:create_branch": {
                     "default": "allow"
                 },
@@ -153,6 +165,7 @@
                     "default": "allow",
                 },
                 "terminal": {
+                    "default": "allow",
                     "always_allow": [
                         {
                             "pattern": "^cat\\s"
@@ -228,9 +241,10 @@
             },
         },
         "default_model": {
+            "effort": "high",
             "enable_thinking": true,
             "provider": "openai",
-            "model": "gpt-5.3-codex",
+            "model": "gpt-5.6-sol",
         },
         "default_profile": "write",
         "model_parameters": [],
