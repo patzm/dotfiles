@@ -1,0 +1,16 @@
+// Project tasks configuration. See https://zed.dev/docs/tasks for documentation.
+[
+  {
+    "label": "Worktree: uv sync",
+    "command": "if command -v uv >/dev/null 2>&1 && [ -f pyproject.toml ]; then uv sync; else echo 'Skipping uv sync (no uv or no pyproject.toml)'; fi",
+    "hooks": ["create_worktree"],
+    "use_new_terminal": false,
+    "allow_concurrent_runs": false,
+    "reveal": "never",
+    "hide": "on_success",
+    "shell": "system",
+    "show_summary": true,
+    "show_command": true,
+    "save": "none"
+  }
+]
