@@ -1,7 +1,6 @@
 # Theme
 catppuccinTheme: mocha
-fontMonoMacOS: "MesloLGMDZ Nerd Font Mono"
-fontMonoLinux: "MesloLGS Nerd Font"
+fontMono: "MesloLGS Nerd Font"
 # Waybar
 wbMarginLR: 0px
 wbMarginTB: 0px

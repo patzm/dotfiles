@@ -6,11 +6,7 @@ general.import = [
 size = 12
 
 [font.normal]
-{{ if eq .chezmoi.os "darwin" -}}
-family = {{ .fontMonoMacOS | quote }}
-{{ else if eq .chezmoi.os "linux" -}}
-family = {{ .fontMonoLinux | quote }}
-{{- end }}
+family = {{ .fontMono | quote }}
 
 [[hints.enabled]]
 regex = "(mailto:|gemini:|gopher:|https:|http:|news:|file:|git:|ssh:|ftp:)[^\u0000-\u001F\u007F-\u009F<>\"\\s{-}\\^⟨⟩`]+"
