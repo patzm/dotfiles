@@ -98,5 +98,8 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 mkdir -p ~/.local/bin
 ln -sf /usr/bin/batcat "$HOME/.local/bin/bat"
 
+# Refresh the font cache
+fc-cache -fv
+
 # vim: set filetype=zsh :
 {{ end -}}
