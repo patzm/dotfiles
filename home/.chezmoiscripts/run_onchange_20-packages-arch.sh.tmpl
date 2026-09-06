@@ -47,7 +47,6 @@ packages=(
     thunderbird
     tmux
     torbrowser-launcher
-    ttf-meslo-nerd-font-powerlevel10k
     uv
     vlc
     zed
@@ -74,6 +73,8 @@ sudo pacman -Syu --noconfirm --needed "${packages[@]}"
 printf "\nInstalling yay packages\n"
 yay -Syu --noconfirm --needed "${aur_packages[@]}"
 
+# Refresh the font cache
+fc-cache -fv
 
 # vim: set filetype=zsh :
 {{ end -}}
