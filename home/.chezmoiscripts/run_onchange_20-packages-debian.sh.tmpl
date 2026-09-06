@@ -67,22 +67,6 @@ if [ "$fastfetch_available" -eq 1 ]; then
     packages+=(fastfetch)
 fi
 
-install_starship_with_apt=0
-if [ "$OS_NAME" = "Ubuntu" ] && [ "$OS_MAJOR_VERSION" -ge 25 ]; then
-    install_starship_with_apt=1
-elif [ "$OS_NAME" = "Debian GNU/Linux" ] && [ "$OS_MAJOR_VERSION" -ge 13 ]; then
-    install_starship_with_apt=1
-fi
-
-if [ "$install_starship_with_apt" -eq 1 ]; then
-    packages+=(starship)
-else
-    if ! command -v starship >/dev/null 2>&1; then
-        URL=https://starship.rs/install.sh
-        printf "\nInstalling starship from %s\n" "$URL"
-        curl -sS "$URL" | sh -s -- --yes > /dev/null
-    fi
-fi
 
 if [ "$use_fastfetch_ppa" -eq 1 ]; then
     sources_file=/etc/apt/sources.list.d/fastfetch-ubuntu.sources

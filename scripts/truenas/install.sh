@@ -26,10 +26,6 @@ download_and_extract \
   "fzf/bin" \
   "fzf"
 
-download_and_extract \
-  "https://github.com/starship/starship/releases/download/v1.24.2/starship-x86_64-unknown-linux-gnu.tar.gz" \
-  "starship/bin" \
-  "starship"
 
 download_and_extract \
   "https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz" \

@@ -17,6 +17,13 @@ Keep one source of truth in chezmoi source files while avoiding template breakag
    - Run `bw status`.
    - If status is not `unlocked`, stop and ask the user to leave this session, run `bw_unlock`, and re-enter.
 2. Confirm the target file(s) and inspect corresponding chezmoi source path(s).
+   - Prefer absolute target paths with `chezmoi source-path <absolute-target>`.
+   - If mapping is unclear, use `chezmoi managed` to confirm whether the target is managed and where ownership likely lives.
+   - Read `chezmoi status` using both columns before acting.
+     - First column = change since last write.
+     - Second column = what `chezmoi apply` will do.
+     - `AD` commonly means "target exists locally, and apply will delete it".
+     - `R` means a script will run on apply, not necessarily file drift.
 3. Check latest change time for both target and source before choosing direction.
    - Run `stat` (or platform equivalent) on the target file and the source file.
    - Treat mtime as a signal, not proof: newer target usually means likely local intent; newer source usually means likely committed intent.
@@ -36,6 +43,7 @@ Keep one source of truth in chezmoi source files while avoiding template breakag
 Path targeting note:
 
 - `chezmoi apply` accepts target paths directly (absolute or relative to `$HOME`).
+- Prefer absolute target paths for per-file actions and `source-path` lookups.
 - Path scoping works for both files and folders.
 - Example scoped applies that should work:
   - `chezmoi apply .agents/skills`
@@ -49,6 +57,7 @@ Generic direction controls:
   - Use `chezmoi apply --source-path <source-path>` when you already have the source path.
   - Do not use `--force` by default.
   - If `chezmoi apply` reports the target changed since chezmoi last wrote it, stop and ask the user whether to discard local drift.
+  - If non-interactive execution blocks on local modifications and discard-local intent is explicit, use `chezmoi apply --force <target-path>`.
   - This keeps source unchanged and rewrites local target to match source.
 - **Local -> committed (promote target drift into source):**
   - Use `chezmoi add <target-path>`.
@@ -73,6 +82,12 @@ Zed-specific machine-local sidecar (public repo safety):
 - The Zed template reads that local file when it exists.
 - If a Zed diff is only the `ssh_connections` block, update the sidecar file instead of running `chezmoi add` on `~/.config/zed/settings.json`.
 - After editing that file, run `chezmoi apply .config/zed/settings.json`.
+
+Deletion-specific note:
+
+- If the intent is "this target should not exist", prefer encoding deletion in `home/.chezmoiremove`.
+- Verify by checking `chezmoi status` for `AD`/` D` behavior, then run scoped apply for that target.
+- Use `--force` for the scoped apply only when the deletion intent is explicit and confirmed.
 
 ## Rules
 
