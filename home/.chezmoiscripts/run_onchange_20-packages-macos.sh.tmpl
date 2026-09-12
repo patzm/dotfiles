@@ -33,30 +33,6 @@ python_packages=(
     python
     python@3.10
 )
-cask_packages=(
-    alacritty
-    angry-ip-scanner
-    balenaetcher
-    bitwarden
-    gimp
-    gitkraken
-    inkscape
-    jordanbaird-ice@beta
-    mark-text
-    mattermost
-    meld
-    modern-csv
-    onlyoffice
-    pika
-    plexamp
-    raspberry-pi-imager
-    slack
-    sublime-text
-    tad
-    tor-browser
-    visual-studio-code
-    vlc
-)
 
 printf "\nInstalling macOS fonts\n"
 brew install --quiet "${fonts[@]}"
@@ -68,9 +44,6 @@ ln -sf "$(brew --prefix)/bin/pip3" "$(brew --prefix)/bin/pip"
 
 printf "\nInstalling macOS packages\n"
 brew install --quiet "${packages[@]}"
-
-printf "\nInstalling macOS cask packages\n"
-brew install --quiet --cask "${cask_packages[@]}"
 
 # vim: set filetype=zsh :
 {{ end -}}
