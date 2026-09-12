@@ -1,3 +1,6 @@
+# Profile: default (dotfiles + CLI) or desktop (WMs + GUI)
+profile: default
+
 # Git
 githubUsername: patzm
 externalGitArgs: |
