@@ -18,7 +18,7 @@ Library/*
 {{ if ne .chezmoi.os "linux" }}
 .local/bin/rpi-imager-hyprland
 {{ end }}
-{{ if ne .profile "desktop" }}
+{{ if ne (env "CHEZMOI_PROFILE" | default "default") "desktop" }}
 .chezmoiscripts/21-packages-arch-desktop.sh
 .chezmoiscripts/21-packages-arch-hyprland.sh
 .chezmoiscripts/21-packages-debian-desktop.sh
