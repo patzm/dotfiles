@@ -1,0 +1,42 @@
+{{ if and (eq .chezmoi.os "linux") (contains "debian" .chezmoi.osRelease.idLike) -}}
+#! /usr/bin/env bash
+
+set -e
+
+OS_NAME="{{ .chezmoi.osRelease.name }}"
+
+packages=(
+    errands
+    gimp
+)
+snap_packages=()
+
+if [ "$OS_NAME" = "Ubuntu" ]; then
+    packages+=(
+        alacritty
+        firefox
+        handbrake
+        inkscape
+        meld
+        picard
+        sound-juicer
+        vlc
+        rpi-imager
+        torbrowser-launcher
+    )
+    snap_packages+=(
+        thunderbird
+    )
+fi
+
+printf "\nInstalling apt desktop packages\n"
+sudo DEBIAN_FRONTEND=noninteractive apt-get update
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends "${packages[@]}"
+
+if [ "${#snap_packages[@]}" -gt 0 ]; then
+    printf "\nInstalling snap desktop packages\n"
+    sudo snap install "${snap_packages[@]}"
+fi
+
+# vim: set filetype=zsh :
+{{ end -}}

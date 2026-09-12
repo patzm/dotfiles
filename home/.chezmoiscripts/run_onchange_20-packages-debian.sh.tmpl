@@ -14,12 +14,10 @@ packages=(
     btop
     cmake
     direnv
-    errands
     exiv2
     eza
     ffmpeg
     fzf
-    gimp
     git
     imagemagick
     jq
@@ -33,22 +31,6 @@ packages=(
     virtualenvwrapper
     zsh
 )
-
-if [ "$OS_NAME" = "Ubuntu" ]; then
-    packages+=(
-        alacritty
-        firefox
-        handbrake
-        inkscape
-        meld
-        picard
-        sound-juicer
-        thunderbird
-        vlc
-        rpi-imager
-        torbrowser-launcher
-    )
-fi
 
 fastfetch_available=0
 use_fastfetch_ppa=0
@@ -97,6 +79,11 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 
 mkdir -p ~/.local/bin
 ln -sf /usr/bin/batcat "$HOME/.local/bin/bat"
+
+if [ "$OS_NAME" = "Ubuntu" ]; then
+    printf "\nInstalling snap packages\n"
+    sudo snap install bw
+fi
 
 # Refresh the font cache
 fc-cache -fv
