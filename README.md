@@ -23,14 +23,7 @@ If you want to avoid installing any packages, run with `--exclude=scripts`.
 
 ## Profiles
 
-`profile` defaults to `default` (dotfiles + CLI packages). Override per machine in `~/.config/chezmoi/chezmoi.toml`:
-
-```toml
-[data]
-    profile = "desktop"
-```
-
-`desktop` also installs window managers and GUI packages.
+Profile defaults to `default` (dotfiles + CLI packages). Set `CHEZMOI_PROFILE=desktop` in the environment for window managers and GUI packages.
 
 ## `ssh` configuration
 To add keys to the agent, add them once with
@@ -47,4 +40,4 @@ ssh-add ~/.ssh/id_ed25519
 
 #### With Hyprland
 
-Set `profile = "desktop"`, then install https://github.com/JaKooLit/Arch-Hyprland afterwards.
+Set `CHEZMOI_PROFILE=desktop`, then install https://github.com/JaKooLit/Arch-Hyprland afterwards.
