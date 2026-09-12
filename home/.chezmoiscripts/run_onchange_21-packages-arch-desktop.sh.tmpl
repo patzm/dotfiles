@@ -1,0 +1,46 @@
+{{ if and (eq .chezmoi.os "linux") (contains "arch" .chezmoi.osRelease.idLike) -}}
+#! /usr/bin/env bash
+
+set -e
+
+packages=(
+    alacritty
+    code
+    errands
+    firefox
+    gimp
+    handbrake
+    inkscape
+    mattermost-desktop
+    meld
+    nextcloud-client
+    onlyoffice
+    picard
+    polkit-gnome
+    rpi-imager
+    sound-juicer
+    thunderbird
+    torbrowser-launcher
+    vlc
+    zed
+)
+
+aur_packages=(
+    balenaetcher
+    bcompare
+    gitkraken
+    google-chrome
+    plexamp-appimage
+    slack
+    sourcegit-bin
+    sublime-text-4
+)
+
+printf "\nInstalling pacman desktop packages\n"
+sudo pacman -Syu --noconfirm --needed "${packages[@]}"
+
+printf "\nInstalling yay desktop packages\n"
+yay -Syu --noconfirm --needed "${aur_packages[@]}"
+
+# vim: set filetype=zsh :
+{{ end -}}
