@@ -1,5 +1,5 @@
 {{ if ne .chezmoi.os "linux" }}
-.chezmoiscripts/run_onchange_23-xdg-mimetypes.sh.tmpl
+.chezmoiscripts/23-xdg-mimetypes.sh
 .config/autostart
 .config/environment.d
 .config/hypr
@@ -17,4 +17,23 @@ Library/*
 {{end}}
 {{ if ne .chezmoi.os "linux" }}
 .local/bin/rpi-imager-hyprland
+{{ end }}
+{{ if ne .profile "desktop" }}
+.chezmoiscripts/21-packages-arch-desktop.sh
+.chezmoiscripts/21-packages-arch-hyprland.sh
+.chezmoiscripts/21-packages-debian-desktop.sh
+.chezmoiscripts/21-packages-macos-desktop.sh
+.chezmoiscripts/22-gnome.sh
+.chezmoiscripts/23-xdg-mimetypes.sh
+.chezmoiscripts/30-config-macos.sh
+.config/alacritty
+.config/autostart
+.config/environment.d
+.config/hypr
+.config/skhd
+.config/waybar
+.config/wlogout
+.config/yabai
+.local/bin/rpi-imager-hyprland
+Library/Application Support/marktext
 {{ end }}
